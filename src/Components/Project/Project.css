@@ -27,6 +27,6 @@
     border-radius: 10%;
 }
 
-.project:hover .project-content {
-    transform: translateX(2%);
+.project:hover {
+    transform: scale(1.02);
 }

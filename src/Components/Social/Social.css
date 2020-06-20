@@ -20,4 +20,5 @@
 .social:hover {
     background-color: #FFFFFF22;
     border-radius: 10px;
+    transform: scale(1.02);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import ProjectGrid from './Components/ProjectGrid/ProjectGrid'
 import Social from './Components/Social/Social';
+import FooterItem from './Components/FooterItem/FooterItem';
 
 function App() {
 
@@ -37,9 +38,12 @@ function App() {
       <h1 className="projects-h1">Projects</h1>
       <p>Exciting things im currently working on 😅</p>
       <ProjectGrid projects={projects} />
-      <footer className="App-footer">
 
-      </footer>
+      <div className="section-divider"></div>
+      <div className="App-footer">
+          <FooterItem title="Privacy Policy"/>
+          <FooterItem title="Imprint"/>
+      </div>
     </div>
   );
 }
