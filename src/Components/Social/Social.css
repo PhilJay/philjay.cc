@@ -1,0 +1,23 @@
+.social {
+   display: flex;
+   align-items: center;
+   transition: .3s;
+   width: fit-content;
+   padding: 10px;
+   margin: 1px
+}
+
+.social p {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.social .social-image {
+    width: 20px;
+    height: 20px;
+}
+
+.social:hover {
+    background-color: #FFFFFF22;
+    border-radius: 10px;
+}

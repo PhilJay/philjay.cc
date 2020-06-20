@@ -1,0 +1,32 @@
+.project {
+    padding-top: 4%;
+    padding-bottom: 2%;
+    padding-left: 8%;
+    padding-right: 8%;
+    text-align: center;
+    max-width: 20vw;
+}
+
+.project, .project-content, .project-image {
+    transition: .3s;
+}
+
+.project h2 {
+    word-wrap: break-word;
+}
+
+.project .project-image {
+    width: 70%;
+    height: 70%;
+    max-width: 160px;
+    min-width: 80px;
+}
+
+.project:hover {
+    background-color: #FFFFFF22;
+    border-radius: 10%;
+}
+
+.project:hover .project-content {
+    transform: translateX(2%);
+}
