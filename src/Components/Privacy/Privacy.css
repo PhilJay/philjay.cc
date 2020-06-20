@@ -1,0 +1,9 @@
+.privacy-policy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.privacy-policy-container {
+    width: 50%;
+}

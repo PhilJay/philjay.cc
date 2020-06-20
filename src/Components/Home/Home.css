@@ -1,0 +1,42 @@
+.home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socials {
+    display: flex;
+    max-width: 50%;
+  }
+  
+  .project-grid {
+    width: 50%;
+    min-width: 500px;
+  }
+  
+  .name-h1 {
+    margin: 0;
+    font-size: 50px;
+  }
+  
+  .projects-h1 {
+    margin: 0;
+  }
+  
+  .section-divider {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 1px;
+    width: 40%;
+    background-color: #FFFFFF22;
+  }
+
+  .home-footer .router-link {
+    font-size: 13px;
+  }
+  
+  .home-footer .router-link + .router-link {
+      margin-left: 15px;
+  }

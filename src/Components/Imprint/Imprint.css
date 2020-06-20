@@ -1,0 +1,9 @@
+.imprint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imprint-container {
+    width: 50%;
+}
