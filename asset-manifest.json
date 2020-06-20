@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/philjay.cc/static/css/main.8605f67a.chunk.css",
+    "main.js": "/philjay.cc/static/js/main.e3285d8a.chunk.js",
+    "main.js.map": "/philjay.cc/static/js/main.e3285d8a.chunk.js.map",
+    "runtime-main.js": "/philjay.cc/static/js/runtime-main.7a7654d6.js",
+    "runtime-main.js.map": "/philjay.cc/static/js/runtime-main.7a7654d6.js.map",
+    "static/js/2.1649779f.chunk.js": "/philjay.cc/static/js/2.1649779f.chunk.js",
+    "static/js/2.1649779f.chunk.js.map": "/philjay.cc/static/js/2.1649779f.chunk.js.map",
+    "index.html": "/philjay.cc/index.html",
+    "precache-manifest.81590d7c33c249aecd323922206b0eff.js": "/philjay.cc/precache-manifest.81590d7c33c249aecd323922206b0eff.js",
+    "service-worker.js": "/philjay.cc/service-worker.js",
+    "static/css/main.8605f67a.chunk.css.map": "/philjay.cc/static/css/main.8605f67a.chunk.css.map",
+    "static/js/2.1649779f.chunk.js.LICENSE.txt": "/philjay.cc/static/js/2.1649779f.chunk.js.LICENSE.txt",
+    "static/media/burnd.png": "/philjay.cc/static/media/burnd.cf5a941b.png",
+    "static/media/butleroy.png": "/philjay.cc/static/media/butleroy.c7719aa6.png",
+    "static/media/jwt.png": "/philjay.cc/static/media/jwt.20d6021b.png",
+    "static/media/mpandroidchart.png": "/philjay.cc/static/media/mpandroidchart.9115cf25.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7a7654d6.js",
+    "static/js/2.1649779f.chunk.js",
+    "static/css/main.8605f67a.chunk.css",
+    "static/js/main.e3285d8a.chunk.js"
+  ]
+}
