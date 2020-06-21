@@ -19,6 +19,7 @@
     height: 70%;
     max-width: 160px;
     min-width: 80px;
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 .project:hover {
@@ -27,5 +28,5 @@
 }
 
 .project:hover {
-    transform: scale(1.02);
+    transform: translateY(-3%);
 }
