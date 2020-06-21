@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './Components/About/About';
 import Home from './Components/Home/Home';
@@ -18,7 +18,7 @@ function App(props) {
       <header className="App-header">
       </header>
 
-      <HashRouter>
+      <Router >
         {/* <SideMenu /> */}
         <Switch>
           <Route path="/about">
@@ -47,7 +47,7 @@ function App(props) {
             <Home />
           </Route>
         </Switch>
-      </HashRouter>
+      </Router>
 
     </div>
   );
