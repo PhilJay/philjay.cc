@@ -36,6 +36,10 @@ In order to deploy this React app to GitHub pages, do the following.
     
 4. Be patient. It may take a couple of minutes after the `npm run deploy` command has finished before your page becomes available publicly. You can check the GitHub pages section in your repository settings to monitor the current status.
 
+## react-router Problems
+
+Solution: [Use HashRouter](https://stackoverflow.com/a/46060999/1590502)
+
 ## Custom domain
 
 In case you want your page to be available on a fully customized domain (not something starting with `"https://philjay.github.io/...` or similar), do the following.
@@ -46,8 +50,21 @@ In case you want your page to be available on a fully customized domain (not som
     * Also make sure to remove any existing A records pointing to other IP addresses (e.g. where your site was previously hosted)
 3. Wait until DNS propagation has completed, this can take up to 24 hours.
 4. I would recommend to enable "Enforce HTTPS" in your repo settings for pages.
-5. Update your `package.json` file to reflect the new domain:
+5. Create a file called `CNAME` in your project directory with the following content (adapt doman name to your domain). This will prevent the custom-domain field in your repo settings from being overwritten by gh-pages.
+   
+   ```philjay.cc```
+   
+6. Update your `package.json` file homepage to reflect the new domain:
 
     ```"homepage": "https://philjay.cc"```
-    
-6. Deploy again using `npm run deploy`
+
+7. Copy the `CNAME` to the public folder during predeploy:
+
+    ```
+      "scripts": {
+         //...
+         "predeploy": "npm run build && cp CNAME public",
+      }
+    ```
+
+8. Deploy again using `npm run deploy`
