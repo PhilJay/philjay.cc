@@ -69,7 +69,7 @@ In case you want your page to be available on a fully customized domain (not som
 
 ## Problems with react-router
 
-GitHub Pages doesn't natively support single page apps. When there is a fresh page load for a url like example.com/foo, where /foo is a frontend route, the GitHub Pages server returns 404 because it knows nothing of /foo.
+GitHub Pages doesn't natively support single page apps. When there is a **fresh page load** for a url like example.com/foo, where /foo is a frontend route, the GitHub Pages server returns 404 because it knows nothing of /foo.
 
  - Solution 1: [Use HashRouter](https://stackoverflow.com/a/46060999/1590502)
  - Solution 2: [Tweak your index.html](https://github.com/rafrex/spa-github-pages)
