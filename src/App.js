@@ -18,22 +18,22 @@ function App(props) {
       <header className="App-header">
       </header>
 
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         {/* <SideMenu /> */}
         <Switch>
-          <Route path="/about">
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route path="/privacy-policy">
+          <Route exact path="/privacy-policy">
             <Privacy />
           </Route>
-          <Route path="/imprint">
+          <Route exact path="/imprint">
             <Imprint />
           </Route>
-          <Route path="/burnd-privacy-policy">
+          <Route exact path="/burnd-privacy-policy">
             <BurndPrivacy />
           </Route>
-          <Route path="/terms-and-conditions-burnd">
+          <Route exact path="/terms-and-conditions-burnd">
             <BurndTerms />
           </Route>
 
