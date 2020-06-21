@@ -46,4 +46,8 @@ In case you want your page to be available on a fully customized domain (not som
     * Also make sure to remove any existing A records pointing to other IP addresses (e.g. where your site was previously hosted)
 3. Wait until DNS propagation has completed, this can take up to 24 hours.
 4. I would recommend to enable "Enforce HTTPS" in your repo settings for pages.
+5. Update your `package.json` file to reflect the new domain:
 
+    ```"homepage": "https://philjay.cc"```
+    
+6. Deploy again using `npm run deploy`
