@@ -4,8 +4,6 @@ import './App.css';
 import About from './Components/About/About';
 import Home from './Components/Home/Home';
 import Imprint from './Components/Imprint/Imprint';
-import BurndPrivacy from './Components/PrivacyAndTerms/Burnd/BurndPrivacy';
-import BurndTerms from './Components/PrivacyAndTerms/Burnd/BurndTerms';
 import Privacy from './Components/PrivacyAndTerms/Privacy';
 
 function App(props) {
@@ -29,12 +27,6 @@ function App(props) {
           </Route>
           <Route path="/imprint">
             <Imprint />
-          </Route>
-          <Route path="/burnd-privacy-policy">
-            <BurndPrivacy />
-          </Route>
-          <Route path="/terms-and-conditions-burnd">
-            <BurndTerms />
           </Route>
 
           {/* If none of the previous routes render anything,

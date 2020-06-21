@@ -8,7 +8,7 @@ function Home(props) {
 
   const projects = [
     { name: "Butleroy", image: require('./../../images/butleroy.png'), description: "Butleroy combines Calendar & To-Dos with smart scheduling.", url: "https://butleroy.com" },
-    { name: "Burnd", image: require('./../../images/burnd.png'), description: "Burnd is an app for HIIT (High Intensity Interval Training).", url: "" },
+    { name: "Burnd", image: require('./../../images/burnd.png'), description: "Burnd is an app for HIIT (High Intensity Interval Training).", url: "https://philjay.github.io/burnd-landing-page/" },
     { name: "MPAndroidChart", image: require('./../../images/mpandroidchart.png'), description: "A powerful 🚀 Android chart view / graph view library.", url: "https://github.com/PhilJay/MPAndroidChart" },
     { name: "JWT", image: require('./../../images/jwt.png'), description: "Json Web Token 🔑 library for APNs (Apple Push) or Sign in with Apple.", url: "https://github.com/PhilJay/JWT" }
   ]
