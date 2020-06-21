@@ -1,8 +1,8 @@
 .project {
     padding-top: 4%;
     padding-bottom: 2%;
-    padding-left: 8%;
-    padding-right: 8%;
+    padding-left: 6%;
+    padding-right: 6%;
     text-align: center;
 }
 
@@ -17,8 +17,8 @@
 .project .project-image {
     width: 70%;
     height: 70%;
-    max-width: 160px;
-    min-width: 80px;
+    max-width: 180px;
+    min-width: 100px;
     filter: drop-shadow(5px 5px 5px #222);
 }
 

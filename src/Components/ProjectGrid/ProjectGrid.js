@@ -6,10 +6,11 @@ const ProjectGrid = (props) => (
     <div className="project-grid">
       {props.projects.map((project) => (
         <div key={project.name}>
-          <Project project={project}/>
+          <Project project={project} />
         </div>
       ))}
-    </div>
- )
+  </div>
 
- export default ProjectGrid;
+)
+
+export default ProjectGrid;
