@@ -1,7 +1,6 @@
 .social {
    display: flex;
    align-items: center;
-   transition: .3s;
    width: fit-content;
    padding: 10px;
    margin: 1px
@@ -10,6 +9,10 @@
 .social p {
     margin: 0px;
     margin-left: 10px;
+}
+
+.social, .social-image {
+    transition: .3s;
 }
 
 .social .social-image {
@@ -21,4 +24,8 @@
     background-color: #FFFFFF22;
     border-radius: 10px;
     transform: scale(1.02);
+}
+
+.social:hover .social-image {
+    transform: rotate(90deg);
 }

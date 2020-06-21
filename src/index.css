@@ -8,6 +8,20 @@ body {
   color: white;
 }
 
+button {
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -5,17 +5,21 @@ import About from './Components/About/About';
 import Home from './Components/Home/Home';
 import Imprint from './Components/Imprint/Imprint';
 import BurndPrivacy from './Components/PrivacyAndTerms/Burnd/BurndPrivacy';
-import Privacy from './Components/PrivacyAndTerms/Privacy';
 import BurndTerms from './Components/PrivacyAndTerms/Burnd/BurndTerms';
+import Privacy from './Components/PrivacyAndTerms/Privacy';
 
 function App(props) {
+
+  document.title = "Philipp Jahoda | PhilJay";
 
   return (
 
     <div className="App">
       <header className="App-header">
       </header>
+
       <Router>
+        {/* <SideMenu /> */}
         <Switch>
           <Route path="/about">
             <About />
@@ -44,7 +48,7 @@ function App(props) {
           </Route>
         </Switch>
       </Router>
-     
+
     </div>
   );
 }
