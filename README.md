@@ -45,4 +45,5 @@ In case you want your page to be available on a fully customized domain (not som
     * In my case, I created 4 A records (using @ as host), each pointing to one of the 4 GitHup pages IP addresses
     * Also make sure to remove any existing A records pointing to other IP addresses (e.g. where your site was previously hosted)
 3. Wait until DNS propagation has completed, this can take up to 24 hours.
+4. I would recommend to enable "Enforce HTTPS" in your repo settings for pages.
 
