@@ -42,5 +42,7 @@ In case you want your page to be available on a fully customized domain (not som
 
 1. Purchase the domain you would like to use, in this case `philjay.cc` (apex domain).
 2. In your DNS provider custom DNS settings, add a new A record [reflecting the IP addresses of GitHub pages](https://help.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain).
+    * In my case, I created 4 A records (using @ as host), each pointing to one of the 4 GitHup pages IP addresses
+    * Also make sure to remove any existing A records pointing to other IP addresses (e.g. where your site was previously hosted)
 3. Wait until DNS propagation has completed, this can take up to 24 hours.
 
