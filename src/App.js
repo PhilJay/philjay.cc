@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './Components/About/About';
 import Home from './Components/Home/Home';
@@ -18,22 +18,22 @@ function App(props) {
       <header className="App-header">
       </header>
 
-      <Router basename={process.env.PUBLIC_URL}>
+      <HashRouter>
         {/* <SideMenu /> */}
         <Switch>
-          <Route exact path="/about">
+          <Route path="/about">
             <About />
           </Route>
-          <Route exact path="/privacy-policy">
+          <Route path="/privacy-policy">
             <Privacy />
           </Route>
-          <Route exact path="/imprint">
+          <Route path="/imprint">
             <Imprint />
           </Route>
-          <Route exact path="/burnd-privacy-policy">
+          <Route path="/burnd-privacy-policy">
             <BurndPrivacy />
           </Route>
-          <Route exact path="/terms-and-conditions-burnd">
+          <Route path="/terms-and-conditions-burnd">
             <BurndTerms />
           </Route>
 
@@ -43,11 +43,11 @@ function App(props) {
             Important: A route with path="/" will *always* match
             the URL because all URLs begin with a /. So that's
             why we put this one last of all */}
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>
-      </Router>
+      </HashRouter>
 
     </div>
   );
