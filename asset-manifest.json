@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.37105a27.chunk.css",
-    "main.js": "/static/js/main.699a2c9c.chunk.js",
-    "main.js.map": "/static/js/main.699a2c9c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.fb89ea21.js",
-    "runtime-main.js.map": "/static/js/runtime-main.fb89ea21.js.map",
-    "static/js/2.1285c9cb.chunk.js": "/static/js/2.1285c9cb.chunk.js",
-    "static/js/2.1285c9cb.chunk.js.map": "/static/js/2.1285c9cb.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.9dc9f6004d72b1249b5fdcadce5b7145.js": "/precache-manifest.9dc9f6004d72b1249b5fdcadce5b7145.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.37105a27.chunk.css.map": "/static/css/main.37105a27.chunk.css.map",
-    "static/js/2.1285c9cb.chunk.js.LICENSE.txt": "/static/js/2.1285c9cb.chunk.js.LICENSE.txt",
-    "static/media/burnd.png": "/static/media/burnd.cf5a941b.png",
-    "static/media/butleroy.png": "/static/media/butleroy.c7719aa6.png",
-    "static/media/jwt.png": "/static/media/jwt.20d6021b.png",
-    "static/media/mpandroidchart.png": "/static/media/mpandroidchart.9115cf25.png"
+    "main.css": "/philjay.cc/static/css/main.2f2dbb60.chunk.css",
+    "main.js": "/philjay.cc/static/js/main.2dd0c116.chunk.js",
+    "main.js.map": "/philjay.cc/static/js/main.2dd0c116.chunk.js.map",
+    "runtime-main.js": "/philjay.cc/static/js/runtime-main.7a7654d6.js",
+    "runtime-main.js.map": "/philjay.cc/static/js/runtime-main.7a7654d6.js.map",
+    "static/js/2.c19778ec.chunk.js": "/philjay.cc/static/js/2.c19778ec.chunk.js",
+    "static/js/2.c19778ec.chunk.js.map": "/philjay.cc/static/js/2.c19778ec.chunk.js.map",
+    "index.html": "/philjay.cc/index.html",
+    "precache-manifest.15c658a8761b1cbcf6987c2a7b0a4074.js": "/philjay.cc/precache-manifest.15c658a8761b1cbcf6987c2a7b0a4074.js",
+    "service-worker.js": "/philjay.cc/service-worker.js",
+    "static/css/main.2f2dbb60.chunk.css.map": "/philjay.cc/static/css/main.2f2dbb60.chunk.css.map",
+    "static/js/2.c19778ec.chunk.js.LICENSE.txt": "/philjay.cc/static/js/2.c19778ec.chunk.js.LICENSE.txt",
+    "static/media/burnd.png": "/philjay.cc/static/media/burnd.cf5a941b.png",
+    "static/media/butleroy.png": "/philjay.cc/static/media/butleroy.c7719aa6.png",
+    "static/media/jwt.png": "/philjay.cc/static/media/jwt.20d6021b.png",
+    "static/media/mpandroidchart.png": "/philjay.cc/static/media/mpandroidchart.9115cf25.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.fb89ea21.js",
-    "static/js/2.1285c9cb.chunk.js",
-    "static/css/main.37105a27.chunk.css",
-    "static/js/main.699a2c9c.chunk.js"
+    "static/js/runtime-main.7a7654d6.js",
+    "static/js/2.c19778ec.chunk.js",
+    "static/css/main.2f2dbb60.chunk.css",
+    "static/js/main.2dd0c116.chunk.js"
   ]
 }
