@@ -31,4 +31,6 @@ In order to deploy this React app to GitHub pages, do the following.
     ```npm run deploy```
     * This will deploy your app and make it available using the homepage url provided in the previous step.
     * This will also create a `gh-pages` branch that contains the built app code (reflecting the deployed React app), the master branch should contain the source code for development.
+    
+4. Be patient. It may take a couple of minutes after the `npm run deploy` command has finished before your page becomes available publicly.
 
