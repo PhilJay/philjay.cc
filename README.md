@@ -2,12 +2,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Deployment
 
-In order to deploy this React app to GitHub pages, do the following. All commands executed from project folder.
+In order to deploy this React app to GitHub pages, do the following.
 
 **Prerequisites:**
+- `node`, `npm` and `create-react-app` are installed
 - Created a git repository
 - Added a a remote branch using `git remote add origin https://github.com/youruser/yourrepo.git`
-- React app is in the git-repo
+- Created a React app and added it to the git-repo
+
 
 **Steps:**
 1. Install GitHub pages (gh-pages)
