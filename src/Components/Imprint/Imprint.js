@@ -10,7 +10,7 @@ function Imprint(props) {
 
             <p>Industriezeile 35</p>
             <p>4020 Linz</p>
-            <p>Austria</p>
+            <p>Austria (AUT)</p>
             <h2>Contact Information</h2>
 
             <p>E-Mail: <a href="mailto:philjay.librarysup@gmail.com">philjay.librarysup[at]gmail.com</a></p>

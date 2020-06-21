@@ -1,0 +1,9 @@
+.burnd-privacy-policy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.burnd-privacy-policy-container {
+    width: 50%;
+}

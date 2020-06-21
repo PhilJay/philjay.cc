@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import About from './Components/About/About';
-import FooterItem from './Components/FooterItem/FooterItem';
 import Home from './Components/Home/Home';
-import Privacy from './Components/Privacy/Privacy';
 import Imprint from './Components/Imprint/Imprint';
+import BurndPrivacy from './Components/PrivacyAndTerms/Burnd/BurndPrivacy';
+import Privacy from './Components/PrivacyAndTerms/Privacy';
+import BurndTerms from './Components/PrivacyAndTerms/Burnd/BurndTerms';
 
 function App(props) {
 
@@ -19,13 +20,17 @@ function App(props) {
           <Route path="/about">
             <About />
           </Route>
-
           <Route path="/privacy-policy">
             <Privacy />
           </Route>
-
           <Route path="/imprint">
             <Imprint />
+          </Route>
+          <Route path="/burnd-privacy-policy">
+            <BurndPrivacy />
+          </Route>
+          <Route path="/terms-and-conditions-burnd">
+            <BurndTerms />
           </Route>
 
           {/* If none of the previous routes render anything,

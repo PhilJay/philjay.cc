@@ -1,0 +1,9 @@
+.burnd-terms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.burnd-terms-container {
+    width: 50%;
+}
