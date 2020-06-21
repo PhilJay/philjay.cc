@@ -11,33 +11,17 @@ function App(props) {
   document.title = "Philipp Jahoda | PhilJay";
 
   return (
-
     <div className="App">
       <header className="App-header">
       </header>
 
-      <Router >
+      <Router>
         {/* <SideMenu /> */}
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/privacy-policy">
-            <Privacy />
-          </Route>
-          <Route path="/imprint">
-            <Imprint />
-          </Route>
-
-          {/* If none of the previous routes render anything,
-            this route acts as a fallback.
-
-            Important: A route with path="/" will *always* match
-            the URL because all URLs begin with a /. So that's
-            why we put this one last of all */}
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route path="/about" component={About} />
+          <Route path="/privacy-policy" component={Privacy} />
+          <Route path="/imprint" component={Imprint} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </Router>
 

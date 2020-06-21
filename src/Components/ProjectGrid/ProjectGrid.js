@@ -5,7 +5,7 @@ import './ProjectGrid.css'
 const ProjectGrid = (props) => (
     <div className="project-grid">
       {props.projects.map((project) => (
-        <div>
+        <div key={project.name}>
           <Project project={project}/>
         </div>
       ))}

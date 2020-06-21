@@ -31,7 +31,7 @@ function Home(props) {
 
       <div className="socials">
         {socials.map((social) => (
-          <div>
+          <div key={social.name}>
             <Social social={social} />
           </div>
         ))}
