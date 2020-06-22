@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "51aebec334814d04ac3d7b1cd94f59e7",
+    "revision": "597b7910e7cb6df52fd42f0e647431f9",
     "url": "/index.html"
   },
   {
-    "revision": "944cac75226ff330d31d",
-    "url": "/static/css/main.6caaecb6.chunk.css"
+    "revision": "1c0258bcbf80fa148200",
+    "url": "/static/css/main.fa4dac05.chunk.css"
   },
   {
     "revision": "9792698f64e206ab661c",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.1285c9cb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "944cac75226ff330d31d",
-    "url": "/static/js/main.28a2c75c.chunk.js"
+    "revision": "1c0258bcbf80fa148200",
+    "url": "/static/js/main.c2761b8e.chunk.js"
   },
   {
     "revision": "a342ddb5f3d1a0861dc0",
@@ -38,5 +38,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9115cf25cf45a0d2aaecb2435294a71f",
     "url": "/static/media/mpandroidchart.9115cf25.png"
+  },
+  {
+    "revision": "bd7600f77f75d17fefb7cf3289f26ff9",
+    "url": "/static/media/spring_angular.bd7600f7.png"
   }
 ]);
