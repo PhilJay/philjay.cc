@@ -14,3 +14,22 @@
     padding-left: 10%;
     padding-right: 10%;
 }
+
+.about .btn-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.about .btn-contact {
+    max-width: 250px;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 22px;
+    font-weight: normal;
+    padding: 15px;
+    transition: .3s;
+    cursor: pointer;
+}

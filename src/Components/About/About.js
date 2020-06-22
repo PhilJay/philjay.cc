@@ -64,9 +64,12 @@ function About(props) {
                     <p>Managed an agile team of multiple developers as CTO, Sprint planning, JIRA issue tracking.</p>
                 </li>
             </ul>
+
+            <div className="btn-container">
+                <button className="btn-contact" onClick={() => { window.location.href = "mailto:philjay.librarysup@gmail.com"; }}>Contact</button>
+            </div>
+
         </div>
-
-
     </div>
 }
 

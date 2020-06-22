@@ -3,7 +3,8 @@
    align-items: center;
    width: fit-content;
    padding: 10px;
-   margin: 1px
+   margin: 1px;
+   cursor: pointer;
 }
 
 .social p {

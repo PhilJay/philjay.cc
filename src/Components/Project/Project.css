@@ -4,6 +4,7 @@
     padding-left: 6%;
     padding-right: 6%;
     text-align: center;
+    cursor: pointer;
 }
 
 .project, .project-content, .project-image {
