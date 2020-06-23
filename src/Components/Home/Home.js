@@ -42,7 +42,7 @@ function Home(props) {
 
       <div className="section-divider"></div>
       <h1 className="projects-h1">Projects</h1>
-      <p>Exciting things im currently working on 😅</p>
+      <p>Exciting things I'm currently working on 😅</p>
       <ProjectGrid projects={projects} />
 
       <div className="section-divider"></div>
