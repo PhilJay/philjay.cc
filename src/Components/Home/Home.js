@@ -18,7 +18,8 @@ function Home(props) {
     { name: "About", image: require('./../../images/about.png'), url: "/about", route: true },
     { name: "Twitter", image: require('./../../images/twitter.png'), url: "https://twitter.com/philippjahoda" },
     { name: "GitHub", image: require('./../../images/github.png'), url: "https://github.com/PhilJay" },
-    { name: "LinkedIn", image: require('./../../images/linkedin.png'), url: "https://www.linkedin.com/in/philippjahoda/" }
+    { name: "LinkedIn", image: require('./../../images/linkedin.png'), url: "https://www.linkedin.com/in/philippjahoda/" },
+    { name: "Indie Hackers", image: require('./../../images/indiehackers.png'), url: "https://www.indiehackers.com/phil_jay" }
   ]
 
   return (
