@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Deployment
 
-In order to deploy this React app to GitHub pages, do the following.
+In order to deploy this React app to **GitHub pages**, do the following.
 
 **Prerequisites:**
 - `node`, `npm` and `create-react-app` are installed
