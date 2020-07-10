@@ -12,7 +12,7 @@ In order to deploy this React app to **GitHub pages**, do the following.
 
 
 **Steps:**
-1. Install GitHub pages (gh-pages)
+1. Install GitHub pages (gh-pages) package
 
     `npm install gh-pages --save-dev`
 
@@ -31,7 +31,7 @@ In order to deploy this React app to **GitHub pages**, do the following.
 3. Create a production build of your app and deploy
     
     ```npm run deploy```
-    * This will deploy your app and make it available using the homepage url provided in the previous step.
+    * Creates a new production build and deploys your app making it available using the homepage url provided in the previous step.
     * This will also create a `gh-pages` branch that contains the built app code (reflecting the deployed React app), the master branch should contain the source code for development.
     
 4. Be patient. It may take a couple of minutes after the `npm run deploy` command has finished before your page becomes available publicly. You can check the GitHub pages section in your repository settings to monitor the current status.
@@ -64,7 +64,7 @@ In case you want your page to be available on a fully customized domain (not som
       }
     ```
 
-8. Deploy your app using `npm run deploy`
+8. Build & deploy your app using `npm run deploy`
 
 
 ## Problems with react-router
