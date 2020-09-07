@@ -17,7 +17,7 @@ In order to deploy this React app to **GitHub pages**, do the following.
     `npm install gh-pages --save-dev`
 
 2. Prepare package.json file for deployment
-   * Add a `"homepage": "https://philjay.github.io/philjay.cc"` property to the top level of your package.json file. This property should reflect the url your page should be accessible at.
+   * Add a `"homepage": "https://philjay.github.io/philjay.cc"` property to the top level of your package.json file. This property should reflect the url your page will be accessible at (check GitHub repo settings GitHup pages section for details).
    * Add the following to the `"scripts"` property: 
     ```
       "scripts": {
