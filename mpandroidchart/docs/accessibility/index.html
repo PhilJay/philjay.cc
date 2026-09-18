@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessibility · MPAndroidChart</title>
+  <meta name="description" content="What a screen reader can and cannot get from a chart, and the things you can do about it.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/accessibility/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Accessibility · MPAndroidChart">
+  <meta property="og:description" content="What a screen reader can and cannot get from a chart, and the things you can do about it.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/accessibility/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility" class="active"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">In practice <span>Chapter 32 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#what-a-chart-exposes-today">What a chart exposes today</a><a href="#write-a-description-worth-hearing">Write a description worth hearing</a><a href="#set-it-from-compose">Set it from Compose</a><a href="#set-it-from-a-view">Set it from a view</a><a href="#give-the-numbers-another-way">Give the numbers another way</a><a href="#color">Color</a><a href="#text-size">Text size</a><a href="#touch-and-selection">Touch and selection</a><a href="#checklist">Checklist</a></nav>
+      <p>What a screen reader can and cannot get from a chart, and the things you can do about it.</p>
+<h2 id="what-a-chart-exposes-today">What a chart exposes today<a class="anchor" href="#what-a-chart-exposes-today" aria-label="Link to this section">#</a></h2>
+<p>A chart is a single <code>ViewGroup</code> that paints everything onto a canvas. The axis labels, the value labels, the legend and the description are drawn text, not child views. A marker is drawn the same way: a <code>MarkerView</code> is inflated but never added to the chart, and a Compose marker lives in an invisible child view that the chart draws itself.</p>
+<p>So a screen reader finds one element where you see a chart, and nothing inside it.</p>
+<p>The library adds nothing on top of that. Nothing in the sources sets a content description, builds an accessibility node tree, marks the chart focusable or sends an announcement. The chart also never calls <code>performClick()</code>, so a tap on a value produces no accessibility click event. Everything below is you doing the work, not a feature being switched on.</p>
+<h2 id="write-a-description-worth-hearing">Write a description worth hearing<a class="anchor" href="#write-a-description-worth-hearing" aria-label="Link to this section">#</a></h2>
+<p>The useful description is a summary, not a reading of the data. Nobody wants to hear sixty numbers. Name what is being shown, how many points there are, the range, and the shape:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> describe(<span class="k">data</span>: <span class="t">LineData</span>): <span class="t">String</span> {
+    <span class="k">val</span> set = <span class="k">data</span>.getDataSetByIndex(<span class="n">0</span>) ?: <span class="k">return</span> <span class="s">&quot;Chart with no data&quot;</span>
+    <span class="k">if</span> (set.entryCount == <span class="n">0</span>) <span class="k">return</span> <span class="s">&quot;${set.label}, line chart, no points&quot;</span>
+    <span class="k">val</span> first = set.getEntryForIndex(<span class="n">0</span>).y
+    <span class="k">val</span> last = set.getEntryForIndex(set.entryCount - <span class="n">1</span>).y
+    <span class="k">val</span> trend = <span class="k">when</span> {
+        last &gt; first -&gt; <span class="s">&quot;rising&quot;</span>
+        last &lt; first -&gt; <span class="s">&quot;falling&quot;</span>
+        <span class="k">else</span> -&gt; <span class="s">&quot;flat&quot;</span>
+    }
+    <span class="k">return</span> <span class="s">&quot;${set.label}, line chart, ${set.entryCount} points, &quot;</span> +
+        <span class="s">&quot;$trend from ${first.toInt()} to ${last.toInt()}, &quot;</span> +
+        <span class="s">&quot;lowest ${set.yMin.toInt()}, highest ${set.yMax.toInt()}&quot;</span>
+}</code></pre>
+<p>Say the chart type, because &quot;line chart&quot; tells someone how to read the rest. With several series, name each one and give it its own range instead of merging them into one number.</p>
+<h2 id="set-it-from-compose">Set it from Compose<a class="anchor" href="#set-it-from-compose" aria-label="Link to this section">#</a></h2>
+<p>Every chart composable takes a <code>contentDescription</code>. Null, the default, adds nothing at all.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> <span class="k">data</span> = remember(entries) { lineDataFor(entries) }
+
+<span class="t">LineChart</span>(
+    <span class="k">data</span> = <span class="k">data</span>,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+    contentDescription = remember(<span class="k">data</span>) { describe(<span class="k">data</span>) },
+)</code></pre>
+<p>The wrapper puts the text into a <code>semantics</code> modifier on the chart and also assigns it to the view&#x27;s <code>contentDescription</code>. It is part of the update path, so a new description is applied on the next recomposition. Remember it keyed on the data, as above, and it changes exactly when the numbers change and never on an unrelated recomposition.</p>
+<h2 id="set-it-from-a-view">Set it from a view<a class="anchor" href="#set-it-from-a-view" aria-label="Link to this section">#</a></h2>
+<p><code>contentDescription</code> is the ordinary <code>View</code> property, so set it wherever you set the data:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = lineData
+chart.contentDescription = describe(lineData)</code></pre>
+<p>A selection is a change the user made, so say it out loud. The value selected listener is the place:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected(
+    onNothingSelected = { chart.announceForAccessibility(<span class="s">&quot;Selection cleared&quot;</span>) },
+) { entry, highlight -&gt;
+    <span class="k">val</span> label = chart.<span class="k">data</span>?.getDataSetByIndex(highlight.dataSetIndex)?.label
+    chart.announceForAccessibility(<span class="s">&quot;$label, ${entry.x}: ${entry.y}&quot;</span>)
+}</code></pre>
+<p><code>announceForAccessibility</code> speaks the text once and leaves nothing behind, which fits a selection. Do not use it for the whole summary, that belongs in <code>contentDescription</code>.</p>
+<h2 id="give-the-numbers-another-way">Give the numbers another way<a class="anchor" href="#give-the-numbers-another-way" aria-label="Link to this section">#</a></h2>
+<p>A summary is an improvement, not equal access. If the chart carries information someone needs, put that information somewhere reachable as well: a table or a list of rows next to the chart, built from the same data sets, each row a label and a value. It can sit under the chart, behind a &quot;show values&quot; toggle, or on its own screen.</p>
+<p>This is the part that actually makes the data available, and it needs no library support. Everything else on this page only makes the picture easier to live with.</p>
+<h2 id="color">Color<a class="anchor" href="#color" aria-label="Link to this section">#</a></h2>
+<p>Charts are almost always read by color, so the colors carry meaning.</p>
+<ul><li>Check the contrast of lines, bars and text against the background the chart really has. <code>isDrawGridBackgroundEnabled</code> is false by default, so the chart draws onto whatever is behind the view, not onto <code>gridBackgroundColor</code>.</li><li>Never let color be the only difference between two series. Someone who cannot tell your two blues apart has no way back to the legend.</li><li>Add a second signal. <code>ScatterDataSet.setScatterShape</code> gives each set its own shape. <code>LineDataSet.enableDashedLine(lineLength, spaceLength, phase)</code> makes one line dashed. Different circle radii, value labels on the important series and entry icons all work too.</li><li>On the charts with axes the highlight lines are drawn in the data set&#x27;s <code>highlightColor</code>, which defaults to a light orange. Check that it stands out against the series it crosses.</li></ul>
+<p>See <a href="/mpandroidchart/docs/colors/">Colors</a> for how colors are assigned across entries.</p>
+<h2 id="text-size">Text size<a class="anchor" href="#text-size" aria-label="Link to this section">#</a></h2>
+<p>Every text size in the library is in dp and is converted with the display density alone. The system font scale is never applied, so a user who has set large text gets the same 10 dp axis labels as everyone else.</p>
+<p>If that matters for your app, scale the sizes yourself:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> fontScale = resources.configuration.fontScale
+chart.xAxis.textSize = <span class="n">10f</span> * fontScale
+chart.axisLeft.textSize = <span class="n">10f</span> * fontScale
+chart.legend.textSize = <span class="n">10f</span> * fontScale</code></pre>
+<p>In Compose read <code>LocalDensity.current.fontScale</code> and apply it in <code>update</code> so it follows a settings change.</p>
+<p>Two limits are worth knowing. Axis, legend, limit line and description sizes are clamped to 6 until 24 dp, so the value you assign may not be the value you get. Value label sizes, <code>valueTextSize</code> on a data set, default to 7 dp and are not clamped, which makes 7 dp the smallest text on most charts and the first thing to raise.</p>
+<h2 id="touch-and-selection">Touch and selection<a class="anchor" href="#touch-and-selection" aria-label="Link to this section">#</a></h2>
+<p>Selection has no touch targets, only distances. On the charts with axes, a tap selects the closest value within <code>maxHighlightDistance</code>, which defaults to 500 dp and so accepts almost any tap. Bar charts compare the horizontal distance only, so a tap anywhere above or below a bar selects it, and a horizontal bar chart compares the vertical distance. Pie and radar charts ignore the distance and select by the angle of the touch, as long as it lands inside the radius.</p>
+<p>A low <code>maxHighlightDistance</code> means a tap that misses selects nothing at all, which is a hard thing to recover from without seeing the chart. Leave it high, and prefer <code>isHighlightPerTapEnabled</code> over dragging, since a drag is harder to place precisely.</p>
+<p>Keep the chart big. A 200 dp row is easier to hit than a 100 dp one, and the accuracy of every selection depends on the size of the view.</p>
+<h2 id="checklist">Checklist<a class="anchor" href="#checklist" aria-label="Link to this section">#</a></h2>
+<ul><li>Give every chart a <code>contentDescription</code> that names the chart type, the series, the range and the trend.</li><li>Update the description when the data changes, not once at setup.</li><li>Announce a selection from the value selected listener.</li><li>Offer the same numbers as text somewhere, for anything the user actually needs.</li><li>Check contrast against the real background, including highlight colors.</li><li>Give each series a shape, a dash or a label as well as a color.</li><li>Scale text sizes by the system font scale if your app respects it, and raise <code>valueTextSize</code> from its 7 dp default.</li><li>Give the chart enough height that a tap lands where the user meant it.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/performance/"><span>Previous</span>Performance with large data</a><a class="next" href="/mpandroidchart/docs/troubleshooting/"><span>Next</span>Troubleshooting</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

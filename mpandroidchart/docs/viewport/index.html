@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modifying the viewport · MPAndroidChart</title>
+  <meta name="description" content="Everything that decides which part of the data is on screen: zoom, scroll, the limits on both, the offsets around the content area, and how to read the current state back.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/viewport/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Modifying the viewport · MPAndroidChart">
+  <meta property="og:description" content="Everything that decides which part of the data is on screen: zoom, scroll, the limits on both, the offsets around the content area, and how to read the current state back.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/viewport/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport" class="active"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Motion and viewport <span>Chapter 16 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#restrict-what-is-visible">Restrict what is visible</a><a href="#move-the-view">Move the view</a><a href="#zoom">Zoom</a><a href="#offsets-around-the-content-area">Offsets around the content area</a><a href="#immediate-calls-and-viewport-jobs">Immediate calls and viewport jobs</a><a href="#read-the-current-viewport">Read the current viewport</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>Everything that decides which part of the data is on screen: zoom, scroll, the limits on both, the offsets around the content area, and how to read the current state back.</p>
+<p>The viewport is the window your data is seen through. It has a zoom factor per axis and a position, and the chart keeps both inside limits you can set. All of this lives on <code>BarLineChartBase</code>, so it is available on <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code> and <code>CombinedChart</code>. Pie and radar charts have no viewport.</p>
+<blockquote>The visible range calls divide the current axis range, and the move, center and value based zoom calls convert values to pixels, so set <code>chart.data</code> before them. On a chart without data they do nothing useful.</blockquote>
+<h2 id="restrict-what-is-visible">Restrict what is visible<a class="anchor" href="#restrict-what-is-visible" aria-label="Link to this section">#</a></h2>
+<p>These four set the zoom limits, expressed in values rather than in scale factors. They take effect the moment you call them and clamp the current zoom if it is already outside the new limits.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setVisibleXRangeMaximum(<span class="n">20f</span>)  <span class="c">// never show more than 20 x units at once</span>
+chart.setVisibleXRangeMinimum(<span class="n">5f</span>)   <span class="c">// never show fewer than 5</span>
+chart.setVisibleXRange(<span class="n">5f</span>, <span class="n">20f</span>)     <span class="c">// both at once</span>
+chart.setVisibleYRangeMaximum(<span class="n">100f</span>, <span class="t">YAxis</span>.<span class="t">AxisDependency</span>.<span class="t">LEFT</span>)</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>Meaning</th></tr></thead><tbody><tr><td><code>setVisibleXRangeMaximum(max)</code></td><td>largest span of x values on screen, so the user cannot zoom out further</td></tr><tr><td><code>setVisibleXRangeMinimum(min)</code></td><td>smallest span of x values on screen, so the user cannot zoom in further</td></tr><tr><td><code>setVisibleXRange(min, max)</code></td><td>both x limits in one call</td></tr><tr><td><code>setVisibleYRangeMaximum(max, axis)</code></td><td>largest span of y values on screen, for one y axis</td></tr><tr><td><code>setVisibleYRangeMinimum(min, axis)</code></td><td>smallest span of y values on screen, for one y axis</td></tr><tr><td><code>setVisibleYRange(min, max, axis)</code></td><td>both y limits in one call</td></tr></tbody></table></div>
+<p>Each of them divides the current axis range by the span you pass and stores the result as a scale limit. The limit is a number, not a rule: when the data grows afterwards, the axis range grows with it and the visible span no longer matches. Call the function again after changing the data.</p>
+<p>These six clamp the viewport but do not redraw by themselves, so follow them with a move call, which does, or with <code>invalidate()</code>.</p>
+<p><code>setScaleMinima(scaleX, scaleY)</code> sets the same two lower limits directly as factors, where 1 means fully zoomed out. Factors below 1 are raised to 1.</p>
+<blockquote>On a <code>HorizontalBarChart</code> the axes are swapped on screen, and so are these calls internally: <code>setVisibleXRangeMaximum</code> limits the vertical scale there. You still pass x values.</blockquote>
+<h2 id="move-the-view">Move the view<a class="anchor" href="#move-the-view" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.moveViewToX(<span class="n">10f</span>)                              <span class="c">// left edge at x = 10</span>
+chart.moveViewTo(<span class="n">10f</span>, <span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>)    <span class="c">// left edge at x = 10, y centered</span>
+chart.centerViewTo(<span class="n">10f</span>, <span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>)   <span class="c">// x = 10 and y = 50 both centered</span>
+chart.centerViewToY(<span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>)      <span class="c">// y centered, left edge at x = 0</span></code></pre>
+<p><code>moveViewTo</code> puts the x value at the <strong>left edge</strong> of the content area, <code>centerViewTo</code> puts it in the <strong>middle</strong>. Both make most sense together with a visible range limit, because otherwise the whole data set is on screen and there is nothing to scroll to.</p>
+<p>Two of them animate:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.moveViewToAnimated(<span class="n">10f</span>, <span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>, <span class="n">500</span>)
+chart.centerViewToAnimated(<span class="n">10f</span>, <span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>, <span class="n">500</span>)</code></pre>
+<p>The duration is in milliseconds. All six redraw the chart themselves, so there is no <code>invalidate()</code> to add.</p>
+<h2 id="zoom">Zoom<a class="anchor" href="#zoom" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.zoomIn()                       <span class="c">// by 1.4 around the center of the content area</span>
+chart.zoomOut()                      <span class="c">// by 0.7 around the center</span>
+chart.zoomToCenter(<span class="n">2f</span>, <span class="n">1f</span>)           <span class="c">// by the given factors around the center</span>
+chart.zoom(<span class="n">2f</span>, <span class="n">1f</span>, dx, dy)           <span class="c">// around a point relative to the content area</span>
+chart.zoom(<span class="n">2f</span>, <span class="n">1f</span>, <span class="n">10f</span>, <span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>)  <span class="c">// zoom, then center on that point</span>
+chart.zoomAndCenterAnimated(<span class="n">2f</span>, <span class="n">1f</span>, <span class="n">10f</span>, <span class="n">50f</span>, <span class="t">AxisDependency</span>.<span class="t">LEFT</span>, <span class="n">500</span>)</code></pre>
+<p>A factor of 1 is no change, above 1 zooms in, below 1 zooms out. The factors are relative to the current zoom, not absolute, except in <code>zoomAndCenterAnimated</code>, which animates towards the factors as an absolute target.</p>
+<p><code>zoomIn</code>, <code>zoomOut</code>, <code>zoomToCenter</code> and the pixel overload of <code>zoom</code> apply at once. The value overload of <code>zoom</code> and <code>zoomAndCenterAnimated</code> need the value to pixel matrices, so they run as viewport jobs.</p>
+<p>The <code>x</code> and <code>y</code> of the pixel overload are not view pixels: <code>x</code> counts from the left edge of the content area and <code>y</code> from its bottom edge. <code>(chart.chartTouchListener as BarLineChartTouchListener).getTrans(px, py)</code> turns a touch position into them.</p>
+<p>Two calls undo zooming, and they differ in one detail:</p>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody><tr><td><code>resetZoom()</code></td><td>scales back to 1 around the center, keeping the scale limits, so a chart with <code>setVisibleXRangeMaximum(20f)</code> returns to that 20 unit window. The position is only clamped to the new limits, which without a scale minimum means the left edge</td></tr><tr><td><code>fitScreen()</code></td><td>the same, and also drops the lower scale limits back to 1, so the whole data set fills the content area</td></tr></tbody></table></div>
+<p>Use <code>resetZoom()</code> when the limits should survive and <code>fitScreen()</code> when you want a clean slate.</p>
+<h2 id="offsets-around-the-content-area">Offsets around the content area<a class="anchor" href="#offsets-around-the-content-area" aria-label="Link to this section">#</a></h2>
+<p>The content area is the chart minus the space taken by the axis labels, the legend and the extra offsets. Normally the chart works that space out on every layout.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setExtraOffsets(<span class="n">0f</span>, <span class="n">16f</span>, <span class="n">0f</span>, <span class="n">16f</span>)   <span class="c">// dp, added to the calculated offsets</span>
+chart.minOffset = <span class="n">15f</span>                    <span class="c">// dp, smallest offset on any side, the default</span></code></pre>
+<p><code>setExtraOffsets</code> is the safe way to make room. It leaves the automatic calculation intact and only adds to it.</p>
+<p><code>setViewPortOffsets</code> replaces the calculation entirely:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setViewPortOffsets(<span class="n">0f</span>, <span class="n">0f</span>, <span class="n">0f</span>, <span class="n">0f</span>)   <span class="c">// pixels, edge to edge</span></code></pre>
+<p>From then on the axis labels and the legend no longer get space reserved for them, which is why the example app uses it on charts whose x axis is off or drawn inside the content area with <code>XAxisPosition.TOP_INSIDE</code>. The values are pixels, not dp, and they are applied on the next pass of the UI loop rather than immediately. <code>chart.resetViewPortOffsets()</code> gives the automatic calculation back.</p>
+<h2 id="immediate-calls-and-viewport-jobs">Immediate calls and viewport jobs<a class="anchor" href="#immediate-calls-and-viewport-jobs" aria-label="Link to this section">#</a></h2>
+<p>A viewport call that works in value space needs the value to pixel matrices, and those only exist once the chart has been measured. Those calls are queued as <strong>viewport jobs</strong>: posted right away when the chart already has a size, and otherwise stored until the first layout, then run.</p>
+<div class='table-wrap'><table><thead><tr><th>Runs at once</th><th>Runs as a viewport job</th></tr></thead><tbody><tr><td><code>zoomIn</code>, <code>zoomOut</code>, <code>zoomToCenter</code></td><td><code>zoom(scaleX, scaleY, xValue, yValue, axis)</code></td></tr><tr><td><code>zoom(scaleX, scaleY, x, y)</code> relative to the content area</td><td><code>zoomAndCenterAnimated</code></td></tr><tr><td><code>resetZoom</code>, <code>fitScreen</code></td><td><code>moveViewToX</code>, <code>moveViewTo</code>, <code>moveViewToAnimated</code></td></tr><tr><td><code>setVisibleXRange...</code>, <code>setVisibleYRange...</code>, <code>setScaleMinima</code></td><td><code>centerViewTo</code>, <code>centerViewToY</code>, <code>centerViewToAnimated</code></td></tr></tbody></table></div>
+<p>That is why you can set the viewport in <code>onCreate</code>, before the chart has ever been drawn, and it still lands correctly. <code>chart.clearAllViewportJobs()</code> drops the queue if something has changed in the meantime.</p>
+<h2 id="read-the-current-viewport">Read the current viewport<a class="anchor" href="#read-the-current-viewport" aria-label="Link to this section">#</a></h2>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Returns</th></tr></thead><tbody><tr><td><code>chart.lowestVisibleX</code></td><td>x value at the left edge, never below the axis minimum</td></tr><tr><td><code>chart.highestVisibleX</code></td><td>x value at the right edge, never above the axis maximum</td></tr><tr><td><code>chart.visibleXRange</code></td><td>the span between the two</td></tr><tr><td><code>chart.zoomX</code></td><td>horizontal zoom factor, 1 when fully zoomed out</td></tr><tr><td><code>chart.zoomY</code></td><td>vertical zoom factor</td></tr><tr><td><code>chart.isFullyZoomedOut</code></td><td>true while both factors are 1 and no scale minimum above 1 is set, so a chart with <code>setVisibleXRangeMaximum</code> never reports true</td></tr></tbody></table></div>
+<p>These are the ones to read in a scroll or gesture listener, for example to load more data when the user reaches the edge:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.gestureListeners.add(<span class="k">object</span> : <span class="t">OnChartGestureListener</span> {
+    <span class="k">override</span> <span class="k">fun</span> onChartTranslate(me: <span class="t">MotionEvent</span>, dX: <span class="t">Float</span>, dY: <span class="t">Float</span>) {
+        <span class="k">if</span> (chart.highestVisibleX &gt;= chart.xAxis.axisMaximum) loadMore()
+    }
+})</code></pre>
+<p>For anything below this level, such as the content rectangle in pixels or the touch matrix itself, go to <a href="/mpandroidchart/docs/viewporthandler/">the ViewPortHandler</a>.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/interaction/">Interaction with the chart</a> for the gestures that move the viewport by touch.</li><li><a href="/mpandroidchart/docs/dynamic-data/">Dynamic and realtime data</a> for the scrolling window on a live feed.</li><li><a href="/mpandroidchart/docs/viewporthandler/">The ViewPortHandler</a> for the object behind all of it.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/dynamic-data/"><span>Previous</span>Dynamic and realtime data</a><a class="next" href="/mpandroidchart/docs/animations/"><span>Next</span>Animations</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

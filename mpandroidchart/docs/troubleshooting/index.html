@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Troubleshooting · MPAndroidChart</title>
+  <meta name="description" content="Concrete symptoms you may hit with a chart, what causes each one in the library, and what to change.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/troubleshooting/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Troubleshooting · MPAndroidChart">
+  <meta property="og:description" content="Concrete symptoms you may hit with a chart, what causes each one in the library, and what to change.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/troubleshooting/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting" class="active"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">In practice <span>Chapter 33 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#nothing-is-drawn">Nothing is drawn</a><a href="#the-values-look-wrong-or-jump-around">The values look wrong or jump around</a><a href="#changes-to-the-data-do-not-show">Changes to the data do not show</a><a href="#the-x-axis-shows-0-1-2-instead-of-my-labels">The x axis shows 0, 1, 2 instead of my labels</a><a href="#labels-and-data-are-cut-off-at-the-edges">Labels and data are cut off at the edges</a><a href="#the-chart-is-drawn-under-the-status-bar-or-the-action-bar">The chart is drawn under the status bar or the action bar</a><a href="#gestures-do-not-work">Gestures do not work</a><a href="#highlighting-selects-the-wrong-thing-or-nothing">Highlighting selects the wrong thing, or nothing</a><a href="#markers-do-not-appear">Markers do not appear</a><a href="#the-release-build-differs-from-the-debug-build">The release build differs from the debug build</a><a href="#exceptions-the-library-throws">Exceptions the library throws</a><a href="#getting-a-useful-report-out-of-the-library">Getting a useful report out of the library</a></nav>
+      <p>Concrete symptoms you may hit with a chart, what causes each one in the library, and what to change.</p>
+<h2 id="nothing-is-drawn">Nothing is drawn<a class="anchor" href="#nothing-is-drawn" aria-label="Link to this section">#</a></h2>
+<h3 id="the-chart-shows-no-chart-data-available">The chart shows &quot;No chart data available.&quot;<a class="anchor" href="#the-chart-shows-no-chart-data-available" aria-label="Link to this section">#</a></h3>
+<p>That text only appears while <code>chart.data</code> is null. <code>Chart.onDraw</code> draws <code>noDataText</code> at the center of the view and returns before anything else. So the chart never received data, or something called <code>chart.clear()</code>, which sets the data to null, drops the highlight and redraws. <code>noDataText</code>, <code>noDataTextColor</code>, <code>noDataTextTypeface</code> and <code>noDataTextAlignment</code> style that message, and an empty string draws nothing.</p>
+<h3 id="the-chart-is-blank-but-the-no-data-text-is-gone">The chart is blank but the no data text is gone<a class="anchor" href="#the-chart-is-blank-but-the-no-data-text-is-gone" aria-label="Link to this section">#</a></h3>
+<p>You assigned a data object that holds no entries, or sets that are empty. &quot;Data is set&quot; and &quot;data has entries&quot; are two different things, and only the first switches the message off. <code>chart.isEmpty</code> covers both.</p>
+<p>An empty set is worse than no data. <code>DataSet.calcMinMax</code> leaves <code>yMin</code> at <code>Float.MAX_VALUE</code> and <code>yMax</code> at <code>-Float.MAX_VALUE</code> when there are no entries, so the axis range computed from it is infinite, <code>AxisRenderer.computeAxisValues</code> bails out with zero label entries, and you get a view with no labels, no grid and no data. Call <code>chart.clear()</code> instead and let the no data text do its job.</p>
+<h3 id="the-chart-is-a-thin-strip">The chart is a thin strip<a class="anchor" href="#the-chart-is-a-thin-strip" aria-label="Link to this section">#</a></h3>
+<p><code>Chart.onMeasure</code> resolves to 50 dp when the parent does not impose a height, so <code>android:layout_height=&quot;wrap_content&quot;</code> gives you a 50 dp chart. Give the chart a real height, or a weight inside a <code>LinearLayout</code>. In Compose the same applies to a <code>Modifier</code> without a height:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+)</code></pre>
+<h3 id="one-data-set-is-missing-while-the-others-draw">One data set is missing while the others draw<a class="anchor" href="#one-data-set-is-missing-while-the-others-draw" aria-label="Link to this section">#</a></h3>
+<p><code>isVisible</code> makes the renderers skip the set entirely. When only parts are missing, look at <code>isDrawValuesEnabled</code> for the value labels and, on a line set, <code>isDrawCirclesEnabled</code> for the points. All three default to true.</p>
+<h3 id="viewport-calls-seem-to-be-ignored">Viewport calls seem to be ignored<a class="anchor" href="#viewport-calls-seem-to-be-ignored" aria-label="Link to this section">#</a></h3>
+<p><code>moveViewToX</code>, <code>centerViewTo</code> and the animated variants go through <code>addViewportJob</code>, which posts the job right away only when <code>viewPortHandler.hasChartDimens()</code> is true. Before the first layout they are parked in <code>chart.jobs</code> and run in <code>onSizeChanged</code>, so they do take effect, one frame later.</p>
+<p><code>setVisibleXRangeMaximum</code> and <code>setVisibleXRangeMinimum</code> are different: they divide <code>xAxis.axisRange</code> by your span immediately. Call them after the data is set, or the range is still the default and the limit is wrong.</p>
+<h2 id="the-values-look-wrong-or-jump-around">The values look wrong or jump around<a class="anchor" href="#the-values-look-wrong-or-jump-around" aria-label="Link to this section">#</a></h2>
+<h3 id="points-connect-in-the-wrong-order">Points connect in the wrong order<a class="anchor" href="#points-connect-in-the-wrong-order" aria-label="Link to this section">#</a></h3>
+<p>A <code>DataSet</code> requires its entries sorted by x ascending. <code>getEntryIndex(xValue, closestToY, rounding)</code> is a binary search, and every x lookup, every highlight and every visible-range calculation goes through it. Unsorted entries do not throw; they return a neighbour that happens to be nearby, so the line zig-zags and taps land on the wrong point.</p>
+<p>Sort before building the set, and insert in order afterwards:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> entries = readEntries().sortedWith(<span class="t">EntryXComparator</span>())
+<span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>)
+
+set.addEntryOrdered(<span class="t">Entry</span>(x, y))</code></pre>
+<p><code>addEntryOrdered</code> appends when the new x is not smaller than the last entry&#x27;s x, and otherwise inserts before the first entry with a larger x. <code>addEntry</code> always appends without checking, which is what breaks the order.</p>
+<blockquote>A <code>DataSet</code> keeps an <code>ArrayList</code> you pass by reference and copies any other list. Sorting the <code>ArrayList</code> you handed over therefore also sorts the data set.</blockquote>
+<h3 id="value-labels-disappear-as-the-data-grows">Value labels disappear as the data grows<a class="anchor" href="#value-labels-disappear-as-the-data-grows" aria-label="Link to this section">#</a></h3>
+<p><code>DataRenderer.isDrawingValuesAllowed</code> draws labels only while <code>data.entryCount</code> is below <code>chart.maxVisibleCount</code> times the current x zoom. The default <code>maxVisibleCount</code> is 100, so labels stop at 100 entries and come back as you zoom in. Raise it if you really want them.</p>
+<h2 id="changes-to-the-data-do-not-show">Changes to the data do not show<a class="anchor" href="#changes-to-the-data-do-not-show" aria-label="Link to this section">#</a></h2>
+<h3 id="one-call-is-enough">One call is enough<a class="anchor" href="#one-call-is-enough" aria-label="Link to this section">#</a></h3>
+<p>After changing entries or sets in place:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.notifyDataSetChanged()</code></pre>
+<p>That recomputes the data ranges, rebuilds the renderer buffers, recomputes both y axes and the x axis, rebuilds the legend, recalculates the offsets and redraws. It calls <code>data.notifyDataChanged()</code> for you, so there is nothing else to call and no separate <code>invalidate()</code>.</p>
+<p>The one case that needs more is changing a set&#x27;s <code>entries</code> list in place rather than through <code>addEntry</code> or <code>removeEntry</code>. <code>ChartData.calcMinMax</code> reads each set&#x27;s cached range instead of rescanning its entries, so the set has to be told first:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries.add(<span class="t">Entry</span>(x, y))
+set.notifyDataSetChanged()
+chart.notifyDataSetChanged()</code></pre>
+<p>Assigning <code>set.entries = newEntries</code> does not need that, because the setter recomputes the range.</p>
+<h3 id="in-compose-the-chart-ignores-the-new-data">In Compose the chart ignores the new data<a class="anchor" href="#in-compose-the-chart-ignores-the-new-data" aria-label="Link to this section">#</a></h3>
+<p><code>ChartView</code> applies the data with <code>if (chart.data !== data) chart.data = data</code>. That is an identity check. Recomposing with the <strong>same</strong> <code>LineData</code> instance, however much you changed inside it, assigns nothing and redraws nothing.</p>
+<p>Either hand the composable a new instance, or keep the instance and say so:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>state.notifyDataChanged()</code></pre>
+<p>That calls <code>notifyDataSetChanged()</code> on the attached chart and refreshes the state properties. See <a href="/mpandroidchart/docs/compose/">Jetpack Compose</a>.</p>
+<h2 id="the-x-axis-shows-0-1-2-instead-of-my-labels">The x axis shows 0, 1, 2 instead of my labels<a class="anchor" href="#the-x-axis-shows-0-1-2-instead-of-my-labels" aria-label="Link to this section">#</a></h2>
+<p>x values are values, not indices. An entry at <code>Entry(0f, 42f)</code> sits at x = 0, and the axis prints that number unless a formatter turns it into something else.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.apply {
+    valueFormatter = <span class="t">IndexAxisValueFormatter</span>(months)
+    granularity = <span class="n">1f</span>
+    labelCount = months.size
+}</code></pre>
+<h3 id="labels-disappear-or-land-on-the-wrong-tick">Labels disappear or land on the wrong tick<a class="anchor" href="#labels-disappear-or-land-on-the-wrong-tick" aria-label="Link to this section">#</a></h3>
+<p><code>IndexAxisValueFormatter.getFormattedValue</code> rounds the value to an index and then rejects it when <code>value.roundToInt()</code> differs from <code>value.toInt()</code>. In practice: a fraction below 0.5 gives you the label of the truncated index, and a fraction of 0.5 or above gives an empty string.</p>
+<p>Without granularity the axis is free to pick an interval smaller than 1 as you zoom in, so label values become 2.4 and 2.6. The first prints &quot;Mar&quot; at a tick that is not March, the second prints nothing. Setting <code>granularity = 1f</code> keeps the interval at 1 or above and also sets <code>isGranularityEnabled</code> to true, so label values stay whole. More in <a href="/mpandroidchart/docs/xaxis/">the x axis</a>.</p>
+<h2 id="labels-and-data-are-cut-off-at-the-edges">Labels and data are cut off at the edges<a class="anchor" href="#labels-and-data-are-cut-off-at-the-edges" aria-label="Link to this section">#</a></h2>
+<h3 id="the-first-and-last-label-overlap-the-view-edge">The first and last label overlap the view edge<a class="anchor" href="#the-first-and-last-label-overlap-the-view-edge" aria-label="Link to this section">#</a></h3>
+<p>The x axis renderer skips labels whose pixel position falls outside the content area, and draws the rest centered on their tick, so half of the outermost label hangs over the edge.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.isAvoidFirstLastClippingEnabled = <span class="k">true</span></code></pre>
+<p>That shifts the first label right by half its width, and the last label left by half its width, but only when the last label is wider than twice the right offset and would really spill past the view. It is off by default.</p>
+<h3 id="the-line-or-the-outer-bars-are-clipped">The line or the outer bars are clipped<a class="anchor" href="#the-line-or-the-outer-bars-are-clipped" aria-label="Link to this section">#</a></h3>
+<p>Extra space around the content area is the direct fix. <code>chart.setExtraOffsets(6f, 8f, 6f, 4f)</code> takes dp and applies on the next offset calculation.</p>
+<p>Padding in value space is the other option. <code>axisMinimum</code> and <code>axisMaximum</code> fix the range; <code>spaceMin</code> and <code>spaceMax</code> are subtracted from and added to the computed range instead, so they survive new data. <code>BarChart</code>, <code>ScatterChart</code> and <code>CandleStickChart</code> already set both to 0.5 on the x axis, which is why bar charts leave half a slot at each side and line charts do not.</p>
+<h3 id="there-is-a-description-label-in-the-corner">There is a &quot;Description Label&quot; in the corner<a class="anchor" href="#there-is-a-description-label-in-the-corner" aria-label="Link to this section">#</a></h3>
+<p><code>Description.text</code> defaults to that string and the component is enabled, so every chart draws it at the bottom right until you turn it off with <code>chart.description.isEnabled = false</code>. See <a href="/mpandroidchart/docs/description/">the description</a>.</p>
+<h2 id="the-chart-is-drawn-under-the-status-bar-or-the-action-bar">The chart is drawn under the status bar or the action bar<a class="anchor" href="#the-chart-is-drawn-under-the-status-bar-or-the-action-bar" aria-label="Link to this section">#</a></h2>
+<p>This is not the library. From <code>targetSdk</code> 35 the window is edge to edge and your app receives the insets, so a chart that fills the screen slides under the system bars.</p>
+<p>The example app pads the root view of every activity. <code>DemoBase.setContentView</code> calls one extension on the view it just set, and <code>MainActivity</code> does the same after inflating its binding:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">View</span>.padForWindowInsets() {
+    <span class="t">ViewCompat</span>.setOnApplyWindowInsetsListener(<span class="k">this</span>) { view, insets -&gt;
+        <span class="k">val</span> bars = insets.getInsets(
+            <span class="t">WindowInsetsCompat</span>.<span class="t">Type</span>.systemBars() or
+                <span class="t">WindowInsetsCompat</span>.<span class="t">Type</span>.displayCutout(),
+        )
+        view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+        <span class="t">WindowInsetsCompat</span>.<span class="t">CONSUMED</span>
+    }
+}</code></pre>
+<p>Returning <code>CONSUMED</code> stops the insets from being dispatched again to children, so nothing is padded twice. In Compose, put the same padding on the container with <code>Modifier.windowInsetsPadding(WindowInsets.systemBars)</code> rather than on the chart.</p>
+<h2 id="gestures-do-not-work">Gestures do not work<a class="anchor" href="#gestures-do-not-work" aria-label="Link to this section">#</a></h2>
+<h3 id="nothing-reacts-to-touch-at-all">Nothing reacts to touch at all<a class="anchor" href="#nothing-reacts-to-touch-at-all" aria-label="Link to this section">#</a></h3>
+<p><code>BarLineChartBase.onTouchEvent</code> returns false when <code>chartTouchListener</code> is not built yet, when <code>data</code> is null, or when <code>isTouchEnabled</code> is false. No data means no gestures at all, which is easy to miss while you are still loading.</p>
+<p>If taps still highlight but pan and zoom do nothing, the touch listener is bailing out: it stops handling the event when <code>isDragEnabled</code> is false <strong>and</strong> both <code>isScaleXEnabled</code> and <code>isScaleYEnabled</code> are false. The tap detector runs before that check, which is why the highlight survives.</p>
+<p>Pie and radar charts only check <code>isTouchEnabled</code>, and their rotation has its own switch, <code>isRotationEnabled</code>.</p>
+<h3 id="the-chart-fights-a-scrolling-parent">The chart fights a scrolling parent<a class="anchor" href="#the-chart-fights-a-scrolling-parent" aria-label="Link to this section">#</a></h3>
+<p>The chart already calls <code>disableScroll()</code> when a drag or a zoom begins and <code>enableScroll()</code> on <code>ACTION_UP</code>, which is <code>requestDisallowInterceptTouchEvent</code> on the parent. When your own touch handling gets in the way, call the same pair yourself. A vertical parent and a horizontal chart usually agree once you turn the conflicting axis off with <code>chart.isDragYEnabled = false</code>. <a href="/mpandroidchart/docs/interaction/">Interaction</a> and <a href="/mpandroidchart/docs/lists-and-scrolling/">charts in lists</a> cover the rest.</p>
+<h3 id="a-small-drag-does-nothing">A small drag does nothing<a class="anchor" href="#a-small-drag-does-nothing" aria-label="Link to this section">#</a></h3>
+<p>A touch becomes a drag only once the finger has moved further than <code>dragTriggerDist</code>, which the charts create their listener with at 3 dp. Raise it when a chart inside a scrolling parent steals taps:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> listener = chart.chartTouchListener <span class="k">as</span> <span class="t">BarLineChartTouchListener</span>
+listener.dragTriggerDist = <span class="n">12f</span></code></pre>
+<h2 id="highlighting-selects-the-wrong-thing-or-nothing">Highlighting selects the wrong thing, or nothing<a class="anchor" href="#highlighting-selects-the-wrong-thing-or-nothing" aria-label="Link to this section">#</a></h2>
+<h3 id="nothing-is-selected">Nothing is selected<a class="anchor" href="#nothing-is-selected" aria-label="Link to this section">#</a></h3>
+<p>Four things have to line up. <code>chart.isHighlightPerTapEnabled</code> must be true, the data set must have <code>isHighlightEnabled</code> true, the touch must be within <code>chart.maxHighlightDistance</code> of a value, and <code>data.getEntryForHighlight</code> has to find the entry. The distance is measured in dp and defaults to 500, which is generous; lower it when a tap in empty space should select nothing.</p>
+<h3 id="a-tap-selects-a-neighbour">A tap selects a neighbour<a class="anchor" href="#a-tap-selects-a-neighbour" aria-label="Link to this section">#</a></h3>
+<p>The highlighter converts the touch to an x value, collects the closest entry in every set, prefers the y axis whose candidates sit nearer to the touch, and then takes the smallest pixel distance. On a bar chart only the horizontal distance counts, so a tap anywhere above or below a bar selects it.</p>
+<p>Unsorted entries break this, because the closest-entry step is the same binary search as above.</p>
+<h3 id="a-drag-pans-instead-of-moving-the-highlight">A drag pans instead of moving the highlight<a class="anchor" href="#a-drag-pans-instead-of-moving-the-highlight" aria-label="Link to this section">#</a></h3>
+<p><code>isHighlightPerDragEnabled</code> is true by default, but the touch listener only takes that branch when the chart cannot pan at all: <code>chart.isFullyZoomedOut</code> must be true and <code>hasNoDragOffset</code> must be true. Calling <code>setVisibleXRangeMaximum</code> sets a minimum x scale above 1, and <code>isFullyZoomedOutX</code> is false whenever the minimum scale is above 1. So a chart with a limited visible range always pans and never highlights by drag.</p>
+<h3 id="a-stacked-bar-selects-the-wrong-part">A stacked bar selects the wrong part<a class="anchor" href="#a-stacked-bar-selects-the-wrong-part" aria-label="Link to this section">#</a></h3>
+<p><code>BarHighlighter</code> looks at the touched y value, finds the stack range that contains it and stores that position in <code>Highlight.stackIndex</code>. To select the whole bar instead, set <code>chart.isHighlightFullBarEnabled = true</code>; <code>getHighlightByTouchPoint</code> then rebuilds the highlight with a stack index of -1. It defaults to false on <code>BarChart</code> and true on <code>CombinedChart</code>.</p>
+<h3 id="a-combined-chart-highlights-nothing-from-code">A combined chart highlights nothing from code<a class="anchor" href="#a-combined-chart-highlights-nothing-from-code" aria-label="Link to this section">#</a></h3>
+<p><code>CombinedData.getEntryForHighlight</code> first looks up the child data object at <code>Highlight.dataIndex</code>, and returns null when that index is outside <code>allData</code>. <code>dataIndex</code> defaults to -1, so the usual call selects nothing:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.highlightValue(x = <span class="n">3f</span>, dataSetIndex = <span class="n">0</span>, dataIndex = <span class="n">1</span>)</code></pre>
+<p><code>allData</code> is ordered line, bar, scatter, candle, bubble, skipping the kinds you did not set, and that position is the index you pass.</p>
+<h2 id="markers-do-not-appear">Markers do not appear<a class="anchor" href="#markers-do-not-appear" aria-label="Link to this section">#</a></h2>
+<p><code>Chart.drawMarkers</code> returns early unless all three hold: <code>chart.marker</code> is not null, <code>chart.isDrawMarkersEnabled</code> is true, and <code>valuesToHighlight()</code> is true. Per highlight it also skips entries the running <code>animateX</code> has not reached yet, and any position outside the content area, so a marker for a value scrolled out of view is not drawn.</p>
+<p>A <code>MarkerView</code> has an offset of (0, 0), which puts its top left corner on the value, so it looks missing under your finger. Shift it with <code>setOffset(-width / 2f, -height.toFloat())</code> to sit above the point. If you override <code>refreshContent</code>, call <code>super.refreshContent(e, highlight)</code> so the view is measured again.</p>
+<p>A Compose marker appears one frame after the highlight. <code>ComposeMarker.draw</code> skips the frame while the content for a newly highlighted entry has not composed yet; the <code>SideEffect</code> in its <code>ComposeView</code> then invalidates the chart and the next frame draws it. More in <a href="/mpandroidchart/docs/markers/">markers</a>.</p>
+<h2 id="the-release-build-differs-from-the-debug-build">The release build differs from the debug build<a class="anchor" href="#the-release-build-differs-from-the-debug-build" aria-label="Link to this section">#</a></h2>
+<p>Start by ruling R8 out: build the release variant once with <code>isMinifyEnabled = false</code>. If the problem stays, it is not minification. The library needs no keep rules of its own. Version 4 drives every animation through a <code>ValueAnimator</code> and an update listener, so no member is ever looked up by name, and the chart views carry <code>@Keep</code> so a chart named in a layout file survives. The causes that are left are in your code: a marker or chart subclass that appears only in XML, a drawable resolved by name that resource shrinking removed, or another library reflecting on your entry payload. <a href="/mpandroidchart/docs/proguard/">R8 and ProGuard</a> works through each of them.</p>
+<h2 id="exceptions-the-library-throws">Exceptions the library throws<a class="anchor" href="#exceptions-the-library-throws" aria-label="Link to this section">#</a></h2>
+<p>They are few, and each points at one mistake:</p>
+<ul><li><code>IllegalStateException</code> from <code>groupBars</code>: no data on the chart yet, or fewer than two bar data sets to group.</li><li><code>IllegalStateException</code> from <code>ChartState.attach</code>: one <code>ChartState</code> given to a second chart. Call <code>rememberChartState()</code> once per chart.</li><li><code>IllegalStateException</code> from <code>color</code> or <code>getColor</code>: the set&#x27;s <code>colors</code> list is empty.</li><li><code>IllegalArgumentException</code> from <code>ObjectPool.recycle</code>: the same pooled instance recycled twice.</li><li><code>ParcelFormatException</code> from <code>Entry.writeToParcel</code>: the entry payload is not <code>Parcelable</code>.</li></ul>
+<p><a href="/mpandroidchart/docs/miscellaneous/">Miscellaneous</a> has the full table with the throwing class for each.</p>
+<h2 id="getting-a-useful-report-out-of-the-library">Getting a useful report out of the library<a class="anchor" href="#getting-a-useful-report-out-of-the-library" aria-label="Link to this section">#</a></h2>
+<p>Every chart can narrate what it does under the logcat tag <code>MPAndroidChart</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isLogEnabled = <span class="k">true</span></code></pre>
+<p>It reports <code>Chart.init()</code>, <code>Data is set.</code>, <code>OnSizeChanged()</code> with the dimensions it accepted or refused, <code>Preparing...</code> or <code>Preparing... DATA NOT SET.</code> on each <code>notifyDataSetChanged</code>, the x axis range each time the value to pixel matrix is prepared, the computed offsets with the resulting content rectangle, and the highlight on every selection. That sequence answers most of the symptoms above: if you never see <code>Setting chart dimens</code>, the chart has no size; if you see <code>DATA NOT SET</code>, the data never arrived.</p>
+<p>Line, bar, scatter, candle, bubble and combined charts add a timing line per frame:</p>
+<pre data-lang="Text"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>Drawtime: 6 ms, average: 7 ms, cycles: 42</code></pre>
+<p><code>chart.resetTracking()</code> zeroes the total and the cycle count, which is what you want right before measuring one specific interaction rather than the whole session. Logging costs time on every draw, so keep it off in release builds. <a href="/mpandroidchart/docs/performance/">Performance</a> uses these numbers.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/accessibility/"><span>Previous</span>Accessibility</a><a class="next" href="/mpandroidchart/docs/migration/"><span>Next</span>Migrating from 3.x</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

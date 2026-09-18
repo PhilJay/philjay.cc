@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Setting data · MPAndroidChart</title>
+  <meta name="description" content="How to build entries, data sets and a data object for every chart type, from a single line to a combined chart.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/setting-data/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Setting data · MPAndroidChart">
+  <meta property="og:description" content="How to build entries, data sets and a data object for every chart type, from a single line to a combined chart.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/setting-data/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data" class="active"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Data <span>Chapter 5 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-shape-of-the-data">The shape of the data</a><a href="#entries-must-be-sorted-by-x">Entries must be sorted by x</a><a href="#the-typed-payload">The typed payload</a><a href="#icons-on-entries">Icons on entries</a><a href="#line-chart">Line chart</a><a href="#bar-chart">Bar chart</a><a href="#grouped-bars">Grouped bars</a><a href="#stacked-bars">Stacked bars</a><a href="#horizontal-bar-chart">Horizontal bar chart</a><a href="#pie-chart">Pie chart</a><a href="#scatter-chart">Scatter chart</a><a href="#candlestick-chart">Candlestick chart</a><a href="#bubble-chart">Bubble chart</a><a href="#radar-chart">Radar chart</a><a href="#combined-chart">Combined chart</a><a href="#changing-data-afterwards">Changing data afterwards</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>How to build entries, data sets and a data object for every chart type, from a single line to a combined chart.</p>
+<h2 id="the-shape-of-the-data">The shape of the data<a class="anchor" href="#the-shape-of-the-data" aria-label="Link to this section">#</a></h2>
+<p>Three classes, always the same three, whichever chart you use.</p>
+<p>An <strong>entry</strong> is one value. <code>Entry</code> for a line or scatter point, and a subclass wherever a value needs more than an x and a y: <code>BarEntry</code>, <code>PieEntry</code>, <code>CandleEntry</code>, <code>BubbleEntry</code>, <code>RadarEntry</code>.</p>
+<p>A <strong>data set</strong> is one series: its entries plus the styling that applies to all of them. <code>LineDataSet</code>, <code>BarDataSet</code>, and so on. The label you pass is what the legend shows and what <a href="/mpandroidchart/docs/chartdata/">2</a> looks up.</p>
+<p>A <strong>data object</strong> holds every series of the chart. <code>LineData</code>, <code>BarData</code>, <code>PieData</code>. This is what you assign to the chart.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>)
+chart.<span class="k">data</span> = <span class="t">LineData</span>(set)</code></pre>
+<p>Assigning <code>chart.data</code> recalculates the ranges, the axes, the legend and the offsets, then redraws. There is no second call to make.</p>
+<p>Data objects take sets in three ways: <code>LineData()</code> for an empty one, <code>LineData(set1, set2)</code> for a few, and <code>LineData(listOf(set1, set2))</code> for a list. An <code>ArrayList</code> you hand over is kept by reference, any other list is copied. <code>PieData</code> is the exception, because it holds a single set: it takes <code>PieData()</code> or <code>PieData(set)</code>.</p>
+<h2 id="entries-must-be-sorted-by-x">Entries must be sorted by x<a class="anchor" href="#entries-must-be-sorted-by-x" aria-label="Link to this section">#</a></h2>
+<p>The library finds entries by binary search, so a data set expects its entries in ascending x order. Unsorted entries may still draw correctly, but lookups, highlighting and the x range are then unreliable.</p>
+<p>Sort before you build the set:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> entries = points.map { <span class="t">Entry</span>(it.time, it.value) }.sortedBy { it.x }</code></pre>
+<p><code>EntryXComparator</code> does the same for a mutable list, which is handy from Java:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>entries.sortWith(<span class="t">EntryXComparator</span>())</code></pre>
+<p>When you add to an existing set, <code>addEntryOrdered</code> inserts at the right place instead of appending:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.addEntryOrdered(<span class="t">Entry</span>(<span class="n">12f</span>, <span class="n">88f</span>))</code></pre>
+<p>Pie and radar entries are the exception. They have no x at all, and their position is their index in the set.</p>
+<h2 id="the-typed-payload">The typed payload<a class="anchor" href="#the-typed-payload" aria-label="Link to this section">#</a></h2>
+<p>An entry can carry the object it was made from. <code>Entry</code> is generic in that payload, and the data set follows along.</p>
+<p>Without a payload, use the factory function, which gives you an <code>Entry&lt;Nothing&gt;</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(values.mapIndexed { i, v -&gt; <span class="t">Entry</span>(i.toFloat(), v) }, <span class="s">&quot;Revenue&quot;</span>)</code></pre>
+<p>With a payload, pass <code>data</code> and the type is inferred:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set: <span class="t">LineDataSet</span>&lt;<span class="t">Order</span>&gt; = <span class="t">LineDataSet</span>(
+    orders.map { <span class="t">Entry</span>(it.day, it.total, <span class="k">data</span> = it) },
+    <span class="s">&quot;Orders&quot;</span>,
+)</code></pre>
+<p>The payload is read only, it is shared and not copied by <code>copy()</code>, and it is ignored by drawing. It is there so you can get your own object back when the user picks a value:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected { e, _ -&gt;
+    <span class="k">val</span> order = e.<span class="k">data</span> <span class="k">as</span>? <span class="t">Order</span> ?: <span class="k">return</span>@onValueSelected
+    showDetails(order)
+}</code></pre>
+<p>The cast is needed because the selection listener hands you an <code>Entry&lt;*&gt;</code>. If you want the type without a cast, keep a reference to your typed set and read its entries:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> order = set.getEntryForIndex(index).<span class="k">data</span></code></pre>
+<blockquote>Payloads survive parcelling only if they implement <code>Parcelable</code>. Writing an entry whose payload does not throws a <code>ParcelFormatException</code>.</blockquote>
+<h2 id="icons-on-entries">Icons on entries<a class="anchor" href="#icons-on-entries" aria-label="Link to this section">#</a></h2>
+<p>Every entry takes a <code>Drawable</code> that is drawn at its position:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> star = <span class="t">ContextCompat</span>.getDrawable(context, <span class="t">R</span>.drawable.star)
+<span class="k">val</span> entries = values.mapIndexed { i, v -&gt; <span class="t">BarEntry</span>(i.toFloat(), v, star) }</code></pre>
+<p>Drawing them is on by default per set, so you switch icons off through <code>isDrawIconsEnabled</code>, and you move them with <code>iconsOffset</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.isDrawIconsEnabled = <span class="k">true</span>
+set.iconsOffset = <span class="t">MPPointF</span>(<span class="n">0f</span>, <span class="n">40f</span>)</code></pre>
+<h2 id="line-chart">Line chart<a class="anchor" href="#line-chart" aria-label="Link to this section">#</a></h2>
+<p><code>LineChart</code> takes <code>Entry</code> objects in a <code>LineDataSet</code>. The x value is a position on the axis, not an index, so you are free to leave gaps.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> values = listOf(<span class="n">42f</span>, <span class="n">48f</span>, <span class="n">45f</span>, <span class="n">60f</span>, <span class="n">58f</span>, <span class="n">72f</span>, <span class="n">70f</span>, <span class="n">84f</span>, <span class="n">79f</span>, <span class="n">92f</span>, <span class="n">88f</span>, <span class="n">97f</span>)
+
+<span class="k">val</span> entries = values.mapIndexed { i, v -&gt; <span class="t">Entry</span>(i.toFloat(), v) }
+
+<span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>).apply {
+    color = <span class="t">Color</span>.rgb(<span class="n">90</span>, <span class="n">140</span>, <span class="n">255</span>)
+    lineWidth = <span class="n">2.5f</span>
+    circleRadius = <span class="n">4f</span>
+    isDrawValuesEnabled = <span class="k">false</span>
+    mode = <span class="t">LineDataSet</span>.<span class="t">Mode</span>.<span class="t">CUBIC_BEZIER</span>
+}
+
+chart.<span class="k">data</span> = <span class="t">LineData</span>(set)
+chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(months)</code></pre>
+<p>Several series are several sets. Use <code>axisDependency</code> to plot one of them against the right y axis:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> costs = <span class="t">LineDataSet</span>(costEntries, <span class="s">&quot;Costs&quot;</span>).apply {
+    axisDependency = <span class="t">YAxis</span>.<span class="t">AxisDependency</span>.<span class="t">RIGHT</span>
+}
+chart.<span class="k">data</span> = <span class="t">LineData</span>(revenue, costs)</code></pre>
+<h2 id="bar-chart">Bar chart<a class="anchor" href="#bar-chart" aria-label="Link to this section">#</a></h2>
+<p><code>BarChart</code> takes <code>BarEntry</code> objects. The x value is the centre of the bar, and the width comes from the data object, not from the set, because all bars of a chart share it.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> values = listOf(<span class="n">38f</span>, <span class="n">52f</span>, <span class="n">46f</span>, <span class="n">70f</span>, <span class="n">64f</span>, <span class="n">82f</span>, <span class="n">58f</span>, <span class="n">74f</span>)
+
+<span class="k">val</span> entries = values.mapIndexed { i, v -&gt; <span class="t">BarEntry</span>(i.toFloat(), v) }
+
+<span class="k">val</span> set = <span class="t">BarDataSet</span>(entries, <span class="s">&quot;Orders&quot;</span>).apply {
+    color = <span class="t">Color</span>.rgb(<span class="n">90</span>, <span class="n">140</span>, <span class="n">255</span>)
+    barCornerRadius = <span class="n">6f</span>
+}
+
+chart.<span class="k">data</span> = <span class="t">BarData</span>(set).apply { barWidth = <span class="n">0.55f</span> }</code></pre>
+<p><code>barWidth</code> is in x value units, not pixels, and defaults to <code>0.85</code>. With bars one x apart that leaves a gap of 0.15 between them.</p>
+<p>A bar is drawn half a width to each side of its x, so with a wide bar the first and last one reach past the ends of the axis range and get clipped. This widens the range by half a bar width on each side so they fit:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isFitBarsEnabled = <span class="k">true</span></code></pre>
+<p>It takes effect on the next <code>notifyDataSetChanged()</code>, which assigning data already does, so set it before you assign.</p>
+<h2 id="grouped-bars">Grouped bars<a class="anchor" href="#grouped-bars" aria-label="Link to this section">#</a></h2>
+<p>Several <code>BarDataSet</code> objects can be drawn side by side instead of on top of each other. <code>groupBars</code> does the positioning for you by rewriting the x of every entry.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> groupSpace = <span class="n">0.08f</span>
+<span class="k">val</span> barSpace = <span class="n">0.03f</span>
+<span class="k">val</span> barWidth = <span class="n">0.2f</span>
+<span class="c">// (0.2 + 0.03) * 4 sets + 0.08 = 1.0 per group</span>
+
+<span class="k">val</span> <span class="k">data</span> = <span class="t">BarData</span>(setA, setB, setC, setD).apply { <span class="k">this</span>.barWidth = barWidth }
+chart.<span class="k">data</span> = <span class="k">data</span>
+
+chart.xAxis.axisMinimum = <span class="n">1980f</span>
+chart.xAxis.axisMaximum = <span class="n">1980f</span> + <span class="k">data</span>.getGroupWidth(groupSpace, barSpace) * groupCount
+chart.xAxis.isCenterAxisLabelsEnabled = <span class="k">true</span>
+chart.xAxis.granularity = <span class="n">1f</span>
+
+chart.groupBars(<span class="n">1980f</span>, groupSpace, barSpace)</code></pre>
+<p>Four things have to hold for this to work.</p>
+<ul><li>The data must already be on the chart. <code>chart.groupBars</code> throws <code>IllegalStateException</code> otherwise.</li><li>The data must hold at least two sets. <code>BarData.groupBars</code> throws <code>IllegalStateException</code> otherwise.</li><li><code>barWidth</code> must be set first, because the group width is computed from it.</li><li>The x values your entries carry are overwritten and lost. Group <em>i</em> is entry <em>i</em> of every set, taken by position in the list, so give each set its entries in the same order.</li></ul>
+<p><code>getGroupWidth(groupSpace, barSpace)</code> returns what one group takes on the axis: <code>setCount * (barWidth + barSpace) + groupSpace</code>. Pick the three numbers so that it comes out at a round value like 1, then the axis labels line up with the groups.</p>
+<p><code>chart.groupBars</code> calls <code>notifyDataSetChanged()</code> for you. <code>BarData.groupBars</code>, which you would use inside a combined chart, does not.</p>
+<h2 id="stacked-bars">Stacked bars<a class="anchor" href="#stacked-bars" aria-label="Link to this section">#</a></h2>
+<p>A stacked bar is one <code>BarEntry</code> with a list of values instead of a single y:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> stacks = listOf(
+    listOf(<span class="n">30f</span>, <span class="n">20f</span>, <span class="n">12f</span>),
+    listOf(<span class="n">42f</span>, <span class="n">18f</span>, <span class="n">16f</span>),
+    listOf(<span class="n">36f</span>, <span class="n">26f</span>, <span class="n">10f</span>),
+)
+
+<span class="k">val</span> entries = stacks.mapIndexed { i, s -&gt; <span class="t">BarEntry</span>(i.toFloat(), s) }
+
+<span class="k">val</span> set = <span class="t">BarDataSet</span>(entries, <span class="s">&quot;Spend&quot;</span>).apply {
+    colors = listOf(<span class="t">Color</span>.<span class="t">BLUE</span>, <span class="t">Color</span>.<span class="t">RED</span>, <span class="t">Color</span>.<span class="t">YELLOW</span>)
+    stackLabels = listOf(<span class="s">&quot;Births&quot;</span>, <span class="s">&quot;Divorces&quot;</span>, <span class="s">&quot;Marriages&quot;</span>)
+}
+
+chart.<span class="k">data</span> = <span class="t">BarData</span>(set).apply { barWidth = <span class="n">0.55f</span> }</code></pre>
+<p>The values are drawn bottom to top in list order, and the set needs one color per stack value. <code>stackLabels</code> names the legend entries, one per stack value, and the set label follows them as an entry without a form.</p>
+<p>Setting the stack values computes a few things on the entry: <code>y</code> becomes their sum, <code>positiveSum</code> and <code>negativeSum</code> hold the two halves, and <code>ranges</code> holds the start and end on the y axis of each value. Negative values stack downwards from zero, positive values upwards, so a stack can cross the axis. <code>isStacked</code> tells you whether an entry has a stack at all, and <code>getSumBelow(index)</code> sums the stack values after that index, the ones stacked above it.</p>
+<p>A tap selects one value of the stack and reports its position in <code>Highlight.stackIndex</code>. To select the whole bar instead:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isHighlightFullBarEnabled = <span class="k">true</span></code></pre>
+<h2 id="horizontal-bar-chart">Horizontal bar chart<a class="anchor" href="#horizontal-bar-chart" aria-label="Link to this section">#</a></h2>
+<p><code>HorizontalBarChart</code> uses the same <code>BarEntry</code>, <code>BarDataSet</code> and <code>BarData</code> as the vertical one. Only the drawing is turned: the x axis runs up the left side and the values extend to the right.</p>
+<p>That also turns the order around. Entry 0 sits at the bottom, so reverse your x values if you want the first item at the top:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> items = listOf(<span class="s">&quot;Rent&quot;</span> to <span class="n">64f</span>, <span class="s">&quot;Food&quot;</span> to <span class="n">48f</span>, <span class="s">&quot;Travel&quot;</span> to <span class="n">36f</span>, <span class="s">&quot;Fun&quot;</span> to <span class="n">28f</span>)
+<span class="k">val</span> entries = items.asReversed().mapIndexed { i, (_, v) -&gt; <span class="t">BarEntry</span>(i.toFloat(), v) }
+
+chart.<span class="k">data</span> = <span class="t">BarData</span>(<span class="t">BarDataSet</span>(entries, <span class="s">&quot;Budget&quot;</span>)).apply { barWidth = <span class="n">0.5f</span> }
+chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(items.map { it.first }.reversed())</code></pre>
+<h2 id="pie-chart">Pie chart<a class="anchor" href="#pie-chart" aria-label="Link to this section">#</a></h2>
+<p><code>PieChart</code> takes <code>PieEntry</code> objects, which have a value and an optional label but no x. A slice&#x27;s position is its index in the set, and the pie is always exactly one data set.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> items = listOf(<span class="s">&quot;Mobile&quot;</span> to <span class="n">44f</span>, <span class="s">&quot;Web&quot;</span> to <span class="n">28f</span>, <span class="s">&quot;Desktop&quot;</span> to <span class="n">18f</span>, <span class="s">&quot;Other&quot;</span> to <span class="n">10f</span>)
+
+<span class="k">val</span> set = <span class="t">PieDataSet</span>(items.map { (label, v) -&gt; <span class="t">PieEntry</span>(v, label) }, <span class="s">&quot;Sessions&quot;</span>).apply {
+    colors = <span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>
+    sliceSpace = <span class="n">3f</span>
+    selectionShift = <span class="n">5f</span>
+}
+
+chart.<span class="k">data</span> = <span class="t">PieData</span>(set)</code></pre>
+<p>The legend gets one entry per slice, taken from the entry labels, and the set label is appended after them as an entry without a form. Give the set a blank label to keep it out. <code>PieData.yValueSum</code> gives you the total of all slices, which is what a percent formatter divides by.</p>
+<h2 id="scatter-chart">Scatter chart<a class="anchor" href="#scatter-chart" aria-label="Link to this section">#</a></h2>
+<p><code>ScatterChart</code> takes plain <code>Entry</code> objects in a <code>ScatterDataSet</code>. What makes a set distinct is its shape.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">ScatterDataSet</span>(points.sortedBy { it.x }, <span class="s">&quot;Samples&quot;</span>).apply {
+    setScatterShape(<span class="t">ScatterChart</span>.<span class="t">ScatterShape</span>.<span class="t">CIRCLE</span>)
+    scatterShapeSize = <span class="n">18f</span>
+    color = <span class="t">Color</span>.rgb(<span class="n">90</span>, <span class="n">140</span>, <span class="n">255</span>)
+}
+
+chart.<span class="k">data</span> = <span class="t">ScatterData</span>(setA, setB, setC)</code></pre>
+<p><code>setScatterShape</code> swaps in the built-in renderer for one of <code>SQUARE</code>, <code>CIRCLE</code>, <code>TRIANGLE</code>, <code>CROSS</code>, <code>X</code>, <code>CHEVRON_UP</code> and <code>CHEVRON_DOWN</code>. The default is <code>SQUARE</code>.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>scatterShapeSize</code></td><td>Size of the shape in dp</td><td><code>15</code></td></tr><tr><td><code>scatterShapeHoleRadius</code></td><td>Radius of the hole in the middle, in dp</td><td><code>0</code></td></tr><tr><td><code>scatterShapeHoleColor</code></td><td>Color of that hole; <code>ColorTemplate.COLOR_NONE</code> draws none</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>shapeRenderer</code></td><td>The renderer itself, for a shape of your own</td><td><code>SquareShapeRenderer</code></td></tr></tbody></table></div>
+<p>Assign <code>shapeRenderer</code> directly with your own <code>IShapeRenderer</code> when none of the seven fit.</p>
+<h2 id="candlestick-chart">Candlestick chart<a class="anchor" href="#candlestick-chart" aria-label="Link to this section">#</a></h2>
+<p><code>CandleStickChart</code> takes <code>CandleEntry</code> objects with the four values of a period, in the order high, low, open, close.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> entries = bars.map { <span class="t">CandleEntry</span>(it.index, it.high, it.low, it.<span class="k">open</span>, it.close) }
+
+<span class="k">val</span> set = <span class="t">CandleDataSet</span>(entries, <span class="s">&quot;ACME&quot;</span>).apply {
+    shadowWidth = <span class="n">1.5f</span>
+    shadowColorSameAsCandle = <span class="k">true</span>
+    increasingColor = <span class="t">Color</span>.rgb(<span class="n">60</span>, <span class="n">220</span>, <span class="n">78</span>)
+    increasingPaintStyle = <span class="t">Paint</span>.<span class="t">Style</span>.<span class="t">FILL</span>
+    decreasingColor = <span class="t">Color</span>.rgb(<span class="n">240</span>, <span class="n">80</span>, <span class="n">80</span>)
+    decreasingPaintStyle = <span class="t">Paint</span>.<span class="t">Style</span>.<span class="t">FILL</span>
+    barSpace = <span class="n">0.25f</span>
+}
+
+chart.<span class="k">data</span> = <span class="t">CandleData</span>(set)</code></pre>
+<p>The inherited <code>y</code> of a candle entry is set once at construction to the middle between high and low. Changing <code>high</code> or <code>low</code> later does not move it, so build a new entry instead of editing one.</p>
+<p><code>shadowRange</code> is the distance between high and low, <code>bodyRange</code> the distance between open and close.</p>
+<h2 id="bubble-chart">Bubble chart<a class="anchor" href="#bubble-chart" aria-label="Link to this section">#</a></h2>
+<p><code>BubbleChart</code> takes <code>BubbleEntry</code> objects: a point plus a size.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> entries = deals
+    .map { <span class="t">BubbleEntry</span>(it.quarter, it.probability, it.amount) }
+    .sortedBy { it.x }
+
+<span class="k">val</span> set = <span class="t">BubbleDataSet</span>(entries, <span class="s">&quot;Deals&quot;</span>).apply {
+    colors = <span class="t">ColorTemplate</span>.<span class="t">VORDIPLOM_COLORS</span>
+    highlightCircleWidth = <span class="n">1.5f</span>
+}
+
+chart.<span class="k">data</span> = <span class="t">BubbleData</span>(set)</code></pre>
+<p>The size is in value space. By default <code>isNormalizeSizeEnabled</code> is on, which scales every bubble relative to the largest size in the set, so the biggest bubble always fills the same area whatever your numbers are. Switch it off to have the sizes taken literally.</p>
+<h2 id="radar-chart">Radar chart<a class="anchor" href="#radar-chart" aria-label="Link to this section">#</a></h2>
+<p><code>RadarChart</code> takes <code>RadarEntry</code> objects, which hold only a value. Entry <em>i</em> of every set sits on axis <em>i</em> of the web, so all sets need the same number of entries.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> labels = listOf(<span class="s">&quot;Speed&quot;</span>, <span class="s">&quot;Power&quot;</span>, <span class="s">&quot;Range&quot;</span>, <span class="s">&quot;Agility&quot;</span>, <span class="s">&quot;Stealth&quot;</span>, <span class="s">&quot;Armor&quot;</span>)
+
+<span class="k">fun</span> set(values: <span class="t">List</span>&lt;<span class="t">Float</span>&gt;, label: <span class="t">String</span>, color: <span class="t">Int</span>) =
+    <span class="t">RadarDataSet</span>(values.map { <span class="t">RadarEntry</span>(it) }, label).apply {
+        <span class="k">this</span>.color = color
+        fillColor = color
+        fillAlpha = <span class="n">56</span>
+        isDrawFilledEnabled = <span class="k">true</span>
+        lineWidth = <span class="n">2.5f</span>
+    }
+
+chart.<span class="k">data</span> = <span class="t">RadarData</span>(
+    set(listOf(<span class="n">50f</span>, <span class="n">85f</span>, <span class="n">40f</span>, <span class="n">90f</span>, <span class="n">80f</span>, <span class="n">45f</span>), <span class="s">&quot;Last week&quot;</span>, <span class="t">Color</span>.<span class="t">MAGENTA</span>),
+    set(listOf(<span class="n">90f</span>, <span class="n">60f</span>, <span class="n">80f</span>, <span class="n">70f</span>, <span class="n">50f</span>, <span class="n">85f</span>), <span class="s">&quot;This week&quot;</span>, <span class="t">Color</span>.<span class="t">CYAN</span>),
+)
+chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(labels)</code></pre>
+<p>The text around the web comes from the chart&#x27;s x axis, so an <code>IndexAxisValueFormatter</code> over your labels is the way to name the axes.</p>
+<h2 id="combined-chart">Combined chart<a class="anchor" href="#combined-chart" aria-label="Link to this section">#</a></h2>
+<p><code>CombinedChart</code> draws up to five kinds at once. <code>CombinedData</code> has one slot per kind, and you fill the ones you need:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = <span class="t">CombinedData</span>().apply {
+    barData = <span class="t">BarData</span>(barSet).apply { barWidth = <span class="n">0.5f</span> }
+    lineData = <span class="t">LineData</span>(lineSet)
+}</code></pre>
+<p>The slots are <code>lineData</code>, <code>barData</code>, <code>scatterData</code>, <code>candleData</code> and <code>bubbleData</code>. Each one is a complete data object of its own, so everything above still applies, including <code>groupBars</code> on the bar part.</p>
+<p>What is drawn last ends up on top. <code>drawOrder</code> controls that:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.drawOrder = listOf(<span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">BAR</span>, <span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">LINE</span>)</code></pre>
+<p>Assign it before <code>chart.data</code>, because the data setter is what builds the sub renderers from this list. The default order is bar, bubble, line, candle, scatter. A kind you leave out of the list is not drawn, so list every kind you have set.</p>
+<blockquote>Add and remove sets through the child data objects, never on the combined object itself. <code>CombinedData</code> rebuilds its own set list from the children on every recalculation, so anything added directly is dropped.</blockquote>
+<h2 id="changing-data-afterwards">Changing data afterwards<a class="anchor" href="#changing-data-afterwards" aria-label="Link to this section">#</a></h2>
+<p>Assigning a new data object does everything at once. If instead you change entries in place, tell the chart afterwards:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries = newEntries
+chart.notifyDataSetChanged()</code></pre>
+<p>That one call asks the data object to recompute its ranges, recalculates the axes, the legend and the offsets, and redraws. See <a href="/mpandroidchart/docs/dynamic-data/">dynamic data</a> for adding and removing values while the chart is on screen, and <a href="/mpandroidchart/docs/chartdata/">the ChartData class</a> for what the data object caches and when.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/chartdata-subclasses/">ChartData subclasses</a> for what each data class adds.</li><li><a href="/mpandroidchart/docs/dataset/">The DataSet class</a> for the styling shared by every series.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for turning values into the text on the axes and above the entries.</li><li><a href="/mpandroidchart/docs/colors/">Colors</a> for the color lists used above.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/yaxis/"><span>Previous</span>The y axis</a><a class="next" href="/mpandroidchart/docs/colors/"><span>Next</span>Setting colors</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

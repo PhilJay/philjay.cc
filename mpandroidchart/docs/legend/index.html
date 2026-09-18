@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The legend · MPAndroidChart</title>
+  <meta name="description" content="How the chart builds its legend from the data sets, how to place and style it, and how to replace the computed entries with your own.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/legend/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="The legend · MPAndroidChart">
+  <meta property="og:description" content="How the chart builds its legend from the data sets, how to place and style it, and how to replace the computed entries with your own.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/legend/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend" class="active"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Styling <span>Chapter 11 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#how-the-legend-is-built">How the legend is built</a><a href="#placement">Placement</a><a href="#forms">Forms</a><a href="#spacing-and-text">Spacing and text</a><a href="#word-wrap-and-maximum-size">Word wrap and maximum size</a><a href="#custom-entries">Custom entries</a><a href="#extra-entries">Extra entries</a><a href="#the-computed-sizes">The computed sizes</a></nav>
+      <p>How the chart builds its legend from the data sets, how to place and style it, and how to replace the computed entries with your own.</p>
+<p>Every chart has one, reached as <code>chart.legend</code>, and it is drawn unless you turn it off.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.isEnabled = <span class="k">false</span></code></pre>
+<h2 id="how-the-legend-is-built">How the legend is built<a class="anchor" href="#how-the-legend-is-built" aria-label="Link to this section">#</a></h2>
+<p>The legend is recomputed from the data every time the chart data changes, so you never fill it yourself unless you want to. One entry is created per color of a data set, and the entry labels come from the data set labels.</p>
+<ul><li>A data set with one color gives one entry carrying the data set label.</li><li>A data set with several colors gives one entry per color, capped at the number of entries. Only the last of them carries the label, the earlier ones have no label and are stacked next to it as a row of forms.</li><li>A stacked <code>BarDataSet</code> gives one entry per stack color, labelled from <code>set.stackLabels</code>, followed by a label only entry for the data set itself.</li><li>A <code>PieDataSet</code> gives one entry per slice, labelled from each <code>PieEntry</code>, followed by a label only entry for the data set when it has a label.</li><li>A <code>CandleDataSet</code> with a decreasing color gives two entries, one in the decreasing and one in the increasing color, sharing the data set label.</li></ul>
+<p>An entry with no label draws only its form and sits next to the following entry, separated by <code>stackSpace</code>. That is how a multi color data set ends up as several forms in front of one label.</p>
+<h2 id="placement">Placement<a class="anchor" href="#placement" aria-label="Link to this section">#</a></h2>
+<p>The position is the combination of a horizontal alignment, a vertical alignment and an orientation.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.apply {
+    verticalAlignment = <span class="t">Legend</span>.<span class="t">LegendVerticalAlignment</span>.<span class="t">TOP</span>
+    horizontalAlignment = <span class="t">Legend</span>.<span class="t">LegendHorizontalAlignment</span>.<span class="t">RIGHT</span>
+    orientation = <span class="t">Legend</span>.<span class="t">LegendOrientation</span>.<span class="t">VERTICAL</span>
+    isDrawInsideEnabled = <span class="k">false</span>
+}</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Values</th><th>Default</th></tr></thead><tbody><tr><td><code>horizontalAlignment</code></td><td><code>LEFT</code>, <code>CENTER</code>, <code>RIGHT</code></td><td><code>LEFT</code></td></tr><tr><td><code>verticalAlignment</code></td><td><code>TOP</code>, <code>CENTER</code>, <code>BOTTOM</code></td><td><code>BOTTOM</code></td></tr><tr><td><code>orientation</code></td><td><code>HORIZONTAL</code> for rows, <code>VERTICAL</code> for one column</td><td><code>HORIZONTAL</code></td></tr><tr><td><code>isDrawInsideEnabled</code></td><td>Draw the legend over the content area instead of reserving space for it</td><td><code>false</code></td></tr><tr><td><code>direction</code></td><td><code>LEFT_TO_RIGHT</code> or <code>RIGHT_TO_LEFT</code></td><td><code>LEFT_TO_RIGHT</code></td></tr></tbody></table></div>
+<p><code>isDrawInsideEnabled</code> is the difference between the chart shrinking to make room and the legend floating on top of the data.</p>
+<p><code>direction</code> flips an entry around: <code>RIGHT_TO_LEFT</code> draws the label first and the form after it, and lays the entries out towards the left. Use it for right to left locales.</p>
+<p>The legend is inset from its corner by <code>xOffset</code> and <code>yOffset</code>, both in dp. The legend starts at 5 and 3.</p>
+<h2 id="forms">Forms<a class="anchor" href="#forms" aria-label="Link to this section">#</a></h2>
+<p>The form is the small shape drawn next to a label in the color of what it describes.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.apply {
+    form = <span class="t">Legend</span>.<span class="t">LegendForm</span>.<span class="t">LINE</span>
+    formSize = <span class="n">10f</span>
+    formLineWidth = <span class="n">2f</span>
+    formLineDashEffect = <span class="t">DashPathEffect</span>(floatArrayOf(<span class="n">10f</span>, <span class="n">5f</span>), <span class="n">0f</span>)
+}</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Form</th><th>Result</th></tr></thead><tbody><tr><td><code>SQUARE</code></td><td>A filled square</td></tr><tr><td><code>CIRCLE</code></td><td>A filled circle</td></tr><tr><td><code>LINE</code></td><td>A horizontal line using <code>formLineWidth</code> and <code>formLineDashEffect</code></td></tr><tr><td><code>EMPTY</code></td><td>Nothing is drawn, but the space is kept</td></tr><tr><td><code>NONE</code></td><td>Nothing is drawn and no space is kept</td></tr><tr><td><code>DEFAULT</code></td><td>On an entry, use the legend&#x27;s <code>form</code>. On the legend itself, a circle</td></tr></tbody></table></div>
+<p><code>formSize</code> and <code>formLineWidth</code> are in dp and default to 8 and 3. A data set can override the form for its own entries through <code>set.form</code>, <code>set.formSize</code>, <code>set.formLineWidth</code> and <code>set.formLineDashEffect</code>.</p>
+<h2 id="spacing-and-text">Spacing and text<a class="anchor" href="#spacing-and-text" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.apply {
+    xEntrySpace = <span class="n">7f</span>
+    yEntrySpace = <span class="n">5f</span>
+    formToTextSpace = <span class="n">5f</span>
+    stackSpace = <span class="n">3f</span>
+    textColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+    textSize = <span class="n">12f</span>
+    typeface = tfLight
+}</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>xEntrySpace</code></td><td>Space in dp between two entries in a row</td><td><code>6</code></td></tr><tr><td><code>yEntrySpace</code></td><td>Space in dp between two entries in a column, or between wrapped rows</td><td><code>0</code></td></tr><tr><td><code>formToTextSpace</code></td><td>Space in dp between a form and its label</td><td><code>5</code></td></tr><tr><td><code>stackSpace</code></td><td>Space in dp between stacked forms, that is entries without a label</td><td><code>3</code></td></tr><tr><td><code>textSize</code></td><td>Label size in dp, clamped to 6 until 24</td><td><code>10</code></td></tr><tr><td><code>textColor</code></td><td>Label color</td><td>black</td></tr><tr><td><code>typeface</code></td><td>Label typeface, or null for the default</td><td><code>null</code></td></tr></tbody></table></div>
+<p>Those three text properties are copied into <code>chart.legendLabelPaint</code> before every draw, so set them here rather than on the paint.</p>
+<h2 id="word-wrap-and-maximum-size">Word wrap and maximum size<a class="anchor" href="#word-wrap-and-maximum-size" aria-label="Link to this section">#</a></h2>
+<p>A horizontal legend with many entries would otherwise run off the side of the chart.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.isWordWrapEnabled = <span class="k">true</span>
+chart.legend.maxSizePercent = <span class="n">0.7f</span></code></pre>
+<p><code>isWordWrapEnabled</code> lets a horizontal legend break into several rows. It costs drawing time and does nothing for a vertical legend.</p>
+<p><code>maxSizePercent</code> is the largest share of the chart the legend may take, between 0 and 1, and defaults to 0.95. For a vertical legend at the side it limits the width, for a horizontal one the height, and a wrapping horizontal legend breaks its rows at that share of the content width.</p>
+<h2 id="custom-entries">Custom entries<a class="anchor" href="#custom-entries" aria-label="Link to this section">#</a></h2>
+<p>Assign <code>entries</code> to take over the legend completely. That marks it custom, so the chart stops recomputing it from the data sets.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> square = <span class="t">Legend</span>.<span class="t">LegendForm</span>.<span class="t">SQUARE</span>
+
+chart.legend.entries = listOf(
+    <span class="t">LegendEntry</span>(<span class="s">&quot;Below&quot;</span>, square, <span class="n">10f</span>, <span class="t">Float</span>.<span class="t">NaN</span>, <span class="k">null</span>, <span class="t">Color</span>.<span class="t">RED</span>),
+    <span class="t">LegendEntry</span>(<span class="s">&quot;On target&quot;</span>, square, <span class="n">10f</span>, <span class="t">Float</span>.<span class="t">NaN</span>, <span class="k">null</span>, <span class="t">Color</span>.<span class="t">GREEN</span>),
+)
+chart.notifyDataSetChanged()</code></pre>
+<p>Every <code>LegendEntry</code> argument has a default, so named arguments read better when you only need a few:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LegendEntry</span>(label = <span class="s">&quot;Forecast&quot;</span>, form = <span class="t">Legend</span>.<span class="t">LegendForm</span>.<span class="t">LINE</span>, formColor = <span class="t">Color</span>.<span class="t">BLUE</span>)</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Argument</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>label</code></td><td>The text, or null to draw only the form and stack it with the next entry</td><td><code>null</code></td></tr><tr><td><code>form</code></td><td>The shape; <code>DEFAULT</code> uses the legend&#x27;s <code>form</code></td><td><code>DEFAULT</code></td></tr><tr><td><code>formSize</code></td><td>Size in dp, or <code>Float.NaN</code> for the legend&#x27;s <code>formSize</code></td><td><code>NaN</code></td></tr><tr><td><code>formLineWidth</code></td><td>Line width in dp, or <code>Float.NaN</code> for the legend&#x27;s <code>formLineWidth</code></td><td><code>NaN</code></td></tr><tr><td><code>formLineDashEffect</code></td><td>Dash pattern, or null for the legend&#x27;s</td><td><code>null</code></td></tr><tr><td><code>formColor</code></td><td>Color of the form</td><td><code>ColorTemplate.COLOR_NONE</code></td></tr></tbody></table></div>
+<blockquote>The default <code>formColor</code> draws nothing, so always pass a color for an entry that should show a form.</blockquote>
+<p><code>chart.legend.isLegendCustom</code> tells you whether the current entries were assigned or computed. The chart owns its <code>Legend</code>, so a custom legend is always made by assigning <code>chart.legend.entries</code>.</p>
+<p>To go back to the automatic legend, call <code>resetCustom()</code> and let the chart recompute:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.resetCustom()
+chart.notifyDataSetChanged()</code></pre>
+<blockquote>In version 3.x this was <code>setCustom(colors, labels)</code> with two parallel arrays. Assigning <code>entries</code> replaces it, and one <code>LegendEntry</code> now carries the form, its size and its dash effect as well.</blockquote>
+<h2 id="extra-entries">Extra entries<a class="anchor" href="#extra-entries" aria-label="Link to this section">#</a></h2>
+<p>Extra entries are appended after the computed ones, which is what you want for a threshold line or a note that is not a data set.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.setExtra(
+    colors = listOf(<span class="t">Color</span>.<span class="t">RED</span>, <span class="t">ColorTemplate</span>.<span class="t">COLOR_NONE</span>),
+    labels = listOf(<span class="s">&quot;Target&quot;</span>, <span class="s">&quot;measured weekly&quot;</span>),
+)
+chart.notifyDataSetChanged()</code></pre>
+<p><code>setExtra</code> pairs the two lists by index and drops the surplus of the longer one. Two sentinel colors change the form instead of coloring it:</p>
+<div class='table-wrap'><table><thead><tr><th>Color</th><th>Result</th></tr></thead><tbody><tr><td><code>ColorTemplate.COLOR_SKIP</code> or <code>0</code></td><td>Form <code>NONE</code>, so no form and no space for one</td></tr><tr><td><code>ColorTemplate.COLOR_NONE</code></td><td>Form <code>EMPTY</code>, so no form but the space is kept, which lines the label up with the others</td></tr></tbody></table></div>
+<p>You can also assign <code>extraEntries</code> directly with fully built <code>LegendEntry</code> objects. Extra entries are appended the next time the legend is computed, so call <code>notifyDataSetChanged()</code> when the chart already has data, and note that a custom legend ignores them.</p>
+<h2 id="the-computed-sizes">The computed sizes<a class="anchor" href="#the-computed-sizes" aria-label="Link to this section">#</a></h2>
+<p>After the legend has been measured, four properties describe the result. They are read only, filled during the measurement, and in pixels.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th></tr></thead><tbody><tr><td><code>neededWidth</code></td><td>Total width the legend takes, <code>xOffset</code> included</td></tr><tr><td><code>neededHeight</code></td><td>Total height the legend takes, <code>yOffset</code> included</td></tr><tr><td><code>textWidthMax</code></td><td>Width of the widest entry, form and spacing included</td></tr><tr><td><code>textHeightMax</code></td><td>Height of the tallest label</td></tr></tbody></table></div>
+<p>They are what the chart uses to reserve space, so they are useful when you place something next to the legend yourself. <code>calculatedLabelSizes</code>, <code>calculatedLineSizes</code> and <code>calculatedLabelBreakPoints</code> hold the per entry and per row layout of a horizontal legend, for the same reason.</p>
+<blockquote>These were plain getters in version 3.x. They are now properties the library sets, so assigning them is not possible and was never useful.</blockquote>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/chart-styling/"><span>Previous</span>Chart specific styling</a><a class="next" href="/mpandroidchart/docs/description/"><span>Next</span>The description</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

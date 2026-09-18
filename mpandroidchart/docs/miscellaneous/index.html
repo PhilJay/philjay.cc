@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miscellaneous · MPAndroidChart</title>
+  <meta name="description" content="The useful corners of the library that do not belong to any one chart type: unit conversion, number formatting, saving an image, the pooled geometry classes, sorting, logging and w">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/miscellaneous/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Miscellaneous · MPAndroidChart">
+  <meta property="og:description" content="The useful corners of the library that do not belong to any one chart type: unit conversion, number formatting, saving an image, the pooled geometry classes, sorting, logging and w">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/miscellaneous/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous" class="active"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">In practice <span>Chapter 35 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#utils-and-unit-conversion">Utils and unit conversion</a><a href="#formatting-numbers">Formatting numbers</a><a href="#saving-a-chart-as-an-image">Saving a chart as an image</a><a href="#what-the-chart-tells-you">What the chart tells you</a><a href="#pooled-points-and-sizes">Pooled points and sizes</a><a href="#sorting-entries">Sorting entries</a><a href="#exceptions-the-library-throws">Exceptions the library throws</a><a href="#logging">Logging</a><a href="#large-data-sets">Large data sets</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>The useful corners of the library that do not belong to any one chart type: unit conversion, number formatting, saving an image, the pooled geometry classes, sorting, logging and what to do with a very large data set.</p>
+<h2 id="utils-and-unit-conversion">Utils and unit conversion<a class="anchor" href="#utils-and-unit-conversion" aria-label="Link to this section">#</a></h2>
+<p><code>Utils</code> is an object of static helpers shared by every chart. The dp conversions read the display density, which it has to learn from a <code>Context</code> first:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">Utils</span>.<span class="k">init</span>(context)</code></pre>
+<p>Every chart calls this in its constructor, so in normal use you never do. You only need it when you call a <code>Utils</code> function before any chart exists, for example while building data on a background thread or in a unit test. Calling it twice is harmless.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> eightDp = <span class="t">Utils</span>.convertDpToPixel(<span class="n">8f</span>)
+<span class="k">val</span> backInDp = <span class="t">Utils</span>.convertPixelsToDp(eightDp)</code></pre>
+<p>Without <code>init</code>, both functions log an error to logcat and return the value unchanged, so a marker offset silently comes out in the wrong unit rather than crashing. <code>init</code> also reads the fling velocities from the <code>ViewConfiguration</code>, available as <code>Utils.minimumFlingVelocity</code> and <code>Utils.maximumFlingVelocity</code>.</p>
+<p>A few constants live there too: <code>Utils.DEG2RAD</code> and <code>Utils.FDEG2RAD</code> convert degrees to radians as a <code>Double</code> and a <code>Float</code>, and <code>Utils.FLOAT_EPSILON</code> and <code>Utils.DOUBLE_EPSILON</code> are the smallest positive values of their type, useful when comparing chart values against zero.</p>
+<h2 id="formatting-numbers">Formatting numbers<a class="anchor" href="#formatting-numbers" aria-label="Link to this section">#</a></h2>
+<p><code>Utils</code> carries the number helpers the axis renderers use. They are public, so your own <a href="/mpandroidchart/docs/formatters/">formatters</a> can reuse them.</p>
+<div class='table-wrap'><table><thead><tr><th>Function</th><th>What it returns</th></tr></thead><tbody><tr><td><code>formatNumber(number, digitCount, separateThousands, separateChar)</code></td><td><code>number</code> with a fixed number of decimals. Zero returns <code>&quot;0&quot;</code>, values between -1 and 1 get a leading zero, <code>digitCount</code> above 9 is limited to 9, and the decimal separator is a comma.</td></tr><tr><td><code>roundToNextSignificant(number)</code></td><td><code>number</code> rounded to one significant digit: 123 becomes 100, 0.0234 becomes 0.02, 150 becomes 200. Infinite, NaN and zero return 0.</td></tr><tr><td><code>getDecimals(number)</code></td><td>How many decimals it takes to show <code>number</code> with two digits beyond its magnitude: 0 for 100, 2 for 5, 4 for 0.02. This is how a chart picks its default formatter.</td></tr><tr><td><code>Utils.defaultValueFormatter</code></td><td>The one decimal place formatter that components fall back to.</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">Utils</span>.formatNumber(<span class="n">1234.5f</span>, <span class="n">1</span>, separateThousands = <span class="k">true</span>)  <span class="c">// &quot;1.234,5&quot;</span></code></pre>
+<blockquote><code>formatNumber</code> writes a comma as the decimal separator regardless of locale. For anything a user reads, prefer <code>NumberFormat</code> or <code>String.format</code> inside your own <code>IValueFormatter</code>.</blockquote>
+<h2 id="saving-a-chart-as-an-image">Saving a chart as an image<a class="anchor" href="#saving-a-chart-as-an-image" aria-label="Link to this section">#</a></h2>
+<p><code>toBitmap()</code> draws the chart into a new bitmap of the view size, over the view background or white when there is none. It always holds the latest drawing state.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bitmap = chart.toBitmap()</code></pre>
+<p><code>saveToGallery</code> writes that bitmap to the device gallery through the <code>MediaStore</code> and returns whether it worked:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> saved = chart.saveToGallery(
+    fileName = <span class="s">&quot;revenue&quot;</span>,
+    subFolderPath = <span class="s">&quot;MyApp&quot;</span>,
+    fileDescription = <span class="s">&quot;Revenue for August&quot;</span>,
+    format = <span class="t">Bitmap</span>.<span class="t">CompressFormat</span>.<span class="t">JPEG</span>,
+    quality = <span class="n">80</span>,
+)</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Parameter</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>fileName</code></td><td>File name. The extension for <code>format</code> is appended when it is missing.</td><td>required</td></tr><tr><td><code>subFolderPath</code></td><td>Folder inside DCIM, or empty for DCIM itself.</td><td><code>&quot;&quot;</code></td></tr><tr><td><code>fileDescription</code></td><td>Description stored alongside the image.</td><td>a library string</td></tr><tr><td><code>format</code></td><td><code>PNG</code>, <code>JPEG</code> or <code>WEBP</code>. PNG ignores the quality.</td><td><code>PNG</code></td></tr><tr><td><code>quality</code></td><td>Compression quality from 0 to 100. Values outside that range fall back to 40.</td><td>40</td></tr></tbody></table></div>
+<p>It returns false when the folder could not be created, the <code>MediaStore</code> entry could not be inserted, or writing failed. On Android 9 and below the app needs the write external storage permission; from Android 10 on it does not.</p>
+<blockquote>Version 3 had <code>saveToPath</code> and <code>getChartBitmap</code>. They are gone. Use <code>toBitmap()</code> and write the bitmap wherever you like, or <code>saveToGallery</code> for the gallery.</blockquote>
+<h2 id="what-the-chart-tells-you">What the chart tells you<a class="anchor" href="#what-the-chart-tells-you" aria-label="Link to this section">#</a></h2>
+<p>A handful of members on <code>Chart</code> that are easy to overlook.</p>
+<div class='table-wrap'><table><thead><tr><th>Member</th><th>Meaning</th></tr></thead><tbody><tr><td><code>clear()</code></td><td>Sets the data to null, clears the highlight and redraws, which shows the no data text.</td></tr><tr><td><code>clearValues()</code></td><td>Removes all data sets but keeps the data object, then redraws.</td></tr><tr><td><code>isEmpty</code></td><td>True when there is no data or the data holds no entries.</td></tr><tr><td><code>data</code></td><td>The data object you assigned.</td></tr><tr><td><code>viewPortHandler</code></td><td>Size, content rectangle, zoom and scroll state. See <a href="/mpandroidchart/docs/viewporthandler/">the ViewPortHandler</a>.</td></tr><tr><td><code>renderer</code></td><td>The <code>DataRenderer</code> that draws the data. Replace it for custom drawing.</td></tr><tr><td><code>center</code></td><td>Center of the whole view in pixels.</td></tr><tr><td><code>centerOffsets</code></td><td>Center of the content area, which is the view minus the axis, legend and extra offsets.</td></tr><tr><td><code>yMin</code>, <code>yMax</code></td><td>Smallest and largest y value across all data sets, or 0 without data.</td></tr><tr><td><code>isHardwareAccelerationEnabled</code></td><td>Switches the view between a hardware and a software layer.</td></tr><tr><td><code>isUnbindEnabled</code></td><td>Releases background drawables and child views when the chart leaves the window. Off by default.</td></tr></tbody></table></div>
+<p>On line, bar, scatter, candle, bubble and combined charts, <code>lowestVisibleX</code> and <code>highestVisibleX</code> give the x values at the edges of the content area, and <code>visibleXRange</code> the span between them.</p>
+<blockquote>These are values on the x axis, not indices. Version 3 had <code>getLowestVisibleXIndex()</code>; there are no x indices any more. <code>getPercentOfTotal</code> is also gone; on a pie chart set <code>isUsePercentValuesEnabled = true</code> instead.</blockquote>
+<h2 id="pooled-points-and-sizes">Pooled points and sizes<a class="anchor" href="#pooled-points-and-sizes" aria-label="Link to this section">#</a></h2>
+<p>The renderers run inside <code>onDraw</code>, so the library avoids allocating there. Three small mutable classes come from shared pools instead.</p>
+<div class='table-wrap'><table><thead><tr><th>Class</th><th>Holds</th></tr></thead><tbody><tr><td><code>MPPointF</code></td><td>An <code>x</code> and a <code>y</code> float, usually a pixel position.</td></tr><tr><td><code>MPPointD</code></td><td>An <code>x</code> and a <code>y</code> double, where value to pixel conversion needs the precision.</td></tr><tr><td><code>FSize</code></td><td>A <code>width</code> and a <code>height</code> float, usually measured text bounds.</td></tr></tbody></table></div>
+<p>All three follow the same contract. <code>getInstance(...)</code> takes one out of the pool, <code>recycleInstance(...)</code> puts it back, and <code>recycleInstances(list)</code> puts several back at once.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> size = <span class="t">Utils</span>.calcTextSize(paint, <span class="s">&quot;Revenue&quot;</span>)
+<span class="k">val</span> width = size.width
+<span class="t">FSize</span>.recycleInstance(size)</code></pre>
+<p>Two rules matter. <code>MPPointF.getInstance()</code> without arguments keeps whatever values the point held before, so set them; the other two always take their values as arguments. And recycling the same instance twice throws <code>IllegalArgumentException</code>, as does recycling an instance into a pool while another pool holds it. If you are unsure whether you own an instance, do not recycle it; the pool refills itself.</p>
+<p>Points returned by public chart getters such as <code>chart.center</code> are fresh instances rather than pooled ones. You may keep them or recycle them, whichever suits you.</p>
+<p>Every <code>Utils</code> function that hands you an <code>FSize</code> or an <code>MPPointF</code> says so in its documentation: <code>calcTextSize</code>, <code>getPosition</code>, <code>getSizeOfRotatedRectangleByDegrees</code> and <code>getSizeOfRotatedRectangleByRadians</code>. <code>calcTextSize</code> and <code>getPosition</code> also have an overload that writes into a size or point you already own, which avoids the pool entirely.</p>
+<h3 id="the-pool-itself">The pool itself<a class="anchor" href="#the-pool-itself" aria-label="Link to this section">#</a></h3>
+<p><code>ObjectPool</code> is generic, so you can pool your own type in a custom renderer. Subclass <code>ObjectPool.Poolable</code> and implement <code>instantiate()</code>, then create a pool with a starting capacity:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">class</span> <span class="t">Segment</span>(<span class="k">var</span> from: <span class="t">Float</span> = <span class="n">0f</span>, <span class="k">var</span> to: <span class="t">Float</span> = <span class="n">0f</span>) : <span class="t">ObjectPool</span>.<span class="t">Poolable</span>() {
+    <span class="k">override</span> <span class="k">fun</span> instantiate(): <span class="t">ObjectPool</span>.<span class="t">Poolable</span> = <span class="t">Segment</span>()
+}
+
+<span class="k">private</span> <span class="k">val</span> pool = <span class="t">ObjectPool</span>.create(<span class="n">64</span>, <span class="t">Segment</span>()).apply { replenishPercentage = <span class="n">0.5f</span> }</code></pre>
+<p>An empty pool creates new instances from the model object, and a full pool doubles its capacity. <code>replenishPercentage</code> is the fraction of the capacity created when it runs empty, 1 by default and clamped to 0 until 1; with 0 the pool never refills. <code>poolCapacity</code> and <code>poolCount</code> tell you how it is doing. <code>create</code>, <code>get</code> and <code>recycle</code> are synchronised, and <code>create</code> needs a capacity greater than 0 or it throws.</p>
+<h2 id="sorting-entries">Sorting entries<a class="anchor" href="#sorting-entries" aria-label="Link to this section">#</a></h2>
+<p>Data sets expect their entries sorted by x. <code>EntryXComparator</code> does that:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> entries = readEntries().sortedWith(<span class="t">EntryXComparator</span>())
+<span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>)</code></pre>
+<p>For a set that already exists, <code>addEntryOrdered</code> inserts at the right position instead of appending, which saves a re-sort. See <a href="/mpandroidchart/docs/dynamic-data/">dynamic data</a>.</p>
+<blockquote>A <code>DataSet</code> keeps an <code>ArrayList</code> you pass by reference and copies any other list. Sorting an <code>ArrayList</code> you handed over therefore also sorts the data set.</blockquote>
+<h2 id="exceptions-the-library-throws">Exceptions the library throws<a class="anchor" href="#exceptions-the-library-throws" aria-label="Link to this section">#</a></h2>
+<p>There are few of them, and each one points at a specific mistake.</p>
+<div class='table-wrap'><table><thead><tr><th>Exception</th><th>Thrown by</th><th>Cause</th></tr></thead><tbody><tr><td><code>IllegalStateException</code></td><td><code>BarChart.groupBars</code></td><td>No data was set on the chart yet.</td></tr><tr><td><code>IllegalStateException</code></td><td><code>BarData.groupBars</code></td><td>The data holds fewer than two bar data sets, so there is nothing to group.</td></tr><tr><td><code>ParcelFormatException</code></td><td><code>Entry.writeToParcel</code></td><td>The entry carries a payload that does not implement <code>Parcelable</code>.</td></tr><tr><td><code>IllegalArgumentException</code></td><td><code>ObjectPool.recycle</code></td><td>The instance is already stored in this pool or in another one.</td></tr><tr><td><code>IllegalStateException</code></td><td><code>BaseDataSet.color</code> and <code>getColor</code></td><td>The set has no colors, usually after <code>resetColors()</code>.</td></tr><tr><td><code>NumberFormatException</code>, <code>IndexOutOfBoundsException</code></td><td><code>FileUtils.loadEntriesFromFile</code> and <code>loadEntriesFromAssets</code></td><td>A line is malformed. Read errors are only logged, parse errors are not.</td></tr></tbody></table></div>
+<p>In Compose, <code>ChartState.attach</code> throws <code>IllegalStateException</code> when you pass one state to a second chart. Call <code>rememberChartState()</code> once per chart.</p>
+<h2 id="logging">Logging<a class="anchor" href="#logging" aria-label="Link to this section">#</a></h2>
+<p>Every chart has a switch that writes its internals to logcat under the tag <code>MPAndroidChart</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isLogEnabled = <span class="k">true</span></code></pre>
+<p>It reports when data is set, when the chart gets a size, what is highlighted, the axis ranges as the matrices are prepared, and for line, bar and the other axis charts the time each draw took plus the running average:</p>
+<pre data-lang="Text"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>Drawtime: 6 ms, average: 7 ms, cycles: 42</code></pre>
+<p>On those charts <code>resetTracking()</code> zeroes the average, which is handy before measuring one specific interaction. Pie and radar charts log their computed offsets instead. Logging costs time on every draw, so leave it off in release builds.</p>
+<h2 id="large-data-sets">Large data sets<a class="anchor" href="#large-data-sets" aria-label="Link to this section">#</a></h2>
+<p>Charts handle tens of thousands of entries, but a few settings decide whether that feels smooth.</p>
+<p>Turn off per-entry drawing you do not need. Text and circles are the expensive parts:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.isDrawValuesEnabled = <span class="k">false</span>
+set.isDrawIconsEnabled = <span class="k">false</span>
+lineSet.isDrawCirclesEnabled = <span class="k">false</span></code></pre>
+<p>Keep lines straight. <code>LineDataSet.Mode.LINEAR</code> and <code>STEPPED</code> draw a path directly, while <code>CUBIC_BEZIER</code> and <code>HORIZONTAL_BEZIER</code> compute control points for every segment.</p>
+<p>Show a window instead of everything. The renderers only draw entries between <code>lowestVisibleX</code> and <code>highestVisibleX</code>, so limiting how far out the user can zoom limits the work per frame. Call this after setting the data, since it is computed from the current axis range:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setVisibleXRangeMaximum(<span class="n">100f</span>)
+chart.moveViewToX(<span class="n">0f</span>)</code></pre>
+<p>Let the y axis follow the window with <code>chart.isAutoScaleMinMaxEnabled = true</code>, so a zoomed-in section uses the full height instead of the range of the whole set.</p>
+<p>Prepare data off the main thread. Building entries, sorting them and constructing the data set are plain object work and can run on a background thread; only assigning <code>chart.data</code> and calling <code>notifyDataSetChanged()</code> have to happen on the main thread.</p>
+<p>Finally, <code>chart.isHardwareAccelerationEnabled</code> switches the view between a hardware and a software layer. Which one wins depends on the chart and the device, so measure with <code>isLogEnabled</code> on before deciding.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/viewporthandler/">The ViewPortHandler</a> for the zoom and scroll state these settings operate on.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for turning values into labels.</li><li><a href="/mpandroidchart/docs/performance/">Performance with large data</a> for the settings that decide how fast a chart draws.</li><li><a href="/mpandroidchart/docs/troubleshooting/">Troubleshooting</a> when something on screen is not what you expected.</li><li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/">API reference</a> for everything else.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/migration/"><span>Previous</span>Migrating from 3.x</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

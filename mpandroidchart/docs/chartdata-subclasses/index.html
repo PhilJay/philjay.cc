@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChartData subclasses · MPAndroidChart</title>
+  <meta name="description" content="What each data class adds on top of ChartData, from the bar width to the five slots of a combined chart.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/chartdata-subclasses/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="ChartData subclasses · MPAndroidChart">
+  <meta property="og:description" content="What each data class adds on top of ChartData, from the bar width to the five slots of a combined chart.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/chartdata-subclasses/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses" class="active"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Classes in depth <span>Chapter 20 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#what-they-have-in-common">What they have in common</a><a href="#linedata">LineData</a><a href="#bardata">BarData</a><a href="#scatterdata">ScatterData</a><a href="#candledata">CandleData</a><a href="#bubbledata">BubbleData</a><a href="#radardata">RadarData</a><a href="#piedata">PieData</a><a href="#combineddata">CombinedData</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>What each data class adds on top of ChartData, from the bar width to the five slots of a combined chart.</p>
+<h2 id="what-they-have-in-common">What they have in common<a class="anchor" href="#what-they-have-in-common" aria-label="Link to this section">#</a></h2>
+<p>Every chart type has its own data class. Most of them add nothing but the set type they accept, which is what makes the compiler stop you from putting a <code>LineDataSet</code> into a bar chart. Four of them add real behaviour, and two behave differently enough from the base class to be worth reading before you use them.</p>
+<p>All of them except <code>PieData</code> take sets the same three ways: an empty constructor, a vararg of sets, and a list. An <code>ArrayList</code> you hand over is kept by reference, any other list is copied. <code>PieData</code> holds a single set, so it takes <code>PieData()</code> or <code>PieData(set)</code>.</p>
+<p><code>BarLineScatterCandleBubbleData</code> sits between <code>ChartData</code> and the data classes of the charts that have an x and a y axis. It adds nothing either; it exists so that a combined chart can treat them alike. <code>PieData</code> and <code>RadarData</code> extend <code>ChartData</code> directly.</p>
+<h2 id="linedata">LineData<a class="anchor" href="#linedata" aria-label="Link to this section">#</a></h2>
+<p>Holds one or more <code>ILineDataSet</code>, one per line. It adds nothing of its own.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = <span class="t">LineData</span>(revenue, costs)</code></pre>
+<h2 id="bardata">BarData<a class="anchor" href="#bardata" aria-label="Link to this section">#</a></h2>
+<p>Holds one or more <code>IBarDataSet</code>, and owns the two things that are shared by all bars of a chart.</p>
+<p><code>barWidth</code> is the width of every bar in x value units, not pixels. It defaults to <code>0.85</code>, which leaves a gap of 0.15 between bars that are one x apart.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = <span class="t">BarData</span>(set).apply { barWidth = <span class="n">0.55f</span> }</code></pre>
+<p><code>groupBars(fromX, groupSpace, barSpace)</code> lays the sets out side by side by rewriting the x of their entries. Group <em>i</em> is entry <em>i</em> of every set, so the position in the list decides the grouping and the x values you gave are lost. Groups are laid out for the set with the most entries, starting at <code>fromX</code>. It throws <code>IllegalStateException</code> when the data holds fewer than two sets.</p>
+<p><code>getGroupWidth(groupSpace, barSpace)</code> returns the x range one group takes:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>setCount * (barWidth + barSpace) + groupSpace</code></pre>
+<p>Use it to set the x axis range so all groups fit:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.axisMinimum = fromX
+chart.xAxis.axisMaximum = fromX + <span class="k">data</span>.getGroupWidth(groupSpace, barSpace) * groupCount</code></pre>
+<p><code>BarData.groupBars</code> recomputes the cached ranges but does not redraw. <code>BarChart.groupBars</code>, which takes the same three arguments, calls it and then <code>notifyDataSetChanged()</code> for you. Prefer the one on the chart unless the bars are inside a combined chart.</p>
+<p><a href="/mpandroidchart/docs/setting-data/">Setting data</a> walks through a full grouped example.</p>
+<h2 id="scatterdata">ScatterData<a class="anchor" href="#scatterdata" aria-label="Link to this section">#</a></h2>
+<p>Holds one or more <code>IScatterDataSet</code> and adds one read only property:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> biggest = <span class="k">data</span>.greatestShapeSize</code></pre>
+<p><code>greatestShapeSize</code> is the largest <code>scatterShapeSize</code> in dp over all sets, or <code>0</code> when there are none. Nothing in the library reads it; it is there for you to size offsets or a legend form by the biggest shape on screen.</p>
+<h2 id="candledata">CandleData<a class="anchor" href="#candledata" aria-label="Link to this section">#</a></h2>
+<p>Holds one or more <code>ICandleDataSet</code>. It adds nothing of its own.</p>
+<h2 id="bubbledata">BubbleData<a class="anchor" href="#bubbledata" aria-label="Link to this section">#</a></h2>
+<p>Holds one or more <code>IBubbleDataSet</code> and adds one broadcast setter, in the style of the ones on <code>ChartData</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">data</span>.setHighlightCircleWidth(<span class="n">1.5f</span>)</code></pre>
+<p>It assigns that stroke width in dp to the highlight circle of every set.</p>
+<h2 id="radardata">RadarData<a class="anchor" href="#radardata" aria-label="Link to this section">#</a></h2>
+<p>Holds one or more <code>IRadarDataSet</code>, one polygon each. All sets should have the same number of entries, because entry <em>i</em> of every set sits on axis <em>i</em> of the web.</p>
+<p>The text around the web comes from the x axis, not from the data. Name the axes with a formatter:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> labels = listOf(<span class="s">&quot;Speed&quot;</span>, <span class="s">&quot;Power&quot;</span>, <span class="s">&quot;Range&quot;</span>, <span class="s">&quot;Agility&quot;</span>)
+chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(labels)</code></pre>
+<p><code>RadarData</code> also overrides <code>getEntryForHighlight</code>. A radar highlight carries the entry index in <code>Highlight.x</code>, not an x value, so the lookup goes straight to <code>getEntryForIndex</code>. It returns null when the set index is out of range, and throws <code>IndexOutOfBoundsException</code> when the entry index is.</p>
+<h2 id="piedata">PieData<a class="anchor" href="#piedata" aria-label="Link to this section">#</a></h2>
+<p>The odd one out: a pie holds exactly one data set, whose entries are the slices.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> <span class="k">data</span> = <span class="t">PieData</span>(set)
+<span class="k">data</span>.dataSet = anotherSet     <span class="c">// replaces the set and recomputes the ranges</span></code></pre>
+<p><code>yValueSum</code> is the total of all slice values, the whole pie. A percent formatter divides by it.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> share = entry.y / <span class="k">data</span>.yValueSum</code></pre>
+<p>Because there is always exactly one set, the lookups are narrowed:</p>
+<ul><li><code>getDataSetByIndex(0)</code> returns the set, and any other index returns null.</li><li><code>getDataSetByLabel</code> returns the set if its label matches, and null if not.</li><li><code>getEntryForHighlight</code> reads <code>Highlight.x</code> as the slice index, like the radar chart does.</li></ul>
+<p>The <code>dataSet</code> getter, <code>getDataSetByLabel</code>, <code>getEntryForHighlight</code>, <code>yValueSum</code> and <code>getDataSetByIndex(0)</code> all throw <code>IndexOutOfBoundsException</code> while no set has been assigned. Only the empty constructor can leave it in that state, so assign <code>dataSet</code> right after using it.</p>
+<p>The legend of a pie chart is built from the entry labels. A set label that is not blank is appended after them as an entry without a form, so give the set a blank label to keep it out of the legend.</p>
+<h2 id="combineddata">CombinedData<a class="anchor" href="#combineddata" aria-label="Link to this section">#</a></h2>
+<p>Holds up to one of each of the other five data objects and draws them together in a <code>CombinedChart</code>.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = <span class="t">CombinedData</span>().apply {
+    barData = <span class="t">BarData</span>(barSet).apply { barWidth = <span class="n">0.5f</span> }
+    lineData = <span class="t">LineData</span>(lineSet)
+}</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Slot</th><th>Type</th></tr></thead><tbody><tr><td><code>lineData</code></td><td><code>LineData</code></td></tr><tr><td><code>barData</code></td><td><code>BarData</code></td></tr><tr><td><code>scatterData</code></td><td><code>ScatterData</code></td></tr><tr><td><code>candleData</code></td><td><code>CandleData</code></td></tr><tr><td><code>bubbleData</code></td><td><code>BubbleData</code></td></tr></tbody></table></div>
+<p>Each slot is null until you fill it, and assigning one recomputes every range.</p>
+<p><code>allData</code> is the slots that are filled, always in the order line, bar, scatter, candle, bubble, whatever order you assigned them in. A position in that list is what <code>Highlight.dataIndex</code> means, and what <code>getDataByIndex(index)</code> takes. That index is the one thing a combined chart adds to highlighting, because a set index alone is no longer unique.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected { _, highlight -&gt;
+    <span class="k">val</span> <span class="k">data</span> = chart.<span class="k">data</span> ?: <span class="k">return</span>@onValueSelected
+    <span class="k">val</span> part = <span class="k">data</span>.getDataByIndex(highlight.dataIndex)
+    <span class="k">val</span> set = <span class="k">data</span>.getDataSetByHighlight(highlight)
+}</code></pre>
+<p><code>getDataByIndex</code> throws <code>IndexOutOfBoundsException</code> for an index that is not below the size of <code>allData</code>. <code>getDataSetByHighlight</code> and <code>getEntryForHighlight</code> check both indices and return null instead. <code>chart.highlightValue(x, dataSetIndex)</code> leaves <code>dataIndex</code> at -1, so pass the <code>dataIndex</code> when you highlight on a combined chart from code. <code>getDataIndex(data)</code> gives you the position of a child data object, or -1.</p>
+<p>Note that the draw order on screen is not <code>allData</code> order. It comes from <code>chart.drawOrder</code>, which defaults to bar, bubble, line, candle, scatter.</p>
+<h3 id="what-is-not-supported">What is not supported<a class="anchor" href="#what-is-not-supported" aria-label="Link to this section">#</a></h3>
+<p>The inherited <code>dataSets</code> list is rebuilt from the children on every recalculation, so anything you put there directly is dropped on the next <code>notifyDataChanged</code>. Work through the child data objects instead.</p>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>Behaviour</th></tr></thead><tbody><tr><td><code>addDataSet</code></td><td>Adds to <code>dataSets</code>, which is then discarded. Add to a child instead</td></tr><tr><td><code>removeDataSet(index)</code></td><td>Logs an error and returns false</td></tr><tr><td><code>removeEntry(entry, index)</code></td><td>Logs an error and returns false</td></tr><tr><td><code>removeEntry(xValue, index)</code></td><td>Logs an error and returns false</td></tr></tbody></table></div>
+<p><code>removeDataSet(set)</code> is the one removal that does work. It finds the first child data object holding that set and removes it there, but it only recomputes that child&#x27;s ranges. Call <code>notifyDataChanged()</code> afterwards, or <code>chart.notifyDataSetChanged()</code>, which covers it.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/chartdata/">The ChartData class</a> for everything these classes inherit.</li><li><a href="/mpandroidchart/docs/setting-data/">Setting data</a> for a complete example of each chart type.</li><li><a href="/mpandroidchart/docs/dataset-subclasses/">DataSet subclasses</a> for the styling each series type offers.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/chartdata/"><span>Previous</span>The ChartData class</a><a class="next" href="/mpandroidchart/docs/dataset/"><span>Next</span>The DataSet class</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

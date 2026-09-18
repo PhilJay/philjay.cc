@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>General styling · MPAndroidChart</title>
+  <meta name="description" content="The settings every chart type shares: the background, the text shown while there is no data, the space around the drawing area, the paints the chart draws with, and how to save it ">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/general-styling/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="General styling · MPAndroidChart">
+  <meta property="og:description" content="The settings every chart type shares: the background, the text shown while there is no data, the space around the drawing area, the paints the chart draws with, and how to save it ">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/general-styling/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling" class="active"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Styling <span>Chapter 9 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-background">The background</a><a href="#the-no-data-text">The no data text</a><a href="#space-around-the-content">Space around the content</a><a href="#the-paints">The paints</a><a href="#value-labels">Value labels</a><a href="#refreshing">Refreshing</a><a href="#hardware-acceleration">Hardware acceleration</a><a href="#saving-the-chart-as-an-image">Saving the chart as an image</a><a href="#logging">Logging</a><a href="#releasing-view-resources">Releasing view resources</a></nav>
+      <p>The settings every chart type shares: the background, the text shown while there is no data, the space around the drawing area, the paints the chart draws with, and how to save it as an image.</p>
+<p>Everything here lives on the chart itself. Styling that belongs to one series is on the data set, see <a href="/mpandroidchart/docs/setting-data/">Setting data</a>, and styling that belongs to one chart type is in <a href="/mpandroidchart/docs/chart-styling/">Chart specific styling</a>.</p>
+<h2 id="the-background">The background<a class="anchor" href="#the-background" aria-label="Link to this section">#</a></h2>
+<p>A chart is an ordinary <code>View</code>, so its background is set the usual Android way. In Compose that is the modifier you pass to the chart:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    modifier = <span class="t">Modifier</span>
+        .fillMaxWidth()
+        .height(<span class="n">300.</span>dp)
+        .background(<span class="t">MaterialTheme</span>.colorScheme.surface),
+)</code></pre>
+<p>With views it is a property or a layout attribute:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setBackgroundColor(<span class="t">Color</span>.<span class="t">WHITE</span>)</code></pre>
+<pre data-lang="XML"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>&lt;<span class="k">com.github.mikephil.charting.charts.LineChart</span>
+    android:id=<span class="s">&quot;@+id/chart&quot;</span>
+    android:layout_width=<span class="s">&quot;match_parent&quot;</span>
+    android:layout_height=<span class="s">&quot;300dp&quot;</span>
+    android:background=<span class="s">&quot;@color/surface&quot;</span> /&gt;</code></pre>
+<p>The charts with an x axis and two y axes, that is every type except <code>PieChart</code> and <code>RadarChart</code>, can also fill and outline the content area, the rectangle the data is drawn in.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawGridBackgroundEnabled = <span class="k">true</span>
+chart.gridBackgroundColor = <span class="t">Color</span>.rgb(<span class="n">240</span>, <span class="n">240</span>, <span class="n">240</span>)
+
+chart.isDrawBordersEnabled = <span class="k">true</span>
+chart.borderColor = <span class="t">Color</span>.<span class="t">DKGRAY</span>
+chart.borderWidth = <span class="n">1f</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isDrawGridBackgroundEnabled</code></td><td>Fill the content area</td><td><code>false</code></td></tr><tr><td><code>gridBackgroundColor</code></td><td>Fill color</td><td>light grey</td></tr><tr><td><code>isDrawBordersEnabled</code></td><td>Draw a line around the content area</td><td><code>false</code></td></tr><tr><td><code>borderColor</code></td><td>Border color</td><td>black</td></tr><tr><td><code>borderWidth</code></td><td>Border width in dp</td><td><code>1</code></td></tr></tbody></table></div>
+<h2 id="the-no-data-text">The no data text<a class="anchor" href="#the-no-data-text" aria-label="Link to this section">#</a></h2>
+<p>While <code>chart.data</code> is null, the chart draws a single line of text in the middle of the view instead. An empty string draws nothing at all.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.noDataText = <span class="s">&quot;Nothing to show yet&quot;</span>
+chart.noDataTextColor = <span class="t">Color</span>.<span class="t">GRAY</span>
+chart.noDataTextTypeface = typeface
+chart.noDataTextAlignment = <span class="t">Paint</span>.<span class="t">Align</span>.<span class="t">CENTER</span></code></pre>
+<p>The alignment decides where the text sits horizontally: <code>LEFT</code> pins it to the left edge of the view, <code>RIGHT</code> to the right edge, <code>CENTER</code> to the middle. The default text is &quot;No chart data available.&quot;, drawn centered in an amber tone.</p>
+<p><code>chart.clear()</code> drops the data and brings this text back. <code>chart.clearValues()</code> keeps the data object but removes all its data sets, and <code>chart.isEmpty</code> tells you whether anything is left to draw.</p>
+<h2 id="space-around-the-content">Space around the content<a class="anchor" href="#space-around-the-content" aria-label="Link to this section">#</a></h2>
+<p>The chart computes the content area from the legend, the axis labels and the description. Two properties let you push it around without taking over the calculation.</p>
+<p><strong>Extra offsets</strong> are added on top of the computed ones, in dp. Use them to keep a marker, a rounded corner or a long label from being cut off.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setExtraOffsets(<span class="n">0f</span>, <span class="n">8f</span>, <span class="n">8f</span>, <span class="n">4f</span>)   <span class="c">// left, top, right, bottom</span>
+chart.extraBottomOffset = <span class="n">12f</span>           <span class="c">// or one side at a time</span></code></pre>
+<p><strong>The minimum offset</strong> is the smallest space that is kept on every side, whatever the calculation produces. It is <code>minOffset</code> on both <code>BarLineChartBase</code> and <code>PieRadarChartBase</code>, but the defaults differ.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>extraLeftOffset</code>, <code>extraTopOffset</code>, <code>extraRightOffset</code>, <code>extraBottomOffset</code></td><td>Space in dp added to the computed offset</td><td><code>0</code></td></tr><tr><td><code>minOffset</code> on line, bar, scatter, candle, bubble and combined charts</td><td>Smallest space in dp on every side</td><td><code>15</code></td></tr><tr><td><code>minOffset</code> on pie and radar charts</td><td>Smallest space in dp on every side</td><td><code>0</code></td></tr></tbody></table></div>
+<p>If you need exact control, <code>setViewPortOffsets(left, top, right, bottom)</code> replaces the calculation with fixed pixel values and <code>resetViewPortOffsets()</code> gives it back. See <a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a>.</p>
+<blockquote>Offsets are recalculated when the data changes, when the view is resized and when the chart zooms. Setting them at any point is enough, they do not need to be reapplied.</blockquote>
+<h2 id="the-paints">The paints<a class="anchor" href="#the-paints" aria-label="Link to this section">#</a></h2>
+<p>Version 3.x had one <code>setPaint(paint, PAINT_INFO)</code> function with a list of integer constants. Every paint is now a named property.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>What it draws</th><th>Declared on</th></tr></thead><tbody><tr><td><code>infoPaint</code></td><td>The no data text</td><td><code>Chart</code></td></tr><tr><td><code>descriptionPaint</code></td><td>The description text</td><td><code>Chart</code></td></tr><tr><td><code>legendLabelPaint</code></td><td>The legend labels</td><td><code>Chart</code></td></tr><tr><td><code>gridBackgroundPaint</code></td><td>The fill behind the content area</td><td><code>BarLineChartBase</code></td></tr><tr><td><code>holePaint</code></td><td>The hole in the middle of a pie</td><td><code>PieChart</code></td></tr><tr><td><code>centerTextPaint</code></td><td>The text in the middle of a pie</td><td><code>PieChart</code></td></tr></tbody></table></div>
+<p>Reach for a paint when you want something the properties do not expose, such as a shader, a shadow layer or the text size of the no data text.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.infoPaint.textSize = <span class="t">Utils</span>.convertDpToPixel(<span class="n">16f</span>)
+
+chart.gridBackgroundPaint.shader = <span class="t">LinearGradient</span>(
+    <span class="n">0f</span>, <span class="n">0f</span>, <span class="n">0f</span>, chart.height.toFloat(),
+    <span class="t">Color</span>.<span class="t">WHITE</span>, <span class="t">Color</span>.<span class="t">LTGRAY</span>, <span class="t">Shader</span>.<span class="t">TileMode</span>.<span class="t">CLAMP</span>,
+)</code></pre>
+<blockquote><code>descriptionPaint</code> and <code>legendLabelPaint</code> have their typeface, text size and color overwritten from the <code>Description</code> and <code>Legend</code> components before every draw. Set those three on the component, and use the paint only for the rest.</blockquote>
+<h2 id="value-labels">Value labels<a class="anchor" href="#value-labels" aria-label="Link to this section">#</a></h2>
+<p>Value labels are drawn per data set with <code>set.isDrawValuesEnabled</code>. On the charts with an x axis, one chart level property limits them: labels are only drawn while the total entry count is below <code>maxVisibleCount</code> times the current horizontal zoom, so zooming in brings them back. The default is 100.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.maxVisibleCount = <span class="n">60</span>
+chart.isClipValuesToContentEnabled = <span class="k">true</span></code></pre>
+<p><code>isClipValuesToContentEnabled</code> keeps labels inside the content area instead of letting them bleed over the axes. Its sibling <code>isClipDataToContentEnabled</code> does the same for the data itself and is on by default. Turn it off when thick lines or large shapes get cut at the edge of the content.</p>
+<h2 id="refreshing">Refreshing<a class="anchor" href="#refreshing" aria-label="Link to this section">#</a></h2>
+<p>Two calls cover everything.</p>
+<ul><li><code>chart.invalidate()</code> redraws with what the chart already knows. Use it after a pure styling change.</li><li><code>chart.notifyDataSetChanged()</code> refreshes the data, recalculates the axis ranges, the legend and the offsets, and redraws. Use it after changing entries or data sets in place.</li></ul>
+<p>Assigning <code>chart.data</code> calls <code>notifyDataSetChanged()</code> for you, so nothing else is needed after setting new data.</p>
+<h2 id="hardware-acceleration">Hardware acceleration<a class="anchor" href="#hardware-acceleration" aria-label="Link to this section">#</a></h2>
+<p>A chart draws through whatever the window gives it until you ask for a layer of its own. <code>isHardwareAccelerationEnabled</code> puts the view on one.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isHardwareAccelerationEnabled = <span class="k">true</span>    <span class="c">// hardware layer</span>
+chart.isHardwareAccelerationEnabled = <span class="k">false</span>   <span class="c">// software layer</span></code></pre>
+<p>A hardware layer helps a chart that animates or scrolls over a busy background. A software layer is the fallback when a large data set with a lot of transparency draws wrong or slowly on the GPU.</p>
+<blockquote>The property reads back true only while a hardware layer is set. A fresh chart has no layer at all, so it reads false even though drawing is hardware accelerated, and setting it to false forces a software layer rather than removing the layer.</blockquote>
+<h2 id="saving-the-chart-as-an-image">Saving the chart as an image<a class="anchor" href="#saving-the-chart-as-an-image" aria-label="Link to this section">#</a></h2>
+<p><code>toBitmap()</code> draws the chart into a new <code>ARGB_8888</code> bitmap the size of the view, over the view background or over white when there is none.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bitmap = chart.toBitmap()</code></pre>
+<p><code>saveToGallery()</code> writes that bitmap into the device gallery through the <code>MediaStore</code> and returns whether it worked.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> saved = chart.saveToGallery(
+    fileName = <span class="s">&quot;sales_${System.currentTimeMillis()}&quot;</span>,
+    subFolderPath = <span class="s">&quot;MPAndroidChart&quot;</span>,
+    format = <span class="t">Bitmap</span>.<span class="t">CompressFormat</span>.<span class="t">JPEG</span>,
+    quality = <span class="n">70</span>,
+)</code></pre>
+<p>Only the file name is required. The image lands in that folder inside DCIM, the matching extension is appended when the name does not already carry it, and PNG ignores the quality. On Android 10 and above the MediaStore creates the folder; below that the library creates it and the app needs the write external storage permission.</p>
+<blockquote><code>saveToPath</code> from version 3.x is gone. Write <code>toBitmap()</code> to a file yourself if you need a specific location.</blockquote>
+<h2 id="logging">Logging<a class="anchor" href="#logging" aria-label="Link to this section">#</a></h2>
+<p>Logging writes what the chart is doing to logcat under the tag <code>MPAndroidChart</code>: when data is set, the computed offsets, the content rectangle, every highlight, and the draw time per frame.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isLogEnabled = <span class="k">true</span></code></pre>
+<p>It slows drawing down noticeably, so keep it off in release builds. On the charts with an x axis, <code>chart.resetTracking()</code> clears the running draw time average.</p>
+<h2 id="releasing-view-resources">Releasing view resources<a class="anchor" href="#releasing-view-resources" aria-label="Link to this section">#</a></h2>
+<p>A chart inside a list or a pager can hold on to background drawables after it leaves the window. Setting <code>chart.isUnbindEnabled = true</code> releases them and removes child views when the view is detached. Leave it off unless you are chasing a leak, since a rebound chart has to rebuild what was released.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/highlighting/"><span>Previous</span>Highlighting values</a><a class="next" href="/mpandroidchart/docs/chart-styling/"><span>Next</span>Chart specific styling</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

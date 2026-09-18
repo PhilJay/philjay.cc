@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>R8 and ProGuard · MPAndroidChart</title>
+  <meta name="description" content="What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/proguard/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="R8 and ProGuard · MPAndroidChart">
+  <meta property="og:description" content="What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/proguard/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard" class="active"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Integration <span>Chapter 30 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-short-answer">The short answer</a><a href="#drop-the-old-rule">Drop the old rule</a><a href="#what-the-library-keeps-for-itself">What the library keeps for itself</a><a href="#your-own-code">Your own code</a><a href="#readable-crash-reports">Readable crash reports</a><a href="#checking-what-r8-did">Checking what R8 did</a></nav>
+      <p>What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.</p>
+<h2 id="the-short-answer">The short answer<a class="anchor" href="#the-short-answer" aria-label="Link to this section">#</a></h2>
+<p>You do not need any keep rules for MPAndroidChart. Turn on minification the usual way and build:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>android {
+    buildTypes {
+        release {
+            isMinifyEnabled = <span class="k">true</span>
+            isShrinkResources = <span class="k">true</span>
+            proguardFiles(
+                getDefaultProguardFile(<span class="s">&quot;proguard-android-optimize.txt&quot;</span>),
+                <span class="s">&quot;proguard-rules.pro&quot;</span>,
+            )
+        }
+    }
+}</code></pre>
+<p>The library keeps what it needs through <code>@Keep</code> annotations in its own source, and R8 honours those with the default configuration file. The Compose module needs nothing extra either; the Compose artifacts ship their own rules.</p>
+<blockquote>The library does not ship consumer rules. <code>MPChartLib</code> sets no <code>consumerProguardFiles</code>, so nothing is merged into your configuration behind your back. What you write is what applies.</blockquote>
+<h2 id="drop-the-old-rule">Drop the old rule<a class="anchor" href="#drop-the-old-rule" aria-label="Link to this section">#</a></h2>
+<p>Older documentation told you to whitelist the whole package:</p>
+<pre data-lang="ProGuard"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>-keep class com.github.mikephil.charting.** { *; }</code></pre>
+<p>Delete that line. It is no longer needed, and it costs you: it keeps every chart type, renderer, formatter and utility class in the library whether you use them or not, along with all their members, so nothing of the library can be shrunk out of your APK.</p>
+<p>The rule existed because of animation. Version 3 drove the entry animations with <code>ObjectAnimator.ofFloat(this, &quot;phaseX&quot;, ...)</code>, which looks the setter up by name at runtime. Once R8 renamed <code>setPhaseX</code>, the lookup failed and animations silently did nothing.</p>
+<p>Version 4 does not do that any more. Every animation in the library now drives a <code>ValueAnimator</code> and assigns the value in an update listener, so no name is ever looked up:</p>
+<ul><li><code>ChartAnimator</code>, behind <code>animateX</code>, <code>animateY</code> and <code>animateXY</code>, runs a <code>ValueAnimator</code> from 0 to 1 and sets <code>phaseX</code> or <code>phaseY</code> in a lambda.</li><li><code>AnimatedViewPortJob</code>, behind the animated zoom and move calls, drives its <code>phase</code> the same way.</li><li><code>PieRadarChartBase.spin()</code> animates <code>rotationAngle</code> the same way.</li></ul>
+<p>Renaming those members is now harmless, so no keep rule protects them.</p>
+<h2 id="what-the-library-keeps-for-itself">What the library keeps for itself<a class="anchor" href="#what-the-library-keeps-for-itself" aria-label="Link to this section">#</a></h2>
+<p>Two kinds of <code>@Keep</code> are left in the source, and both are about class names rather than member names.</p>
+<div class='table-wrap'><table><thead><tr><th>Kept</th><th>Reason</th></tr></thead><tbody><tr><td>The nine chart views: <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>PieChart</code>, <code>RadarChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>CombinedChart</code></td><td>A chart written into a layout file is created by its fully qualified name at inflation time, so the name has to survive.</td></tr><tr><td><code>ChartAnimator</code> and <code>AnimatedViewPortJob</code></td><td>Kept as a safety net around the animation classes.</td></tr></tbody></table></div>
+<p>Beyond that, the default configuration already covers the pieces of Android that charts touch: view constructors that take a <code>Context</code> and an <code>AttributeSet</code>, classes named in layout resources, and the <code>CREATOR</code> field of <code>Parcelable</code> classes, which <code>Entry</code> implements.</p>
+<h2 id="your-own-code">Your own code<a class="anchor" href="#your-own-code" aria-label="Link to this section">#</a></h2>
+<p>Most of what you write needs nothing.</p>
+<p><strong>Value formatters and fill formatters.</strong> <code>IValueFormatter</code>, <code>IAxisValueFormatter</code> and <code>IFillFormatter</code> are Kotlin functional interfaces. You implement one and assign it from your own code, so R8 sees the reference and keeps the class. It may rename it, which does not matter. Nothing to add.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>xAxis.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt; months[value.toInt()] }</code></pre>
+<p><strong>Markers.</strong> A <code>MarkerView</code> subclass is the same story as long as you create it in code. Its layout resource is kept because you name it through <code>R.layout</code>, and the views it looks up with <code>findViewById</code> keep their ids.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.marker = <span class="t">MyMarkerView</span>(context, <span class="t">R</span>.layout.marker_view)</code></pre>
+<p>If a marker or a chart subclass of yours appears <strong>only</strong> in a layout XML file and never in code, annotate the class so R8 keeps its name:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>@<span class="t">Keep</span>
+<span class="k">class</span> <span class="t">BrandedLineChart</span>(
+    context: <span class="t">Context</span>,
+    attrs: <span class="t">AttributeSet</span>? = <span class="k">null</span>,
+) : <span class="t">LineChart</span>(context, attrs)</code></pre>
+<p><strong>Entry payloads.</strong> An <code>Entry(x, y, data = order)</code> payload is your class, and the library only ever hands it back to you. It needs a keep rule only if something else reflects on it: a JSON library reading its field names, or <code>writeToParcel</code> on an entry, which requires the payload to be <code>Parcelable</code> and therefore to keep its <code>CREATOR</code>. Those rules belong to that library, not to this one.</p>
+<p><strong>Resource shrinking.</strong> <code>isShrinkResources = true</code> removes drawables that nothing references. Entry icons and marker layouts you load through <code>R.drawable</code> or <code>R.layout</code> are references, so they stay. Ones you resolve by name at runtime do not, and need <code>tools:keep</code> in a resources file.</p>
+<h2 id="readable-crash-reports">Readable crash reports<a class="anchor" href="#readable-crash-reports" aria-label="Link to this section">#</a></h2>
+<p>Minified stack traces from a chart are as unreadable as any other. Keep the line numbers and hide the renamed source file:</p>
+<pre data-lang="ProGuard"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile</code></pre>
+<p>Then deobfuscate with the mapping file that the build writes to <code>build/outputs/mapping/release/mapping.txt</code>, and upload it wherever you collect crashes.</p>
+<h2 id="checking-what-r8-did">Checking what R8 did<a class="anchor" href="#checking-what-r8-did" aria-label="Link to this section">#</a></h2>
+<p>If a chart misbehaves only in a release build, first confirm it is really R8 and not the build type. Build the release variant with <code>isMinifyEnabled = false</code> and try again. If the problem goes away, add this to your configuration and look at what was removed:</p>
+<pre data-lang="ProGuard"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>-printusage build/outputs/mapping/release/usage.txt</code></pre>
+<p>Then keep exactly the class you found, not the whole package:</p>
+<pre data-lang="ProGuard"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>-keep class com.example.MyReflectedFormatter { *; }</code></pre>
+<p>If you are migrating an app that still carries the wide keep rule, remove it, build a release APK and compare the size. Nothing about the charts should change; the APK gets smaller.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/lists-and-scrolling/"><span>Previous</span>Charts in lists and scrolling screens</a><a class="next" href="/mpandroidchart/docs/performance/"><span>Next</span>Performance with large data</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

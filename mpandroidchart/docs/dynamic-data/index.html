@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic and realtime data · MPAndroidChart</title>
+  <meta name="description" content="How to add and remove entries and data sets while a chart is on screen, what to call afterwards, and how to keep a fast feed drawing smoothly.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/dynamic-data/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Dynamic and realtime data · MPAndroidChart">
+  <meta property="og:description" content="How to add and remove entries and data sets while a chart is on screen, what to call afterwards, and how to keep a fast feed drawing smoothly.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/dynamic-data/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data" class="active"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Motion and viewport <span>Chapter 15 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#add-an-entry">Add an entry</a><a href="#remove-data">Remove data</a><a href="#what-to-call-afterwards">What to call afterwards</a><a href="#keep-a-scrolling-window">Keep a scrolling window</a><a href="#the-realtime-pattern">The realtime pattern</a><a href="#clear-the-chart">Clear the chart</a><a href="#large-or-fast-data">Large or fast data</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>How to add and remove entries and data sets while a chart is on screen, what to call afterwards, and how to keep a fast feed drawing smoothly.</p>
+<p>Nothing about a chart is fixed once you have set its data. You can push entries into a data set, append or drop whole data sets, and clear everything. One call tells the chart about it.</p>
+<h2 id="add-an-entry">Add an entry<a class="anchor" href="#add-an-entry" aria-label="Link to this section">#</a></h2>
+<p>There are two places to add from. Going through the data object is the usual one, because it knows which data set you mean and widens its own cached ranges at the same time.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> <span class="k">data</span> = chart.<span class="k">data</span> ?: <span class="k">return</span>
+<span class="k">data</span>.addEntry(<span class="t">Entry</span>(x, y), <span class="n">0</span>)   <span class="c">// into the data set at index 0</span>
+chart.notifyDataSetChanged()</code></pre>
+<p>Going through the data set works too, and is what you do when you already hold a reference to it.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.addEntry(<span class="t">Entry</span>(x, y))       <span class="c">// appends at the end</span>
+set.addEntryOrdered(<span class="t">Entry</span>(x, y)) <span class="c">// inserts so the entries stay sorted by x</span>
+chart.notifyDataSetChanged()</code></pre>
+<p><code>addEntry</code> appends without looking at the x value. Entries must stay sorted by x ascending, because every lookup on a data set is a binary search over x. Use <code>addEntryOrdered</code> whenever the new x is not the largest one.</p>
+<p>A whole new series is one call:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(mutableListOf&lt;<span class="t">Entry</span>&lt;<span class="t">Any</span>?&gt;&gt;(), <span class="s">&quot;Live&quot;</span>).apply {
+    color = <span class="t">Color</span>.<span class="t">BLUE</span>
+    lineWidth = <span class="n">2f</span>
+    isDrawCirclesEnabled = <span class="k">false</span>
+    isDrawValuesEnabled = <span class="k">false</span>
+}
+
+<span class="k">data</span>.addDataSet(set)
+chart.notifyDataSetChanged()</code></pre>
+<h2 id="remove-data">Remove data<a class="anchor" href="#remove-data" aria-label="Link to this section">#</a></h2>
+<p>On a data set:</p>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>Removes</th></tr></thead><tbody><tr><td><code>removeFirst()</code></td><td>the entry at index 0</td></tr><tr><td><code>removeLast()</code></td><td>the entry at the end</td></tr><tr><td><code>removeEntry(e)</code></td><td>that exact entry, matched by reference</td></tr><tr><td><code>removeEntry(index)</code></td><td>the entry at a list index</td></tr><tr><td><code>removeEntryByXValue(x)</code></td><td>the entry whose x is nearest to <code>x</code></td></tr><tr><td><code>clear()</code></td><td>every entry, keeping the data set</td></tr></tbody></table></div>
+<p><code>removeFirst</code>, <code>removeLast</code>, <code>removeEntry(e)</code> and <code>removeEntryByXValue</code> return <code>false</code> when there was nothing to remove. <code>removeEntry(index)</code> throws <code>IndexOutOfBoundsException</code> for an index outside the entries, and <code>clear()</code> returns nothing.</p>
+<p>On the data object:</p>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>Removes</th></tr></thead><tbody><tr><td><code>removeEntry(e, dataSetIndex)</code></td><td>that entry from the data set at the index</td></tr><tr><td><code>removeEntry(xValue, dataSetIndex)</code></td><td>the entry nearest to <code>xValue</code> in that data set</td></tr><tr><td><code>removeDataSet(set)</code></td><td>that data set</td></tr><tr><td><code>removeDataSet(index)</code></td><td>the data set at the index</td></tr><tr><td><code>clearValues()</code></td><td>every data set, keeping the data object</td></tr></tbody></table></div>
+<blockquote>On a data set, <code>removeEntry(index)</code> takes a list index and <code>removeEntryByXValue(x)</code> takes a value. On the data object the float overload <code>removeEntry(xValue, dataSetIndex)</code> is the one that takes a value.</blockquote>
+<h2 id="what-to-call-afterwards">What to call afterwards<a class="anchor" href="#what-to-call-afterwards" aria-label="Link to this section">#</a></h2>
+<p>One call on the chart:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.notifyDataSetChanged()</code></pre>
+<p>It recomputes the data ranges, rebuilds the renderer buffers, recalculates both y axes and the x axis, rebuilds the legend, recalculates the offsets and redraws. There is no separate <code>invalidate()</code> to make.</p>
+<p>The one case that needs a second call is changing a data set&#x27;s entry list in place, without going through <code>addEntry</code> or <code>removeEntry</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries.add(<span class="t">Entry</span>(x, y))     <span class="c">// the list is modified directly</span>
+set.notifyDataSetChanged()       <span class="c">// the set recomputes its own x and y range</span>
+chart.notifyDataSetChanged()</code></pre>
+<p>Assigning a new list does not need that, because the setter recomputes the range for you:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries = newEntries
+chart.notifyDataSetChanged()</code></pre>
+<blockquote>Version 3.x needed <code>notifyDataSetChanged()</code> on the data set, <code>notifyDataChanged()</code> on the data object, <code>notifyDataSetChanged()</code> on the chart and then <code>invalidate()</code>. The chart call now does all four steps.</blockquote>
+<h2 id="keep-a-scrolling-window">Keep a scrolling window<a class="anchor" href="#keep-a-scrolling-window" aria-label="Link to this section">#</a></h2>
+<p>A live chart normally shows the last n values and scrolls as new ones arrive. Two calls do that.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setVisibleXRangeMaximum(<span class="n">120f</span>)             <span class="c">// at most 120 x units on screen</span>
+chart.moveViewToX(<span class="k">data</span>.entryCount.toFloat())    <span class="c">// left edge at the newest value</span></code></pre>
+<p><code>setVisibleXRangeMaximum</code> works out a minimum zoom factor from the x axis range <em>at the moment you call it</em>. When the data keeps growing, that factor no longer matches, and the visible window slowly widens. So call it again after every batch of new entries rather than once at setup. Both calls need data to be set first.</p>
+<p><code>moveViewToX</code> runs as a viewport job and redraws by itself, so nothing follows it. <a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a> covers the rest of these calls.</p>
+<h2 id="the-realtime-pattern">The realtime pattern<a class="anchor" href="#the-realtime-pattern" aria-label="Link to this section">#</a></h2>
+<p>This is the loop the example app&#x27;s <code>RealtimeLineChartActivity</code> uses, one entry per tick:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">private</span> <span class="k">fun</span> addEntry() {
+    <span class="k">val</span> <span class="k">data</span> = chart.<span class="k">data</span> ?: <span class="k">return</span>
+    <span class="k">val</span> set = <span class="k">data</span>.getDataSetByIndex(<span class="n">0</span>) ?: createSet().also { <span class="k">data</span>.addDataSet(it) }
+
+    <span class="k">data</span>.addEntry(<span class="t">Entry</span>(set.entryCount.toFloat(), nextReading()), <span class="n">0</span>)
+
+    chart.notifyDataSetChanged()
+    chart.setVisibleXRangeMaximum(<span class="n">120f</span>)
+    chart.moveViewToX(<span class="k">data</span>.entryCount.toFloat())
+}</code></pre>
+<p>Set the chart up once with an empty <code>LineData</code> so that <code>chart.data</code> is never null, and give the y axis a fixed range so the chart does not rescale on every reading:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = <span class="t">LineData</span>()
+chart.axisLeft.axisMinimum = <span class="n">0f</span>
+chart.axisLeft.axisMaximum = <span class="n">100f</span>
+chart.axisRight.isEnabled = <span class="k">false</span></code></pre>
+<p>Call <code>addEntry</code> on the UI thread. A background producer should hand its readings over with <code>runOnUiThread</code> or a coroutine on the main dispatcher; the chart is a <code>View</code> and does not synchronise its data.</p>
+<h2 id="clear-the-chart">Clear the chart<a class="anchor" href="#clear-the-chart" aria-label="Link to this section">#</a></h2>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>Effect</th></tr></thead><tbody><tr><td><code>chart.clear()</code></td><td>drops the data object, clears the highlight and shows the no data text</td></tr><tr><td><code>chart.clearValues()</code></td><td>removes every data set but keeps the data object</td></tr><tr><td><code>data.clearValues()</code></td><td>the same, without the redraw</td></tr><tr><td><code>set.clear()</code></td><td>empties one data set</td></tr></tbody></table></div>
+<p><code>chart.clear()</code> is the one to use when a screen is reused for a different source. <code>chart.clearValues()</code> keeps a live chart alive with an empty data object, ready for the next entry.</p>
+<h2 id="large-or-fast-data">Large or fast data<a class="anchor" href="#large-or-fast-data" aria-label="Link to this section">#</a></h2>
+<p>The renderer already draws only the entries inside the visible x range, so a large data set costs mostly memory, not draw time. <a href="/mpandroidchart/docs/performance/">Performance with large data</a> goes through all of it; the short list of what costs draw time:</p>
+<ul><li><strong>Circles.</strong> <code>isDrawCirclesEnabled = false</code> on a line data set removes one draw call per point.</li><li><strong>Value labels.</strong> <code>isDrawValuesEnabled = false</code>. Labels are skipped automatically once the entry count reaches <code>chart.maxVisibleCount</code> (default 100) times the current zoom, but turning them off saves the check.</li><li><strong>Curves.</strong> <code>LineDataSet.Mode.LINEAR</code> is cheaper than <code>CUBIC_BEZIER</code>.</li><li><strong>Line width.</strong> Thin lines draw faster; the value is clamped to 0 to 10 dp.</li><li><strong>Dashed lines.</strong> A dashed line goes onto the offscreen bitmap and is composed onto the chart, which costs an extra pass per frame.</li></ul>
+<p>For a feed that never stops, cap the entry count instead of letting it grow:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">if</span> (set.entryCount &gt; <span class="n">500</span>) set.removeFirst()</code></pre>
+<p>If every frame matters, do not let the chart recompute the axes. <code>isAutoScaleMinMaxEnabled = false</code> is the default, and fixed <code>axisMinimum</code> and <code>axisMaximum</code> values on the y axis keep <code>notifyDataSetChanged</code> from reflowing the labels and the offsets.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a> for the scrolling window in detail.</li><li><a href="/mpandroidchart/docs/chartdata/">The ChartData class</a> and <a href="/mpandroidchart/docs/dataset/">the DataSet class</a> for everything these two classes hold.</li><li><a href="/mpandroidchart/docs/setting-data/">Setting data</a> for the entry and data set types of each chart.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/interaction/"><span>Previous</span>Interaction with the chart</a><a class="next" href="/mpandroidchart/docs/viewport/"><span>Next</span>Modifying the viewport</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

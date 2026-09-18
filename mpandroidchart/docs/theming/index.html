@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theming a chart · MPAndroidChart</title>
+  <meta name="description" content="How to keep one look for every chart in your app in a palette object and a few extension functions, and how to switch it between dark and light.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/theming/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Theming a chart · MPAndroidChart">
+  <meta property="og:description" content="How to keep one look for every chart in your app in a palette object and a few extension functions, and how to switch it between dark and light.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/theming/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming" class="active"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Styling <span>Chapter 13 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-shape-of-a-theme">The shape of a theme</a><a href="#the-palette">The palette</a><a href="#the-base-every-chart-shares">The base every chart shares</a><a href="#styling-the-axes">Styling the axes</a><a href="#touches-per-chart-type">Touches per chart type</a><a href="#a-themed-marker">A themed marker</a><a href="#dark-mode-and-material-3">Dark mode and Material 3</a><a href="#fonts">Fonts</a><a href="#make-it-your-own">Make it your own</a></nav>
+      <p>How to keep one look for every chart in your app in a palette object and a few extension functions, and how to switch it between dark and light.</p>
+<p>Styling one chart is covered in <a href="/mpandroidchart/docs/general-styling/">General styling</a>, <a href="/mpandroidchart/docs/chart-styling/">Chart specific styling</a>, <a href="/mpandroidchart/docs/legend/">The legend</a> and <a href="/mpandroidchart/docs/description/">The description</a>. This chapter is about doing it once instead of on every screen.</p>
+<p>The library has no idea of a theme. There is no theme class, no style attribute and nothing to register: a theme is ordinary code in your app that sets the properties those chapters describe. What follows is a pattern, not an API. The example app ships one theme called Nightfall in <code>com.xxmassdeveloper.mpchartexample.design</code>, every chart screenshot on this site is drawn by it, and the code below is that theme. Swap the colors, the fonts and the shapes for your own and the pattern carries any look you like.</p>
+<h2 id="the-shape-of-a-theme">The shape of a theme<a class="anchor" href="#the-shape-of-a-theme" aria-label="Link to this section">#</a></h2>
+<p>A theme is two files. <code>Nightfall.kt</code> holds the colors and nothing else: no views, no chart code. <code>NightfallStyle.kt</code> holds extension functions, one on the chart and one per data set type. Nothing else in the app sets a chart color. A screen picks the variant and applies the base:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> theme = <span class="k">if</span> (isSystemInDarkTheme()) <span class="t">Nightfall</span>.dark <span class="k">else</span> <span class="t">Nightfall</span>.light
+
+<span class="t">LineChart</span>(
+    <span class="k">data</span> = revenue,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+    update = { nightfallBase(theme) },
+)</code></pre>
+<p>It goes in <code>update</code>, not in <code>setup</code>. <code>setup</code> runs once and freezes what it reads, so a palette that can change belongs in <code>update</code>, which runs again whenever the lambda captures a new value. Write the functions so that running them twice is harmless, which plain assignments are. Outside Compose the same function runs on the view: <code>LineChart(context).apply { nightfallBase(theme) }</code>.</p>
+<h2 id="the-palette">The palette<a class="anchor" href="#the-palette" aria-label="Link to this section">#</a></h2>
+<p>One class, two instances. The fields are named after their job, never after their color, so the same chart code reads both variants without ever asking which one it got.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">class</span> <span class="t">Nightfall</span> <span class="k">private</span> <span class="k">constructor</span>(
+    <span class="k">val</span> stage: <span class="t">Int</span>, <span class="k">val</span> card: <span class="t">Int</span>, <span class="k">val</span> text: <span class="t">Int</span>, <span class="k">val</span> muted: <span class="t">Int</span>,
+    <span class="k">val</span> grid: <span class="t">Int</span>, <span class="k">val</span> track: <span class="t">Int</span>, <span class="k">val</span> pillBackground: <span class="t">Int</span>, <span class="k">val</span> pillText: <span class="t">Int</span>,
+) {
+    <span class="k">companion</span> <span class="k">object</span> {
+        <span class="k">val</span> palette = listOf(0xFF2FB4B6, 0xFFF97066, 0xFFF5B041, 0xFF8B7CF6, 0xFF5DD39E)
+            .map { it.toInt() }
+        <span class="k">val</span> accent = palette[<span class="n">0</span>]
+        <span class="k">val</span> dark = <span class="t">Nightfall</span>(
+            stage = 0xFF0F172A.toInt(), card = 0xFF111C33.toInt(),
+            text = 0xFFE2E8F0.toInt(), muted = 0xFF94A3B8.toInt(),
+            grid = <span class="t">Color</span>.argb(<span class="n">36</span>, <span class="n">148</span>, <span class="n">163</span>, <span class="n">184</span>),
+            track = <span class="t">Color</span>.argb(<span class="n">26</span>, <span class="n">148</span>, <span class="n">163</span>, <span class="n">184</span>),
+            pillBackground = 0xFFE2E8F0.toInt(), pillText = 0xFF0F172A.toInt(),
+        )
+        <span class="k">val</span> light = <span class="t">Nightfall</span>(
+            stage = 0xFFF8FAFC.toInt(), card = 0xFFFFFFFF.toInt(),
+            text = 0xFF0F172A.toInt(), muted = 0xFF64748B.toInt(),
+            grid = 0xFFE2E8F0.toInt(), track = 0xFFEEF2F7.toInt(),
+            pillBackground = 0xFF0F172A.toInt(), pillText = 0xFFFFFFFF.toInt(),
+        )
+        <span class="k">fun</span> withAlpha(color: <span class="t">Int</span>, alpha: <span class="t">Int</span>): <span class="t">Int</span> =
+            <span class="t">Color</span>.argb(alpha, <span class="t">Color</span>.red(color), <span class="t">Color</span>.green(color), <span class="t">Color</span>.blue(color))
+    }
+}</code></pre>
+<p>Five accents in a fixed order, so a chart with several series always picks the same colors in the same sequence; <code>coral</code>, <code>amber</code>, <code>violet</code> and <code>green</code> name the other four the same way. The accents are shared between the two variants, because they read on a dark and on a light surface alike. Only the surfaces and the text tones differ.</p>
+<p><code>stage</code> is the screen behind the card, <code>card</code> the surface the chart sits on, which the donut hole and the circle holes of a line have to match. <code>text</code> is for values and center text, <code>muted</code> for axis labels, and <code>grid</code> and <code>track</code> are the muted tone at low alpha. <code>withAlpha</code> earns its place in the palette because gradient fills, bar highlights and translucent bubbles are all accents at a lower alpha, and you do not want <code>Color.argb</code> spelled out at every call site.</p>
+<h2 id="the-base-every-chart-shares">The base every chart shares<a class="anchor" href="#the-base-every-chart-shares" aria-label="Link to this section">#</a></h2>
+<p>One extension on <code>Chart&lt;*&gt;</code> covers what every chart in the theme has in common, and narrows to <code>BarLineChartBase&lt;*&gt;</code> for the axis part:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">Chart</span>&lt;*&gt;.nightfallBase(theme: <span class="t">Nightfall</span>) {
+    description.isEnabled = <span class="k">false</span>
+    legend.isEnabled = <span class="k">false</span>
+    noDataText = <span class="s">&quot;Nothing to show yet&quot;</span>
+    noDataTextColor = theme.muted
+    <span class="k">if</span> (<span class="k">this</span> <span class="k">is</span> <span class="t">BarLineChartBase</span>&lt;*&gt;) {
+        isDrawGridBackgroundEnabled = <span class="k">false</span>
+        setExtraOffsets(<span class="n">0f</span>, <span class="n">8f</span>, <span class="n">8f</span>, <span class="n">4f</span>)
+        xAxis.position = <span class="t">XAxis</span>.<span class="t">XAxisPosition</span>.<span class="t">BOTTOM</span>
+        xAxis.isDrawGridLinesEnabled = <span class="k">false</span>
+        xAxis.yOffset = <span class="n">8f</span>
+        axisLeft.isDrawGridLinesEnabled = <span class="k">true</span>
+        axisLeft.gridColor = theme.grid
+        axisLeft.gridLineWidth = <span class="n">1f</span>
+        axisLeft.xOffset = <span class="n">10f</span>
+        axisRight.isEnabled = <span class="k">false</span>
+        nightfallAxes(theme)
+    }
+}</code></pre>
+<p>The description is off everywhere, because a card already has a title above the chart. The legend is off here and switched back on only where the theme needs it, on the donut and the radar. The grid background is off by default, so that line only writes the decision down. Only the left axis draws grid lines, which gives horizontal rules and no vertical ones. The extra offsets keep a rounded bar or a thick line from being clipped at the edges, and <code>yOffset</code> and <code>xOffset</code> push the labels away from the plot.</p>
+<h2 id="styling-the-axes">Styling the axes<a class="anchor" href="#styling-the-axes" aria-label="Link to this section">#</a></h2>
+<p>The label look is the same on both axes, so it is one loop:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">BarLineChartBase</span>&lt;*&gt;.nightfallAxes(theme: <span class="t">Nightfall</span>) {
+    <span class="k">for</span> (axis <span class="k">in</span> listOf(xAxis, axisLeft)) {
+        axis.isDrawAxisLineEnabled = <span class="k">false</span>
+        axis.textColor = theme.muted
+        axis.textSize = <span class="n">10f</span>
+    }
+}</code></pre>
+<p>These are the properties that carry a theme. All of them sit on <code>AxisBase</code>, so they behave the same on the x axis and on both y axes.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Use in a theme</th><th>Default</th></tr></thead><tbody><tr><td><code>textColor</code></td><td>The muted tone, so labels sit behind the data</td><td>black</td></tr><tr><td><code>textSize</code></td><td>10 or 11, clamped to 6 to 24</td><td><code>10</code></td></tr><tr><td><code>isDrawAxisLineEnabled</code></td><td><code>false</code> drops the line along the axis</td><td><code>true</code></td></tr><tr><td><code>isDrawGridLinesEnabled</code></td><td>Left axis only, for horizontal rules</td><td><code>true</code></td></tr><tr><td><code>gridColor</code>, <code>gridLineWidth</code></td><td>The translucent grid tone, <code>1f</code></td><td>gray, <code>0.5</code></td></tr><tr><td><code>enableGridDashedLine(length, space, phase)</code></td><td>Dashed rules instead of solid</td><td>solid</td></tr><tr><td><code>labelCount</code> with <code>isForceLabelsEnabled</code></td><td>Exactly as many rows as the design wants</td><td><code>6</code>, <code>false</code></td></tr><tr><td><code>granularity</code></td><td>Smallest step between labels, <code>1f</code> for whole slots</td><td><code>1</code>, off</td></tr></tbody></table></div>
+<p><code>labelCount</code> alone is a wish: the axis rounds the interval to a nice value and the real count only comes close. With <code>isForceLabelsEnabled = true</code> you get exactly that many labels, evenly spread, which is what a card with four grid rules needs. Assigning <code>granularity</code> also sets <code>isGranularityEnabled</code>, so you never set both.</p>
+<p>Two x axis variants cover almost every card. The padded one leaves half a slot at each end, the way bars sit. The full width one pushes the first and last point onto the edges:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">BarLineChartBase</span>&lt;*&gt;.nightfallPaddedX(pointCount: <span class="t">Int</span>) {
+    xAxis.axisMinimum = -<span class="n">0.5f</span>
+    xAxis.axisMaximum = pointCount - <span class="n">0.5f</span>
+    xAxis.granularity = <span class="n">1f</span>
+    xAxis.labelCount = pointCount
+}
+
+<span class="k">fun</span> <span class="t">BarLineChartBase</span>&lt;*&gt;.nightfallFullWidthX(pointCount: <span class="t">Int</span>) {
+    xAxis.axisMinimum = <span class="n">0f</span>
+    xAxis.axisMaximum = (pointCount - <span class="n">1</span>).toFloat()
+    xAxis.granularity = <span class="n">1f</span>
+    xAxis.labelCount = pointCount
+    xAxis.isAvoidFirstLastClippingEnabled = <span class="k">true</span>
+    setExtraOffsets(<span class="n">6f</span>, <span class="n">8f</span>, <span class="n">6f</span>, <span class="n">4f</span>)
+}</code></pre>
+<p><code>isAvoidFirstLastClippingEnabled</code> pulls the outermost labels back inside the view, and the extra side offsets keep a 3 dp line from being cut in half at the edges.</p>
+<blockquote><code>labelCount</code> is clamped to <code>axisMinLabels</code>..<code>axisMaxLabels</code>, which is 2 to 25. A full width axis with more than 25 points needs a smaller count and a formatter that returns an empty string in between.</blockquote>
+<h2 id="touches-per-chart-type">Touches per chart type<a class="anchor" href="#touches-per-chart-type" aria-label="Link to this section">#</a></h2>
+<p>The rest of the theme is one small extension per data set type. Bars get rounded corners and a vertical gradient per bar, built from the <code>Fill</code> list:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">BarDataSet</span>&lt;*&gt;.nightfallBars(barColor: <span class="t">Int</span> = <span class="t">Nightfall</span>.accent) {
+    barCornerRadius = <span class="n">7f</span>
+    isDrawValuesEnabled = <span class="k">false</span>
+    highlightAlpha = <span class="n">0</span>
+    fills = entries.indices.map {
+        <span class="t">Fill</span>(barColor, <span class="t">Nightfall</span>.withAlpha(barColor, <span class="n">90</span>))
+    }.toMutableList()
+}</code></pre>
+<p>One <code>Fill</code> per bar means you can hand the selected one its own color instead, which is how the orders card marks a quarter. <code>highlightAlpha = 0</code> removes the pale block the library draws over a selected bar, which is right when the selection already shows as its own color and a marker. Setting <code>barShadowColor = theme.track</code> on the set and <code>isDrawBarShadowEnabled = true</code> on the chart paints the empty rest of each slot, which is how the budget card gets its tracks.</p>
+<p>A line gets a fading area below it. The fill is an ordinary <code>GradientDrawable</code>, from the line color at alpha 115 down to fully transparent:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">LineDataSet</span>&lt;*&gt;.nightfallLine(theme: <span class="t">Nightfall</span>, lineColor: <span class="t">Int</span> = <span class="t">Nightfall</span>.accent) {
+    mode = <span class="t">LineDataSet</span>.<span class="t">Mode</span>.<span class="t">CUBIC_BEZIER</span>
+    cubicIntensity = <span class="n">0.18f</span>
+    color = lineColor
+    lineWidth = <span class="n">3f</span>
+    isDrawCirclesEnabled = <span class="k">false</span>
+    isDrawValuesEnabled = <span class="k">false</span>
+    isDrawFilledEnabled = <span class="k">true</span>
+    fillDrawable = <span class="t">GradientDrawable</span>(
+        <span class="t">GradientDrawable</span>.<span class="t">Orientation</span>.<span class="t">TOP_BOTTOM</span>,
+        intArrayOf(
+            <span class="t">Nightfall</span>.withAlpha(lineColor, <span class="n">115</span>),
+            <span class="t">Nightfall</span>.withAlpha(lineColor, <span class="n">0</span>),
+        ),
+    )
+    highlightColor = lineColor
+    enableDashedHighlightLine(<span class="n">8f</span>, <span class="n">8f</span>, <span class="n">0f</span>)
+    isHorizontalHighlightIndicatorEnabled = <span class="k">false</span>
+    isDrawHighlightCircleEnabled = <span class="k">true</span>
+    circleHoleColor = theme.card
+}</code></pre>
+<p>The guide under the selected point is dashed and the horizontal one is off, so the eye follows the x value. <code>circleHoleColor = theme.card</code> is why this function needs the palette at all: the ring around the selected point has to match the surface the chart sits on.</p>
+<p>The pie is a donut with a wide hole in the card color, no labels on the slices and the legend switched back on:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">PieChart</span>(<span class="k">data</span> = platforms, modifier = cardSize, update = {
+    nightfallBase(theme)
+    isDrawEntryLabelsEnabled = <span class="k">false</span>
+    holeRadius = <span class="n">72f</span>
+    transparentCircleRadius = <span class="n">0f</span>
+    holeColor = theme.card
+    isDrawRoundedSlicesEnabled = <span class="k">true</span>
+    centerText = <span class="s">&quot;44%\nMobile&quot;</span>
+    centerTextColor = theme.text
+    centerTextSize = <span class="n">11f</span>
+    legend.isEnabled = <span class="k">true</span>
+    legend.textColor = theme.text
+    legend.orientation = <span class="t">Legend</span>.<span class="t">LegendOrientation</span>.<span class="t">VERTICAL</span>
+    legend.verticalAlignment = <span class="t">Legend</span>.<span class="t">LegendVerticalAlignment</span>.<span class="t">CENTER</span>
+    legend.horizontalAlignment = <span class="t">Legend</span>.<span class="t">LegendHorizontalAlignment</span>.<span class="t">RIGHT</span>
+    setExtraOffsets(<span class="n">0f</span>, <span class="n">0f</span>, <span class="n">24f</span>, <span class="n">0f</span>)
+})</code></pre>
+<p><code>transparentCircleRadius = 0f</code> removes the pale ring the chart otherwise draws around the hole, which would break the flat surface, and the extra right offset makes room for the legend column. On the data set, <code>sliceSpace = 3f</code> cuts the gaps between slices and <code>colors = Nightfall.palette.take(entryCount)</code> hands out the accents in order.</p>
+<p>A radar chart hangs its look on the web instead of a grid. Put <code>webColor</code> and <code>webColorInner</code> on the muted tone, both widths on <code>1f</code>, and fade the whole web behind the data with <code>webAlpha = 40</code>, which applies to both colors at once. Then drop the y labels with <code>yAxis.isDrawLabelsEnabled = false</code> and give each set <code>fillAlpha = 56</code> over its <code>fillColor</code>, so two overlapping shapes stay readable.</p>
+<h2 id="a-themed-marker">A themed marker<a class="anchor" href="#a-themed-marker" aria-label="Link to this section">#</a></h2>
+<p>The marker is part of the look, so the palette carries its two colors. In Compose it is a composable, which makes it the smallest piece of the theme:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>marker = { entry, _ -&gt;
+    <span class="t">Surface</span>(color = <span class="t">Color</span>(theme.pillBackground), shape = <span class="t">RoundedCornerShape</span>(<span class="n">8.</span>dp)) {
+        <span class="t">Text</span>(
+            entry.y.roundToInt().toString(),
+            color = <span class="t">Color</span>(theme.pillText),
+            modifier = <span class="t">Modifier</span>.padding(horizontal = <span class="n">10.</span>dp, vertical = <span class="n">6.</span>dp),
+        )
+    }
+},</code></pre>
+<p>The design screen in the example app is built from views, so it uses <code>PillMarkerView</code> instead: a <code>MarkerView</code> that inflates a layout with one <code>TextView</code>, gives it a rounded <code>GradientDrawable</code> in <code>theme.pillBackground</code> and text in <code>theme.pillText</code>, and takes the label as a <code>(Entry&lt;*&gt;) -&gt; String</code> lambda so that one class serves every card. It overrides <code>offset</code> to center itself above the entry with 14 dp of air. <a href="/mpandroidchart/docs/markers/">Markers</a> covers that override and the rest of the marker API.</p>
+<h2 id="dark-mode-and-material-3">Dark mode and Material 3<a class="anchor" href="#dark-mode-and-material-3" aria-label="Link to this section">#</a></h2>
+<p>The line that picks the variant reads <code>isSystemInDarkTheme()</code>, so it recomposes by itself when the system theme flips. Wrap it in a <code>@Composable fun rememberNightfall(): Nightfall</code> and no screen has to think about it again.</p>
+<p>If your colors come from Material 3 rather than a hand written palette, read the scheme and convert. The library takes ARGB ints, and <code>toArgb()</code> on a Compose color is all it takes: <code>axisLeft.gridColor = MaterialTheme.colorScheme.outlineVariant.toArgb()</code>. For lists there are two extensions in the <code>MPChartCompose</code> module, so Compose colors reach the data set unconverted:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>).apply {
+    setColors(listOf(<span class="t">MaterialTheme</span>.colorScheme.primary))
+    setCircleColors(listOf(<span class="t">MaterialTheme</span>.colorScheme.primary))
+}</code></pre>
+<p><code>setColors</code> takes the list the set cycles through for its entries, <code>setCircleColors</code> the circles of a line, and both run <code>toArgb()</code> over the list; import them from <code>com.github.mikephil.charting.compose</code>. For a single color there is no helper and none is needed: <code>color = myColor.toArgb()</code>.</p>
+<p>Every one of these reads a Compose value, so they belong in <code>update</code>. A chart whose colors are set in <code>setup</code> keeps the palette it was built with and turns unreadable the moment the system switches to dark. A view based screen gets the switch for free, because a night mode change recreates the activity and your <code>onCreate</code> picks the variant again.</p>
+<h2 id="fonts">Fonts<a class="anchor" href="#fonts" aria-label="Link to this section">#</a></h2>
+<p>A <code>Typeface</code> is loaded once and handed to each component that draws text. In Compose, <code>rememberTypeface(FontFamily.SansSerif, FontWeight.Medium)</code> resolves a Compose font to one. Outside Compose, load it with <code>Typeface.createFromAsset(context.assets, &quot;OpenSans-Regular.ttf&quot;)</code> or from <code>res/font</code>, and keep it in a field rather than building it per chart.</p>
+<p>Either way, one more extension spreads it over the chart. There is no single font property, each component owns its own:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> <span class="t">Chart</span>&lt;*&gt;.nightfallFont(typeface: <span class="t">Typeface</span>) {
+    description.typeface = typeface
+    legend.typeface = typeface
+    xAxis.typeface = typeface
+    noDataTextTypeface = typeface
+    <span class="k">data</span>?.setValueTypeface(typeface)
+    <span class="k">if</span> (<span class="k">this</span> <span class="k">is</span> <span class="t">BarLineChartBase</span>&lt;*&gt;) {
+        axisLeft.typeface = typeface
+        axisRight.typeface = typeface
+    }
+}</code></pre>
+<p>Call it next to the base, in <code>update = { nightfallBase(theme); nightfallFont(typeface) }</code>. <code>data?.setValueTypeface(typeface)</code> walks the data sets and sets <code>valueTypeface</code> on each, so it only reaches sets that are on the chart already, which is why it belongs in <code>update</code> and not in <code>setup</code>. A pie chart has two more of its own: <code>entryLabelTypeface</code> for the slice labels and <code>centerTextTypeface</code> for the center text.</p>
+<h2 id="make-it-your-own">Make it your own<a class="anchor" href="#make-it-your-own" aria-label="Link to this section">#</a></h2>
+<p>Nothing above is special to Nightfall. Replace the palette with your brand colors, or read them from <code>MaterialTheme.colorScheme</code> so the charts follow the rest of your app, and rename the extensions after your own theme. The parts worth keeping are the shape rather than the values:</p>
+<ul><li>One palette type with an instance per variant, and fields named after their job rather than their color, so the same chart code renders both.</li><li>One extension per thing you style: the chart, each data set type, and the pieces that differ per chart type.</li><li>Everything called from <code>update</code> rather than <code>setup</code>, so a theme change reaches charts that already exist.</li><li>No color anywhere else in the app. When every screen goes through these functions, changing the look is one file.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/description/"><span>Previous</span>The description</a><a class="next" href="/mpandroidchart/docs/interaction/"><span>Next</span>Interaction with the chart</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

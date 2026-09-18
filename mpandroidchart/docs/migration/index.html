@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Migrating from 3.x · MPAndroidChart</title>
+  <meta name="description" content="What to change in an app written against MPAndroidChart 3.x when you move it to the Kotlin rewrite.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/migration/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Migrating from 3.x · MPAndroidChart">
+  <meta property="og:description" content="What to change in an app written against MPAndroidChart 3.x when you move it to the Kotlin rewrite.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/migration/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration" class="active"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">In practice <span>Chapter 34 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#what-stays-the-same">What stays the same</a><a href="#build-requirements-and-dependency">Build requirements and dependency</a><a href="#getters-and-setters-are-properties">Getters and setters are properties</a><a href="#entries-carry-a-payload">Entries carry a payload</a><a href="#arrays-became-lists">Arrays became lists</a><a href="#one-call-refreshes-the-chart">One call refreshes the chart</a><a href="#formatters-and-listeners-are-fun-interfaces">Formatters and listeners are fun interfaces</a><a href="#the-paint-constants-are-gone">The paint constants are gone</a><a href="#renamed-and-removed-members">Renamed and removed members</a><a href="#sizes-in-dp-stay-in-dp">Sizes in dp stay in dp</a><a href="#compose">Compose</a><a href="#checklist">Checklist</a></nav>
+      <p>What to change in an app written against MPAndroidChart 3.x when you move it to the Kotlin rewrite.</p>
+<h2 id="what-stays-the-same">What stays the same<a class="anchor" href="#what-stays-the-same" aria-label="Link to this section">#</a></h2>
+<p>Version 4.0 is a rewrite of the same library, not a new one. Every class, package and interface kept its name, so <code>com.github.mikephil.charting.charts.LineChart</code>, <code>LineDataSet</code>, <code>XAxis</code>, <code>Legend</code>, <code>MarkerView</code> and <code>ViewPortHandler</code> are still where they were, and your imports and XML layouts survive untouched.</p>
+<p>The work is in the call sites. Getters and setters became properties, arrays became lists, entries gained a type parameter, and a handful of members were renamed or dropped. Everything below is one of those changes.</p>
+<h2 id="build-requirements-and-dependency">Build requirements and dependency<a class="anchor" href="#build-requirements-and-dependency" aria-label="Link to this section">#</a></h2>
+<p>3.1.0 built against <code>minSdk 14</code> and <code>compileSdk 28</code>. Version 4.0 needs a newer toolchain:</p>
+<div class='table-wrap'><table><tbody><tr><td><code>minSdk</code></td><td>23</td></tr><tr><td><code>compileSdk</code></td><td>37</td></tr><tr><td>Java</td><td>17</td></tr></tbody></table></div>
+<p>The artifact is split in two, so the old <code>com.github.PhilJay:MPAndroidChart:v3.1.0</code> becomes one or two new coordinates:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dependencies {
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0&quot;</span>)
+
+    <span class="c">// only if you use Jetpack Compose</span>
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0&quot;</span>)
+}</code></pre>
+<p>JitPack is still the repository. The <a href="/mpandroidchart/docs/getting-started/">getting started chapter</a> has the full setup.</p>
+<h2 id="getters-and-setters-are-properties">Getters and setters are properties<a class="anchor" href="#getters-and-setters-are-properties" aria-label="Link to this section">#</a></h2>
+<p>Every getter and setter pair is now a property. Functions that take real parameters, such as <code>animateX</code> or <code>setVisibleXRangeMaximum</code>, kept their names.</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setDragEnabled(<span class="k">true</span>);
+chart.getAxisLeft().setAxisMaximum(<span class="n">100f</span>);
+chart.getXAxis().setLabelCount(<span class="n">5</span>);</code></pre>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> chart = <span class="t">LineChart</span>(<span class="k">this</span>)
+chart.isDragEnabled = <span class="k">true</span>
+chart.axisLeft.axisMaximum = <span class="n">100f</span>
+chart.xAxis.labelCount = <span class="n">5</span></code></pre>
+<p>These are the ones you will hit most often.</p>
+<div class='table-wrap'><table><thead><tr><th>3.x call</th><th>4.0 property</th><th>Default</th></tr></thead><tbody><tr><td><code>setDragEnabled</code></td><td><code>isDragEnabled</code></td><td>true</td></tr><tr><td><code>setScaleEnabled</code></td><td><code>isScaleEnabled</code></td><td>true</td></tr><tr><td><code>setPinchZoom</code></td><td><code>isPinchZoomEnabled</code></td><td>false</td></tr><tr><td><code>setDoubleTapToZoomEnabled</code></td><td><code>isDoubleTapToZoomEnabled</code></td><td>true</td></tr><tr><td><code>setHighlightPerTapEnabled</code></td><td><code>isHighlightPerTapEnabled</code></td><td>true</td></tr><tr><td><code>setTouchEnabled</code></td><td><code>isTouchEnabled</code></td><td>true</td></tr><tr><td><code>setDrawGridBackground</code></td><td><code>isDrawGridBackgroundEnabled</code></td><td>false</td></tr><tr><td><code>getAxisMinimum</code></td><td><code>axisMinimum</code></td><td>from the data</td></tr><tr><td><code>getAxisMaximum</code></td><td><code>axisMaximum</code></td><td>from the data</td></tr><tr><td><code>setLabelCount(n)</code></td><td><code>labelCount</code></td><td>6</td></tr><tr><td><code>setTextSize</code></td><td><code>textSize</code></td><td>10, clamped to 6..24</td></tr><tr><td><code>setTextColor</code></td><td><code>textColor</code></td><td>black</td></tr><tr><td><code>setEnabled</code></td><td><code>isEnabled</code></td><td>true</td></tr><tr><td><code>setDrawValues</code></td><td><code>isDrawValuesEnabled</code></td><td>true</td></tr><tr><td><code>setHighlightEnabled</code></td><td><code>isHighlightEnabled</code></td><td>true</td></tr><tr><td><code>setValueTextSize</code></td><td><code>valueTextSize</code></td><td>7</td></tr><tr><td><code>setLineWidth</code></td><td><code>lineWidth</code></td><td>1, clamped to 0..10</td></tr></tbody></table></div>
+<p>The last four are on the data set, the six before them on an axis or another text component, the rest on the chart.</p>
+<p>Boolean flags are named after their getter, not their setter, so a flag you set with <code>setDrawFoo(true)</code> reads <code>isDrawFooEnabled = true</code> now. The exceptions are the ones that were never <code>Enabled</code> in 3.x either, such as <code>YAxis.isInverted</code> and <code>BaseDataSet.isVisible</code>.</p>
+<h2 id="entries-carry-a-payload">Entries carry a payload<a class="anchor" href="#entries-carry-a-payload" aria-label="Link to this section">#</a></h2>
+<p><code>Entry</code> is now <code>Entry&lt;out D&gt;</code>, where <code>D</code> is the type of the optional object you attach to a point. In 3.x that object was an untyped <code>Object</code> you had to cast on the way out.</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">Entry</span> e = new <span class="t">Entry</span>(<span class="n">1f</span>, <span class="n">42f</span>, order);
+<span class="t">Order</span> same = (<span class="t">Order</span>) e.getData();</code></pre>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> e = <span class="t">Entry</span>(<span class="n">1f</span>, <span class="n">42f</span>, <span class="k">data</span> = order)
+<span class="k">val</span> theOrder: <span class="t">Order</span>? = e.<span class="k">data</span></code></pre>
+<p>When you pass no payload, <code>Entry(1f, 42f)</code> calls a factory function of the same name and gives you an <code>Entry&lt;Nothing&gt;</code>. <code>Nothing</code> is a subtype of everything, so those entries still fit anywhere a typed entry is expected, and their <code>data</code> is always null. The payload is read-only, so build a new entry instead of changing it.</p>
+<p>Stacked bars changed shape along with this. The float array became a list, and <code>getYVals</code> became <code>stackValues</code>:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">BarEntry</span> bar = new <span class="t">BarEntry</span>(<span class="n">0f</span>, new float[] { <span class="n">10f</span>, <span class="n">20f</span>, <span class="n">30f</span> });
+float[] parts = bar.getYVals();</code></pre>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bar = <span class="t">BarEntry</span>(<span class="n">0f</span>, listOf(<span class="n">10f</span>, <span class="n">20f</span>, <span class="n">30f</span>))
+<span class="k">val</span> parts = bar.stackValues</code></pre>
+<p>Assigning <code>stackValues</code> recomputes <code>y</code> as their sum, along with <code>positiveSum</code>, <code>negativeSum</code> and <code>ranges</code>. <code>getBelowSum</code> was renamed to <code>getSumBelow</code>.</p>
+<h2 id="arrays-became-lists">Arrays became lists<a class="anchor" href="#arrays-became-lists" aria-label="Link to this section">#</a></h2>
+<p>Anywhere 3.x took or returned an array, 4.0 uses a <code>List</code>. That covers data set colors, the <code>ColorTemplate</code> palettes, stack labels, the labels a data object reports, the values of <code>IndexAxisValueFormatter</code>, and a combined chart&#x27;s draw order.</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColors(<span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>);
+set.setStackLabels(new <span class="t">String</span>[] { <span class="s">&quot;Births&quot;</span>, <span class="s">&quot;Divorces&quot;</span> });
+chart.getXAxis().setValueFormatter(
+        new <span class="t">IndexAxisValueFormatter</span>(new <span class="t">String</span>[] { <span class="s">&quot;Mon&quot;</span>, <span class="s">&quot;Tue&quot;</span> }));</code></pre>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">BarDataSet</span>(entries, <span class="s">&quot;Statistics&quot;</span>)
+set.colors = <span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>
+set.stackLabels = listOf(<span class="s">&quot;Births&quot;</span>, <span class="s">&quot;Divorces&quot;</span>)
+chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(listOf(<span class="s">&quot;Mon&quot;</span>, <span class="s">&quot;Tue&quot;</span>))</code></pre>
+<p><code>setColors(vararg colors: Int)</code> is still there for a handful of literal colors, so the spread operator is no longer needed. Gradient bars moved too: 3.x had <code>setGradientColors(List&lt;Fill&gt;)</code>, 4.0 has the <code>fills</code> property, and <code>setGradientColor(start, end)</code> still fills every bar with one gradient.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bars = <span class="t">BarDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>)
+bars.fills = mutableListOf(<span class="t">Fill</span>(<span class="t">Color</span>.<span class="t">RED</span>, <span class="t">Color</span>.<span class="t">YELLOW</span>))
+
+<span class="k">val</span> combined = <span class="t">CombinedChart</span>(<span class="k">this</span>)
+combined.drawOrder = listOf(<span class="t">DrawOrder</span>.<span class="t">BAR</span>, <span class="t">DrawOrder</span>.<span class="t">LINE</span>)</code></pre>
+<h2 id="one-call-refreshes-the-chart">One call refreshes the chart<a class="anchor" href="#one-call-refreshes-the-chart" aria-label="Link to this section">#</a></h2>
+<p>3.x needed three calls to show changed data. <code>chart.notifyDataSetChanged()</code> now does all of it: it calls <code>notifyDataChanged</code> on the data, recomputes the axes, the legend and the offsets, and redraws.</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">data</span>.notifyDataChanged();
+chart.notifyDataSetChanged();
+chart.invalidate();</code></pre>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.notifyDataSetChanged()</code></pre>
+<p>Assigning <code>chart.data</code> already calls it, so a fresh data object needs nothing after the assignment.</p>
+<blockquote>This applies to changes made in place, such as adding an entry or editing a value. Replacing the whole data object is still an assignment to <code>chart.data</code>.</blockquote>
+<h2 id="formatters-and-listeners-are-fun-interfaces">Formatters and listeners are fun interfaces<a class="anchor" href="#formatters-and-listeners-are-fun-interfaces" aria-label="Link to this section">#</a></h2>
+<p><code>IValueFormatter</code> and <code>IAxisValueFormatter</code> kept their names and their single method, but they are <code>fun interface</code> declarations now and their arguments are non-null. A lambda is enough.</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>axis.setValueFormatter(new <span class="t">IAxisValueFormatter</span>() {
+    public <span class="t">String</span> getFormattedValue(float value, <span class="t">AxisBase</span> axis) {
+        <span class="k">return</span> ((int) value) + <span class="s">&quot; %&quot;</span>;
+    }
+});</code></pre>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt;
+    <span class="s">&quot;${value.toInt()} %&quot;</span>
+}
+chart.<span class="k">data</span>?.setValueFormatter { value, _, _, _ -&gt; value.toInt().toString() }</code></pre>
+<p><code>IFillFormatter</code> works the same way. <code>OnChartValueSelectedListener</code> has two methods, so it is a normal interface, but the chart offers a lambda shortcut that replaces it:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected { entry, highlight -&gt;
+    <span class="t">Log</span>.i(<span class="s">&quot;Selected&quot;</span>, <span class="s">&quot;${entry.y} in set ${highlight.dataSetIndex}&quot;</span>)
+}</code></pre>
+<p>Pass <code>onNothingSelected</code> as the first argument when you need the cleared case too. If several parts of your app want to listen, add to <code>chart.valueSelectedListeners</code> instead of replacing <code>chart.onChartValueSelectedListener</code>.</p>
+<h2 id="the-paint-constants-are-gone">The paint constants are gone<a class="anchor" href="#the-paint-constants-are-gone" aria-label="Link to this section">#</a></h2>
+<p><code>setPaint(paint, PAINT_INFO)</code> and <code>getPaint(which)</code> are removed together with the <code>PAINT_</code> constants. Each paint is its own property.</p>
+<div class='table-wrap'><table><thead><tr><th>3.x constant</th><th>4.0 property</th></tr></thead><tbody><tr><td><code>PAINT_INFO</code></td><td><code>infoPaint</code></td></tr><tr><td><code>PAINT_DESCRIPTION</code></td><td><code>descriptionPaint</code></td></tr><tr><td><code>PAINT_GRID_BACKGROUND</code></td><td><code>gridBackgroundPaint</code></td></tr><tr><td><code>PAINT_LEGEND_LABEL</code></td><td><code>legendLabelPaint</code></td></tr><tr><td><code>PAINT_HOLE</code></td><td><code>holePaint</code></td></tr><tr><td><code>PAINT_CENTER_TEXT</code></td><td><code>centerTextPaint</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> pie = <span class="t">PieChart</span>(<span class="k">this</span>)
+pie.holePaint.color = <span class="t">Color</span>.<span class="t">WHITE</span>
+pie.infoPaint.textAlign = <span class="t">Paint</span>.<span class="t">Align</span>.<span class="t">CENTER</span></code></pre>
+<p>The last two live on <code>PieChart</code>, <code>gridBackgroundPaint</code> on every chart that extends <code>BarLineChartBase</code>, the rest on every chart.</p>
+<h2 id="renamed-and-removed-members">Renamed and removed members<a class="anchor" href="#renamed-and-removed-members" aria-label="Link to this section">#</a></h2>
+<ul><li><code>getScaleX()</code> is <code>zoomX</code>, <code>getScaleY()</code> is <code>zoomY</code>. Both are read-only. The rename frees the name for <code>View.scaleX</code>, which now means what Android means by it.</li><li><code>legend.setCustom(entries)</code> is an assignment to <code>legend.entries</code>, which sets <code>isLegendCustom</code>. <code>resetCustom()</code> still turns it off.</li><li><code>setLabelCount(count, force)</code> is two properties: <code>labelCount</code> and <code>isForceLabelsEnabled</code>.</li><li><code>setMarkerView</code> is <code>marker</code>, and the marker picks up the chart when you assign it, so the old <code>marker.chartView = chart</code> line can go.</li><li><code>saveToPath</code> is gone. <code>saveToGallery</code> writes through the MediaStore and needs no storage permission on Android 10 and newer. <code>toBitmap()</code> gives you the pixels if you want to write them yourself.</li><li><code>DataSet.getValues()</code> and <code>setValues()</code> are the <code>entries</code> property.</li><li>Members deprecated in 3.x were removed outright: <code>setAxisMinValue</code> and <code>setAxisMaxValue</code> (use <code>axisMinimum</code> and <code>axisMaximum</code>), <code>YAxis.setStartAtZero(true)</code> (use <code>axisMinimum = 0f</code>), <code>LineDataSet.setCircleSize</code> (use <code>circleRadius</code>), <code>setDrawMarkerViews</code> (use <code>isDrawMarkersEnabled</code>) and <code>PieChart.setDrawSliceText</code> (use <code>isDrawEntryLabelsEnabled</code>).</li></ul>
+<p>Highlighting one value of a stack needs a named argument, because the third positional parameter is <code>dataIndex</code>, the index of a data object inside a combined chart:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bars = <span class="t">BarChart</span>(<span class="k">this</span>)
+bars.highlightValue(x = <span class="n">3f</span>, dataSetIndex = <span class="n">0</span>, stackIndex = <span class="n">1</span>)</code></pre>
+<h2 id="sizes-in-dp-stay-in-dp">Sizes in dp stay in dp<a class="anchor" href="#sizes-in-dp-stay-in-dp" aria-label="Link to this section">#</a></h2>
+<p>3.x converted dp to pixels inside the setter, so <code>getLineWidth()</code> returned something other than what you had set and the number depended on the device. 4.0 stores dp and converts when drawing, so <code>lineWidth = 2.5f</code> reads back as <code>2.5f</code>. This matters wherever you read a size back, scale it, or save and restore it.</p>
+<h2 id="compose">Compose<a class="anchor" href="#compose" aria-label="Link to this section">#</a></h2>
+<p>The Compose module is new, so there is nothing to migrate, but it is the shortest path off <code>findViewById</code>. Each chart has a composable of the same name that takes the same data objects, plus a <code>rememberChartState()</code> that reports the selection and the viewport back to Compose:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+    state = rememberChartState(),
+    setup = { description.isEnabled = <span class="k">false</span> },
+)</code></pre>
+<p>The <a href="/mpandroidchart/docs/compose/">Compose chapter</a> covers state, selection, markers and the <code>setup</code> and <code>update</code> lambdas.</p>
+<h2 id="checklist">Checklist<a class="anchor" href="#checklist" aria-label="Link to this section">#</a></h2>
+<ol><li>Raise <code>minSdk</code> to 23, <code>compileSdk</code> to 37 and the Java target to 17, then swap the dependency for <code>MPChartLib</code> and, if you need it, <code>MPChartCompose</code>.</li><li>Let the compiler find the getters and setters. Most become properties with the same stem, booleans become <code>isXxxEnabled</code>.</li><li>Turn arrays into lists: colors, stack labels, formatter values, draw orders.</li><li>Give entries a payload type where you used to cast <code>getData()</code>, and replace <code>BarEntry</code> float arrays with lists.</li><li>Delete <code>data.notifyDataChanged()</code> and <code>invalidate()</code> after <code>notifyDataSetChanged()</code>.</li><li>Turn formatter and listener anonymous classes into lambdas.</li><li>Replace <code>setPaint(...)</code> with the named paint property.</li><li>Fix the renames: <code>zoomX</code>, <code>legend.entries</code>, <code>labelCount</code> with <code>isForceLabelsEnabled</code>, <code>marker</code>, <code>entries</code> on the data set.</li><li>Check every place you read a dp size back, now that it is no longer converted to pixels.</li></ol>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/troubleshooting/"><span>Previous</span>Troubleshooting</a><a class="next" href="/mpandroidchart/docs/miscellaneous/"><span>Next</span>Miscellaneous</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

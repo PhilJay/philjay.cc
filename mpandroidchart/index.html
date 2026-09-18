@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MPAndroidChart: charts for Android and Jetpack Compose</title>
+  <meta name="description" content="MPAndroidChart is the open source chart library for Android. Line, bar, pie, scatter, candlestick, bubble, radar and combined charts, written in Kotlin, with a Jetpack Compose module.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="MPAndroidChart">
+  <meta property="og:description" content="MPAndroidChart is the open source chart library for Android. Line, bar, pie, scatter, candlestick, bubble, radar and combined charts, written in Kotlin, with a Jetpack Compose module.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../styles.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="play" viewBox="0 0 24 24"><path fill="#fff" d="M4 3.5v17l9.5-8.5L4 3.5zm11 7.2 3.3-1.9c.9-.5.9-1.4 0-1.9L6.4 1.3 15 10.7zm0 2.6L6.4 22.7l11.9-5.6c.9-.5.9-1.4 0-1.9L15 13.3z"/></symbol>
+  <symbol id="github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5v-16zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></symbol>
+</svg>
+
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/"><img src="../assets/mpandroidchart.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="#charts">Charts</a>
+      <a href="#compose">Compose</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="eyebrow">Open source · Android · Kotlin</p>
+      <h1>Every chart your Android app needs.</h1>
+      <p class="lead">Line, bar, pie, scatter, candlestick, bubble, radar and combined charts with zooming, dragging, highlighting, markers and animations. A property based Kotlin API, a Jetpack Compose module and one dependency line to get going.</p>
+      <div class="cta">
+        <a class="button primary" href="#start">Get started</a>
+        <a class="button" href="/mpandroidchart/docs/"><svg aria-hidden="true"><use href="#book"/></svg>Guides</a>
+        <a class="button" href="https://github.com/PhilJay/MPAndroidChart"><svg aria-hidden="true"><use href="#github"/></svg>GitHub</a>
+        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.xxmassdeveloper.mpchartexample">
+          <svg aria-hidden="true"><use href="#play"/></svg>
+          <div><small>Example app on</small><strong>Google Play</strong></div>
+        </a>
+      </div>
+      <div class="stats">
+        <span><strong>38k</strong>GitHub stars</span>
+        <span><strong>9k</strong>forks</span>
+        <span><strong>Apache 2.0</strong>license</span>
+        <span><strong>2014</strong>maintained since</span>
+      </div>
+    </section>
+
+    <section id="charts" class="wrap section">
+      <div class="section-head">
+        <div>
+          <h2>Nine chart types, one way of working</h2>
+          <p class="section-intro">Entries hold the values, a data set holds one series and its styling, the data object holds all series of a chart. Learn it once for the line chart and you know it for all of them. Every card below is a screenshot of the example app's Design section, drawn by the library.</p>
+        </div>
+        <div class="toggle" role="group" aria-label="Color variant">
+          <button type="button" class="active" data-variant="">Dark</button>
+          <button type="button" data-variant="-light">Light</button>
+        </div>
+      </div>
+      <div class="gallery" id="gallery">
+        <figure><img src="assets/line.png?v=2" data-name="line" alt="Line chart with a gradient fill and a highlighted point" loading="lazy"><figcaption>Line</figcaption></figure>
+        <figure><img src="assets/bar.png?v=2" data-name="bar" alt="Bar chart with rounded gradient bars" loading="lazy"><figcaption>Bar</figcaption></figure>
+        <figure><img src="assets/horizontal.png?v=2" data-name="horizontal" alt="Horizontal bar chart with pill shaped bars" loading="lazy"><figcaption>Horizontal bar</figcaption></figure>
+        <figure><img src="assets/pie.png?v=2" data-name="pie" alt="Donut chart with center text and legend" loading="lazy"><figcaption>Pie</figcaption></figure>
+        <figure><img src="assets/stacked.png?v=2" data-name="stacked" alt="Stacked bar chart" loading="lazy"><figcaption>Stacked bars</figcaption></figure>
+        <figure><img src="assets/candle.png?v=2" data-name="candle" alt="Candlestick chart" loading="lazy"><figcaption>Candlestick</figcaption></figure>
+        <figure><img src="assets/radar.png?v=2" data-name="radar" alt="Radar chart with two filled data sets" loading="lazy"><figcaption>Radar</figcaption></figure>
+        <figure><img src="assets/combined.png?v=2" data-name="combined" alt="Combined chart with bars and a line" loading="lazy"><figcaption>Combined</figcaption></figure>
+        <figure><img src="assets/bubble.png?v=2" data-name="bubble" alt="Bubble chart" loading="lazy"><figcaption>Bubble</figcaption></figure>
+      </div>
+      <p class="cta-note">Scatter plots, full width lines, cubic and stepped lines, half pies, negative stacks, realtime data and more are in the <a href="https://github.com/PhilJay/MPAndroidChart/tree/master/MPChartExample">example app</a>.</p>
+    </section>
+
+    <section class="wrap section">
+      <h2>Built for real apps</h2>
+      <div class="features">
+        <div class="feature"><strong>Touch that feels native</strong>Drag, pinch to zoom, double tap, fling with deceleration, tap to highlight, rotate pies and radars.</div>
+        <div class="feature"><strong>Style everything</strong>Axes, grid, legend, limit lines, value formatters, colors, dash patterns, fills and gradients, all as properties.</div>
+        <div class="feature"><strong>Markers and highlights</strong>Show a view or a composable at the selected entry, with listeners for selection and gestures.</div>
+        <div class="feature"><strong>Animations</strong>Animate along x, y or both with thirty easing curves, or animate zoom and scrolling.</div>
+        <div class="feature"><strong>Fast with big data</strong>Thirty thousand points on a line chart render smoothly thanks to buffered drawing and viewport culling.</div>
+        <div class="feature"><strong>Typed payloads</strong>Attach your own objects to entries and get them back typed from selections and lookups.</div>
+        <div class="feature"><strong>Documented API</strong>Every class, function and property carries documentation with units, defaults and side effects.</div>
+        <div class="feature"><strong>Save and share</strong>Render any chart to a bitmap or straight into the gallery.</div>
+      </div>
+    </section>
+
+    <section id="compose" class="wrap section">
+      <h2>Jetpack Compose, first class</h2>
+      <div class="split">
+        <div>
+          <p class="section-intro" style="margin-bottom:18px">Every chart type has a composable with the same name. Pass data as state, configure once in <code>setup</code>, and read selection and viewport back through <code>rememberChartState</code>. Markers are composables, previews work, and state survives configuration changes.</p>
+<pre><code><span class="k">val</span> state = rememberChartState()
+LaunchedEffect(lineData) { state.animateX(<span class="s">500</span>) }
+
+LineChart(
+    data = lineData,
+    modifier = Modifier.fillMaxWidth().height(<span class="s">300.dp</span>),
+    state = state,
+    marker = { entry, _ -> Text(<span class="s">"${entry.y}"</span>) },
+    setup = { axisRight.isEnabled = <span class="k">false</span> },
+)
+Text(<span class="s">"Selected: ${state.selectedEntry?.y}"</span>)</code></pre>
+        </div>
+        <div class="project-media phone">
+          <img src="assets/compose.png?v=2" alt="A line chart, a pie chart and a bar chart driven by Compose state" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="wrap section">
+      <h2>Documentation</h2>
+      <div class="cards">
+        <a class="card link" href="https://github.com/PhilJay/MPAndroidChart#readme"><h3>Quick start</h3><p>Install, put a chart in a layout or a composable, give it data. The README covers the whole path in a few minutes.</p><span class="more">Read the README</span></a>
+        <a class="card link" href="/mpandroidchart/docs/"><h3>Guides</h3><p>Thirty five chapters: axes, legends, formatters, highlighting, markers, animations, the viewport, theming, renderers, Compose and troubleshooting.</p><span class="more">Read the guides</span></a>
+        <a class="card link" href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/"><h3>API reference</h3><p>Every class, function and property with units, defaults, side effects and exceptions, generated from the source.</p><span class="more">Browse the API</span></a>
+        <a class="card link" href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0/javadoc/"><h3>Compose API</h3><p>The composables, the chart state and the interop helpers of the Compose module.</p><span class="more">Browse the Compose API</span></a>
+        <a class="card link" href="/mpandroidchart/docs/migration/"><h3>Migrating from 3.x</h3><p>Every change from the Java versions, from properties to typed entries, with before and after code.</p><span class="more">Read the migration guide</span></a>
+        <a class="card link" href="https://github.com/PhilJay/MPAndroidChart/tree/master/MPChartExample"><h3>Example app</h3><p>Thirty five screens with source, including the Design section shown above and a Compose screen.</p><span class="more">See the source</span></a>
+      </div>
+    </section>
+
+    <section id="start" class="wrap section">
+      <h2>Get started</h2>
+      <p class="section-intro">Add the JitPack repository and one dependency, put a chart in a layout or a composable, and give it data.</p>
+      <div class="cards two">
+        <div class="card">
+          <h3>1. Add the dependency</h3>
+<pre><code><span class="c">// settings.gradle.kts</span>
+dependencyResolutionManagement {
+    repositories {
+        maven(<span class="s">"https://jitpack.io"</span>)
+    }
+}
+
+<span class="c">// build.gradle.kts</span>
+dependencies {
+    implementation(<span class="s">"com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0"</span>)
+    implementation(<span class="s">"com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0"</span>)
+}</code></pre>
+        </div>
+        <div class="card">
+          <h3>2. Show a chart</h3>
+<pre><code><span class="k">val</span> entries = listOf(Entry(<span class="s">0f</span>, <span class="s">4f</span>), Entry(<span class="s">1f</span>, <span class="s">8f</span>), Entry(<span class="s">2f</span>, <span class="s">6f</span>))
+<span class="k">val</span> set = LineDataSet(entries, <span class="s">"Sales"</span>).apply {
+    color = Color.BLUE
+    lineWidth = <span class="s">2f</span>
+    mode = LineDataSet.Mode.CUBIC_BEZIER
+}
+chart.data = LineData(set)
+chart.animateX(<span class="s">500</span>)</code></pre>
+        </div>
+      </div>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="button primary" href="https://github.com/PhilJay/MPAndroidChart#readme">Read the README</a>
+        <a class="button" href="/mpandroidchart/docs/">All guides</a>
+      </div>
+      <p class="cta-note">Requires minSdk 23. Apache License 2.0. Questions go to <a href="https://stackoverflow.com/questions/tagged/mpandroidchart">Stack Overflow</a>, bugs to <a href="https://github.com/PhilJay/MPAndroidChart/issues">GitHub issues</a>.</p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+<script>
+  document.querySelectorAll('.toggle button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      document.querySelectorAll('.toggle button').forEach(function (b) { b.classList.remove('active'); });
+      button.classList.add('active');
+      document.querySelectorAll('#gallery img').forEach(function (img) {
+        img.src = 'assets/' + img.dataset.name + button.dataset.variant + '.png?v=2';
+      });
+    });
+  });
+</script>
+</body>
+</html>

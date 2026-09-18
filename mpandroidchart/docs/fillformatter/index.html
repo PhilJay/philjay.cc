@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The fill formatter · MPAndroidChart</title>
+  <meta name="description" content="How a line data set decides where its filled area ends, what the default does, and how to fill to zero, to an axis edge or to a value of your own.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/fillformatter/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="The fill formatter · MPAndroidChart">
+  <meta property="og:description" content="How a line data set decides where its filled area ends, what the default does, and how to fill to zero, to an axis edge or to a value of your own.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/fillformatter/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter" class="active"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Classes in depth <span>Chapter 24 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#turn-the-fill-on">Turn the fill on</a><a href="#what-the-default-does">What the default does</a><a href="#write-your-own">Write your own</a><a href="#fill-between-two-lines">Fill between two lines</a><a href="#line-charts-only">Line charts only</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>How a line data set decides where its filled area ends, what the default does, and how to fill to zero, to an axis edge or to a value of your own.</p>
+<p>A filled line chart shades the area between the line and something below or above it. <code>IFillFormatter</code> is what names that something: it returns one y value, in value space, and the fill runs from the line down or up to it.</p>
+<h2 id="turn-the-fill-on">Turn the fill on<a class="anchor" href="#turn-the-fill-on" aria-label="Link to this section">#</a></h2>
+<p>The fill is off by default. Three properties on a line data set control how it looks.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>).apply {
+    isDrawFilledEnabled = <span class="k">true</span>
+    fillColor = <span class="t">Color</span>.<span class="t">BLUE</span>
+    fillAlpha = <span class="n">85</span>          <span class="c">// 0 to 255, the default</span>
+}</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>isDrawFilledEnabled</code></td><td><code>false</code></td><td>whether the area is drawn at all</td></tr><tr><td><code>fillColor</code></td><td>light blue</td><td>the fill color; assigning it clears <code>fillDrawable</code></td></tr><tr><td><code>fillDrawable</code></td><td><code>null</code></td><td>a <code>Drawable</code>, usually a gradient; takes precedence over <code>fillColor</code></td></tr><tr><td><code>fillAlpha</code></td><td>85</td><td>opacity of <code>fillColor</code>, ignored when a drawable is used</td></tr><tr><td><code>fillFormatter</code></td><td><code>DefaultFillFormatter()</code></td><td>the y value the fill reaches</td></tr></tbody></table></div>
+<p>A gradient is the nicer option and is what the example app&#x27;s design charts use:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.fillDrawable = <span class="t">GradientDrawable</span>(
+    <span class="t">GradientDrawable</span>.<span class="t">Orientation</span>.<span class="t">TOP_BOTTOM</span>,
+    intArrayOf(<span class="t">Color</span>.argb(<span class="n">115</span>, <span class="n">92</span>, <span class="n">128</span>, <span class="n">255</span>), <span class="t">Color</span>.argb(<span class="n">0</span>, <span class="n">92</span>, <span class="n">128</span>, <span class="n">255</span>))
+)</code></pre>
+<h2 id="what-the-default-does">What the default does<a class="anchor" href="#what-the-default-does" aria-label="Link to this section">#</a></h2>
+<p><code>DefaultFillFormatter</code> is set on every <code>LineDataSet</code> unless you replace it. Its rule, in order:</p>
+<ol><li>If the data set itself has values above and below zero, the fill stops at <strong>zero</strong>, so the part above the axis fills down to it and the part below fills up to it.</li><li>Otherwise, a data set whose values are all at or above zero fills <strong>down</strong>: to zero when any line in the chart goes negative, and to the chart&#x27;s <code>yChartMin</code> when none does.</li><li>A data set whose values are all at or below zero fills <strong>up</strong>: to zero when any line in the chart goes positive, and to the chart&#x27;s <code>yChartMax</code> when none does.</li></ol>
+<p>With no line data at all it returns 0.</p>
+<p>The effect is that a normal positive series fills down to the bottom of the chart, a series that crosses zero fills to the zero line, and you rarely have to think about it.</p>
+<h2 id="write-your-own">Write your own<a class="anchor" href="#write-your-own" aria-label="Link to this section">#</a></h2>
+<p><code>IFillFormatter</code> is a <code>fun interface</code>, so a lambda is all it takes.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.fillFormatter = <span class="t">IFillFormatter</span> { _, _ -&gt; <span class="n">0f</span> }</code></pre>
+<p>That one always fills to the zero line, whatever the data does. The two parameters are the data set being drawn and the chart drawing it, so a formatter can look at either:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.fillFormatter = <span class="t">IFillFormatter</span> { dataSet, provider -&gt;
+    provider.getAxis(dataSet.axisDependency).axisMinimum
+}</code></pre>
+<p>This fills to the bottom edge of whichever y axis the data set belongs to, which is the most common custom choice: it keeps the shaded area anchored to the axis even when the data never comes near zero. The provider is a <code>LineDataProvider</code> and gives you <code>lineData</code>, <code>yChartMin</code>, <code>yChartMax</code> and <code>getAxis(axis)</code>.</p>
+<p>A formatter that answers with the data set&#x27;s own minimum shades only the band the series moves through:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.fillFormatter = <span class="t">IFillFormatter</span> { dataSet, _ -&gt; dataSet.yMin }</code></pre>
+<p>The formatter is asked once per filled path, not once per point, so it must not depend on which entry is being drawn.</p>
+<blockquote>The return value is a single y value, so the boundary of a fill is always a horizontal line. There is no way to fill along another curve.</blockquote>
+<h2 id="fill-between-two-lines">Fill between two lines<a class="anchor" href="#fill-between-two-lines" aria-label="Link to this section">#</a></h2>
+<p>Because the boundary is horizontal, a band between two series is drawn the other way round: color the background, then paint over the parts that should not be visible. The example app&#x27;s <code>FilledLineActivity</code> does exactly this.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawGridBackgroundEnabled = <span class="k">true</span>
+chart.gridBackgroundColor = <span class="t">Color</span>.argb(<span class="n">150</span>, <span class="n">51</span>, <span class="n">181</span>, <span class="n">229</span>)   <span class="c">// the band color</span>
+
+<span class="k">val</span> lower = <span class="t">LineDataSet</span>(lowerValues, <span class="s">&quot;Lower&quot;</span>).apply {
+    isDrawFilledEnabled = <span class="k">true</span>
+    isDrawCirclesEnabled = <span class="k">false</span>
+    fillColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+    fillAlpha = <span class="n">255</span>
+    fillFormatter = <span class="t">IFillFormatter</span> { _, _ -&gt; chart.axisLeft.axisMinimum }
+}
+
+<span class="k">val</span> upper = <span class="t">LineDataSet</span>(upperValues, <span class="s">&quot;Upper&quot;</span>).apply {
+    isDrawFilledEnabled = <span class="k">true</span>
+    isDrawCirclesEnabled = <span class="k">false</span>
+    fillColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+    fillAlpha = <span class="n">255</span>
+    fillFormatter = <span class="t">IFillFormatter</span> { _, _ -&gt; chart.axisLeft.axisMaximum }
+}
+
+chart.<span class="k">data</span> = <span class="t">LineData</span>(lower, upper)</code></pre>
+<p>The lower line fills down to the axis minimum and the upper line fills up to the axis maximum, both in the background color of the view. What is left uncovered is the strip between the two lines, showing the grid background through it. Fixed <code>axisMinimum</code> and <code>axisMaximum</code> values on the left axis keep the two fills from moving when the data changes.</p>
+<h2 id="line-charts-only">Line charts only<a class="anchor" href="#line-charts-only" aria-label="Link to this section">#</a></h2>
+<p>The fill properties come from <code>LineRadarDataSet</code>, so a <code>RadarDataSet</code> fills too, but the formatter does not apply to it: a radar area is always the polygon through its own points, and there is nothing to choose. <code>fillFormatter</code> exists on <code>LineDataSet</code> alone, and the line chart renderer is the only place it is read.</p>
+<p>Inside a line chart it applies to every drawing mode. <code>LINEAR</code> and <code>STEPPED</code> build the filled area from the segments, <code>CUBIC_BEZIER</code> and <code>HORIZONTAL_BEZIER</code> close the curve to the same y value. A chart with <code>isDrawFilledEnabled</code> on draws the area first and the line on top of it.</p>
+<p>While <code>animateY</code> is running, the entry values are scaled by the animation phase but the fill boundary is not, so the shaded area grows up from a boundary that stays where it will end.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/dataset-subclasses/">The DataSet subclasses</a> for the rest of what a <code>LineDataSet</code> can do.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for the value and axis label formatters.</li><li><a href="/mpandroidchart/docs/colors/">Colors</a> for gradients and color lists.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/viewporthandler/"><span>Previous</span>The ViewPortHandler</a><a class="next" href="/mpandroidchart/docs/custom-datasets/"><span>Next</span>Custom data sets</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

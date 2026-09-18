@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Highlighting values · MPAndroidChart</title>
+  <meta name="description" content="How a value gets selected, how to select one from code, what the resulting Highlight object holds, and how to style the indicator that marks it.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/highlighting/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Highlighting values · MPAndroidChart">
+  <meta property="og:description" content="How a value gets selected, how to select one from code, what the resulting Highlight object holds, and how to style the indicator that marks it.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/highlighting/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting" class="active"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Data <span>Chapter 8 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#what-a-highlight-is">What a highlight is</a><a href="#highlighting-by-touch">Highlighting by touch</a><a href="#highlighting-from-code">Highlighting from code</a><a href="#clearing-a-highlight">Clearing a highlight</a><a href="#reading-the-current-highlight">Reading the current highlight</a><a href="#the-highlight-class">The Highlight class</a><a href="#styling-the-indicator">Styling the indicator</a><a href="#whole-bars-and-stacked-values">Whole bars and stacked values</a><a href="#replacing-the-highlighter">Replacing the highlighter</a></nav>
+      <p>How a value gets selected, how to select one from code, what the resulting Highlight object holds, and how to style the indicator that marks it.</p>
+<h2 id="what-a-highlight-is">What a highlight is<a class="anchor" href="#what-a-highlight-is" aria-label="Link to this section">#</a></h2>
+<p>A highlight is one selected value. It is not stored on the entry: the chart keeps a list of <code>Highlight</code> objects that say which data set and which x value are selected. From that list the chart draws the highlight indicator, draws the <a href="/mpandroidchart/docs/markers/">marker</a>, and calls the value selected listener.</p>
+<p>A highlight appears in three ways: the user taps a value, the user drags across a chart that cannot pan, or your code calls <code>highlightValue(...)</code>.</p>
+<h2 id="highlighting-by-touch">Highlighting by touch<a class="anchor" href="#highlighting-by-touch" aria-label="Link to this section">#</a></h2>
+<p>Three properties decide what touch does.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>chart.isHighlightPerTapEnabled</code></td><td>A tap selects the nearest value</td><td><code>true</code></td></tr><tr><td><code>chart.isHighlightPerDragEnabled</code></td><td>Dragging moves the selection while the chart cannot pan</td><td><code>true</code></td></tr><tr><td><code>chart.maxHighlightDistance</code></td><td>Farthest distance in dp a touch may be from a value</td><td><code>500</code></td></tr></tbody></table></div>
+<p><code>isHighlightPerDragEnabled</code> only takes effect while the chart is fully zoomed out and has no drag offset, because otherwise the drag pans the content. It exists on the charts with axes; <code>isHighlightPerTapEnabled</code> exists on every chart type.</p>
+<p>A single data set can opt out entirely:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dataSet.isHighlightEnabled = <span class="k">false</span>   <span class="c">// touches never select a value of this set</span></code></pre>
+<blockquote><code>maxHighlightDistance</code> and <code>isHighlightEnabled</code> are read by the highlighters of the charts with axes. Pie and radar charts select whatever entry lies under the touch angle as long as the touch is inside the chart radius, so neither setting changes anything there.</blockquote>
+<p>Tapping the value that is already selected clears the selection.</p>
+<h2 id="highlighting-from-code">Highlighting from code<a class="anchor" href="#highlighting-from-code" aria-label="Link to this section">#</a></h2>
+<p>The overload you reach for most takes an x value and a data set index:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.highlightValue(<span class="n">9f</span>, <span class="n">0</span>)                      <span class="c">// entry at x = 9 in the first data set</span>
+chart.highlightValue(<span class="n">9f</span>, <span class="n">0</span>, callListener = <span class="k">false</span>)  <span class="c">// same, without notifying listeners</span></code></pre>
+<p>If several entries share that x value, pass the y value too and the nearest one is chosen:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.highlightValue(<span class="n">9f</span>, <span class="n">42f</span>, <span class="n">0</span>)</code></pre>
+<p>The full signatures are:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> highlightValue(
+    x: <span class="t">Float</span>,
+    dataSetIndex: <span class="t">Int</span>,
+    dataIndex: <span class="t">Int</span> = -<span class="n">1</span>,
+    stackIndex: <span class="t">Int</span> = -<span class="n">1</span>,
+    callListener: <span class="t">Boolean</span> = <span class="k">true</span>,
+)
+
+<span class="k">fun</span> highlightValue(
+    x: <span class="t">Float</span>,
+    y: <span class="t">Float</span>,
+    dataSetIndex: <span class="t">Int</span>,
+    dataIndex: <span class="t">Int</span> = -<span class="n">1</span>,
+    stackIndex: <span class="t">Int</span> = -<span class="n">1</span>,
+    callListener: <span class="t">Boolean</span> = <span class="k">true</span>,
+)
+<span class="k">fun</span> highlightValue(highlight: <span class="t">Highlight</span>?, callListener: <span class="t">Boolean</span> = <span class="k">true</span>)
+<span class="k">fun</span> highlightValues(highs: <span class="t">List</span>&lt;<span class="t">Highlight</span>&gt;)</code></pre>
+<p><code>stackIndex</code> picks one value inside a stacked bar entry; -1 means the whole bar. <code>dataIndex</code> is only for <code>CombinedChart</code> and names the data object inside the combined data, for example 0 for its line data and 1 for its bar data. A <code>dataSetIndex</code> that is outside the data clears the highlight instead of selecting something.</p>
+<p><code>highlightValues</code> sets several highlights at once. It takes the list as given, without checking that the entries exist, and never calls a listener.</p>
+<blockquote>Every <code>highlightValue</code> overload defaults <code>callListener</code> to <code>true</code>, so a selection made from code reaches your listener unless you pass <code>callListener = false</code>. <code>highlightValues</code> never calls a listener.</blockquote>
+<h2 id="clearing-a-highlight">Clearing a highlight<a class="anchor" href="#clearing-a-highlight" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.highlightValue(<span class="k">null</span>)                        <span class="c">// clear and call onNothingSelected</span>
+chart.highlightValue(<span class="k">null</span>, callListener = <span class="k">false</span>)  <span class="c">// clear without notifying</span>
+chart.highlightValues(emptyList())                <span class="c">// clear, never calls a listener</span></code></pre>
+<p><code>chart.clear()</code> removes the data and the highlight together.</p>
+<h2 id="reading-the-current-highlight">Reading the current highlight<a class="anchor" href="#reading-the-current-highlight" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> current: <span class="t">List</span>&lt;<span class="t">Highlight</span>&gt; = chart.highlighted
+
+<span class="k">if</span> (chart.valuesToHighlight()) {
+    <span class="k">val</span> h = current.first()
+    <span class="k">val</span> entry = chart.<span class="k">data</span>?.getEntryForHighlight(h)
+}</code></pre>
+<p><code>highlighted</code> is empty, never null, when nothing is selected.</p>
+<blockquote>In version 3.x <code>getHighlighted()</code> returned an array that could be null. It is a read-only <code>List</code> now, and an empty list means nothing is selected.</blockquote>
+<h2 id="the-highlight-class">The Highlight class<a class="anchor" href="#the-highlight-class" aria-label="Link to this section">#</a></h2>
+<p><code>Highlight</code> answers both questions: which value is selected, and where it sits on screen. Be aware which of its fields are in value space and which are in pixels.</p>
+<div class='table-wrap'><table><thead><tr><th>Field</th><th>Space</th><th>Meaning</th></tr></thead><tbody><tr><td><code>x</code></td><td>value</td><td>x value of the entry. On pie and radar charts this is the entry index</td></tr><tr><td><code>y</code></td><td>value</td><td>y value of the entry, <code>NaN</code> when the highlight was built from x alone</td></tr><tr><td><code>xPx</code>, <code>yPx</code></td><td>pixels</td><td>position of the entry, filled in by the highlighter from a touch</td></tr><tr><td><code>drawX</code>, <code>drawY</code></td><td>pixels</td><td>position where the indicator was last drawn, written by the renderer</td></tr><tr><td><code>dataSetIndex</code></td><td></td><td>index of the data set the entry belongs to</td></tr><tr><td><code>dataIndex</code></td><td></td><td>index of the data object in a <code>CombinedChart</code>, -1 otherwise</td></tr><tr><td><code>stackIndex</code></td><td></td><td>index inside a stacked bar entry, -1 when not stacked</td></tr><tr><td><code>axis</code></td><td></td><td>the y axis the entry is plotted against, null when unknown</td></tr><tr><td><code>isStacked</code></td><td></td><td>true when <code>stackIndex</code> is 0 or more</td></tr></tbody></table></div>
+<p>The marker is placed at <code>drawX</code> and <code>drawY</code>, not at <code>xPx</code> and <code>yPx</code>, because the renderer may shift the point, for instance to the top center of a bar or into a pie slice.</p>
+<p>You can build a <code>Highlight</code> yourself and pass it to the chart. The constructor that takes values needs the y value as well; pass <code>Float.NaN</code> to accept any y:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> highlight = <span class="t">Highlight</span>(<span class="n">50f</span>, <span class="t">Float</span>.<span class="t">NaN</span>, dataSetIndex = <span class="n">0</span>)
+chart.highlightValue(highlight, callListener = <span class="k">false</span>)</code></pre>
+<p>A stacked bar value has its own constructor:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> highlight = <span class="t">Highlight</span>(x = <span class="n">3f</span>, dataSetIndex = <span class="n">0</span>, stackIndex = <span class="n">1</span>)</code></pre>
+<p><code>h.equalTo(other)</code> compares the data set index, x value, stack index and data index, ignoring the y value and the pixel positions. The chart uses it to notice that you tapped the already selected value.</p>
+<blockquote>Version 3.x had a two argument constructor <code>Highlight(x, dataSetIndex)</code>. It is gone; pass the y value or <code>Float.NaN</code>.</blockquote>
+<h2 id="styling-the-indicator">Styling the indicator<a class="anchor" href="#styling-the-indicator" aria-label="Link to this section">#</a></h2>
+<p>The indicator is drawn per data set, so different series can look different.</p>
+<p>Line, scatter, candle and radar sets draw crosshair lines:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>highlightColor</code></td><td>Color of the lines</td><td>orange, <code>rgb(255, 187, 115)</code></td></tr><tr><td><code>highlightLineWidth</code></td><td>Line width in dp</td><td><code>0.5</code></td></tr><tr><td><code>isVerticalHighlightIndicatorEnabled</code></td><td>Draw the vertical line</td><td><code>true</code></td></tr><tr><td><code>isHorizontalHighlightIndicatorEnabled</code></td><td>Draw the horizontal line</td><td><code>true</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.highlightColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+set.highlightLineWidth = <span class="n">1f</span>
+set.isHorizontalHighlightIndicatorEnabled = <span class="k">false</span>
+set.enableDashedHighlightLine(<span class="n">8f</span>, <span class="n">8f</span>, <span class="n">0f</span>)   <span class="c">// dash length, gap, phase, in px</span></code></pre>
+<p><code>setDrawHighlightIndicators(false)</code> turns both lines off in one call, <code>disableDashedHighlightLine()</code> makes them solid again, and <code>isDashedHighlightLineEnabled</code> tells you which they are.</p>
+<p>A line data set can also mark the selected point with a ring:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.isDrawHighlightCircleEnabled = <span class="k">true</span>   <span class="c">// default false</span>
+set.highlightCircleRadius = <span class="n">6f</span>            <span class="c">// dp, default 5</span>
+set.circleHoleColor = cardBackground</code></pre>
+<p>The ring is drawn in the line color with a soft halo behind it in <code>highlightColor</code> and a center in <code>circleHoleColor</code>. This is what the Nightfall design charts in the example app use together with a dashed vertical line.</p>
+<p>Bar, pie and radar sets style the selection differently:</p>
+<div class='table-wrap'><table><thead><tr><th>Set</th><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>BarDataSet</code></td><td><code>highlightColor</code></td><td>Color of the overlay drawn over the bar</td><td>black</td></tr><tr><td><code>BarDataSet</code></td><td><code>highlightAlpha</code></td><td>Opacity of that overlay, 0 to 255</td><td><code>120</code></td></tr><tr><td><code>PieDataSet</code></td><td><code>highlightColor</code></td><td>Color of the selected slice, null keeps the slice color</td><td><code>null</code></td></tr><tr><td><code>PieDataSet</code></td><td><code>selectionShift</code></td><td>How far in dp the slice moves outwards</td><td><code>9</code></td></tr><tr><td><code>RadarDataSet</code></td><td><code>isDrawHighlightCircleEnabled</code></td><td>Draw a ring at the selected entry</td><td><code>false</code></td></tr><tr><td><code>RadarDataSet</code></td><td><code>highlightCircleInnerRadius</code></td><td>Inner radius in dp</td><td><code>3</code></td></tr><tr><td><code>RadarDataSet</code></td><td><code>highlightCircleOuterRadius</code></td><td>Outer radius in dp</td><td><code>4</code></td></tr><tr><td><code>RadarDataSet</code></td><td><code>highlightCircleFillColor</code></td><td>Fill of the ring</td><td>white</td></tr><tr><td><code>RadarDataSet</code></td><td><code>highlightCircleStrokeColor</code></td><td>Stroke of the ring, <code>COLOR_NONE</code> uses the set color</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>RadarDataSet</code></td><td><code>highlightCircleStrokeWidth</code></td><td>Stroke width in dp</td><td><code>2</code></td></tr><tr><td><code>RadarDataSet</code></td><td><code>highlightCircleStrokeAlpha</code></td><td>Stroke opacity, 0 to 255</td><td><code>76</code></td></tr></tbody></table></div>
+<p>Setting <code>highlightAlpha</code> to 0 hides the bar overlay, which is useful when a marker already shows the selection.</p>
+<h2 id="whole-bars-and-stacked-values">Whole bars and stacked values<a class="anchor" href="#whole-bars-and-stacked-values" aria-label="Link to this section">#</a></h2>
+<p>By default a tap on a stacked bar selects the one value you hit, and <code>Highlight.stackIndex</code> says which. Turn that off to select the whole bar:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>barChart.isHighlightFullBarEnabled = <span class="k">true</span></code></pre>
+<p>The highlight then comes back with <code>stackIndex</code> -1 and the indicator covers the full bar. The default is <code>false</code> on <code>BarChart</code> and <code>true</code> on <code>CombinedChart</code>, where a bar usually sits behind other series.</p>
+<h2 id="replacing-the-highlighter">Replacing the highlighter<a class="anchor" href="#replacing-the-highlighter" aria-label="Link to this section">#</a></h2>
+<p>The chart turns a touch position into a <code>Highlight</code> through its highlighter. It is a functional interface with one method, so a lambda is enough for small changes:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> nearest = <span class="t">ChartHighlighter</span>(chart)
+
+chart.highlighter = <span class="t">IHighlighter</span> { x, y -&gt;
+    <span class="c">// return a Highlight, or null for no selection</span>
+    nearest.getHighlight(x, y)?.takeIf { it.dataSetIndex == <span class="n">0</span> }
+}</code></pre>
+<p>The bundled implementations are <code>ChartHighlighter</code> for the charts with axes, <code>BarHighlighter</code> and <code>HorizontalBarHighlighter</code> for bars, <code>CombinedHighlighter</code>, <code>PieHighlighter</code> and <code>RadarHighlighter</code>. Extend the one that matches your chart when you want to keep most of its behaviour.</p>
+<blockquote>In version 3.x a custom highlighter had to extend <code>ChartHighlighter</code>. It only has to implement <code>IHighlighter</code> now.</blockquote>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/formatters/"><span>Previous</span>Formatting values</a><a class="next" href="/mpandroidchart/docs/general-styling/"><span>Next</span>General styling</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

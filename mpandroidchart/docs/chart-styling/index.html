@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chart specific styling · MPAndroidChart</title>
+  <meta name="description" content="What each chart type adds on top of the settings all charts share, from bar shadows and the pie hole to the web of a radar chart and the draw order of a combined chart.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/chart-styling/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Chart specific styling · MPAndroidChart">
+  <meta property="og:description" content="What each chart type adds on top of the settings all charts share, from bar shadows and the pie hole to the web of a radar chart and the draw order of a combined chart.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/chart-styling/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling" class="active"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Styling <span>Chapter 10 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#shared-by-the-charts-with-an-x-axis">Shared by the charts with an x axis</a><a href="#barchart">BarChart</a><a href="#horizontalbarchart">HorizontalBarChart</a><a href="#linechart">LineChart</a><a href="#piechart">PieChart</a><a href="#radarchart">RadarChart</a><a href="#scatterchart">ScatterChart</a><a href="#candlestickchart">CandleStickChart</a><a href="#bubblechart">BubbleChart</a><a href="#combinedchart">CombinedChart</a></nav>
+      <p>What each chart type adds on top of the settings all charts share, from bar shadows and the pie hole to the web of a radar chart and the draw order of a combined chart.</p>
+<p>Everything below is set on the chart view. Colors, line widths and shapes belong to the data set instead, see <a href="/mpandroidchart/docs/dataset-subclasses/">DataSet subclasses</a>.</p>
+<h2 id="shared-by-the-charts-with-an-x-axis">Shared by the charts with an x axis<a class="anchor" href="#shared-by-the-charts-with-an-x-axis" aria-label="Link to this section">#</a></h2>
+<p><code>LineChart</code>, <code>BarChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code> and <code>CombinedChart</code> all extend <code>BarLineChartBase</code> and share two settings that the round charts do not have.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isAutoScaleMinMaxEnabled = <span class="k">true</span>
+chart.isKeepPositionOnRotation = <span class="k">true</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isAutoScaleMinMaxEnabled</code></td><td>Recalculate both y axes on every draw from the entries currently in view. Useful for price charts, where a zoomed range would otherwise look flat</td><td><code>false</code></td></tr><tr><td><code>isKeepPositionOnRotation</code></td><td>Keep the top left corner on the same values when the view is resized, for example on a device rotation</td><td><code>false</code></td></tr></tbody></table></div>
+<p>The zoom, drag and axis settings they share are covered in <a href="/mpandroidchart/docs/interaction/">Interaction with the chart</a> and <a href="/mpandroidchart/docs/axis/">The axis</a>.</p>
+<h2 id="barchart">BarChart<a class="anchor" href="#barchart" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawBarShadowEnabled = <span class="k">true</span>
+chart.isDrawValueAboveBarEnabled = <span class="k">true</span>
+chart.isFitBarsEnabled = <span class="k">true</span>
+chart.isHighlightFullBarEnabled = <span class="k">false</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isDrawBarShadowEnabled</code></td><td>Draw a grey column behind each bar over the full height of the content area. It costs a lot of drawing time</td><td><code>false</code></td></tr><tr><td><code>isDrawValueAboveBarEnabled</code></td><td>Put the value label above the top of the bar instead of inside it</td><td><code>true</code></td></tr><tr><td><code>isFitBarsEnabled</code></td><td>Widen the x axis by half a bar width on each side so the first and last bar are fully visible</td><td><code>false</code></td></tr><tr><td><code>isHighlightFullBarEnabled</code></td><td>A tap highlights the whole stacked bar instead of the single stack value under the finger</td><td><code>false</code></td></tr></tbody></table></div>
+<p><code>isFitBarsEnabled</code> takes effect on the next <code>notifyDataSetChanged()</code>. The shadow color comes from the data set, <code>set.barShadowColor</code>.</p>
+<p>Bars of several data sets are placed side by side with <code>groupBars</code>, which also changes the bar width and the x values of the entries and refreshes the chart:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.groupBars(fromX = <span class="n">0f</span>, groupSpace = <span class="n">0.3f</span>, barSpace = <span class="n">0.05f</span>)</code></pre>
+<p><code>chart.getBarBounds(entry)</code> gives you the pixel rectangle a bar is drawn in, which is what you need to place a view or a tooltip over it. The overload taking a <code>RectF</code> avoids the allocation in hot code.</p>
+<h2 id="horizontalbarchart">HorizontalBarChart<a class="anchor" href="#horizontalbarchart" aria-label="Link to this section">#</a></h2>
+<p><code>HorizontalBarChart</code> is a <code>BarChart</code> with the bars lying on their side, so everything in the section above applies unchanged. What changes is where the axes end up on screen.</p>
+<ul><li>The x axis runs down the left or right edge and labels the bars.</li><li>The two y axes run along the top and the bottom and carry the values, <code>axisLeft</code> at the top and <code>axisRight</code> at the bottom.</li><li><code>XAxis.XAxisPosition.BOTTOM</code> puts the bar labels on the left, <code>TOP</code> on the right and <code>BOTH_SIDED</code> on both.</li><li><code>isDrawValueAboveBarEnabled</code> places the value label past the end of the bar rather than above it.</li></ul>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.position = <span class="t">XAxis</span>.<span class="t">XAxisPosition</span>.<span class="t">BOTTOM</span>
+chart.axisRight.isEnabled = <span class="k">false</span>
+chart.setExtraOffsets(<span class="n">0f</span>, <span class="n">0f</span>, <span class="n">24f</span>, <span class="n">0f</span>)   <span class="c">// room for the value labels</span></code></pre>
+<p>The visible range functions and the touch helpers already account for the swap, so you keep passing x for entries and y for values.</p>
+<h2 id="linechart">LineChart<a class="anchor" href="#linechart" aria-label="Link to this section">#</a></h2>
+<p><code>LineChart</code> adds no styling of its own. The look of a line is entirely on <code>LineDataSet</code>: the line <code>mode</code> including cubic and stepped, <code>cubicIntensity</code>, <code>lineWidth</code>, the circles, dashes, the fill and the highlight indicators.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>).apply {
+    mode = <span class="t">LineDataSet</span>.<span class="t">Mode</span>.<span class="t">CUBIC_BEZIER</span>
+    cubicIntensity = <span class="n">0.18f</span>
+    lineWidth = <span class="n">3f</span>
+    isDrawCirclesEnabled = <span class="k">false</span>
+    isDrawFilledEnabled = <span class="k">true</span>
+}</code></pre>
+<p>The one thing worth knowing at chart level is that cubic and dashed lines draw through a cached bitmap the size of the chart, which the chart releases when the view is detached. Straight and stepped lines go onto the chart canvas directly.</p>
+<h2 id="piechart">PieChart<a class="anchor" href="#piechart" aria-label="Link to this section">#</a></h2>
+<p>The pie is the chart type with the most of its own settings, because the hole, the center text and the slice labels have nowhere else to live.</p>
+<h3 id="the-hole-and-the-ring">The hole and the ring<a class="anchor" href="#the-hole-and-the-ring" aria-label="Link to this section">#</a></h3>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawHoleEnabled = <span class="k">true</span>
+chart.holeRadius = <span class="n">58f</span>
+chart.holeColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+chart.transparentCircleRadius = <span class="n">61f</span>
+chart.transparentCircleColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+chart.transparentCircleAlpha = <span class="n">110</span></code></pre>
+<p>Both radii are percentages of the pie radius, not pixels. The translucent ring sits around the hole and is only drawn while its radius is larger than the hole radius, so <code>transparentCircleRadius = 0f</code> removes it. <code>isDrawSlicesUnderHoleEnabled</code> lets the slices continue underneath the hole instead of stopping at its edge.</p>
+<h3 id="the-center-text">The center text<a class="anchor" href="#the-center-text" aria-label="Link to this section">#</a></h3>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawCenterTextEnabled = <span class="k">true</span>
+chart.centerText = <span class="s">&quot;Total\n1,204&quot;</span>
+chart.centerTextColor = <span class="t">Color</span>.<span class="t">BLACK</span>
+chart.centerTextSize = <span class="n">12f</span>
+chart.centerTextTypeface = typeface
+chart.centerTextRadiusPercent = <span class="n">100f</span>
+chart.setCenterTextOffset(<span class="n">0f</span>, -<span class="n">20f</span>)</code></pre>
+<p><code>centerText</code> is a <code>CharSequence</code>, so a <code>SpannableString</code> lets you style parts of it. It wraps inside a box whose width is <code>centerTextRadiusPercent</code> of the hole diameter, so lowering it makes the text wrap earlier and stay clear of the slices. The offset shifts the text away from the center in dp, positive to the right and downwards, which is what a half pie needs.</p>
+<h3 id="slice-labels-and-shape">Slice labels and shape<a class="anchor" href="#slice-labels-and-shape" aria-label="Link to this section">#</a></h3>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawEntryLabelsEnabled = <span class="k">true</span>
+chart.entryLabelColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+chart.entryLabelTextSize = <span class="n">12f</span>
+chart.entryLabelTypeface = typeface
+
+chart.isUsePercentValuesEnabled = <span class="k">true</span>
+chart.isDrawRoundedSlicesEnabled = <span class="k">true</span></code></pre>
+<p>The entry label is the <code>label</code> of each <code>PieEntry</code>. <code>isUsePercentValuesEnabled</code> hands the value formatter a share of the total instead of the raw value, so the labels read as percentages.</p>
+<p>Rounded slices need the hole drawn and <code>isDrawSlicesUnderHoleEnabled</code> off. While they are on, a highlighted slice is not redrawn at all, so it gets neither the outward shift nor the highlight color.</p>
+<h3 id="angles-and-rotation">Angles and rotation<a class="anchor" href="#angles-and-rotation" aria-label="Link to this section">#</a></h3>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.maxAngle = <span class="n">180f</span>
+chart.rotationAngle = <span class="n">180f</span>
+chart.minAngleForSlices = <span class="n">8f</span>
+chart.isRotationEnabled = <span class="k">false</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>maxAngle</code></td><td>Degrees the whole pie spans, clamped to 90 until 360. 180 gives a half pie</td><td><code>360</code></td></tr><tr><td><code>rotationAngle</code></td><td>Degrees at which the first slice starts, 0 at 3 o&#x27;clock, increasing clockwise</td><td><code>270</code></td></tr><tr><td><code>minAngleForSlices</code></td><td>Smallest angle a slice is drawn with, clamped to 0 until half of <code>maxAngle</code></td><td><code>0</code></td></tr><tr><td><code>isRotationEnabled</code></td><td>Whether dragging turns the pie</td><td><code>true</code></td></tr></tbody></table></div>
+<p>A minimum angle is only applied when every slice still fits at that size, and it takes effect on the next <code>notifyDataSetChanged()</code>.</p>
+<h2 id="radarchart">RadarChart<a class="anchor" href="#radarchart" aria-label="Link to this section">#</a></h2>
+<p>A radar chart draws each entry on its own spoke and joins the entries of a data set into a polygon. The spokes and the rings between them are the web.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawWebEnabled = <span class="k">true</span>
+chart.webLineWidth = <span class="n">1f</span>
+chart.webColor = <span class="t">Color</span>.<span class="t">LTGRAY</span>
+chart.webLineWidthInner = <span class="n">1f</span>
+chart.webColorInner = <span class="t">Color</span>.<span class="t">LTGRAY</span>
+chart.webAlpha = <span class="n">100</span>
+chart.skipWebLineCount = <span class="n">1</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>webLineWidth</code></td><td>Width in dp of the lines running from the center outwards</td><td><code>1.5</code></td></tr><tr><td><code>webLineWidthInner</code></td><td>Width in dp of the rings between the spokes</td><td><code>0.75</code></td></tr><tr><td><code>webColor</code></td><td>Color of the spokes</td><td>grey</td></tr><tr><td><code>webColorInner</code></td><td>Color of the rings</td><td>grey</td></tr><tr><td><code>webAlpha</code></td><td>Opacity of all web lines from 0 to 255</td><td><code>150</code></td></tr><tr><td><code>skipWebLineCount</code></td><td>Spokes and their labels left out between two drawn ones. Negative values become 0</td><td><code>0</code></td></tr><tr><td><code>isDrawWebEnabled</code></td><td>Whether the web is drawn at all</td><td><code>true</code></td></tr></tbody></table></div>
+<p>The chart has a single y axis, reached as <code>chart.yAxis</code>, which scales the distance from the center. The x axis labels the spokes.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.yAxis.apply {
+    axisMinimum = <span class="n">0f</span>
+    axisMaximum = <span class="n">80f</span>
+    labelCount = <span class="n">5</span>
+    isDrawLabelsEnabled = <span class="k">false</span>
+}
+
+chart.xAxis.valueFormatter = <span class="t">IAxisValueFormatter</span> { v, _ -&gt; activities[v.toInt()] }</code></pre>
+<p>Rotation works like on the pie chart: <code>rotationAngle</code> decides where the first spoke sits and <code>isRotationEnabled</code> decides whether dragging turns the web.</p>
+<h2 id="scatterchart">ScatterChart<a class="anchor" href="#scatterchart" aria-label="Link to this section">#</a></h2>
+<p>The chart adds only the shape catalogue. Which shape is used, how big it is and whether it has a hole is set per data set.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">ScatterDataSet</span>(entries, <span class="s">&quot;Batch A&quot;</span>).apply {
+    setScatterShape(<span class="t">ScatterChart</span>.<span class="t">ScatterShape</span>.<span class="t">TRIANGLE</span>)
+    scatterShapeSize = <span class="n">12f</span>
+    scatterShapeHoleRadius = <span class="n">3f</span>
+    scatterShapeHoleColor = <span class="t">Color</span>.<span class="t">WHITE</span>
+}</code></pre>
+<p><code>ScatterShape</code> covers <code>SQUARE</code>, <code>CIRCLE</code>, <code>TRIANGLE</code>, <code>CROSS</code>, <code>X</code>, <code>CHEVRON_UP</code> and <code>CHEVRON_DOWN</code>. Squares and circles draw fastest, triangles slowest. For anything else, assign your own <code>set.shapeRenderer</code>, see <a href="/mpandroidchart/docs/custom-datasets/">Custom data sets</a>.</p>
+<h2 id="candlestickchart">CandleStickChart<a class="anchor" href="#candlestickchart" aria-label="Link to this section">#</a></h2>
+<p>The chart adds nothing beyond the shared x and y chart settings. Candles are styled entirely on <code>CandleDataSet</code>: the body colors for rising and falling candles, the shadow color and width, whether the body is filled and how wide the bar space is.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">CandleDataSet</span>(entries, <span class="s">&quot;Price&quot;</span>).apply {
+    shadowColor = <span class="t">Color</span>.<span class="t">DKGRAY</span>
+    shadowWidth = <span class="n">0.7f</span>
+    decreasingColor = <span class="t">Color</span>.<span class="t">RED</span>
+    decreasingPaintStyle = <span class="t">Paint</span>.<span class="t">Style</span>.<span class="t">FILL</span>
+    increasingColor = <span class="t">Color</span>.rgb(<span class="n">122</span>, <span class="n">242</span>, <span class="n">84</span>)
+    increasingPaintStyle = <span class="t">Paint</span>.<span class="t">Style</span>.<span class="t">STROKE</span>
+    neutralColor = <span class="t">Color</span>.<span class="t">BLUE</span>
+}</code></pre>
+<p>Once a candle set has a <code>decreasingColor</code>, its legend shows two forms, one in the decreasing and one in the increasing color, sharing the set label.</p>
+<h2 id="bubblechart">BubbleChart<a class="anchor" href="#bubblechart" aria-label="Link to this section">#</a></h2>
+<p>The bubble chart also adds nothing of its own. The area of a bubble, not its radius, represents the size carried by each <code>BubbleEntry</code>, and the scaling is on the data set.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">BubbleDataSet</span>(entries, <span class="s">&quot;Volume&quot;</span>).apply {
+    isNormalizeSizeEnabled = <span class="k">true</span>
+    highlightCircleWidth = <span class="n">1.5f</span>
+}</code></pre>
+<h2 id="combinedchart">CombinedChart<a class="anchor" href="#combinedchart" aria-label="Link to this section">#</a></h2>
+<p>A combined chart draws line, bar, scatter, candle and bubble data from one <code>CombinedData</code> in the same content area.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.drawOrder = listOf(
+    <span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">BAR</span>,
+    <span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">BUBBLE</span>,
+    <span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">CANDLE</span>,
+    <span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">LINE</span>,
+    <span class="t">CombinedChart</span>.<span class="t">DrawOrder</span>.<span class="t">SCATTER</span>,
+)
+chart.isHighlightFullBarEnabled = <span class="k">false</span>
+chart.isDrawValueAboveBarEnabled = <span class="k">true</span>
+chart.isDrawBarShadowEnabled = <span class="k">false</span></code></pre>
+<p><code>drawOrder</code> decides which kind is drawn first and therefore ends up at the back. The default order is bar, bubble, line, candle, scatter. An empty list is ignored.</p>
+<p>The three bar properties are the same ones the <code>BarChart</code> has, except that <code>isHighlightFullBarEnabled</code> defaults to <code>true</code> here.</p>
+<p>Assigning <code>chart.data</code> rebuilds the highlighter and creates one sub renderer per data kind the data actually holds, in the current draw order. You can reach them to change how one kind is drawn:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> combined = chart.renderer <span class="k">as</span> <span class="t">CombinedChartRenderer</span>
+combined.subRenderers[<span class="n">0</span>] = <span class="t">MyBarRenderer</span>(chart, chart.animator, chart.viewPortHandler)</code></pre>
+<blockquote>Changing <code>drawOrder</code> after the data is set does not rebuild the sub renderers on its own. Call <code>createRenderers()</code> on the <code>CombinedChartRenderer</code>, or assign the data again.</blockquote>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/general-styling/"><span>Previous</span>General styling</a><a class="next" href="/mpandroidchart/docs/legend/"><span>Next</span>The legend</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

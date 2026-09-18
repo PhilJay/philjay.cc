@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formatting values · MPAndroidChart</title>
+  <meta name="description" content="How to control the text of the values drawn next to the entries and of the labels on the axes.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/formatters/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Formatting values · MPAndroidChart">
+  <meta property="og:description" content="How to control the text of the values drawn next to the entries and of the labels on the axes.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/formatters/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters" class="active"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Data <span>Chapter 7 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-two-interfaces">The two interfaces</a><a href="#where-to-set-them">Where to set them</a><a href="#what-happens-when-you-set-nothing">What happens when you set nothing</a><a href="#the-built-in-formatters">The built in formatters</a><a href="#writing-your-own">Writing your own</a><a href="#one-more-formatter">One more formatter</a><a href="#next">Next</a></nav>
+      <p>How to control the text of the values drawn next to the entries and of the labels on the axes.</p>
+<p>Two small interfaces do all of it. Both are <code>fun interface</code>s with non-null parameters, so a lambda is usually the whole implementation.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt; <span class="s">&quot;${value.toInt()} €&quot;</span> }
+barDataSet.valueFormatter = <span class="t">IValueFormatter</span> { v, _, _, _ -&gt; <span class="s">&quot;${v.roundToInt()}%&quot;</span> }</code></pre>
+<h2 id="the-two-interfaces">The two interfaces<a class="anchor" href="#the-two-interfaces" aria-label="Link to this section">#</a></h2>
+<p><code>IValueFormatter</code> formats the values drawn inside the chart, next to each entry. It gets the entry and its data set index, so it can look at more than the number:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> getFormattedValue(
+    value: <span class="t">Float</span>,
+    entry: <span class="t">Entry</span>&lt;*&gt;,
+    dataSetIndex: <span class="t">Int</span>,
+    viewPortHandler: <span class="t">ViewPortHandler</span>,
+): <span class="t">String</span></code></pre>
+<p><code>IAxisValueFormatter</code> formats axis labels. It gets the axis, which carries the current range and the computed decimals:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> getFormattedValue(value: <span class="t">Float</span>, axis: <span class="t">AxisBase</span>): <span class="t">String</span></code></pre>
+<blockquote>Version 3 had a single <code>ValueFormatter</code> class with one overridable method per chart type. Version 4 is back to these two interfaces, and every argument is non-null, so there is nothing to null check.</blockquote>
+<p>Both run for every drawn value on every frame. Build your <code>DecimalFormat</code>, <code>SimpleDateFormat</code> or label list once, outside the function, and keep the body free of allocations.</p>
+<h2 id="where-to-set-them">Where to set them<a class="anchor" href="#where-to-set-them" aria-label="Link to this section">#</a></h2>
+<div class='table-wrap'><table><thead><tr><th>Target</th><th>How</th><th>Applies to</th></tr></thead><tbody><tr><td>One data set</td><td><code>set.valueFormatter = ...</code></td><td>the values of that series</td></tr><tr><td>All sets of a chart</td><td><code>data.setValueFormatter(...)</code></td><td>every set in the data object</td></tr><tr><td>One axis</td><td><code>chart.xAxis.valueFormatter = ...</code></td><td>that axis&#x27; labels</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> <span class="k">data</span> = <span class="t">LineData</span>(revenue, costs)
+<span class="k">data</span>.setValueFormatter(<span class="t">MyValueFormatter</span>())
+chart.<span class="k">data</span> = <span class="k">data</span></code></pre>
+<p><code>setValueFormatter</code> on the data object is a function that walks the sets it holds right now, so call it after you have added all of them.</p>
+<p>Values are only drawn when the set asks for them:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>lineDataSet.isDrawValuesEnabled = <span class="k">true</span></code></pre>
+<h2 id="what-happens-when-you-set-nothing">What happens when you set nothing<a class="anchor" href="#what-happens-when-you-set-nothing" aria-label="Link to this section">#</a></h2>
+<p>Assigning <code>chart.data</code> sizes a <code>DefaultValueFormatter</code> from the y range of the data and hands it to every set that has no formatter of its own. Small numbers get decimal digits and large ones do not, without you doing anything.</p>
+<p>An axis behaves the same way: while no formatter is assigned it returns a <code>DefaultAxisValueFormatter</code> built from its computed <code>decimals</code>, which follow the label interval.</p>
+<h2 id="the-built-in-formatters">The built in formatters<a class="anchor" href="#the-built-in-formatters" aria-label="Link to this section">#</a></h2>
+<div class='table-wrap'><table><thead><tr><th>Class</th><th>Result</th><th>Usable as</th></tr></thead><tbody><tr><td><code>DefaultValueFormatter(digits)</code></td><td><code>1,234.50</code></td><td>value formatter</td></tr><tr><td><code>DefaultAxisValueFormatter(digits)</code></td><td><code>1,234.50</code></td><td>axis formatter</td></tr><tr><td><code>IndexAxisValueFormatter(values)</code></td><td>one fixed label per whole x value</td><td>axis formatter</td></tr><tr><td><code>LargeValueFormatter(appendix)</code></td><td><code>102k</code>, <code>7.8m</code>, <code>1b</code></td><td>both</td></tr><tr><td><code>PercentFormatter(format)</code></td><td><code>12.5 %</code></td><td>both</td></tr><tr><td><code>StackedValueFormatter(...)</code></td><td>one label per stack, or one per bar</td><td>value formatter</td></tr></tbody></table></div>
+<h3 id="indexaxisvalueformatter">IndexAxisValueFormatter<a class="anchor" href="#indexaxisvalueformatter" aria-label="Link to this section">#</a></h3>
+<p>The one you reach for on the x axis when your entries sit at x = 0, 1, 2 and each needs a name.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> months = listOf(<span class="s">&quot;Jan&quot;</span>, <span class="s">&quot;Feb&quot;</span>, <span class="s">&quot;Mar&quot;</span>, <span class="s">&quot;Apr&quot;</span>, <span class="s">&quot;May&quot;</span>, <span class="s">&quot;Jun&quot;</span>)
+
+chart.xAxis.apply {
+    valueFormatter = <span class="t">IndexAxisValueFormatter</span>(months)
+    granularity = <span class="n">1f</span>
+}</code></pre>
+<p>It rounds the axis value and returns the label at that index. Two cases give an empty string instead: an index outside the list, and a value whose fraction is 0.5 or more. In other words the label of index <code>n</code> appears for values from <code>n</code> up to, but not including, <code>n + 0.5</code>. That is why the granularity of 1 belongs with it. Without it, zooming in produces values like 2.5 and 2.75, and the labels simply vanish.</p>
+<p>The list can be swapped later through the <code>values</code> property, without building a new formatter.</p>
+<h3 id="largevalueformatter">LargeValueFormatter<a class="anchor" href="#largevalueformatter" aria-label="Link to this section">#</a></h3>
+<p>Shortens numbers with a suffix per power of one thousand: <code>&quot;&quot;</code>, <code>k</code>, <code>m</code>, <code>b</code>, <code>t</code>.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.valueFormatter = <span class="t">LargeValueFormatter</span>()</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Input</th><th>Output</th></tr></thead><tbody><tr><td>856</td><td><code>856</code></td></tr><tr><td>5821</td><td><code>5.8k</code></td></tr><tr><td>101800</td><td><code>102k</code></td></tr><tr><td>7800000</td><td><code>7.8m</code></td></tr><tr><td>1000000000</td><td><code>1b</code></td></tr></tbody></table></div>
+<p><code>appendix</code> adds a unit after the number and <code>suffix</code> replaces the five strings. A scaled value of 100 or more is printed without decimals, below that with one, so 5821 reads <code>5.8k</code> and 101800 reads <code>102k</code>. It is built for numbers of 1 and above: anything under 0.05 comes out as <code>0</code>.</p>
+<h3 id="percentformatter">PercentFormatter<a class="anchor" href="#percentformatter" aria-label="Link to this section">#</a></h3>
+<p>Appends a percent sign, with one decimal digit unless you pass your own <code>DecimalFormat</code>.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>pieDataSet.valueFormatter = <span class="t">PercentFormatter</span>()
+pieChart.isUsePercentValuesEnabled = <span class="k">true</span></code></pre>
+<p>The pie chart setting matters: without it the formatter puts a percent sign after the raw value.</p>
+<h3 id="stackedvalueformatter">StackedValueFormatter<a class="anchor" href="#stackedvalueformatter" aria-label="Link to this section">#</a></h3>
+<p>For stacked bars, where you either label every stack value or only the total.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>barData.setValueFormatter(<span class="t">StackedValueFormatter</span>(<span class="k">false</span>, <span class="s">&quot; €&quot;</span>, <span class="n">0</span>))</code></pre>
+<p>With <code>false</code> the total is drawn once, at the topmost stack value of each bar, and the other stack values come back empty. With <code>true</code> every stack value gets its own label.</p>
+<h2 id="writing-your-own">Writing your own<a class="anchor" href="#writing-your-own" aria-label="Link to this section">#</a></h2>
+<h3 id="a-currency">A currency<a class="anchor" href="#a-currency" aria-label="Link to this section">#</a></h3>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">private</span> <span class="k">val</span> currency = <span class="t">DecimalFormat</span>(<span class="s">&quot;###,###,##0.00&quot;</span>)
+
+chart.axisLeft.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt;
+    currency.format(value.toDouble()) + <span class="s">&quot; €&quot;</span>
+}</code></pre>
+<h3 id="a-percentage-on-a-bar-chart">A percentage on a bar chart<a class="anchor" href="#a-percentage-on-a-bar-chart" aria-label="Link to this section">#</a></h3>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>barDataSet.valueFormatter = <span class="t">IValueFormatter</span> { value, _, _, _ -&gt;
+    <span class="s">&quot;${value.roundToInt()}%&quot;</span>
+}</code></pre>
+<h3 id="month-names-from-a-timestamp">Month names from a timestamp<a class="anchor" href="#month-names-from-a-timestamp" aria-label="Link to this section">#</a></h3>
+<p>Keep the x value a number and turn it into text in the formatter. Nothing is stored twice this way, and zooming keeps working.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">private</span> <span class="k">val</span> month = <span class="t">SimpleDateFormat</span>(<span class="s">&quot;MMM&quot;</span>, <span class="t">Locale</span>.getDefault())
+
+chart.xAxis.apply {
+    granularity = <span class="n">1f</span>
+    valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt;
+        month.format(<span class="t">Date</span>(<span class="t">TimeUnit</span>.<span class="t">DAYS</span>.toMillis(value.toLong())))
+    }
+}</code></pre>
+<p>An axis formatter can also look at the axis it is given, for example to write shorter labels once the visible range gets wide:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">private</span> <span class="k">val</span> day = <span class="t">SimpleDateFormat</span>(<span class="s">&quot;d MMM&quot;</span>, <span class="t">Locale</span>.getDefault())
+<span class="k">private</span> <span class="k">val</span> month = <span class="t">SimpleDateFormat</span>(<span class="s">&quot;MMM yyyy&quot;</span>, <span class="t">Locale</span>.getDefault())
+
+chart.xAxis.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, axis -&gt;
+    <span class="k">val</span> date = <span class="t">Date</span>(<span class="t">TimeUnit</span>.<span class="t">DAYS</span>.toMillis(value.toLong()))
+    <span class="k">if</span> (axis.axisRange &gt; <span class="n">180f</span>) month.format(date) <span class="k">else</span> day.format(date)
+}</code></pre>
+<h3 id="reading-the-entry-payload">Reading the entry payload<a class="anchor" href="#reading-the-entry-payload" aria-label="Link to this section">#</a></h3>
+<p>Entries are generic in their payload, so a value formatter can print something the chart never knew about, like an order number or a product name.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">data</span> <span class="k">class</span> <span class="t">Order</span>(<span class="k">val</span> id: <span class="t">String</span>, <span class="k">val</span> total: <span class="t">Float</span>)
+
+<span class="k">val</span> entries = orders.mapIndexed { i, order -&gt;
+    <span class="t">Entry</span>(i.toFloat(), order.total, <span class="k">data</span> = order)
+}
+
+<span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Orders&quot;</span>).apply {
+    valueFormatter = <span class="t">IValueFormatter</span> { _, entry, _, _ -&gt;
+        (entry.<span class="k">data</span> <span class="k">as</span>? <span class="t">Order</span>)?.id ?: <span class="s">&quot;&quot;</span>
+    }
+}</code></pre>
+<p>The interface hands you an <code>Entry&lt;*&gt;</code>, so the payload arrives as <code>Any?</code> and needs the cast. For a bar chart you can cast the entry itself instead, to reach <code>BarEntry</code> details such as the stack values.</p>
+<h2 id="one-more-formatter">One more formatter<a class="anchor" href="#one-more-formatter" aria-label="Link to this section">#</a></h2>
+<p><code>IFillFormatter</code> is the third of them. It decides how far the fill under a line reaches rather than how a number reads, so it has its own chapter: <a href="/mpandroidchart/docs/fillformatter/">the fill formatter</a>.</p>
+<h2 id="next">Next<a class="anchor" href="#next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/axis/">The axis</a> for where axis labels come from in the first place.</li><li><a href="/mpandroidchart/docs/xaxis/">The x axis</a> for the index and date recipes in context.</li><li><a href="/mpandroidchart/docs/markers/">Markers</a> for text shown on a highlighted value instead of next to every one.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/colors/"><span>Previous</span>Setting colors</a><a class="next" href="/mpandroidchart/docs/highlighting/"><span>Next</span>Highlighting values</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

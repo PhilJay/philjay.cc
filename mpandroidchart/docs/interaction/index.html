@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interaction with the chart · MPAndroidChart</title>
+  <meta name="description" content="Every touch gesture a chart understands, how to switch each one off, and the listeners that tell you what the user did.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/interaction/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Interaction with the chart · MPAndroidChart">
+  <meta property="og:description" content="Every touch gesture a chart understands, how to switch each one off, and the listeners that tell you what the user did.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/interaction/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction" class="active"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Motion and viewport <span>Chapter 14 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#switch-gestures-on-and-off">Switch gestures on and off</a><a href="#dragging-and-zooming">Dragging and zooming</a><a href="#fling-and-deceleration">Fling and deceleration</a><a href="#rotating-pie-and-radar-charts">Rotating pie and radar charts</a><a href="#react-to-a-selected-value">React to a selected value</a><a href="#react-to-gestures">React to gestures</a><a href="#several-listeners-on-one-chart">Several listeners on one chart</a><a href="#charts-inside-a-scrolling-parent">Charts inside a scrolling parent</a><a href="#interaction-in-compose">Interaction in Compose</a></nav>
+      <p>Every touch gesture a chart understands, how to switch each one off, and the listeners that tell you what the user did.</p>
+<h2 id="switch-gestures-on-and-off">Switch gestures on and off<a class="anchor" href="#switch-gestures-on-and-off" aria-label="Link to this section">#</a></h2>
+<p>All interaction runs through one flag on every chart type:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isTouchEnabled = <span class="k">false</span>   <span class="c">// the chart ignores touch completely</span></code></pre>
+<p>With touch enabled, each gesture has its own property. The drag and scale properties live on the charts with axes (<code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>CombinedChart</code>).</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isTouchEnabled</code></td><td>All touch interaction, on every chart type</td><td><code>true</code></td></tr><tr><td><code>isDragXEnabled</code></td><td>Pan horizontally</td><td><code>true</code></td></tr><tr><td><code>isDragYEnabled</code></td><td>Pan vertically</td><td><code>true</code></td></tr><tr><td><code>isDragEnabled</code></td><td>Reads true when either axis can be dragged, writes both</td><td><code>true</code></td></tr><tr><td><code>isScaleXEnabled</code></td><td>Zoom the x axis by gesture</td><td><code>true</code></td></tr><tr><td><code>isScaleYEnabled</code></td><td>Zoom the y axis by gesture</td><td><code>true</code></td></tr><tr><td><code>isScaleEnabled</code></td><td>Reads true when either axis can be scaled, writes both</td><td><code>true</code></td></tr><tr><td><code>isPinchZoomEnabled</code></td><td>A pinch scales both axes together</td><td><code>false</code></td></tr><tr><td><code>isDoubleTapToZoomEnabled</code></td><td>A double tap zooms in</td><td><code>true</code></td></tr><tr><td><code>isHighlightPerTapEnabled</code></td><td>A tap selects the nearest value, on every chart type</td><td><code>true</code></td></tr><tr><td><code>isHighlightPerDragEnabled</code></td><td>Dragging moves the selection while the chart cannot pan</td><td><code>true</code></td></tr><tr><td><code>isRotationEnabled</code></td><td>Rotate a pie or radar chart by dragging</td><td><code>true</code></td></tr></tbody></table></div>
+<p>A chart that should only show data, with no gestures at all, is the common case. The example app&#x27;s design charts do exactly this:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isScaleEnabled = <span class="k">false</span>
+chart.isDragEnabled = <span class="k">false</span>
+chart.isDoubleTapToZoomEnabled = <span class="k">false</span></code></pre>
+<h2 id="dragging-and-zooming">Dragging and zooming<a class="anchor" href="#dragging-and-zooming" aria-label="Link to this section">#</a></h2>
+<p>Dragging pans the content once the chart is zoomed in. A single finger has to travel about 3 dp before the touch counts as a drag rather than a tap.</p>
+<p>Zooming works in one of two ways. With <code>isPinchZoomEnabled</code> false, which is the default, a two finger gesture that is mostly horizontal zooms the x axis and a mostly vertical one zooms the y axis, so you can stretch one axis without the other. Set it to true and a pinch scales both axes by the same factor.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isPinchZoomEnabled = <span class="k">true</span></code></pre>
+<p>A double tap zooms in by a factor of 1.4 around the tapped position, on each axis that has scaling enabled.</p>
+<p>Two extra properties let the content be dragged a little past its bounds, which feels softer at the edges:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.dragOffsetX = <span class="n">20f</span>   <span class="c">// dp of overscroll left and right</span>
+chart.dragOffsetY = <span class="n">20f</span>   <span class="c">// dp of overscroll top and bottom</span></code></pre>
+<p>Both default to 0. They also matter for highlighting per drag: the chart only moves the selection instead of panning when it is fully zoomed out <em>and</em> has no drag offset.</p>
+<p>Zooming and scrolling from code, including limits on how far the user may zoom, is covered in <a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a>.</p>
+<h2 id="fling-and-deceleration">Fling and deceleration<a class="anchor" href="#fling-and-deceleration" aria-label="Link to this section">#</a></h2>
+<p>Lifting the finger after a fast drag keeps the chart scrolling and slows it down.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isDragDecelerationEnabled</code></td><td>Keep scrolling after the finger lifts</td><td><code>true</code></td></tr><tr><td><code>dragDecelerationFrictionCoef</code></td><td>How slowly the scroll loses speed</td><td><code>0.9</code></td></tr></tbody></table></div>
+<p>The friction coefficient is multiplied into the velocity on every frame. 0 stops the chart at once, values near 1 let it coast for a long time. Assigned values are clamped into 0 until 0.999.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.dragDecelerationFrictionCoef = <span class="n">0.95f</span></code></pre>
+<p>Pie and radar charts use the same two properties for their rotation, so a flick keeps the chart spinning.</p>
+<h2 id="rotating-pie-and-radar-charts">Rotating pie and radar charts<a class="anchor" href="#rotating-pie-and-radar-charts" aria-label="Link to this section">#</a></h2>
+<p><code>PieChart</code> and <code>RadarChart</code> are rotated by dragging instead of panned.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isRotationEnabled = <span class="k">true</span>
+chart.rotationAngle = <span class="n">0f</span>     <span class="c">// where the first slice starts</span></code></pre>
+<p>Angles are degrees, 0 at 3 o&#x27;clock, increasing clockwise. <code>rotationAngle</code> normalizes what you assign into 0 until 360; <code>rawRotationAngle</code> keeps the value you passed. The default is 270, which puts the first slice at the top.</p>
+<p>To turn the chart from code, see <code>spin()</code> in <a href="/mpandroidchart/docs/animations/">Animations</a>.</p>
+<h2 id="react-to-a-selected-value">React to a selected value<a class="anchor" href="#react-to-a-selected-value" aria-label="Link to this section">#</a></h2>
+<p>The shortest form takes a lambda:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected { entry, highlight -&gt;
+    <span class="t">Log</span>.i(<span class="s">&quot;selected&quot;</span>, <span class="s">&quot;${entry.x} / ${entry.y} in set ${highlight.dataSetIndex}&quot;</span>)
+}</code></pre>
+<p>A second lambda handles the case where the selection is cleared:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected(
+    onNothingSelected = { detailView.isVisible = <span class="k">false</span> },
+) { entry, _ -&gt;
+    detailView.isVisible = <span class="k">true</span>
+    detailView.text = entry.y.toString()
+}</code></pre>
+<p>Both forms replace <code>chart.onChartValueSelectedListener</code>. Implement the interface yourself when one class handles several charts:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">class</span> <span class="t">ReportActivity</span> : <span class="t">AppCompatActivity</span>(), <span class="t">OnChartValueSelectedListener</span> {
+
+    <span class="k">override</span> <span class="k">fun</span> onValueSelected(e: <span class="t">Entry</span>&lt;*&gt;, h: <span class="t">Highlight</span>) { }
+
+    <span class="k">override</span> <span class="k">fun</span> onNothingSelected() { }
+}
+
+chart.onChartValueSelectedListener = <span class="k">this</span></code></pre>
+<p><code>onNothingSelected</code> fires when the user taps empty space, taps the selected value again, or the highlighted entry is no longer in the data. Calls to <code>chart.highlightValue(...)</code> report here as well unless you pass <code>callListener = false</code>. What the <code>Highlight</code> contains is described in <a href="/mpandroidchart/docs/highlighting/">Highlighting values</a>.</p>
+<h2 id="react-to-gestures">React to gestures<a class="anchor" href="#react-to-gestures" aria-label="Link to this section">#</a></h2>
+<p><code>OnChartGestureListener</code> reports the raw gestures. Every method has an empty default body, so implement only the ones you need.</p>
+<div class='table-wrap'><table><thead><tr><th>Callback</th><th>When it fires</th></tr></thead><tbody><tr><td><code>onChartGestureStart</code></td><td>A finger touches the chart</td></tr><tr><td><code>onChartGestureEnd</code></td><td>The touch ends or is cancelled</td></tr><tr><td><code>onChartSingleTapped</code></td><td>Single tap, before the tap highlight is applied</td></tr><tr><td><code>onChartDoubleTapped</code></td><td>Double tap, before the double tap zoom is applied</td></tr><tr><td><code>onChartLongPressed</code></td><td>Long press</td></tr><tr><td><code>onChartFling</code></td><td>Fast swipe, with the velocity in pixels per second</td></tr><tr><td><code>onChartScale</code></td><td>Pinch or double tap zoom, with the scale factor per axis</td></tr><tr><td><code>onChartTranslate</code></td><td>Drag, including the deceleration after a fling</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onChartGestureListener = <span class="k">object</span> : <span class="t">OnChartGestureListener</span> {
+
+    <span class="k">override</span> <span class="k">fun</span> onChartTranslate(me: <span class="t">MotionEvent</span>, dX: <span class="t">Float</span>, dY: <span class="t">Float</span>) {
+        syncOtherChart(chart.lowestVisibleX, chart.highestVisibleX)
+    }
+
+    <span class="k">override</span> <span class="k">fun</span> onChartScale(me: <span class="t">MotionEvent</span>, scaleX: <span class="t">Float</span>, scaleY: <span class="t">Float</span>) {
+        syncOtherChart(chart.lowestVisibleX, chart.highestVisibleX)
+    }
+}</code></pre>
+<p>The start and end callbacks also receive the gesture that was recognised, as a <code>ChartTouchListener.ChartGesture</code>: <code>NONE</code>, <code>DRAG</code>, <code>X_ZOOM</code>, <code>Y_ZOOM</code>, <code>PINCH_ZOOM</code>, <code>ROTATE</code>, <code>SINGLE_TAP</code>, <code>DOUBLE_TAP</code>, <code>LONG_PRESS</code> or <code>FLING</code>.</p>
+<h2 id="several-listeners-on-one-chart">Several listeners on one chart<a class="anchor" href="#several-listeners-on-one-chart" aria-label="Link to this section">#</a></h2>
+<p><code>onChartValueSelectedListener</code> and <code>onChartGestureListener</code> each hold a single listener, so assigning a second one replaces the first. When something else has to observe the chart without taking that slot away from your app, add it to one of the two lists instead:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.valueSelectedListeners += analyticsListener
+chart.gestureListeners += analyticsListener</code></pre>
+<p>The single listener is called first, then the list entries in order. This is how the Compose module observes a chart while your own listener keeps working.</p>
+<h2 id="charts-inside-a-scrolling-parent">Charts inside a scrolling parent<a class="anchor" href="#charts-inside-a-scrolling-parent" aria-label="Link to this section">#</a></h2>
+<p>A chart that is dragged inside a <code>ScrollView</code> or a <code>RecyclerView</code> fights the parent for the gesture. <a href="/mpandroidchart/docs/lists-and-scrolling/">Charts in lists and scrolling screens</a> covers the whole situation. The chart already asks the parent to stop intercepting while a drag or zoom is running, and you can do the same from your own touch handling:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.disableScroll()   <span class="c">// the gesture stays with the chart</span>
+chart.enableScroll()    <span class="c">// the parent may intercept again</span></code></pre>
+<h2 id="interaction-in-compose">Interaction in Compose<a class="anchor" href="#interaction-in-compose" aria-label="Link to this section">#</a></h2>
+<p>The Compose charts report the same events through <code>ChartState</code>, so you read the selection as state instead of registering a listener:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> state = rememberChartState()
+
+<span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    state = state,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+)
+
+<span class="k">val</span> selected = state.selectedEntry
+<span class="t">Text</span>(<span class="k">if</span> (selected == <span class="k">null</span>) <span class="s">&quot;Tap a point&quot;</span> <span class="k">else</span> <span class="s">&quot;Selected ${selected.y}&quot;</span>)</code></pre>
+<p><code>state.selectedHighlight</code>, <code>state.lowestVisibleX</code>, <code>state.highestVisibleX</code>, <code>state.zoomX</code>, <code>state.zoomY</code> and <code>state.rotationAngle</code> follow the user in the same way. To drive the chart from Compose, call <code>state.highlight(x)</code>, <code>state.clearHighlight()</code>, <code>state.zoomIn()</code>, <code>state.fitScreen()</code> or <code>state.moveViewToX(value)</code>. Everything else about the module is in <a href="/mpandroidchart/docs/compose/">Jetpack Compose</a>.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/theming/"><span>Previous</span>Theming a chart</a><a class="next" href="/mpandroidchart/docs/dynamic-data/"><span>Next</span>Dynamic and realtime data</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

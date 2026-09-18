@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calling the library from Java · MPAndroidChart</title>
+  <meta name="description" content="What the Kotlin API looks like from a Java caller: property accessors, default arguments, lambdas, generics and the few places where Java needs a longer spelling.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/java-interop/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Calling the library from Java · MPAndroidChart">
+  <meta property="og:description" content="What the Kotlin API looks like from a Java caller: property accessors, default arguments, lambdas, generics and the few places where Java needs a longer spelling.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/java-interop/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop" class="active"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Integration <span>Chapter 28 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#properties-become-getters-and-setters">Properties become getters and setters</a><a href="#default-arguments">Default arguments</a><a href="#functional-interfaces">Functional interfaces</a><a href="#lists-instead-of-varargs-and-arrays">Lists instead of varargs and arrays</a><a href="#generics">Generics</a><a href="#objects-companions-and-top-level-declarations">Objects, companions and top level declarations</a><a href="#nullability">Nullability</a><a href="#a-complete-example">A complete example</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>What the Kotlin API looks like from a Java caller: property accessors, default arguments, lambdas, generics and the few places where Java needs a longer spelling.</p>
+<p>The library is written in Kotlin and compiles to ordinary JVM bytecode, so a Java project can use it without any bridge. Every chart class is still a <code>View</code> you can inflate from a layout, and every feature is reachable. What changes is the spelling, and this chapter goes through every case.</p>
+<p>One thing to ignore along the way: a Kotlin <code>internal</code> declaration becomes a public method with a mangled name, so <code>Chart.notifyGesture$MPChartLib</code> shows up in autocompletion. The dollar sign marks it as not yours to call.</p>
+<h2 id="properties-become-getters-and-setters">Properties become getters and setters<a class="anchor" href="#properties-become-getters-and-setters" aria-label="Link to this section">#</a></h2>
+<p>A Kotlin <code>var</code> compiles to a getter and a setter pair, so what the Kotlin guides write as an assignment is a <code>setX</code> call in Java:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColor(<span class="t">Color</span>.<span class="t">BLUE</span>);
+set.setLineWidth(<span class="n">2f</span>);
+float width = set.getLineWidth();</code></pre>
+<p>Boolean properties named <code>isSomething</code> are the one case with its own rule. The getter keeps the whole name and the setter drops the <code>is</code>:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setDragEnabled(<span class="k">true</span>);
+boolean dragging = chart.isDragEnabled();
+
+set.setDrawValuesEnabled(<span class="k">false</span>);
+boolean labels = set.isDrawValuesEnabled();</code></pre>
+<p>So <code>isDragEnabled</code> in Kotlin is <code>isDragEnabled()</code> and <code>setDragEnabled(...)</code> in Java, <code>isClipValuesToContentEnabled</code> is <code>isClipValuesToContentEnabled()</code> and <code>setClipValuesToContentEnabled(...)</code>, and <code>isEnabled</code> on every component is <code>isEnabled()</code> and <code>setEnabled(...)</code>. The rule is mechanical: strip <code>is</code>, prefix <code>set</code>.</p>
+<p>A read-only <code>val</code> gives you the getter only. <code>chart.getLowestVisibleX()</code> works, there is no setter, and the same holds for <code>getEntryCount()</code> on a data set.</p>
+<h2 id="default-arguments">Default arguments<a class="anchor" href="#default-arguments" aria-label="Link to this section">#</a></h2>
+<p>A Kotlin function with default values compiles to <strong>one</strong> Java method carrying every parameter. The defaults live in a synthetic <code>$default</code> method that Java should not call. So a call that is short in Kotlin can be long in Java:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="c">// Kotlin: chart.animateX(600)</span>
+chart.animateX(<span class="n">600</span>, <span class="t">Easing</span>.<span class="t">INSTANCE</span>.getLinear());
+
+<span class="c">// Kotlin: chart.highlightValue(3f, 0)</span>
+chart.highlightValue(<span class="n">3f</span>, <span class="n">0</span>, -<span class="n">1</span>, -<span class="n">1</span>, <span class="k">true</span>);</code></pre>
+<p><code>-1</code> and <code>true</code> above are the defaults the Kotlin declaration uses, so passing them reproduces the short call exactly.</p>
+<p><code>@JvmOverloads</code> is the annotation that generates the shorter overloads as well, and in this library it is used for one purpose only: the constructors of the chart views. <code>Chart</code>, <code>BarLineChartBase</code>, <code>PieRadarChartBase</code>, <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>PieChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>RadarChart</code> and <code>CombinedChart</code> all carry it, which is what makes all three forms available:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span> chart = new <span class="t">LineChart</span>(context);
+<span class="t">LineChart</span> fromXml = new <span class="t">LineChart</span>(context, attrs);
+<span class="t">LineChart</span> styled = new <span class="t">LineChart</span>(context, attrs, defStyle);</code></pre>
+<p>That also means inflating a chart from a layout file works from Java exactly as it does from Kotlin. No other function in the library has <code>@JvmOverloads</code>, so assume you have to pass every parameter everywhere else.</p>
+<h2 id="functional-interfaces">Functional interfaces<a class="anchor" href="#functional-interfaces" aria-label="Link to this section">#</a></h2>
+<p>The formatter and shape interfaces are declared as <code>fun interface</code>, which is a plain Java interface with a single abstract method. Under Java 8 and above a lambda works:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.getXAxis().setValueFormatter((value, axis) -&gt; <span class="s">&quot;Q&quot;</span> + (int) value);
+set.setValueFormatter((value, entry, dataSetIndex, viewPortHandler) -&gt;
+        <span class="t">String</span>.valueOf((int) value));</code></pre>
+<p><code>IValueFormatter</code>, <code>IAxisValueFormatter</code>, <code>IFillFormatter</code>, <code>IShapeRenderer</code>, <code>IHighlighter</code> and <code>Easing.EasingFunction</code> all work this way. When the formatter needs state, write a class instead, and build the expensive parts once rather than per call:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">class</span> <span class="t">Percent</span> implements <span class="t">IValueFormatter</span> {
+    <span class="k">private</span> final <span class="t">DecimalFormat</span> format = new <span class="t">DecimalFormat</span>(<span class="s">&quot;###,##0.0&quot;</span>);
+
+    @<span class="t">Override</span>
+    public <span class="t">String</span> getFormattedValue(float value, <span class="t">Entry</span>&lt;?&gt; entry, int dataSetIndex,
+                                    <span class="t">ViewPortHandler</span> viewPortHandler) {
+        <span class="k">return</span> format.format(value) + <span class="s">&quot; %&quot;</span>;
+    }
+}</code></pre>
+<p><code>OnChartValueSelectedListener</code> and <code>OnChartGestureListener</code> have more than one method, so they stay anonymous classes. <code>IMarker</code> does too, but you normally extend <code>MarkerView</code>, which implements it for you.</p>
+<blockquote>The Kotlin shortcut <code>chart.onValueSelected { ... }</code> takes <code>Function0</code> and <code>Function2</code> parameters, so from Java it needs <code>kotlin.Unit</code> returns and reads badly. Use <code>chart.setOnChartValueSelectedListener(...)</code> or add to <code>chart.getValueSelectedListeners()</code> instead.</blockquote>
+<h2 id="lists-instead-of-varargs-and-arrays">Lists instead of varargs and arrays<a class="anchor" href="#lists-instead-of-varargs-and-arrays" aria-label="Link to this section">#</a></h2>
+<p>Colors, labels and draw orders are <code>List</code>, not arrays, so build a <code>java.util.List</code> and hand it over. Ints are boxed to <code>Integer</code> automatically:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColors(<span class="t">Arrays</span>.asList(<span class="t">Color</span>.<span class="t">BLUE</span>, <span class="t">Color</span>.<span class="t">RED</span>, <span class="t">Color</span>.<span class="t">GREEN</span>));
+set.setColors(<span class="t">ColorTemplate</span>.<span class="t">INSTANCE</span>.getMATERIAL_COLORS());</code></pre>
+<p>There is still an <code>int</code> varargs overload for the common case, so <code>set.setColors(Color.BLUE, Color.RED)</code> compiles too.</p>
+<p>One rule is easy to trip over from Java. A data set keeps the list you pass only when it really is a <code>java.util.ArrayList</code>; any other list is copied into a new one. The same holds for the data sets you pass to a data object.</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">ArrayList</span>&lt;<span class="t">Entry</span>&lt;<span class="t">Object</span>&gt;&gt; live = new <span class="t">ArrayList</span>&lt;&gt;();
+<span class="t">LineDataSet</span>&lt;<span class="t">Object</span>&gt; set = new <span class="t">LineDataSet</span>&lt;&gt;(live, <span class="s">&quot;Live&quot;</span>);
+
+live.add(new <span class="t">Entry</span>&lt;&gt;(<span class="n">4f</span>, <span class="n">9f</span>, <span class="k">null</span>, <span class="k">null</span>)); <span class="c">// the set sees this</span>
+set.notifyDataSetChanged();</code></pre>
+<p><code>Arrays.asList(...)</code> returns <code>java.util.Arrays$ArrayList</code>, which is a different class, so a set built from it holds a copy and your later changes go nowhere. Use <code>new ArrayList&lt;&gt;(...)</code> when you mean to keep the reference.</p>
+<h2 id="generics">Generics<a class="anchor" href="#generics" aria-label="Link to this section">#</a></h2>
+<p>Every entry type carries a payload type parameter, <code>Entry&lt;D&gt;</code>, and the data set and data interfaces pass it along. From Java you name it explicitly or use the diamond:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">List</span>&lt;<span class="t">Entry</span>&lt;<span class="t">Object</span>&gt;&gt; entries = new <span class="t">ArrayList</span>&lt;&gt;();
+entries.add(new <span class="t">Entry</span>&lt;&gt;(<span class="n">0f</span>, <span class="n">4f</span>, <span class="k">null</span>, <span class="k">null</span>));
+
+<span class="t">LineDataSet</span>&lt;<span class="t">Object</span>&gt; set = new <span class="t">LineDataSet</span>&lt;&gt;(entries, <span class="s">&quot;Sales&quot;</span>);</code></pre>
+<p>Use <code>Object</code> when you do not need a payload; there is no Java equivalent of Kotlin&#x27;s <code>Nothing</code>.</p>
+<p>The data classes fix their own type argument to a wildcard, which is why <code>LineData</code> is not generic and its sets come back as wildcards. Iterating them is the shape you will see most often:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">for</span> (<span class="t">IBarDataSet</span>&lt;?&gt; dataSet : barData.getDataSets()) {
+    int count = dataSet.getEntryCount();
+}</code></pre>
+<p>The listener callbacks use the same form, <code>Entry&lt;?&gt;</code>, because the chart does not know your payload type. Cast when you need the payload or a subclass:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>@<span class="t">Override</span>
+public void onValueSelected(<span class="t">Entry</span>&lt;?&gt; e, <span class="t">Highlight</span> h) {
+    <span class="t">BarEntry</span>&lt;?&gt; bar = (<span class="t">BarEntry</span>&lt;?&gt;) e;
+}</code></pre>
+<p>The Kotlin factory functions return an entry typed with <code>Nothing</code>: <code>Entry(x, y)</code> gives an <code>Entry&lt;Nothing&gt;</code>, <code>BarEntry(x, y)</code> a <code>BarEntry&lt;Nothing&gt;</code>, and so on for <code>PieEntry</code>, <code>RadarEntry</code>, <code>BubbleEntry</code> and <code>CandleEntry</code>. They are top level functions, so Java finds them as static methods on a class named after the file, and <code>Nothing</code> has no Java counterpart, so the return type arrives raw:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">Entry</span>&lt;<span class="t">Object</span>&gt; e = <span class="t">EntryKt</span>.<span class="t">Entry</span>(<span class="n">1f</span>, <span class="n">2f</span>, <span class="k">null</span>); <span class="c">// unchecked conversion</span></code></pre>
+<p>Call the constructor instead and pass <code>null</code> for both the icon and the payload, as the snippets above do. That is the only spelling that stays type safe in Java.</p>
+<h2 id="objects-companions-and-top-level-declarations">Objects, companions and top level declarations<a class="anchor" href="#objects-companions-and-top-level-declarations" aria-label="Link to this section">#</a></h2>
+<p>No declaration in this library carries <code>@JvmStatic</code>, so nothing is called the way a Java static method would be. Two shapes exist.</p>
+<p><code>ColorTemplate</code>, <code>Utils</code> and <code>Easing</code> are Kotlin <code>object</code> declarations. Their members are reached through a static <code>INSTANCE</code> field:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>float px = <span class="t">Utils</span>.<span class="t">INSTANCE</span>.convertDpToPixel(<span class="n">8f</span>);
+int green = <span class="t">ColorTemplate</span>.<span class="t">INSTANCE</span>.rgb(<span class="s">&quot;#2ecc71&quot;</span>);
+<span class="t">EasingFunction</span> easing = <span class="t">Easing</span>.<span class="t">INSTANCE</span>.getEaseInOutQuad();</code></pre>
+<p><code>MPPointF</code>, <code>MPPointD</code> and <code>FSize</code> keep their pool functions in a companion object, reached through a static <code>Companion</code> field:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">MPPointF</span> point = <span class="t">MPPointF</span>.<span class="t">Companion</span>.getInstance(-<span class="n">12f</span>, -<span class="n">24f</span>);
+<span class="t">MPPointF</span>.<span class="t">Companion</span>.recycleInstance(point);</code></pre>
+<p>Two kinds of member escape both shapes. A <code>const val</code> is a real static field, so <code>ColorTemplate.COLOR_NONE</code>, <code>ColorTemplate.COLOR_SKIP</code>, <code>Utils.FLOAT_EPSILON</code>, <code>Utils.DEG2RAD</code> and <code>Chart.LOG_TAG</code> are plain constants you read directly. A <code>@JvmField</code> property is a public field, so <code>Entry.CREATOR</code> works without a <code>Companion</code> in front of it, and <code>point.x</code> is a field read rather than <code>getX()</code>.</p>
+<blockquote><code>INSTANCE</code> and <code>Companion</code> are fields, so a static import of them compiles but reads worse than the long form and collides as soon as you import two of them. If <code>Utils.INSTANCE.</code> appears all over your code, wrap the two or three conversions you actually use in a small helper of your own.</blockquote>
+<h2 id="nullability">Nullability<a class="anchor" href="#nullability" aria-label="Link to this section">#</a></h2>
+<p>The Kotlin compiler annotates every parameter and return type with <code>org.jetbrains.annotations.NotNull</code> or <code>Nullable</code>, so your IDE warns when you pass a null where the Kotlin declaration says non-null. It also inserts a runtime check at the top of every public function. Passing null anyway throws immediately, with the offending method and parameter named:</p>
+<pre data-lang="Text"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>java.lang.NullPointerException: Parameter specified as non-null is null:
+method com.github.mikephil.charting.data.filter.Approximator.reduceWithDouglasPeucker,
+parameter points</code></pre>
+<p>The exception is a plain <code>NullPointerException</code>, and it is thrown before any of the function body runs, so nothing is half applied. Where the Kotlin type really is nullable, such as <code>chart.getData()</code> on a chart that has none or <code>Highlight</code> in <code>chart.highlightValue(...)</code>, Java sees <code>@Nullable</code> and you handle it as usual.</p>
+<h2 id="a-complete-example">A complete example<a class="anchor" href="#a-complete-example" aria-label="Link to this section">#</a></h2>
+<p>The same chart as the Kotlin <a href="/mpandroidchart/docs/getting-started/">getting started</a> example, written in Java:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>public <span class="k">class</span> <span class="t">ChartActivity</span> extends <span class="t">Activity</span> {
+
+    @<span class="t">Override</span>
+    <span class="k">protected</span> void onCreate(<span class="t">Bundle</span> savedInstanceState) {
+        <span class="k">super</span>.onCreate(savedInstanceState);
+
+        <span class="t">LineChart</span> chart = new <span class="t">LineChart</span>(<span class="k">this</span>);
+        setContentView(chart);
+
+        <span class="t">List</span>&lt;<span class="t">Entry</span>&lt;<span class="t">Object</span>&gt;&gt; entries = new <span class="t">ArrayList</span>&lt;&gt;();
+        entries.add(new <span class="t">Entry</span>&lt;&gt;(<span class="n">0f</span>, <span class="n">4f</span>, <span class="k">null</span>, <span class="k">null</span>));
+        entries.add(new <span class="t">Entry</span>&lt;&gt;(<span class="n">1f</span>, <span class="n">8f</span>, <span class="k">null</span>, <span class="k">null</span>));
+        entries.add(new <span class="t">Entry</span>&lt;&gt;(<span class="n">2f</span>, <span class="n">6f</span>, <span class="k">null</span>, <span class="k">null</span>));
+        entries.add(new <span class="t">Entry</span>&lt;&gt;(<span class="n">3f</span>, <span class="n">12f</span>, <span class="k">null</span>, <span class="k">null</span>));
+
+        <span class="t">LineDataSet</span>&lt;<span class="t">Object</span>&gt; set = new <span class="t">LineDataSet</span>&lt;&gt;(entries, <span class="s">&quot;Sales&quot;</span>);
+        set.setColor(<span class="t">Color</span>.<span class="t">BLUE</span>);
+        set.setLineWidth(<span class="n">2f</span>);
+        set.setCircleRadius(<span class="n">4f</span>);
+        set.setDrawValuesEnabled(<span class="k">false</span>);
+
+        chart.setData(new <span class="t">LineData</span>(set));
+
+        chart.getDescription().setEnabled(<span class="k">false</span>);
+        chart.getLegend().setEnabled(<span class="k">true</span>);
+        chart.getAxisRight().setEnabled(<span class="k">false</span>);
+        chart.getXAxis().setPosition(<span class="t">XAxis</span>.<span class="t">XAxisPosition</span>.<span class="t">BOTTOM</span>);
+        chart.getXAxis().setValueFormatter((value, axis) -&gt; <span class="s">&quot;Q&quot;</span> + (int) value);
+        chart.setNoDataText(<span class="s">&quot;Nothing to show yet&quot;</span>);
+
+        chart.setOnChartValueSelectedListener(new <span class="t">OnChartValueSelectedListener</span>() {
+            @<span class="t">Override</span>
+            public void onValueSelected(<span class="t">Entry</span>&lt;?&gt; e, <span class="t">Highlight</span> h) {
+            }
+
+            @<span class="t">Override</span>
+            public void onNothingSelected() {
+            }
+        });
+
+        chart.animateX(<span class="n">600</span>, <span class="t">Easing</span>.<span class="t">INSTANCE</span>.getEaseInOutQuad());
+    }
+}</code></pre>
+<p>Changing the data later follows the Kotlin rule unchanged: replace the whole data object, or change the entries in place and call <code>chart.notifyDataSetChanged()</code>, which recalculates and redraws in one step.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/getting-started/">Getting started</a> for the Kotlin version of the same chart.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for what each formatter interface receives.</li><li><a href="/mpandroidchart/docs/migration/">Migrating from 3.x</a> if your Java code was written against version 3.</li><li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/">API reference</a> for the generated signatures of everything else.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/compose/"><span>Previous</span>Jetpack Compose</a><a class="next" href="/mpandroidchart/docs/lists-and-scrolling/"><span>Next</span>Charts in lists and scrolling screens</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

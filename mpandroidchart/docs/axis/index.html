@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The axis · MPAndroidChart</title>
+  <meta name="description" content="The settings that both axes share: which parts are drawn, how many labels there are, how the value range is chosen, and the lines you can put on top.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/axis/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="The axis · MPAndroidChart">
+  <meta property="og:description" content="The settings that both axes share: which parts are drawn, how many labels there are, how the value range is chosen, and the lines you can put on top.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/axis/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis" class="active"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">The axes <span>Chapter 2 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#what-an-axis-is-made-of">What an axis is made of</a><a href="#how-many-labels">How many labels</a><a href="#granularity">Granularity</a><a href="#the-value-range">The value range</a><a href="#text">Text</a><a href="#grid-lines-and-the-axis-line">Grid lines and the axis line</a><a href="#limit-lines">Limit lines</a><a href="#formatting-the-labels">Formatting the labels</a><a href="#values-the-axis-computes">Values the axis computes</a><a href="#next">Next</a></nav>
+      <p>The settings that both axes share: which parts are drawn, how many labels there are, how the value range is chosen, and the lines you can put on top.</p>
+<p><code>AxisBase</code> is the base class of <code>XAxis</code> and <code>YAxis</code>. Everything on this page works on either one.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> xAxis = chart.xAxis
+<span class="k">val</span> leftAxis = chart.axisLeft
+<span class="k">val</span> rightAxis = chart.axisRight</code></pre>
+<h2 id="what-an-axis-is-made-of">What an axis is made of<a class="anchor" href="#what-an-axis-is-made-of" aria-label="Link to this section">#</a></h2>
+<p>An axis can draw four things, each of which can be turned off on its own.</p>
+<ul><li>The <strong>labels</strong>, one per computed axis value.</li><li>The <strong>axis line</strong>, drawn along the edge of the content area, parallel to the labels.</li><li>The <strong>grid lines</strong>, one running across the content area from each label.</li><li>The <strong>limit lines</strong> you add yourself, for a target or a threshold.</li></ul>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isEnabled</code></td><td>Draws the axis at all. False hides every part of it, whatever the other settings say.</td><td><code>true</code></td></tr><tr><td><code>isDrawLabelsEnabled</code></td><td>Draws the labels. Grid and axis line are unaffected.</td><td><code>true</code></td></tr><tr><td><code>isDrawAxisLineEnabled</code></td><td>Draws the line along the axis.</td><td><code>true</code></td></tr><tr><td><code>isDrawGridLinesEnabled</code></td><td>Draws the grid lines.</td><td><code>true</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.isDrawGridLinesEnabled = <span class="k">false</span>
+chart.axisRight.isEnabled = <span class="k">false</span></code></pre>
+<h2 id="how-many-labels">How many labels<a class="anchor" href="#how-many-labels" aria-label="Link to this section">#</a></h2>
+<p><code>labelCount</code> is a wish, not a promise. The renderer picks a round interval near <code>range / labelCount</code>, so you usually get a count close to what you asked for, with readable values.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>labelCount</code></td><td>Number of labels you want, clamped to <code>axisMinLabels</code>..<code>axisMaxLabels</code>.</td><td><code>6</code></td></tr><tr><td><code>isForceLabelsEnabled</code></td><td>Draws exactly <code>labelCount</code> labels, evenly spread.</td><td><code>false</code></td></tr><tr><td><code>axisMinLabels</code></td><td>Lower bound applied to <code>labelCount</code>.</td><td><code>2</code></td></tr><tr><td><code>axisMaxLabels</code></td><td>Upper bound applied to <code>labelCount</code>.</td><td><code>25</code></td></tr></tbody></table></div>
+<p>Forcing the count gives you an exact number of labels at the price of uneven values, which is what you want when you fixed the range yourself:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.axisMinimum = <span class="n">30f</span>
+chart.axisLeft.axisMaximum = <span class="n">110f</span>
+chart.axisLeft.labelCount = <span class="n">5</span>
+chart.axisLeft.isForceLabelsEnabled = <span class="k">true</span></code></pre>
+<blockquote>The old <code>setLabelCount(count, force)</code> is gone. <code>labelCount</code> and <code>isForceLabelsEnabled</code> are two independent properties now, and you can change either one without touching the other.</blockquote>
+<h2 id="granularity">Granularity<a class="anchor" href="#granularity" aria-label="Link to this section">#</a></h2>
+<p>Granularity is the smallest interval the axis is allowed to use. Without it, zooming in keeps halving the interval until the same label appears twice, for example three labels reading &quot;4&quot; because the real values are 4.0, 4.3 and 4.6 and the axis formats whole numbers.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.granularity = <span class="n">1f</span></code></pre>
+<p>Assigning <code>granularity</code> also sets <code>isGranularityEnabled</code> to <code>true</code>, so one line is enough. The property starts at <code>1</code>, but the feature is off until you enable it. You can also enable it on its own with <code>isGranularityEnabled = true</code> to use the default interval of 1.</p>
+<h2 id="the-value-range">The value range<a class="anchor" href="#the-value-range" aria-label="Link to this section">#</a></h2>
+<p>By default both ends of the range are computed from the data whenever the data changes. Assign either end to fix it.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.axisMinimum = <span class="n">0f</span>     <span class="c">// always start at zero</span>
+chart.axisLeft.axisMaximum = <span class="n">100f</span></code></pre>
+<p>An assignment marks that end custom: <code>isAxisMinCustom</code> and <code>isAxisMaxCustom</code> read <code>true</code>, and the value survives every later recalculation. To hand an end back to the chart, call <code>resetAxisMinimum()</code> or <code>resetAxisMaximum()</code>. The change takes effect the next time the range is computed, which is the next <code>notifyDataSetChanged()</code> or the next assignment of <code>chart.data</code>.</p>
+<p><code>spaceMin</code> and <code>spaceMax</code> pad a computed end in value space. They are ignored for an end you fixed yourself.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.spaceMin = <span class="n">0.5f</span>   <span class="c">// half a slot before the first entry</span>
+chart.xAxis.spaceMax = <span class="n">0.5f</span></code></pre>
+<p><code>BarChart</code>, <code>ScatterChart</code> and <code>CandleStickChart</code> already set both to <code>0.5</code> on their x axis, which is what keeps the outer bars and points off the edge.</p>
+<blockquote><code>spaceMin</code> and <code>spaceMax</code> only work on the x axis. The y axis computes its range differently and uses <code>spaceTop</code> and <code>spaceBottom</code>, which are percentages. See <a href="/mpandroidchart/docs/yaxis/">the y axis</a>.</blockquote>
+<p><code>axisRange</code> is the distance between the two ends and is updated whenever either end changes.</p>
+<h2 id="text">Text<a class="anchor" href="#text" aria-label="Link to this section">#</a></h2>
+<p>The label text settings come from <code>ComponentBase</code> and are shared with the legend and the description.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>textSize</code></td><td>Label size in dp, clamped to 6..24.</td><td><code>10</code></td></tr><tr><td><code>textColor</code></td><td>Label color.</td><td>black</td></tr><tr><td><code>typeface</code></td><td><code>Typeface</code> for the labels, or null for the default.</td><td><code>null</code></td></tr><tr><td><code>xOffset</code></td><td>Horizontal space in dp between the labels and what they sit next to.</td><td><code>5</code></td></tr><tr><td><code>yOffset</code></td><td>Vertical space in dp between the labels and what they sit next to.</td><td><code>4</code> on the x axis, <code>0</code> on the y axis</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.apply {
+    textSize = <span class="n">11f</span>
+    textColor = <span class="t">Color</span>.parseColor(<span class="s">&quot;#8A93A6&quot;</span>)
+    typeface = <span class="t">ResourcesCompat</span>.getFont(context, <span class="t">R</span>.font.inter)
+}</code></pre>
+<h2 id="grid-lines-and-the-axis-line">Grid lines and the axis line<a class="anchor" href="#grid-lines-and-the-axis-line" aria-label="Link to this section">#</a></h2>
+<p>Both are plain lines with a color, a width in dp and an optional dash pattern.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>gridColor</code></td><td>Color of the grid lines.</td><td>gray</td></tr><tr><td><code>gridLineWidth</code></td><td>Grid line width in dp.</td><td><code>0.5</code></td></tr><tr><td><code>axisLineColor</code></td><td>Color of the axis line.</td><td>gray</td></tr><tr><td><code>axisLineWidth</code></td><td>Axis line width in dp.</td><td><code>0.5</code></td></tr><tr><td><code>isDrawGridLinesBehindDataEnabled</code></td><td>Draws the grid behind the data instead of on top of it.</td><td><code>true</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.apply {
+    gridColor = <span class="t">Color</span>.parseColor(<span class="s">&quot;#1F2A3C&quot;</span>)
+    gridLineWidth = <span class="n">1f</span>
+    isDrawAxisLineEnabled = <span class="k">false</span>
+    enableGridDashedLine(<span class="n">10f</span>, <span class="n">10f</span>, <span class="n">0f</span>)
+}</code></pre>
+<p><code>enableGridDashedLine(lineLength, spaceLength, phase)</code> takes pixels: the length of a dash, the gap after it, and where in the pattern to start (pass <code>0</code>). <code>disableGridDashedLine()</code> goes back to a solid line and <code>isGridDashedLineEnabled</code> tells you which one is active. The axis line has the same three functions under <code>enableAxisLineDashedLine</code>, <code>disableAxisLineDashedLine</code> and <code>isAxisLineDashedLineEnabled</code>.</p>
+<h2 id="limit-lines">Limit lines<a class="anchor" href="#limit-lines" aria-label="Link to this section">#</a></h2>
+<p>A <code>LimitLine</code> is a line at a fixed value with an optional label. On a y axis it runs horizontally, on an x axis vertically. Use it for a target, a threshold or an average.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> limit = <span class="t">LimitLine</span>(<span class="n">140f</span>, <span class="s">&quot;Critical&quot;</span>).apply {
+    lineWidth = <span class="n">2f</span>
+    lineColor = <span class="t">Color</span>.<span class="t">RED</span>
+    textSize = <span class="n">11f</span>
+    labelPosition = <span class="t">LimitLine</span>.<span class="t">LimitLabelPosition</span>.<span class="t">RIGHT_TOP</span>
+    enableDashedLine(<span class="n">10f</span>, <span class="n">10f</span>, <span class="n">0f</span>)
+}
+
+chart.axisLeft.addLimitLine(limit)</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>limit</code></td><td>The value the line sits at. Set in the constructor.</td><td></td></tr><tr><td><code>label</code></td><td>Text next to the line. An empty string draws no label.</td><td><code>&quot;&quot;</code></td></tr><tr><td><code>lineWidth</code></td><td>Line width in dp, clamped to 0.2..12.</td><td><code>1</code></td></tr><tr><td><code>lineColor</code></td><td>Line color.</td><td>light red</td></tr><tr><td><code>labelPosition</code></td><td>Corner the label is drawn at.</td><td><code>RIGHT_TOP</code></td></tr><tr><td><code>textStyle</code></td><td>Paint style of the label text.</td><td><code>FILL_AND_STROKE</code></td></tr><tr><td><code>isEnabled</code></td><td>Draws this line. False skips it without removing it.</td><td><code>true</code></td></tr></tbody></table></div>
+<p>The four label positions are <code>LEFT_TOP</code>, <code>LEFT_BOTTOM</code>, <code>RIGHT_TOP</code> and <code>RIGHT_BOTTOM</code>. For a horizontal line on a y axis, left and right pick the end of the line and top and bottom pick the side of it. For a vertical line on an x axis it is the other way around: left and right pick the side, top and bottom pick the end. The radar chart draws limit lines on its y axis only, and never draws their labels.</p>
+<p><code>limitLines</code> is the list of lines on the axis, in the order they were added. <code>removeLimitLine(line)</code> takes one out and <code>removeAllLimitLines()</code> clears them. Adding more than six logs a warning, because past that point they stop being readable.</p>
+<p>By default limit lines are drawn on top of the data. Put them behind it with:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.isDrawLimitLinesBehindDataEnabled = <span class="k">true</span></code></pre>
+<h2 id="formatting-the-labels">Formatting the labels<a class="anchor" href="#formatting-the-labels" aria-label="Link to this section">#</a></h2>
+<p><code>valueFormatter</code> turns an axis value into label text. Set any <code>IAxisValueFormatter</code>, which is a <code>fun interface</code>, so a lambda works:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt; <span class="s">&quot;${value.toInt()} €&quot;</span> }</code></pre>
+<p>Until you set one, the axis returns a <code>DefaultAxisValueFormatter</code> built from the computed <code>decimals</code>. <a href="/mpandroidchart/docs/formatters/">Formatting values</a> covers the built in formatters and how to write your own.</p>
+<h2 id="values-the-axis-computes">Values the axis computes<a class="anchor" href="#values-the-axis-computes" aria-label="Link to this section">#</a></h2>
+<p>The axis renderer fills these on every draw pass, from the visible range. You can read them, but not assign them.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th></tr></thead><tbody><tr><td><code>entries</code></td><td>The values labels and grid lines are drawn at. The array is only ever grown, so read the first <code>entryCount</code> of them.</td></tr><tr><td><code>entryCount</code></td><td>How many of them there are.</td></tr><tr><td><code>centeredEntries</code></td><td>The midpoints between neighbouring entries, used when labels are centered.</td></tr><tr><td><code>decimals</code></td><td>Decimal digits the default formatter uses, derived from the label interval.</td></tr><tr><td><code>longestLabel</code></td><td>The formatted label with the most characters.</td></tr></tbody></table></div>
+<p>They are empty until the chart has data and has been laid out, so reading them from <code>onCreate</code> gives you nothing. <code>getFormattedLabel(index)</code> returns the text of one entry, or an empty string for an index outside the range.</p>
+<h2 id="next">Next<a class="anchor" href="#next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/xaxis/">The x axis</a> for positions, rotation and index based labels.</li><li><a href="/mpandroidchart/docs/yaxis/">The y axis</a> for the left and right axis, padding and the zero line.</li><li><a href="/mpandroidchart/docs/formatters/">Formatting values</a> for label and value text.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/getting-started/"><span>Previous</span>Getting started</a><a class="next" href="/mpandroidchart/docs/xaxis/"><span>Next</span>The x axis</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

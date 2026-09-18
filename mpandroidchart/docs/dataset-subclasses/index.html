@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DataSet subclasses · MPAndroidChart</title>
+  <meta name="description" content="What each chart type&#x27;s data set adds on top of the shared settings, from line modes and bar corners to candle colors and pie value lines.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/dataset-subclasses/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="DataSet subclasses · MPAndroidChart">
+  <meta property="og:description" content="What each chart type&#x27;s data set adds on top of the shared settings, from line modes and bar corners to candle colors and pie value lines.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/dataset-subclasses/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses" class="active"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Classes in depth <span>Chapter 22 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#highlight-settings-shared-by-several-types">Highlight settings shared by several types</a><a href="#line-and-radar-fill">Line and radar fill</a><a href="#linedataset">LineDataSet</a><a href="#bardataset">BarDataSet</a><a href="#scatterdataset">ScatterDataSet</a><a href="#candledataset">CandleDataSet</a><a href="#bubbledataset">BubbleDataSet</a><a href="#radardataset">RadarDataSet</a><a href="#piedataset">PieDataSet</a></nav>
+      <p>What each chart type&#x27;s data set adds on top of the shared settings, from line modes and bar corners to candle colors and pie value lines.</p>
+<p>Everything in <a href="/mpandroidchart/docs/dataset/">The DataSet class</a> works on all of them. This chapter only lists what is new per class. Three intermediate classes sit in between and are shared by several chart types, so they come first.</p>
+<h2 id="highlight-settings-shared-by-several-types">Highlight settings shared by several types<a class="anchor" href="#highlight-settings-shared-by-several-types" aria-label="Link to this section">#</a></h2>
+<p><code>BarLineScatterCandleBubbleDataSet</code> is the base of every set that lives on an x and a y axis, so bar, line, scatter, candle and bubble. It adds one property:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>highlightColor</code></td><td>color of the highlight indicator</td><td>light orange, <code>rgb(255, 187, 115)</code></td></tr></tbody></table></div>
+<p><code>BarDataSet</code> overrides that default with black.</p>
+<p><code>LineScatterCandleRadarDataSet</code> adds the crosshair lines drawn through a highlighted entry, for line, scatter, candle and radar sets:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isVerticalHighlightIndicatorEnabled</code></td><td>draw the vertical line</td><td><code>true</code></td></tr><tr><td><code>isHorizontalHighlightIndicatorEnabled</code></td><td>draw the horizontal line</td><td><code>true</code></td></tr><tr><td><code>highlightLineWidth</code></td><td>width of both lines in dp</td><td><code>0.5f</code></td></tr><tr><td><code>dashPathEffectHighlight</code></td><td>dash pattern, read only</td><td><code>null</code>, solid</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setDrawHighlightIndicators(<span class="k">false</span>)      <span class="c">// both at once</span>
+set.enableDashedHighlightLine(<span class="n">8f</span>, <span class="n">8f</span>, <span class="n">0f</span>)  <span class="c">// dash length, gap, phase, all in px</span>
+set.disableDashedHighlightLine()</code></pre>
+<p><code>isDashedHighlightLineEnabled</code> tells you whether a pattern is set.</p>
+<h2 id="line-and-radar-fill">Line and radar fill<a class="anchor" href="#line-and-radar-fill" aria-label="Link to this section">#</a></h2>
+<p><code>LineRadarDataSet</code> is the base of <code>LineDataSet</code> and <code>RadarDataSet</code>: a stroked line with an optional filled area under it.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>lineWidth</code></td><td>stroke width in dp, clamped to 0 to 10</td><td><code>1f</code></td></tr><tr><td><code>isDrawFilledEnabled</code></td><td>fill the area between the line and the axis</td><td><code>false</code></td></tr><tr><td><code>fillColor</code></td><td>color of the filled area</td><td><code>rgb(140, 234, 255)</code></td></tr><tr><td><code>fillAlpha</code></td><td>opacity of the filled area, 0 to 255</td><td><code>85</code></td></tr><tr><td><code>fillDrawable</code></td><td>drawable painted into the area instead of the color</td><td><code>null</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.lineWidth = <span class="n">3f</span>
+set.isDrawFilledEnabled = <span class="k">true</span>
+set.fillColor = <span class="t">Color</span>.<span class="t">BLUE</span>
+set.fillAlpha = <span class="n">90</span></code></pre>
+<p>Assigning <code>fillColor</code> clears <code>fillDrawable</code>, so whichever you set last is the one that is drawn. Filling clips the canvas to a path and costs more than drawing the line alone. Where the fill stops is decided by the <a href="/mpandroidchart/docs/fillformatter/">fill formatter</a>.</p>
+<blockquote>The old documentation gives the minimum line width as 0.2. It is 0, which draws the thinnest line the device can.</blockquote>
+<h2 id="linedataset">LineDataSet<a class="anchor" href="#linedataset" aria-label="Link to this section">#</a></h2>
+<p>The mode decides how the points are connected.</p>
+<div class='table-wrap'><table><thead><tr><th><code>LineDataSet.Mode</code></th><th>Draws</th></tr></thead><tbody><tr><td><code>LINEAR</code> (the default)</td><td>straight segments from point to point</td></tr><tr><td><code>STEPPED</code></td><td>horizontal steps, the y changes at each entry</td></tr><tr><td><code>CUBIC_BEZIER</code></td><td>a smooth curve through the points, bent by <code>cubicIntensity</code></td></tr><tr><td><code>HORIZONTAL_BEZIER</code></td><td>a smooth curve with horizontal control points, so it never overshoots in y</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.mode = <span class="t">LineDataSet</span>.<span class="t">Mode</span>.<span class="t">CUBIC_BEZIER</span>
+set.cubicIntensity = <span class="n">0.18f</span>   <span class="c">// clamped to 0.05 (almost straight) to 1, default 0.2</span></code></pre>
+<blockquote>A cubic line is one path with one color. Only <code>LINEAR</code> and <code>STEPPED</code> draw a segment per entry and use the whole <code>colors</code> list.</blockquote>
+<p>Circles at the entries:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isDrawCirclesEnabled</code></td><td>draw a circle at every entry</td><td><code>true</code></td></tr><tr><td><code>circleRadius</code></td><td>radius in dp, values below 1 are ignored and logged</td><td><code>4f</code></td></tr><tr><td><code>circleColors</code></td><td>circle colors, cycled per entry</td><td>one <code>rgb(140, 234, 255)</code></td></tr><tr><td><code>circleColor</code></td><td>first circle color; assigning replaces the whole list</td><td></td></tr><tr><td><code>isDrawCircleHoleEnabled</code></td><td>punch a hole into each circle</td><td><code>true</code></td></tr><tr><td><code>circleHoleRadius</code></td><td>hole radius in dp, values below 0.5 are ignored and logged</td><td><code>2f</code></td></tr><tr><td><code>circleHoleColor</code></td><td>hole color, <code>ColorTemplate.COLOR_NONE</code> leaves the hole transparent</td><td>white</td></tr></tbody></table></div>
+<p><code>setCircleColors(vararg colors: Int)</code> and <code>setCircleColors(colorResIds, context)</code> fill the list, <code>resetCircleColors()</code> empties it.</p>
+<p>Dashed lines:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.enableDashedLine(<span class="n">10f</span>, <span class="n">5f</span>, <span class="n">0f</span>)  <span class="c">// dash length, gap, phase, all in px</span>
+set.disableDashedLine()</code></pre>
+<p><code>isDashedLineEnabled</code> reports the state and <code>dashPathEffect</code> gives you the effect itself. A dashed line is rendered onto the chart&#x27;s internal bitmap rather than straight onto the canvas.</p>
+<p>Fill and highlight:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>fillFormatter</code></td><td>decides the y value the fill reaches down to</td><td><code>DefaultFillFormatter()</code></td></tr><tr><td><code>isDrawHighlightCircleEnabled</code></td><td>draw a ring on the highlighted entry</td><td><code>false</code></td></tr><tr><td><code>highlightCircleRadius</code></td><td>radius of that ring in dp</td><td><code>5f</code></td></tr></tbody></table></div>
+<p>The ring is drawn in three layers: a halo in <code>highlightColor</code> at 70 alpha, a disc in <code>circleHoleColor</code>, and a stroke in the set&#x27;s <code>color</code>.</p>
+<h2 id="bardataset">BarDataSet<a class="anchor" href="#bardataset" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">BarDataSet</span>(entries, <span class="s">&quot;Orders&quot;</span>)
+set.barCornerRadius = <span class="n">7f</span>
+set.barBorderWidth = <span class="n">1f</span>
+set.barBorderColor = <span class="t">Color</span>.<span class="t">BLACK</span>
+set.highlightAlpha = <span class="n">0</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>barCornerRadius</code></td><td>corner radius in dp, 0 for sharp corners</td><td><code>0f</code></td></tr><tr><td><code>barBorderWidth</code></td><td>border around each bar in dp, 0 for none</td><td><code>0f</code></td></tr><tr><td><code>barBorderColor</code></td><td>color of that border</td><td>black</td></tr><tr><td><code>barShadowColor</code></td><td>color of the shadow bar behind each bar</td><td><code>rgb(215, 215, 215)</code></td></tr><tr><td><code>highlightAlpha</code></td><td>opacity of the overlay on a selected bar, 0 to 255</td><td><code>120</code></td></tr><tr><td><code>stackLabels</code></td><td>legend labels for the stack positions</td><td>empty</td></tr><tr><td><code>fills</code></td><td>gradient fills used instead of <code>colors</code>, cycled per bar</td><td><code>null</code></td></tr></tbody></table></div>
+<p><code>barCornerRadius</code> is new in version 4. The radius is capped at half the bar&#x27;s width and height, so a short bar keeps a sane shape. On a stacked bar only the top corners of the last stack segment are rounded, which keeps the stack looking like one bar.</p>
+<p>Bar shadows are switched on at the chart, with <code>chart.isDrawBarShadowEnabled = true</code>, and then use each set&#x27;s <code>barShadowColor</code>.</p>
+<p>Stacking is decided by the entries: a <code>BarEntry</code> with <code>stackValues</code> is a stacked bar. Three read-only properties describe it, the last of them on <code>BarDataSet</code> rather than on the interface:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th></tr></thead><tbody><tr><td><code>stackSize</code></td><td>largest number of stack values in any entry, 1 for plain bars</td></tr><tr><td><code>isStacked</code></td><td>true when <code>stackSize</code> is above 1</td></tr><tr><td><code>entryCountStacks</code></td><td>number of entries counting every stack value separately</td></tr></tbody></table></div>
+<p>For fills, see <a href="/mpandroidchart/docs/colors/">Setting colors</a>. <code>setGradientColor(startColor, endColor)</code> is the shortcut for one gradient on every bar.</p>
+<h2 id="scatterdataset">ScatterDataSet<a class="anchor" href="#scatterdataset" aria-label="Link to this section">#</a></h2>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">ScatterDataSet</span>(entries, <span class="s">&quot;DS 2&quot;</span>)
+set.setScatterShape(<span class="t">ScatterChart</span>.<span class="t">ScatterShape</span>.<span class="t">CIRCLE</span>)
+set.scatterShapeSize = <span class="n">8f</span>
+set.scatterShapeHoleRadius = <span class="n">3f</span>
+set.scatterShapeHoleColor = <span class="t">ColorTemplate</span>.<span class="t">COLORFUL_COLORS</span>[<span class="n">3</span>]</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>scatterShapeSize</code></td><td>size of each shape; the built-in shape renderers read it as pixels</td><td><code>15f</code></td></tr><tr><td><code>shapeRenderer</code></td><td>the object that draws the shape</td><td><code>SquareShapeRenderer()</code></td></tr><tr><td><code>scatterShapeHoleRadius</code></td><td>radius of the hole in dp, 0 for none</td><td><code>0f</code></td></tr><tr><td><code>scatterShapeHoleColor</code></td><td>hole color, <code>COLOR_NONE</code> leaves it transparent</td><td><code>COLOR_NONE</code></td></tr></tbody></table></div>
+<p><code>setScatterShape(shape)</code> swaps in the built-in renderer for <code>SQUARE</code>, <code>CIRCLE</code>, <code>TRIANGLE</code>, <code>CROSS</code>, <code>X</code>, <code>CHEVRON_UP</code> or <code>CHEVRON_DOWN</code>. Only square, circle and triangle draw a hole.</p>
+<p>For a shape of your own, implement <code>IShapeRenderer</code> and assign it to <code>shapeRenderer</code> directly. <code>ScatterDataSet.getRendererForShape(shape)</code> returns a fresh built-in renderer if you want to wrap one.</p>
+<h2 id="candledataset">CandleDataSet<a class="anchor" href="#candledataset" aria-label="Link to this section">#</a></h2>
+<p>A candle set colors the body by direction. All four colors start at <code>ColorTemplate.COLOR_NONE</code>, which means the renderer falls back to the entry&#x27;s color from <code>colors</code>.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>increasingColor</code></td><td>body color when close is above open</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>decreasingColor</code></td><td>body color when close is below open</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>neutralColor</code></td><td>body color when open equals close</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>increasingPaintStyle</code></td><td>filled or outlined increasing bodies</td><td><code>Paint.Style.STROKE</code></td></tr><tr><td><code>decreasingPaintStyle</code></td><td>filled or outlined decreasing bodies</td><td><code>Paint.Style.FILL</code></td></tr><tr><td><code>showCandleBar</code></td><td>draw bodies, or only the open and close ticks</td><td><code>true</code></td></tr><tr><td><code>barSpace</code></td><td>space left free on each side of a body, as a fraction of the x step, clamped to 0 to 0.45</td><td><code>0.1f</code></td></tr><tr><td><code>shadowWidth</code></td><td>stroke width of the high to low line in dp</td><td><code>1.5f</code></td></tr><tr><td><code>shadowColor</code></td><td>color of that line</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>shadowColorSameAsCandle</code></td><td>draw the line in its candle&#x27;s body color</td><td><code>false</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.increasingColor = <span class="t">Color</span>.rgb(<span class="n">122</span>, <span class="n">242</span>, <span class="n">84</span>)
+set.increasingPaintStyle = <span class="t">Paint</span>.<span class="t">Style</span>.<span class="t">STROKE</span>
+set.decreasingColor = <span class="t">Color</span>.<span class="t">RED</span>
+set.decreasingPaintStyle = <span class="t">Paint</span>.<span class="t">Style</span>.<span class="t">FILL</span>
+set.shadowColor = <span class="t">Color</span>.<span class="t">DKGRAY</span>
+set.shadowWidth = <span class="n">0.7f</span></code></pre>
+<p>The y range of a candle set comes from the entries&#x27; <code>low</code> and <code>high</code>, not from their y.</p>
+<h2 id="bubbledataset">BubbleDataSet<a class="anchor" href="#bubbledataset" aria-label="Link to this section">#</a></h2>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isNormalizeSizeEnabled</code></td><td>scale bubbles relative to <code>maxSize</code> so the largest fills the reference size; off uses the entry size as a direct factor</td><td><code>true</code></td></tr><tr><td><code>highlightCircleWidth</code></td><td>stroke width of the ring around a highlighted bubble in dp</td><td><code>1f</code></td></tr><tr><td><code>maxSize</code></td><td>largest entry size in the set, read only</td><td>recomputed with the ranges</td></tr></tbody></table></div>
+<p><code>maxSize</code> is recomputed from scratch whenever the full ranges are, so it shrinks again after an entry is removed or after <code>notifyDataSetChanged()</code>. Adding a single entry can only widen it.</p>
+<h2 id="radardataset">RadarDataSet<a class="anchor" href="#radardataset" aria-label="Link to this section">#</a></h2>
+<p>A radar set is a <code>LineRadarDataSet</code>, so it has the line width and the fill settings above. On top it configures the ring on a highlighted entry.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isDrawHighlightCircleEnabled</code></td><td>draw the ring at all</td><td><code>false</code></td></tr><tr><td><code>highlightCircleFillColor</code></td><td>fill of the ring, <code>COLOR_NONE</code> for no fill</td><td>white</td></tr><tr><td><code>highlightCircleStrokeColor</code></td><td>stroke of the ring, <code>COLOR_NONE</code> uses the set&#x27;s first color</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>highlightCircleStrokeAlpha</code></td><td>opacity of the stroke, 0 to 255</td><td><code>76</code></td></tr><tr><td><code>highlightCircleInnerRadius</code></td><td>inner radius in dp</td><td><code>3f</code></td></tr><tr><td><code>highlightCircleOuterRadius</code></td><td>outer radius in dp</td><td><code>4f</code></td></tr><tr><td><code>highlightCircleStrokeWidth</code></td><td>stroke width in dp</td><td><code>2f</code></td></tr></tbody></table></div>
+<h2 id="piedataset">PieDataSet<a class="anchor" href="#piedataset" aria-label="Link to this section">#</a></h2>
+<p>A <code>PieData</code> holds exactly one pie set. Only the y range is tracked, because pie entries have no x.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>sliceSpace</code></td><td>gap between slices in dp, clamped to 0 to 20</td><td><code>0f</code></td></tr><tr><td><code>isAutomaticallyDisableSliceSpacingEnabled</code></td><td>drop the gap when the smallest slice would be narrower than it</td><td><code>false</code></td></tr><tr><td><code>selectionShift</code></td><td>how far a highlighted slice is pushed out, in dp</td><td><code>9f</code></td></tr><tr><td><code>highlightColor</code></td><td>color of a highlighted slice, <code>null</code> keeps the slice color</td><td><code>null</code></td></tr></tbody></table></div>
+<p>Labels and values can sit inside the slice or outside it, each on its own:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.xValuePosition = <span class="t">PieDataSet</span>.<span class="t">ValuePosition</span>.<span class="t">OUTSIDE_SLICE</span>
+set.yValuePosition = <span class="t">PieDataSet</span>.<span class="t">ValuePosition</span>.<span class="t">OUTSIDE_SLICE</span></code></pre>
+<p><code>xValuePosition</code> places the entry label, <code>yValuePosition</code> the value. Both default to <code>INSIDE_SLICE</code>. Once something sits outside, a connector line is drawn to it:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>valueLineColor</code></td><td>color of the connector</td><td>black</td></tr><tr><td><code>isUseValueColorForLineEnabled</code></td><td>draw it in the slice color instead</td><td><code>false</code></td></tr><tr><td><code>valueLineWidth</code></td><td>stroke width in dp</td><td><code>1f</code></td></tr><tr><td><code>valueLinePart1OffsetPercentage</code></td><td>where the line starts, as a percentage of the radius</td><td><code>75f</code></td></tr><tr><td><code>valueLinePart1Length</code></td><td>length of the outward part, as a fraction of the radius</td><td><code>0.3f</code></td></tr><tr><td><code>valueLinePart2Length</code></td><td>length of the horizontal part, as a fraction of the radius</td><td><code>0.4f</code></td></tr><tr><td><code>isValueLineVariableLength</code></td><td>shorten the line for slices near the horizontal center</td><td><code>true</code></td></tr></tbody></table></div>
+<blockquote><code>copy()</code> on a pie set carries over the inherited styling only. None of the properties in this section are copied.</blockquote>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/dataset/"><span>Previous</span>The DataSet class</a><a class="next" href="/mpandroidchart/docs/viewporthandler/"><span>Next</span>The ViewPortHandler</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

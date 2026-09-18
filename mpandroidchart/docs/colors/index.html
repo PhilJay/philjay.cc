@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Setting colors · MPAndroidChart</title>
+  <meta name="description" content="How a chart decides what color to paint each entry with, from a single line color to per-bar gradients and value label colors.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/colors/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Setting colors · MPAndroidChart">
+  <meta property="og:description" content="How a chart decides what color to paint each entry with, from a single line color to per-bar gradients and value label colors.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/colors/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors" class="active"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Data <span>Chapter 6 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#one-color-or-a-list">One color, or a list</a><a href="#building-the-list">Building the list</a><a href="#colors-from-resources">Colors from resources</a><a href="#the-colortemplate-palettes">The ColorTemplate palettes</a><a href="#color-none-and-color-skip">COLOR_NONE and COLOR_SKIP</a><a href="#gradients-with-fill">Gradients with Fill</a><a href="#fills-under-a-line">Fills under a line</a><a href="#value-label-colors">Value label colors</a><a href="#colors-in-compose">Colors in Compose</a></nav>
+      <p>How a chart decides what color to paint each entry with, from a single line color to per-bar gradients and value label colors.</p>
+<p>Every data set carries its own colors, so each line, each group of bars and each pie keeps its own look. Nothing is set globally.</p>
+<h2 id="one-color-or-a-list">One color, or a list<a class="anchor" href="#one-color-or-a-list" aria-label="Link to this section">#</a></h2>
+<p>A data set holds a <code>colors</code> list. The renderer asks for the color of entry <code>i</code> with <code>getColor(i)</code>, which returns <code>colors[i % colors.size]</code>, so the list is reused from the start once you run out of colors.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Revenue&quot;</span>)
+set.color = <span class="t">Color</span>.<span class="t">BLUE</span>                                  <span class="c">// one color for everything</span>
+set.colors = listOf(<span class="t">Color</span>.<span class="t">BLUE</span>, <span class="t">Color</span>.<span class="t">RED</span>, <span class="t">Color</span>.<span class="t">GREEN</span>) <span class="c">// cycled per entry</span></code></pre>
+<p><code>color</code> is a convenience on top of the list: reading it returns the first color, assigning it throws the list away and keeps only that one color.</p>
+<p>What &quot;per entry&quot; means depends on the chart:</p>
+<div class='table-wrap'><table><thead><tr><th>Chart</th><th>One color per</th></tr></thead><tbody><tr><td>Pie</td><td>slice</td></tr><tr><td>Bar</td><td>bar, and per stack value in a stacked bar</td></tr><tr><td>Scatter, bubble</td><td>point</td></tr><tr><td>Radar</td><td>set, because the polygon is drawn as one path</td></tr><tr><td>Line</td><td>line segment, but only in <code>LINEAR</code> and <code>STEPPED</code> mode</td></tr></tbody></table></div>
+<blockquote>A cubic line is drawn as one path, so <code>CUBIC_BEZIER</code> and <code>HORIZONTAL_BEZIER</code> always use <code>color</code> and ignore the rest of the list.</blockquote>
+<p>If you never touch the colors, a data set starts with one light blue, <code>Color.rgb(140, 234, 255)</code>.</p>
+<h2 id="building-the-list">Building the list<a class="anchor" href="#building-the-list" aria-label="Link to this section">#</a></h2>
+<p>Beside assigning <code>colors</code> directly there are a few helpers on <code>BaseDataSet</code>, so on every data set class:</p>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody><tr><td><code>setColors(vararg colors: Int)</code></td><td>replaces the list with the given colors</td></tr><tr><td><code>setColors(colors: List&lt;Int&gt;, alpha: Int)</code></td><td>same, but applies <code>alpha</code> to each color</td></tr><tr><td><code>setColor(color: Int, alpha: Int)</code></td><td>one color with <code>alpha</code> applied</td></tr><tr><td><code>addColor(color: Int)</code></td><td>appends one color</td></tr><tr><td><code>resetColors()</code></td><td>empties the list</td></tr></tbody></table></div>
+<p>The alpha variants ignore whatever alpha the color already carries and replace it with the value you pass, from 0 for invisible to 255 for opaque.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColor(<span class="t">ColorTemplate</span>.<span class="t">COLORFUL_COLORS</span>[<span class="n">0</span>], <span class="n">130</span>)   <span class="c">// half transparent</span>
+set.setColors(<span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>, <span class="n">200</span>)</code></pre>
+<blockquote><code>resetColors()</code> leaves the set without any color. <code>color</code> and <code>getColor(index)</code> then throw <code>IllegalStateException</code>, and the chart fails as soon as it draws the set. Add at least one color back first.</blockquote>
+<h2 id="colors-from-resources">Colors from resources<a class="anchor" href="#colors-from-resources" aria-label="Link to this section">#</a></h2>
+<p>Color resource ids are not colors, they have to be resolved first. Two ways:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColors(listOf(<span class="t">R</span>.color.red1, <span class="t">R</span>.color.red2, <span class="t">R</span>.color.red3), context)
+
+<span class="c">// or resolve them yourself, for example to reuse the list</span>
+<span class="k">val</span> palette = <span class="t">ColorTemplate</span>.createColors(resources, listOf(<span class="t">R</span>.color.red1, <span class="t">R</span>.color.red2))
+set.colors = palette</code></pre>
+<p><code>ColorTemplate.rgb(&quot;#2ecc71&quot;)</code> parses a hex string with or without the leading <code>#</code> into an opaque color, and <code>ColorTemplate.colorWithAlpha(color, alpha)</code> replaces the alpha channel of a color you already have.</p>
+<h2 id="the-colortemplate-palettes">The ColorTemplate palettes<a class="anchor" href="#the-colortemplate-palettes" aria-label="Link to this section">#</a></h2>
+<p><code>ColorTemplate</code> carries six ready-made palettes. Since version 4 they are <code>List&lt;Int&gt;</code>, not arrays, so you can assign, slice and concatenate them like any other list.</p>
+<div class='table-wrap'><table><thead><tr><th>Palette</th><th>Colors</th></tr></thead><tbody><tr><td><code>LIBERTY_COLORS</code></td><td>five light blue and teal tones</td></tr><tr><td><code>JOYFUL_COLORS</code></td><td>five strong pink, orange, yellow, green and cyan tones</td></tr><tr><td><code>PASTEL_COLORS</code></td><td>five muted blue, green, beige, rose and red tones</td></tr><tr><td><code>COLORFUL_COLORS</code></td><td>five saturated red, orange, yellow, green and brown tones</td></tr><tr><td><code>VORDIPLOM_COLORS</code></td><td>five light green, yellow, orange, blue and pink tones</td></tr><tr><td><code>MATERIAL_COLORS</code></td><td>four material tones: green, yellow, red, blue</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.colors = <span class="t">ColorTemplate</span>.<span class="t">VORDIPLOM_COLORS</span>
+set.colors = <span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>.take(<span class="n">3</span>)
+set.colors = <span class="t">ColorTemplate</span>.<span class="t">JOYFUL_COLORS</span> + <span class="t">ColorTemplate</span>.<span class="t">PASTEL_COLORS</span></code></pre>
+<p>There is also <code>ColorTemplate.holoBlue</code>, the light blue from Android 4, which the example app uses a lot.</p>
+<h2 id="color-none-and-color-skip">COLOR_NONE and COLOR_SKIP<a class="anchor" href="#color-none-and-color-skip" aria-label="Link to this section">#</a></h2>
+<p>Two constants in <code>ColorTemplate</code> are not colors but markers. Both are fully transparent values, so nothing is ever drawn with them by accident.</p>
+<p><code>COLOR_NONE</code> means &quot;nothing set here, decide for me&quot;. Renderers that see it either fall back to the entry color or leave the element out:</p>
+<ul><li><code>CandleDataSet.increasingColor</code>, <code>decreasingColor</code>, <code>neutralColor</code> and <code>shadowColor</code> all default to it, and the candle renderer then uses the entry&#x27;s color from <code>colors</code>.</li><li><code>ScatterDataSet.scatterShapeHoleColor</code> defaults to it, and the shape renderers leave the hole transparent.</li><li><code>RadarDataSet.highlightCircleStrokeColor</code> defaults to it, and the radar renderer strokes the highlight ring in the set&#x27;s first color. Its <code>highlightCircleFillColor</code> set to <code>COLOR_NONE</code> leaves the ring unfilled.</li><li><code>LineDataSet.circleHoleColor</code> set to it makes the line renderer punch a see through hole, so the chart background shows through the circle.</li></ul>
+<p><code>COLOR_SKIP</code> only appears in the legend. A <code>LegendEntry</code> whose <code>formColor</code> is <code>COLOR_SKIP</code>, <code>COLOR_NONE</code> or plain 0 gets no form drawn, just its label. That is how you write a legend entry that is only a heading.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.legend.entries = listOf(
+    <span class="t">LegendEntry</span>(<span class="s">&quot;Quarterly&quot;</span>, formColor = <span class="t">ColorTemplate</span>.<span class="t">COLOR_SKIP</span>),
+    <span class="t">LegendEntry</span>(
+        <span class="s">&quot;Revenue&quot;</span>,
+        form = <span class="t">Legend</span>.<span class="t">LegendForm</span>.<span class="t">SQUARE</span>,
+        formSize = <span class="n">10f</span>,
+        formColor = <span class="t">Color</span>.<span class="t">BLUE</span>,
+    ),
+)</code></pre>
+<h2 id="gradients-with-fill">Gradients with Fill<a class="anchor" href="#gradients-with-fill" aria-label="Link to this section">#</a></h2>
+<p>A plain color int cannot describe a gradient, so bar data sets take a list of <code>Fill</code> objects instead. A <code>Fill</code> knows four types, picked by the constructor you use:</p>
+<div class='table-wrap'><table><thead><tr><th>Constructor</th><th><code>Fill.Type</code></th><th>Draws</th></tr></thead><tbody><tr><td><code>Fill()</code></td><td><code>EMPTY</code></td><td>nothing</td></tr><tr><td><code>Fill(color)</code></td><td><code>COLOR</code></td><td>a solid color, with <code>alpha</code> applied on top</td></tr><tr><td><code>Fill(startColor, endColor)</code></td><td><code>LINEAR_GRADIENT</code></td><td>a two color gradient</td></tr><tr><td><code>Fill(gradientColors)</code></td><td><code>LINEAR_GRADIENT</code></td><td>evenly spread colors</td></tr><tr><td><code>Fill(gradientColors, gradientPositions)</code></td><td><code>LINEAR_GRADIENT</code></td><td>colors at positions from 0 to 1</td></tr><tr><td><code>Fill(drawable)</code></td><td><code>DRAWABLE</code></td><td>the drawable stretched to the filled area</td></tr></tbody></table></div>
+<p>Assign the list to <code>fills</code> and it replaces <code>colors</code> for the bars. Like <code>colors</code>, the list is cycled per bar.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">BarDataSet</span>(entries, <span class="s">&quot;The year 2017&quot;</span>)
+set.fills = mutableListOf(
+    <span class="t">Fill</span>(orangeLight, blueDark),
+    <span class="t">Fill</span>(blueLight, purple),
+    <span class="t">Fill</span>(greenLight, redDark),
+)</code></pre>
+<p>For one gradient on every bar there is a shortcut:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setGradientColor(startColor, endColor)</code></pre>
+<p><code>Fill.Direction</code> says where a linear gradient starts: <code>DOWN</code> from the top edge, <code>UP</code> from the bottom edge, <code>RIGHT</code> from the left edge, <code>LEFT</code> from the right edge. You do not set it on the fill, the renderer picks it: a vertical bar chart draws <code>UP</code>, a horizontal one <code>RIGHT</code>, and both flip when the axis is inverted.</p>
+<h2 id="fills-under-a-line">Fills under a line<a class="anchor" href="#fills-under-a-line" aria-label="Link to this section">#</a></h2>
+<p>Line and radar sets do not use <code>Fill</code>. They fill with a color plus an alpha, or with a drawable, which is how you get a fading area under a line:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.isDrawFilledEnabled = <span class="k">true</span>
+set.fillColor = <span class="t">Color</span>.<span class="t">BLUE</span>
+set.fillAlpha = <span class="n">85</span>                 <span class="c">// 0 to 255, default 85</span>
+
+<span class="c">// or a gradient, which takes precedence over fillColor</span>
+set.fillDrawable = <span class="t">GradientDrawable</span>(
+    <span class="t">GradientDrawable</span>.<span class="t">Orientation</span>.<span class="t">TOP_BOTTOM</span>,
+    intArrayOf(
+        <span class="t">ColorTemplate</span>.colorWithAlpha(<span class="t">Color</span>.<span class="t">BLUE</span>, <span class="n">115</span>),
+        <span class="t">ColorTemplate</span>.colorWithAlpha(<span class="t">Color</span>.<span class="t">BLUE</span>, <span class="n">0</span>),
+    ),
+)</code></pre>
+<p>Assigning <code>fillColor</code> clears <code>fillDrawable</code>, so the last one you set wins. How far down the fill reaches is decided by the <a href="/mpandroidchart/docs/fillformatter/">fill formatter</a>.</p>
+<h2 id="value-label-colors">Value label colors<a class="anchor" href="#value-label-colors" aria-label="Link to this section">#</a></h2>
+<p>The labels drawn at the entries have their own color list, with the same cycling rule and the same convenience property.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.valueTextColor = <span class="t">Color</span>.<span class="t">DKGRAY</span>
+set.valueTextColors = listOf(<span class="t">Color</span>.<span class="t">DKGRAY</span>, <span class="t">Color</span>.<span class="t">RED</span>)</code></pre>
+<p>The default is a single <code>Color.BLACK</code>. To set one color for every set at once, call it on the data object rather than on each set:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span>?.setValueTextColor(<span class="t">Color</span>.<span class="t">WHITE</span>)</code></pre>
+<p>Circle colors on a line set are a third list, independent of both: see <a href="/mpandroidchart/docs/dataset-subclasses/">DataSet subclasses</a>.</p>
+<h2 id="colors-in-compose">Colors in Compose<a class="anchor" href="#colors-in-compose" aria-label="Link to this section">#</a></h2>
+<p>Compose <code>Color</code> values are not ARGB ints, so the <code>MPChartCompose</code> module adds three extensions that convert for you.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">import</span> com.github.mikephil.charting.compose.setCircleColors
+<span class="k">import</span> com.github.mikephil.charting.compose.setColors
+<span class="k">import</span> com.github.mikephil.charting.compose.toComposeColors
+
+set.setColors(
+    listOf(<span class="t">MaterialTheme</span>.colorScheme.primary, <span class="t">MaterialTheme</span>.colorScheme.secondary)
+)
+set.setCircleColors(listOf(<span class="t">MaterialTheme</span>.colorScheme.primary))
+
+<span class="c">// and the other direction, for a Compose legend or a swatch next to the chart</span>
+<span class="k">val</span> swatches: <span class="t">List</span>&lt;<span class="t">Color</span>&gt; = <span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>.toComposeColors()</code></pre>
+<p>For a single color there is no helper and none is needed, <code>color = myColor.toArgb()</code> does it. More on the Compose module in <a href="/mpandroidchart/docs/compose/">Charts in Compose</a>.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/setting-data/"><span>Previous</span>Setting data</a><a class="next" href="/mpandroidchart/docs/formatters/"><span>Next</span>Formatting values</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

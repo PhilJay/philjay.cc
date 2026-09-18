@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting started · MPAndroidChart</title>
+  <meta name="description" content="Everything you need to put a first chart on screen: the dependency, the view, and the three classes that hold your data.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/getting-started/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Getting started · MPAndroidChart">
+  <meta property="og:description" content="Everything you need to put a first chart on screen: the dependency, the view, and the three classes that hold your data.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/getting-started/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started" class="active"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Basics <span>Chapter 1 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#requirements">Requirements</a><a href="#add-the-dependency">Add the dependency</a><a href="#create-the-chart">Create the chart</a><a href="#the-three-classes-that-hold-data">The three classes that hold data</a><a href="#add-a-second-series">Add a second series</a><a href="#change-the-data-later">Change the data later</a><a href="#a-first-look-at-styling">A first look at styling</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>Everything you need to put a first chart on screen: the dependency, the view, and the three classes that hold your data.</p>
+<h2 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h2>
+<p>The library targets Android 6.0 and newer.</p>
+<div class='table-wrap'><table><tbody><tr><td><code>minSdk</code></td><td>23</td></tr><tr><td><code>compileSdk</code></td><td>37</td></tr><tr><td>Java</td><td>17</td></tr><tr><td>Language</td><td>Kotlin, with Java callers supported</td></tr></tbody></table></div>
+<p>Coming from version 3.x? Every getter and setter pair is a property now, and entries carry a typed payload. <a href="/mpandroidchart/docs/migration/">Migrating from 3.x</a> walks through every change with before and after code.</p>
+<h2 id="add-the-dependency">Add the dependency<a class="anchor" href="#add-the-dependency" aria-label="Link to this section">#</a></h2>
+<p>The library is published through JitPack. Add the repository in <code>settings.gradle.kts</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven(<span class="s">&quot;https://jitpack.io&quot;</span>)
+    }
+}</code></pre>
+<p>Then add the dependency in your module&#x27;s <code>build.gradle.kts</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dependencies {
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0&quot;</span>)
+
+    <span class="c">// only if you use Jetpack Compose</span>
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0&quot;</span>)
+}</code></pre>
+<h2 id="create-the-chart">Create the chart<a class="anchor" href="#create-the-chart" aria-label="Link to this section">#</a></h2>
+<p>In Compose, use the composable of the same name from the <code>MPChartCompose</code> module:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">300.</span>dp),
+)</code></pre>
+<p>With views, every chart type is a <code>View</code>, so put one in a layout:</p>
+<pre data-lang="XML"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>&lt;<span class="k">com.github.mikephil.charting.charts.LineChart</span>
+    android:id=<span class="s">&quot;@+id/chart&quot;</span>
+    android:layout_width=<span class="s">&quot;match_parent&quot;</span>
+    android:layout_height=<span class="s">&quot;300dp&quot;</span> /&gt;</code></pre>
+<p>And get hold of it in your activity or fragment:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> chart = findViewById&lt;<span class="t">LineChart</span>&gt;(<span class="t">R</span>.id.chart)</code></pre>
+<p>You can also create one in code and add it to a container:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> chart = <span class="t">LineChart</span>(<span class="k">this</span>)
+container.addView(chart, <span class="t">MATCH_PARENT</span>, dpToPx(<span class="n">300</span>))</code></pre>
+<p>The chart types are <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>PieChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>RadarChart</code> and <code>CombinedChart</code>.</p>
+<h2 id="the-three-classes-that-hold-data">The three classes that hold data<a class="anchor" href="#the-three-classes-that-hold-data" aria-label="Link to this section">#</a></h2>
+<p>Data always follows the same shape, whichever chart you use.</p>
+<ol><li>An <strong>entry</strong> is one value. <code>Entry(x, y)</code> for a line or scatter point, <code>BarEntry</code> for a bar, <code>PieEntry</code> for a slice, and so on.</li><li>A <strong>data set</strong> is one series plus its styling: color, line width, whether values are drawn. <code>LineDataSet</code>, <code>BarDataSet</code>, <code>PieDataSet</code>.</li><li>A <strong>data object</strong> holds every series of the chart and is what you assign to it. <code>LineData</code>, <code>BarData</code>, <code>PieData</code>.</li></ol>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> entries = listOf(
+    <span class="t">Entry</span>(<span class="n">0f</span>, <span class="n">4f</span>),
+    <span class="t">Entry</span>(<span class="n">1f</span>, <span class="n">8f</span>),
+    <span class="t">Entry</span>(<span class="n">2f</span>, <span class="n">6f</span>),
+    <span class="t">Entry</span>(<span class="n">3f</span>, <span class="n">12f</span>),
+)
+
+<span class="k">val</span> set = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Sales&quot;</span>).apply {
+    color = <span class="t">Color</span>.<span class="t">BLUE</span>
+    lineWidth = <span class="n">2f</span>
+    circleRadius = <span class="n">4f</span>
+    isDrawValuesEnabled = <span class="k">false</span>
+}
+
+chart.<span class="k">data</span> = <span class="t">LineData</span>(set)</code></pre>
+<p>Assigning <code>chart.data</code> recalculates the axes, the legend and the offsets, then redraws. Nothing else is needed to see the chart.</p>
+<blockquote>Entries must be sorted by their x value. <code>DataSet.addEntryOrdered</code> inserts at the right place if you are adding to an existing set.</blockquote>
+<h2 id="add-a-second-series">Add a second series<a class="anchor" href="#add-a-second-series" aria-label="Link to this section">#</a></h2>
+<p>A data object takes several data sets. Each one keeps its own styling and legend entry.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> revenue = <span class="t">LineDataSet</span>(revenueEntries, <span class="s">&quot;Revenue&quot;</span>).apply { color = <span class="t">Color</span>.<span class="t">BLUE</span> }
+<span class="k">val</span> costs = <span class="t">LineDataSet</span>(costEntries, <span class="s">&quot;Costs&quot;</span>).apply { color = <span class="t">Color</span>.<span class="t">RED</span> }
+
+chart.<span class="k">data</span> = <span class="t">LineData</span>(revenue, costs)</code></pre>
+<h2 id="change-the-data-later">Change the data later<a class="anchor" href="#change-the-data-later" aria-label="Link to this section">#</a></h2>
+<p>There are two ways, and they differ in one detail.</p>
+<p>Replacing the data object applies everything at once:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.<span class="k">data</span> = <span class="t">LineData</span>(newSet)</code></pre>
+<p>Changing entries in place needs one call afterwards, which recalculates and redraws:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries = newEntries.toMutableList()
+chart.notifyDataSetChanged()</code></pre>
+<blockquote>In version 3.x you had to call <code>notifyDataSetChanged()</code> on the data set, on the data object and on the chart, then <code>invalidate()</code>. One call on the chart now does all of it.</blockquote>
+<h2 id="a-first-look-at-styling">A first look at styling<a class="anchor" href="#a-first-look-at-styling" aria-label="Link to this section">#</a></h2>
+<p>Everything is a property. A few you will reach for immediately:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.description.isEnabled = <span class="k">false</span>          <span class="c">// the label in the bottom right corner</span>
+chart.legend.isEnabled = <span class="k">true</span>                <span class="c">// the series legend</span>
+chart.axisRight.isEnabled = <span class="k">false</span>            <span class="c">// hide the second y axis</span>
+chart.xAxis.position = <span class="t">XAxis</span>.<span class="t">XAxisPosition</span>.<span class="t">BOTTOM</span>
+chart.noDataText = <span class="s">&quot;Nothing to show yet&quot;</span>
+chart.animateX(<span class="n">600</span>)                          <span class="c">// reveal the data from left to right</span></code></pre>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/setting-data/">Setting data</a> for every chart type&#x27;s entry and data set classes.</li><li><a href="/mpandroidchart/docs/axis/">The axis</a> for labels, ranges, grid lines and limit lines.</li><li><a href="/mpandroidchart/docs/general-styling/">General styling</a> for the settings shared by all charts.</li><li><a href="/mpandroidchart/docs/theming/">Theming a chart</a> for the look behind the screenshots on this site.</li><li><a href="/mpandroidchart/docs/interaction/">Interaction with the chart</a> for dragging, zooming and taps.</li><li>The example app in the repository shows all of it running, starting with the design section.</li></ul>
+      <div class="pager"><a class="next" href="/mpandroidchart/docs/axis/"><span>Next</span>The axis</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

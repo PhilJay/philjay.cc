@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom renderers · MPAndroidChart</title>
+  <meta name="description" content="The classes that paint a chart onto its canvas, how a chart wires them up, and how to replace one with your own.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/custom-renderers/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Custom renderers · MPAndroidChart">
+  <meta property="og:description" content="The classes that paint a chart onto its canvas, how a chart wires them up, and how to replace one with your own.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/custom-renderers/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers" class="active"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Classes in depth <span>Chapter 26 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-hierarchy">The hierarchy</a><a href="#which-renderer-each-chart-creates">Which renderer each chart creates</a><a href="#replacing-one">Replacing one</a><a href="#a-worked-example">A worked example</a><a href="#the-draw-order">The draw order</a><a href="#what-every-renderer-reads">What every renderer reads</a><a href="#the-data-provider-interfaces">The data provider interfaces</a><a href="#the-combined-chart-renderer">The combined chart renderer</a><a href="#buffers">Buffers</a><a href="#scatter-shape-renderers">Scatter shape renderers</a><a href="#what-a-renderer-must-not-do">What a renderer must not do</a></nav>
+      <p>The classes that paint a chart onto its canvas, how a chart wires them up, and how to replace one with your own.</p>
+<p>A renderer is a plain object that takes an <code>android.graphics.Canvas</code> and draws on it. It holds no data. It reads the chart through an interface, asks a <code>Transformer</code> for pixel positions, checks the <code>ViewPortHandler</code> for what is on screen, and paints. A custom data set changes the numbers a renderer is handed. A custom renderer changes what ends up on the screen.</p>
+<h2 id="the-hierarchy">The hierarchy<a class="anchor" href="#the-hierarchy" aria-label="Link to this section">#</a></h2>
+<p>Everything that draws extends <code>Renderer</code>, an abstract class whose whole body is one protected <code>viewPortHandler</code>. Three branches grow out of it.</p>
+<div class='table-wrap'><table><thead><tr><th>Class</th><th>Constructor</th><th>Draws</th></tr></thead><tbody><tr><td><code>DataRenderer</code></td><td><code>(animator, viewPortHandler)</code></td><td>the data: bars, lines, slices, values</td></tr><tr><td><code>AxisRenderer</code></td><td><code>(viewPortHandler, transformer, axis)</code></td><td>labels, grid lines, axis line, limit lines</td></tr><tr><td><code>LegendRenderer</code></td><td><code>(viewPortHandler, legend)</code></td><td>the legend entries and their forms</td></tr></tbody></table></div>
+<p><code>DataRenderer</code> is the one you will subclass most. It declares five members a subclass must fill in:</p>
+<div class='table-wrap'><table><thead><tr><th>Function</th><th>When it runs</th><th>What it does</th></tr></thead><tbody><tr><td><code>initBuffers()</code></td><td>on every data change, not per frame</td><td>creates or resizes the buffers for the new data</td></tr><tr><td><code>drawData(c)</code></td><td>first in a draw pass</td><td>the shapes themselves</td></tr><tr><td><code>drawHighlighted(c, indices)</code></td><td>right after <code>drawData</code></td><td>the indicators for the selected entries</td></tr><tr><td><code>drawExtras(c)</code></td><td>after the clip is lifted</td><td>line circles, the radar web, the pie hole</td></tr><tr><td><code>drawValues(c)</code></td><td>last, after the axis labels</td><td>the value labels and entry icons</td></tr></tbody></table></div>
+<p>It also owns four paints. Three of them have a read only property in front, and because a <code>Paint</code> is mutable that is enough to restyle a built-in renderer without subclassing it:</p>
+<div class='table-wrap'><table><thead><tr><th>Protected field</th><th>Public property</th><th>Default</th></tr></thead><tbody><tr><td><code>renderPaint</code></td><td><code>paintRender</code></td><td>anti-aliased, <code>Paint.Style.FILL</code></td></tr><tr><td><code>highlightPaint</code></td><td><code>paintHighlight</code></td><td>2 px stroke, orange <code>rgb(255, 187, 115)</code></td></tr><tr><td><code>valuePaint</code></td><td><code>paintValues</code></td><td><code>rgb(63, 63, 63)</code>, centered, 9 dp</td></tr><tr><td><code>drawPaint</code></td><td>none</td><td>dither flag only, unused by the built-in renderers</td></tr></tbody></table></div>
+<p>Two helpers are worth knowing. <code>isDrawingValuesAllowed(chart)</code> is the rule behind <code>maxVisibleCount</code>: it returns true only while the entry count is below <code>chart.maxVisibleCount * viewPortHandler.scaleX</code>. <code>applyValueTextStyle(set)</code> copies the typeface and text size of a data set into <code>valuePaint</code>, once per data set before its labels are drawn. <code>drawValue</code>, whose signature is in the worked example below, is the single open function on <code>DataRenderer</code> and the cheapest override in the library.</p>
+<h3 id="renderers-with-axes">Renderers with axes<a class="anchor" href="#renderers-with-axes" aria-label="Link to this section">#</a></h3>
+<p><code>BarLineScatterCandleBubbleRenderer</code> sits between <code>DataRenderer</code> and the renderers of the charts that have an x and a y axis. It adds <code>shouldDrawValues(set)</code>, <code>isInBoundsX(entry, set)</code> and the <code>xBounds</code> field, an instance of its inner <code>XBounds</code> class:</p>
+<div class='table-wrap'><table><thead><tr><th>Member</th><th>Meaning</th></tr></thead><tbody><tr><td><code>min</code></td><td>index of the first visible entry</td></tr><tr><td><code>max</code></td><td>index of the last visible entry</td></tr><tr><td><code>range</code></td><td><code>(max - min)</code> scaled by the x animation phase</td></tr><tr><td><code>set(chart, dataSet)</code></td><td>recomputes all three from <code>lowestVisibleX</code> and <code>highestVisibleX</code></td></tr></tbody></table></div>
+<p><code>set</code> rounds the first entry down and the last one up, so the entries just off screen are included and lines do not end in mid air at the edge. Every renderer under this class calls <code>xBounds.set(chart, dataSet)</code> once per data set and then loops from <code>min</code> to <code>max</code> only.</p>
+<p>Two more layers sit on top: <code>LineScatterCandleRadarRenderer</code> adds <code>drawHighlightLines(c, x, y, set)</code>, the vertical and horizontal crosshair, and <code>LineRadarRenderer</code> adds two <code>drawFilledPath</code> overloads, one for a color with an alpha and one for a <code>Drawable</code>.</p>
+<h2 id="which-renderer-each-chart-creates">Which renderer each chart creates<a class="anchor" href="#which-renderer-each-chart-creates" aria-label="Link to this section">#</a></h2>
+<p>Every chart builds its renderers in its <code>init</code> function and stores them in <code>lateinit var</code> properties. The data renderer is always <code>chart.renderer</code>:</p>
+<div class='table-wrap'><table><thead><tr><th>Chart</th><th><code>renderer</code></th></tr></thead><tbody><tr><td><code>LineChart</code></td><td><code>LineChartRenderer</code></td></tr><tr><td><code>BarChart</code></td><td><code>BarChartRenderer</code></td></tr><tr><td><code>HorizontalBarChart</code></td><td><code>HorizontalBarChartRenderer</code></td></tr><tr><td><code>ScatterChart</code></td><td><code>ScatterChartRenderer</code></td></tr><tr><td><code>CandleStickChart</code></td><td><code>CandleStickChartRenderer</code></td></tr><tr><td><code>BubbleChart</code></td><td><code>BubbleChartRenderer</code></td></tr><tr><td><code>CombinedChart</code></td><td><code>CombinedChartRenderer</code></td></tr><tr><td><code>PieChart</code></td><td><code>PieChartRenderer</code></td></tr><tr><td><code>RadarChart</code></td><td><code>RadarChartRenderer</code></td></tr></tbody></table></div>
+<p>Every chart that extends <code>BarLineChartBase</code> also has <code>rendererXAxis</code>, <code>rendererLeftYAxis</code> and <code>rendererRightYAxis</code>, an <code>XAxisRenderer</code> and two <code>YAxisRenderer</code> instances. <code>HorizontalBarChart</code> swaps all three for <code>XAxisRendererHorizontalBarChart</code> and <code>YAxisRendererHorizontalBarChart</code>. <code>PieChart</code> has no axis renderers at all, and <code>RadarChart</code> names its two differently: <code>xAxisRenderer</code> of type <code>XAxisRendererRadarChart</code> and <code>yAxisRenderer</code> of type <code>YAxisRendererRadarChart</code>. <code>legendRenderer</code> is on every chart too, but its setter is protected, so you restyle it rather than replace it: <code>chart.legendLabelPaint</code> reads and writes the renderer&#x27;s <code>labelPaint</code>.</p>
+<h2 id="replacing-one">Replacing one<a class="anchor" href="#replacing-one" aria-label="Link to this section">#</a></h2>
+<p>Assign your instance to the property. Every data renderer takes the chart, the animator and the viewport handler, in that order:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">BarChart</span>(
+    <span class="k">data</span> = barData,
+    setup = {
+        renderer = <span class="t">BadgeBarRenderer</span>(<span class="k">this</span>, animator, viewPortHandler)
+    },
+)</code></pre>
+<p>From a view, do the same before the data:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> chart = <span class="t">BarChart</span>(context)
+chart.renderer = <span class="t">BadgeBarRenderer</span>(chart, chart.animator, chart.viewPortHandler)
+chart.<span class="k">data</span> = barData</code></pre>
+<p>Order matters. Setting <code>chart.data</code> calls <code>notifyDataSetChanged()</code>, and that is what calls <code>renderer.initBuffers()</code>. Assign the renderer first and the buffers are built for you. Assign it afterwards and you have to call <code>chart.notifyDataSetChanged()</code> yourself, or the first draw will read buffers that were never filled. The Compose <code>setup</code> lambda runs once after the view is created and before any data is set, which is exactly the right moment.</p>
+<p>An axis renderer needs the axis it draws and a transformer instead of the animator:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.rendererXAxis = <span class="t">TickedXAxisRenderer</span>(
+    chart.viewPortHandler,
+    chart.xAxis,
+    chart.getTransformer(<span class="t">YAxis</span>.<span class="t">AxisDependency</span>.<span class="t">LEFT</span>),
+)</code></pre>
+<p><code>XAxisRendererHorizontalBarChart</code> takes a fourth argument, the <code>BarChart</code> itself. The two radar axis renderers take <code>(viewPortHandler, axis, chart)</code> and no transformer, because a radar chart places its labels from the center and the slice angle rather than through a matrix. Note that <code>chart.renderer</code> is typed <code>DataRenderer</code>, so reading it back for anything type specific needs a cast.</p>
+<h2 id="a-worked-example">A worked example<a class="anchor" href="#a-worked-example" aria-label="Link to this section">#</a></h2>
+<p>Draw every bar value on a soft rounded badge. The only override is <code>drawValue</code>, so all the positioning, the stacked case, the icons and the bounds checks stay as they are:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">class</span> <span class="t">BadgeBarRenderer</span>(
+    chart: <span class="t">BarDataProvider</span>,
+    animator: <span class="t">ChartAnimator</span>,
+    viewPortHandler: <span class="t">ViewPortHandler</span>,
+) : <span class="t">BarChartRenderer</span>(chart, animator, viewPortHandler) {
+
+    <span class="k">private</span> <span class="k">val</span> badgePaint = <span class="t">Paint</span>(<span class="t">Paint</span>.<span class="t">ANTI_ALIAS_FLAG</span>).apply {
+        color = <span class="t">Color</span>.argb(<span class="n">30</span>, <span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>)
+    }
+    <span class="k">private</span> <span class="k">val</span> badge = <span class="t">RectF</span>()
+
+    <span class="k">override</span> <span class="k">fun</span> drawValue(
+        c: <span class="t">Canvas</span>,
+        formatter: <span class="t">IValueFormatter</span>,
+        value: <span class="t">Float</span>,
+        entry: <span class="t">Entry</span>&lt;*&gt;,
+        dataSetIndex: <span class="t">Int</span>,
+        x: <span class="t">Float</span>,
+        y: <span class="t">Float</span>,
+        color: <span class="t">Int</span>,
+    ) {
+        <span class="k">val</span> text = formatter.getFormattedValue(
+            value, entry, dataSetIndex, viewPortHandler
+        )
+        <span class="k">val</span> padding = <span class="t">Utils</span>.convertDpToPixel(<span class="n">3f</span>)
+        <span class="k">val</span> half = paintValues.measureText(text) / <span class="n">2f</span> + padding
+        badge.set(x - half, y - paintValues.textSize, x + half, y + padding)
+        c.drawRoundRect(badge, padding, padding, badgePaint)
+        <span class="k">super</span>.drawValue(c, formatter, value, entry, dataSetIndex, x, y, color)
+    }
+}</code></pre>
+<p>The constructor takes <code>BarDataProvider</code>, not <code>BarChart</code>, because that is what <code>BarChartRenderer</code> declares, and <code>y</code> is the text baseline rather than the top of the label.</p>
+<p>To change the bars themselves rather than their labels, override <code>drawDataSet(c, dataSet: IBarDataSet&lt;*&gt;, index: Int)</code> on the same class, or <code>drawDataSet(c, dataSet: ILineDataSet&lt;*&gt;)</code> on <code>LineChartRenderer</code>, or <code>drawDataSet(c, dataSet: IPieDataSet&lt;*&gt;)</code> on <code>PieChartRenderer</code>. <code>LineChartRenderer</code> also opens up <code>drawLinear</code>, <code>drawCubicBezier</code>, <code>drawHorizontalBezier</code>, <code>drawCubicFill</code>, <code>drawLinearFill</code>, <code>drawCircles</code> and <code>drawHighlightCircle</code> one by one, so you rarely have to replace a whole line path.</p>
+<h2 id="the-draw-order">The draw order<a class="anchor" href="#the-draw-order" aria-label="Link to this section">#</a></h2>
+<p><code>Chart.onDraw</code> itself draws almost nothing: it paints <code>noDataText</code> when there is no data and calculates the offsets once. Everything else lives in the subclass. <code>BarLineChartBase.onDraw</code> runs this sequence on every frame:</p>
+<ol><li>the grid background, then <code>autoScale()</code> when <code>isAutoScaleMinMaxEnabled</code></li><li><code>computeAxis</code> on the left y, right y and x axis renderers, for the enabled axes</li><li><code>renderAxisLine</code> on all three</li><li><code>renderGridLines</code> and then <code>renderLimitLines</code> for every axis with <code>isDrawGridLinesBehindDataEnabled</code> or <code>isDrawLimitLinesBehindDataEnabled</code> set</li><li>the canvas is saved and clipped to <code>viewPortHandler.contentRect</code> when <code>isClipDataToContentEnabled</code></li><li><code>renderer.drawData</code></li><li><code>renderGridLines</code> for the axes that draw their grid in front of the data</li><li><code>renderer.drawHighlighted</code>, only when something is highlighted</li><li>the clip is restored, then <code>renderer.drawExtras</code></li><li><code>renderLimitLines</code> for the axes that draw in front</li><li><code>renderAxisLabels</code> on all three axis renderers</li><li><code>renderer.drawValues</code>, clipped again when <code>isClipValuesToContentEnabled</code></li><li><code>legendRenderer.renderLegend</code>, the description, the markers</li></ol>
+<p>So <code>drawData</code> is clipped to the content rectangle and <code>drawExtras</code> is not. A line chart relies on that: it draws its circles in <code>drawExtras</code> so a circle at the very edge is not sliced in half.</p>
+<p><code>PieChart.onDraw</code> is far shorter: <code>drawData</code>, <code>drawHighlighted</code>, <code>drawExtras</code>, <code>drawValues</code>, legend, description, markers. <code>RadarChart.onDraw</code> calls <code>drawExtras</code> first of all when <code>isDrawWebEnabled</code>, so the web ends up behind the polygons.</p>
+<h2 id="what-every-renderer-reads">What every renderer reads<a class="anchor" href="#what-every-renderer-reads" aria-label="Link to this section">#</a></h2>
+<p>Two objects are handed to every renderer and are the reason it can stay stateless. The <strong>animator</strong> supplies <code>phaseX</code> and <code>phaseY</code>, both 1 when nothing is animating. <code>phaseX</code> is a fraction of the entry count: a renderer stops its loop at <code>entryCount * phaseX</code>, which is why an x animation reveals entries one by one. <code>phaseY</code> multiplies the y value of each entry before it is transformed, which is why a y animation grows the shapes out of the zero line. Respect both or your renderer will ignore <a href="/mpandroidchart/docs/animations/">the animations</a>.</p>
+<p>The <strong>viewport handler</strong> is the content rectangle and the current zoom, in pixels. Renderers use <code>contentLeft</code>, <code>contentTop</code>, <code>contentRight</code>, <code>contentBottom</code> to draw and <code>isInBoundsLeft(x)</code>, <code>isInBoundsRight(x)</code>, <code>isInBoundsY(y)</code> and <code>isInBounds(x, y)</code> to skip what is off screen. The full API is in <a href="/mpandroidchart/docs/viewporthandler/">the ViewPortHandler</a>. The pattern below is worth copying, because the two checks are not symmetric:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">if</span> (!viewPortHandler.isInBoundsRight(pixel)) break
+<span class="k">if</span> (!viewPortHandler.isInBoundsLeft(pixel)) continue</code></pre>
+<p>Entries arrive in ascending x, so once one is past the right edge every later one is too and the loop can stop. One before the left edge only means this one is skipped.</p>
+<h2 id="the-data-provider-interfaces">The data provider interfaces<a class="anchor" href="#the-data-provider-interfaces" aria-label="Link to this section">#</a></h2>
+<p>A renderer never names a chart class. It is written against a small interface in <code>interfaces.dataprovider</code>, which is what lets <code>CombinedChart</code> reuse all five data renderers unchanged.</p>
+<div class='table-wrap'><table><thead><tr><th>Interface</th><th>Adds</th><th>Read by</th></tr></thead><tbody><tr><td><code>ChartInterface</code></td><td><code>data</code>, <code>contentRect</code>, <code>maxVisibleCount</code>, the value and pixel ranges</td><td>every renderer and marker</td></tr><tr><td><code>BarLineScatterCandleBubbleDataProvider</code></td><td><code>getTransformer(axis)</code>, <code>isInverted(axis)</code>, <code>lowestVisibleX</code>, <code>highestVisibleX</code></td><td>the renderers with axes</td></tr><tr><td><code>BarDataProvider</code></td><td><code>barData</code>, <code>isDrawBarShadowEnabled</code>, <code>isDrawValueAboveBarEnabled</code>, <code>isHighlightFullBarEnabled</code></td><td><code>BarChartRenderer</code></td></tr><tr><td><code>LineDataProvider</code></td><td><code>lineData</code>, <code>getAxis(axis)</code></td><td><code>LineChartRenderer</code></td></tr><tr><td><code>ScatterDataProvider</code></td><td><code>scatterData</code></td><td><code>ScatterChartRenderer</code></td></tr><tr><td><code>CandleDataProvider</code></td><td><code>candleData</code></td><td><code>CandleStickChartRenderer</code></td></tr><tr><td><code>BubbleDataProvider</code></td><td><code>bubbleData</code></td><td><code>BubbleChartRenderer</code></td></tr><tr><td><code>CombinedDataProvider</code></td><td><code>combinedData</code>, extends the five above</td><td><code>CombinedHighlighter</code></td></tr></tbody></table></div>
+<p><code>PieChartRenderer</code> and <code>RadarChartRenderer</code> are the exceptions. They take <code>PieChart</code> and <code>RadarChart</code> directly, because they need the center, the radius and the rotation angle, none of which are on an interface. Take the narrowest interface that gives you what you need and your renderer works on the combined chart as well as on the single type chart.</p>
+<h2 id="the-combined-chart-renderer">The combined chart renderer<a class="anchor" href="#the-combined-chart-renderer" aria-label="Link to this section">#</a></h2>
+<p><code>CombinedChartRenderer</code> draws nothing itself. It owns <code>subRenderers</code>, a mutable list of <code>DataRenderer</code>, and forwards all four draw functions plus <code>initBuffers</code> to each entry in order. <code>createRenderers()</code> rebuilds that list. It walks <code>chart.drawOrder</code> and adds a renderer only for a data kind that is actually present, so a combined chart holding line and bar data gets exactly two sub renderers, in the order the draw order lists them. The list is rebuilt for you whenever you set <code>chart.data</code>, and you only call <code>createRenderers()</code> by hand after changing <code>drawOrder</code> without setting data again. <code>drawHighlighted</code> is the one function that does not simply forward. It matches each highlight against the data index of the sub renderer&#x27;s own data and passes on only the highlights that belong to it, plus any with a data index of -1, which are meant for every renderer.</p>
+<p><code>getSubRenderer(index)</code> returns an entry or null when the index is out of range. Replacing one entry in <code>subRenderers</code> is how you change a single data kind inside a combined chart, but do it after the data is set, because the data setter rebuilds the whole list.</p>
+<h2 id="buffers">Buffers<a class="anchor" href="#buffers" aria-label="Link to this section">#</a></h2>
+<p>Drawing runs on every frame, so the bar renderers keep their coordinates in a reusable <code>FloatArray</code> rather than allocating one. <code>AbstractBuffer&lt;T&gt;</code> is that array plus a write position: <code>buffer</code> holds the floats, <code>feed(data)</code> fills them, <code>setPhases(phaseX, phaseY)</code> sets the animation phases used by the next feed, and <code>reset()</code> moves the write position back to the start.</p>
+<p><code>BarBuffer</code> is the bar layout: four floats per bar, left, top, right and bottom, in value space. Left and right are <code>x - barWidth / 2</code> and <code>x + barWidth / 2</code>; top and bottom span from the bar value to zero, swapped when the y axis is inverted. A stacked entry produces one rectangle per stack value. <code>HorizontalBarBuffer</code> keeps the same four floats but swaps their meaning: left and right are y values, top and bottom are x values.</p>
+<p><code>BarChartRenderer.initBuffers</code> creates one buffer per data set, sized <code>entryCount * 4</code>, times the stack size for a stacked set. <code>drawDataSet</code> then feeds the buffer, converts the whole array to pixels in one <code>trans.pointValuesToPixel(buffer.buffer)</code> call and steps through it four floats at a time. One matrix call for a whole data set is the reason the buffers exist. Only the bar renderers use them. <code>ScatterChartRenderer</code>, <code>CandleStickChartRenderer</code>, <code>RadarChartRenderer</code> and <code>PieChartRenderer</code> all have an empty <code>initBuffers</code>, and <code>LineChartRenderer</code> uses an offscreen bitmap instead, and only for the modes that need one.</p>
+<h2 id="scatter-shape-renderers">Scatter shape renderers<a class="anchor" href="#scatter-shape-renderers" aria-label="Link to this section">#</a></h2>
+<p>The smallest custom drawing hook in the library is not a renderer subclass at all. <code>IShapeRenderer</code> is a <code>fun interface</code> with a single <code>renderShape(c, dataSet, viewPortHandler, posX, posY, renderPaint)</code>, which <code>ScatterChartRenderer</code> calls once per entry with the pixel position already worked out and <code>renderPaint</code> already set to the color of that entry. A lambda is enough:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">ScatterDataSet</span>(entries, <span class="s">&quot;Points&quot;</span>)
+set.shapeRenderer = <span class="t">IShapeRenderer</span> { c, dataSet, _, x, y, paint -&gt;
+    <span class="k">val</span> half = dataSet.scatterShapeSize / <span class="n">2f</span>
+    c.drawLine(x - half, y - half, x + half, y + half, paint)
+}</code></pre>
+<p>The built-in implementations are <code>SquareShapeRenderer</code> (the default on <code>ScatterDataSet</code>), <code>CircleShapeRenderer</code>, <code>TriangleShapeRenderer</code>, <code>CrossShapeRenderer</code>, <code>XShapeRenderer</code>, <code>ChevronUpShapeRenderer</code> and <code>ChevronDownShapeRenderer</code>, and <code>set.setScatterShape(ScatterChart.ScatterShape.CIRCLE)</code> is a shortcut that installs one of them. Every one of them uses <code>scatterShapeSize</code> as pixels but <code>scatterShapeHoleRadius</code> as dp, so keep to that if you want your shape to match the others.</p>
+<h2 id="what-a-renderer-must-not-do">What a renderer must not do<a class="anchor" href="#what-a-renderer-must-not-do" aria-label="Link to this section">#</a></h2>
+<blockquote>A draw function runs on the UI thread up to sixty times a second, once per data set, and often once per visible entry. Everything written here follows from that.</blockquote>
+<p><strong>Do not allocate in a draw function.</strong> No <code>Paint</code>, no <code>Path</code>, no <code>RectF</code>, no <code>FloatArray</code>, no boxing. Create them as fields, as the built-in renderers do with <code>barRect</code>, <code>barShapePath</code> and the various float buffers. For points, use <code>MPPointF.getInstance(...)</code> and hand the instance back with <code>MPPointF.recycleInstance(...)</code> when you are done.</p>
+<p><strong>Do not hold a strong reference that outlives the chart.</strong> A renderer is reachable from the view, so holding the view back is not itself a leak, but anything longer lived that holds your renderer then holds the whole view hierarchy. <code>CombinedChartRenderer</code> and <code>LineChartRenderer</code> both use a <code>java.lang.ref.WeakReference</code> for exactly this reason, and both handle the reference having been cleared.</p>
+<p><strong>Do not skip the bounds checks.</strong> Without <code>xBounds</code> and the <code>isInBounds</code> calls you transform and draw every entry in the data set, including the thousands that are off screen. That is the difference between a chart that scrolls smoothly and one that does not.</p>
+<p>And keep dp conversions inside <code>Utils.convertDpToPixel</code> rather than hard coding pixel values, so your renderer looks the same on every screen density.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/custom-datasets/"><span>Previous</span>Custom data sets</a><a class="next" href="/mpandroidchart/docs/compose/"><span>Next</span>Jetpack Compose</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

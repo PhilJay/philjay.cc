@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The x axis · MPAndroidChart</title>
+  <meta name="description" content="Where the horizontal axis sits, how its labels are drawn, and the recipes for names, dates and edge padding.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/xaxis/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="The x axis · MPAndroidChart">
+  <meta property="og:description" content="Where the horizontal axis sits, how its labels are drawn, and the recipes for names, dates and edge padding.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/xaxis/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis" class="active"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">The axes <span>Chapter 3 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#position">Position</a><a href="#rotating-labels">Rotating labels</a><a href="#avoiding-first-and-last-clipping">Avoiding first and last clipping</a><a href="#centering-labels">Centering labels</a><a href="#the-measured-label-size">The measured label size</a><a href="#labels-from-a-list-of-names">Labels from a list of names</a><a href="#dates-and-times">Dates and times</a><a href="#one-label-per-entry">One label per entry</a><a href="#padding-at-the-edges">Padding at the edges</a><a href="#other-chart-types">Other chart types</a><a href="#next">Next</a></nav>
+      <p>Where the horizontal axis sits, how its labels are drawn, and the recipes for names, dates and edge padding.</p>
+<p><code>XAxis</code> is the horizontal axis of the line, bar, scatter, candle, bubble and combined charts, and the ring of labels around a radar chart. Its values are the x values of your entries, not their positions in the list.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> xAxis = chart.xAxis</code></pre>
+<p>Everything on <a href="/mpandroidchart/docs/axis/">the axis</a> applies here too: enabling parts, label count, granularity, range, grid lines and limit lines. This page covers what only the x axis has.</p>
+<h2 id="position">Position<a class="anchor" href="#position" aria-label="Link to this section">#</a></h2>
+<p><code>position</code> decides where the labels go.</p>
+<div class='table-wrap'><table><thead><tr><th>Value</th><th>Where the labels are drawn</th></tr></thead><tbody><tr><td><code>TOP</code></td><td>Above the content area. The default.</td></tr><tr><td><code>BOTTOM</code></td><td>Below the content area.</td></tr><tr><td><code>BOTH_SIDED</code></td><td>Above and below.</td></tr><tr><td><code>TOP_INSIDE</code></td><td>Inside the content area, along its top edge.</td></tr><tr><td><code>BOTTOM_INSIDE</code></td><td>Inside the content area, along its bottom edge.</td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.position = <span class="t">XAxis</span>.<span class="t">XAxisPosition</span>.<span class="t">BOTTOM</span></code></pre>
+<p>The default is <code>TOP</code>, which is rarely what you want, so this is usually the first line you write for the x axis. The inside positions cost no offset, so the chart keeps its full height, which is handy for a chart that fills a card edge to edge.</p>
+<h2 id="rotating-labels">Rotating labels<a class="anchor" href="#rotating-labels" aria-label="Link to this section">#</a></h2>
+<p>Long labels collide. Rotate them instead of shortening them.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.labelRotationAngle = -<span class="n">45f</span></code></pre>
+<p>The angle is in degrees and positive values turn clockwise. The chart measures the rotated size and reserves the space it needs, so nothing is cut off at the bottom.</p>
+<h2 id="avoiding-first-and-last-clipping">Avoiding first and last clipping<a class="anchor" href="#avoiding-first-and-last-clipping" aria-label="Link to this section">#</a></h2>
+<p>The first and the last label sit at the edges of the content area and stick out over it by half their width. Turning this on pulls them back in.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.isAvoidFirstLastClippingEnabled = <span class="k">true</span></code></pre>
+<p>The first label always moves inwards by half its width. The last one moves only when it is wider than twice the right offset and would reach past the right edge. The default is <code>false</code>.</p>
+<h2 id="centering-labels">Centering labels<a class="anchor" href="#centering-labels" aria-label="Link to this section">#</a></h2>
+<p>By default a label sits exactly on its value, on the grid line. Centering draws each label halfway between two grid lines instead, which is what a grouped bar chart wants: the group name belongs between the group&#x27;s boundaries, not on them.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.isCenterAxisLabelsEnabled = <span class="k">true</span>
+chart.xAxis.granularity = <span class="n">1f</span></code></pre>
+<p>Reading the property gives <code>false</code> while the axis has no computed entries, so it also tells you whether centering is currently in effect.</p>
+<h2 id="the-measured-label-size">The measured label size<a class="anchor" href="#the-measured-label-size" aria-label="Link to this section">#</a></h2>
+<p>The renderer measures the longest label on every pass and writes the result onto the axis. You can read it, for example to line up something else with the labels, but you cannot assign it.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th></tr></thead><tbody><tr><td><code>labelWidth</code></td><td>Width of the widest label in pixels.</td></tr><tr><td><code>labelHeight</code></td><td>Height of the labels in pixels.</td></tr><tr><td><code>labelRotatedWidth</code></td><td>Width of the label bounds after rotation.</td></tr><tr><td><code>labelRotatedHeight</code></td><td>Height of the label bounds after rotation.</td></tr></tbody></table></div>
+<p>The bottom or top offset the chart reserves is <code>labelRotatedHeight</code> in pixels plus <code>yOffset</code> converted from dp, so a large rotation angle costs vertical space.</p>
+<h2 id="labels-from-a-list-of-names">Labels from a list of names<a class="anchor" href="#labels-from-a-list-of-names" aria-label="Link to this section">#</a></h2>
+<p>The most common case: your entries are at x = 0, 1, 2, and you want a name under each one. <code>IndexAxisValueFormatter</code> takes the label at the rounded x value.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> months = listOf(<span class="s">&quot;Jan&quot;</span>, <span class="s">&quot;Feb&quot;</span>, <span class="s">&quot;Mar&quot;</span>, <span class="s">&quot;Apr&quot;</span>, <span class="s">&quot;May&quot;</span>, <span class="s">&quot;Jun&quot;</span>)
+
+chart.xAxis.apply {
+    valueFormatter = <span class="t">IndexAxisValueFormatter</span>(months)
+    granularity = <span class="n">1f</span>
+    labelCount = months.size
+}</code></pre>
+<p>Granularity of 1 matters here. Without it, zooming in produces values like 2.4 and 2.6: from a fraction of 0.5 the formatter returns an empty string, and below that it returns the label of the rounded down index, which then sits at a tick it does not belong to.</p>
+<h2 id="dates-and-times">Dates and times<a class="anchor" href="#dates-and-times" aria-label="Link to this section">#</a></h2>
+<p>Keep the x value a number and format it in the axis. A timestamp in hours since the epoch works well, because the numbers stay small enough for a <code>Float</code>.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> format = <span class="t">SimpleDateFormat</span>(<span class="s">&quot;dd MMM HH:mm&quot;</span>, <span class="t">Locale</span>.getDefault())
+
+chart.xAxis.apply {
+    granularity = <span class="n">1f</span>
+    isCenterAxisLabelsEnabled = <span class="k">true</span>
+    valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt;
+        format.format(<span class="t">Date</span>(<span class="t">TimeUnit</span>.<span class="t">HOURS</span>.toMillis(value.toLong())))
+    }
+}</code></pre>
+<p>Build the <code>SimpleDateFormat</code> once, outside the lambda. The formatter runs for every label on every frame.</p>
+<h2 id="one-label-per-entry">One label per entry<a class="anchor" href="#one-label-per-entry" aria-label="Link to this section">#</a></h2>
+<p>Ask for as many labels as you have entries and stop the axis from inventing values between them.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.apply {
+    labelCount = entries.size
+    granularity = <span class="n">1f</span>
+}</code></pre>
+<p><code>labelCount</code> is clamped to 25, so for longer series ask for fewer labels and let the formatter return an empty string for the values you want to skip.</p>
+<h2 id="padding-at-the-edges">Padding at the edges<a class="anchor" href="#padding-at-the-edges" aria-label="Link to this section">#</a></h2>
+<p>A line chart draws its first point exactly on the left edge and its last point on the right edge. A bar chart instead leaves half a slot at each side, because <code>BarChart</code>, <code>ScatterChart</code> and <code>CandleStickChart</code> set <code>spaceMin</code> and <code>spaceMax</code> to <code>0.5</code> on the x axis. For a line chart you pick the look you want by fixing the range. The example app&#x27;s design section shows both.</p>
+<p>Half a slot at each side, the way bars sit:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.apply {
+    axisMinimum = -<span class="n">0.5f</span>
+    axisMaximum = pointCount - <span class="n">0.5f</span>
+    granularity = <span class="n">1f</span>
+    labelCount = pointCount
+}</code></pre>
+<p>Full width, the line touching both edges:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.apply {
+    axisMinimum = <span class="n">0f</span>
+    axisMaximum = (pointCount - <span class="n">1</span>).toFloat()
+    granularity = <span class="n">1f</span>
+    labelCount = pointCount
+    isAvoidFirstLastClippingEnabled = <span class="k">true</span>
+}
+chart.setExtraOffsets(<span class="n">6f</span>, <span class="n">8f</span>, <span class="n">6f</span>, <span class="n">4f</span>)</code></pre>
+<p>The second one needs the clipping guard, because the outer labels now sit right on the edges. A few pixels of extra offset keep the line itself from being cut in half by the view bounds.</p>
+<blockquote>On a bar chart, <code>chart.isFitBarsEnabled = true</code> is a third option. It widens the range by half a bar width on each side on the next <code>notifyDataSetChanged()</code>, so the outer bars are fully visible whatever bar width you use.</blockquote>
+<h2 id="other-chart-types">Other chart types<a class="anchor" href="#other-chart-types" aria-label="Link to this section">#</a></h2>
+<p>The <code>HorizontalBarChart</code> draws its x axis vertically, along the bars. You still address it as <code>chart.xAxis</code> and the entries still carry x values, only the drawing is rotated: <code>TOP</code> puts the labels on the right of the chart and <code>BOTTOM</code> on the left.</p>
+<p>The radar chart uses the x axis for the labels around the web, one per entry index. <code>labelRotationAngle</code>, the text settings and the formatter work there. Positions, centering and limit lines do not.</p>
+<h2 id="next">Next<a class="anchor" href="#next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/yaxis/">The y axis</a> for the value side.</li><li><a href="/mpandroidchart/docs/formatters/">Formatting values</a> for the formatters used above.</li><li><a href="/mpandroidchart/docs/axis/">The axis</a> for the settings both axes share.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/axis/"><span>Previous</span>The axis</a><a class="next" href="/mpandroidchart/docs/yaxis/"><span>Next</span>The y axis</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animations · MPAndroidChart</title>
+  <meta name="description" content="Building the chart up over time with animateX, animateY and animateXY, the easing curves that shape them, spinning round charts, and animating the viewport.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/animations/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Animations · MPAndroidChart">
+  <meta property="og:description" content="Building the chart up over time with animateX, animateY and animateXY, the easing curves that shape them, spinning round charts, and animating the viewport.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/animations/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations" class="active"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">Motion and viewport <span>Chapter 17 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#animate-the-entries">Animate the entries</a><a href="#easing">Easing</a><a href="#how-the-phases-drive-the-drawing">How the phases drive the drawing</a><a href="#spin-a-pie-or-radar-chart">Spin a pie or radar chart</a><a href="#animate-the-viewport">Animate the viewport</a><a href="#animations-in-compose">Animations in Compose</a></nav>
+      <p>Building the chart up over time with animateX, animateY and animateXY, the easing curves that shape them, spinning round charts, and animating the viewport.</p>
+<h2 id="animate-the-entries">Animate the entries<a class="anchor" href="#animate-the-entries" aria-label="Link to this section">#</a></h2>
+<p>Three functions exist on every chart type. Each one returns immediately and redraws the chart on every frame, so no extra <code>invalidate()</code> is needed.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animateX(<span class="n">1500</span>)          <span class="c">// build up from left to right</span>
+chart.animateY(<span class="n">1500</span>)          <span class="c">// grow from the bottom up</span>
+chart.animateXY(<span class="n">1500</span>, <span class="n">1500</span>)   <span class="c">// both at once</span></code></pre>
+<div class='table-wrap'><table><thead><tr><th>Function</th><th>Effect</th></tr></thead><tbody><tr><td><code>animateX(durationMillis, easing)</code></td><td>Reveals the entries one after the other along the x axis</td></tr><tr><td><code>animateY(durationMillis, easing)</code></td><td>Scales the values up from zero</td></tr><tr><td><code>animateXY(durationMillisX, durationMillisY, easingX, easingY)</code></td><td>Runs both, each with its own duration and curve</td></tr></tbody></table></div>
+<p>Durations are milliseconds. Call the animation after the data is set, usually right after <code>chart.data = ...</code>. Calling it again restarts the animation from the beginning.</p>
+<p>On a pie or radar chart the same functions work: the x animation sweeps the slices into place and the y animation grows each slice or the web polygon.</p>
+<h2 id="easing">Easing<a class="anchor" href="#easing" aria-label="Link to this section">#</a></h2>
+<p>Every animation function takes an easing curve as its last parameter. The default is <code>Easing.Linear</code>, except <code>animateXY</code>, whose <code>easingY</code> follows <code>easingX</code>.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animateY(<span class="n">1400</span>, <span class="t">Easing</span>.<span class="t">EaseOutBack</span>)
+chart.animateXY(<span class="n">1400</span>, <span class="n">1400</span>, <span class="t">Easing</span>.<span class="t">EaseInOutQuad</span>)
+chart.animateXY(<span class="n">1200</span>, <span class="n">800</span>, easingX = <span class="t">Easing</span>.<span class="t">EaseOutCubic</span>, easingY = <span class="t">Easing</span>.<span class="t">EaseInQuad</span>)</code></pre>
+<p>The <code>Easing</code> object holds 28 curves. <code>EaseIn</code> starts slow, <code>EaseOut</code> ends slow, <code>EaseInOut</code> does both.</p>
+<div class='table-wrap'><table><thead><tr><th>Family</th><th>Curves</th></tr></thead><tbody><tr><td>None</td><td><code>Linear</code></td></tr><tr><td>Polynomial</td><td><code>EaseInQuad</code>, <code>EaseOutQuad</code>, <code>EaseInOutQuad</code>, <code>EaseInCubic</code>, <code>EaseOutCubic</code>, <code>EaseInOutCubic</code>, <code>EaseInQuart</code>, <code>EaseOutQuart</code>, <code>EaseInOutQuart</code></td></tr><tr><td>Trigonometric</td><td><code>EaseInSine</code>, <code>EaseOutSine</code>, <code>EaseInOutSine</code></td></tr><tr><td>Exponential</td><td><code>EaseInExpo</code>, <code>EaseOutExpo</code>, <code>EaseInOutExpo</code></td></tr><tr><td>Circular</td><td><code>EaseInCirc</code>, <code>EaseOutCirc</code>, <code>EaseInOutCirc</code></td></tr><tr><td>Overshooting</td><td><code>EaseInBack</code>, <code>EaseOutBack</code>, <code>EaseInOutBack</code>, <code>EaseInElastic</code>, <code>EaseOutElastic</code>, <code>EaseInOutElastic</code></td></tr><tr><td>Bouncing</td><td><code>EaseInBounce</code>, <code>EaseOutBounce</code>, <code>EaseInOutBounce</code></td></tr></tbody></table></div>
+<p>The elastic, back and bounce curves overshoot on the way, so values briefly go below 0 or above the target. That looks good on a bar or pie chart and odd on a line chart with a fixed axis range.</p>
+<p><code>EasingFunction</code> is a functional interface that extends <code>TimeInterpolator</code>, so a custom curve is one lambda:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> overshootTwice = <span class="t">Easing</span>.<span class="t">EasingFunction</span> { t -&gt; t * t * (<span class="n">3f</span> * t - <span class="n">2f</span>) }
+
+chart.animateY(<span class="n">1000</span>, overshootTwice)</code></pre>
+<p><code>EasingFunction</code> adds nothing to Android&#x27;s <code>TimeInterpolator</code>, but the animation functions ask for an <code>EasingFunction</code>, so wrap an existing interpolator: <code>Easing.EasingFunction { AccelerateInterpolator().getInterpolation(it) }</code>.</p>
+<h2 id="how-the-phases-drive-the-drawing">How the phases drive the drawing<a class="anchor" href="#how-the-phases-drive-the-drawing" aria-label="Link to this section">#</a></h2>
+<p>Behind the functions sits one <code>ChartAnimator</code> per chart, reachable as <code>chart.animator</code>. It holds two values:</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>phaseX</code></td><td>Share of the entries that is drawn, 0 to 1</td><td><code>1</code></td></tr><tr><td><code>phaseY</code></td><td>Factor the drawn values are multiplied by, 0 to 1</td><td><code>1</code></td></tr></tbody></table></div>
+<p><code>animateX</code> runs <code>phaseX</code> from 0 to 1, <code>animateY</code> runs <code>phaseY</code>, and <code>animateXY</code> runs both. The renderers read them on every draw: a line renderer multiplies each y value by <code>phaseY</code> and draws the first <code>phaseX</code> share of the entries currently in view, a pie renderer scales its slice angles, a bar renderer scales the bar height. Values assigned to either phase are clamped into 0 until 1.</p>
+<p>You can set a phase directly to freeze the chart in a partly drawn state, which is occasionally useful for a screenshot or a custom transition:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animator.phaseY = <span class="n">0.5f</span>   <span class="c">// every value drawn at half height</span>
+chart.invalidate()</code></pre>
+<p>Markers follow the same rule: an entry that the x animation has not reached yet gets no marker.</p>
+<h2 id="spin-a-pie-or-radar-chart">Spin a pie or radar chart<a class="anchor" href="#spin-a-pie-or-radar-chart" aria-label="Link to this section">#</a></h2>
+<p><code>PieChart</code> and <code>RadarChart</code> can rotate their whole content. <code>spin</code> animates the rotation angle and redraws on every step.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.spin(
+    durationMillis = <span class="n">2000</span>,
+    fromAngle = chart.rotationAngle,
+    toAngle = chart.rotationAngle + <span class="n">360f</span>,
+    easing = <span class="t">Easing</span>.<span class="t">EaseInOutCubic</span>,
+)</code></pre>
+<p>Angles are degrees, 0 at 3 o&#x27;clock, increasing clockwise. The start angle is applied at once, so passing the current <code>rotationAngle</code> makes the spin continue from where the chart stands. An end angle outside 0 until 360 keeps spinning through full turns, which is how the example above turns exactly once.</p>
+<p><code>spin</code> is independent of <code>animateX</code> and <code>animateY</code>, so a pie chart can grow and turn at the same time.</p>
+<h2 id="animate-the-viewport">Animate the viewport<a class="anchor" href="#animate-the-viewport" aria-label="Link to this section">#</a></h2>
+<p>Scrolling and zooming have animated counterparts on the charts with axes. They run as viewport jobs, which means they wait until the chart has a size before they start, so it is safe to call them straight after setting the data.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> left = <span class="t">YAxis</span>.<span class="t">AxisDependency</span>.<span class="t">LEFT</span>
+
+chart.moveViewToAnimated(xValue = <span class="n">120f</span>, yValue = <span class="n">50f</span>, axis = left, duration = <span class="n">800</span>)
+chart.centerViewToAnimated(xValue = <span class="n">120f</span>, yValue = <span class="n">50f</span>, axis = left, duration = <span class="n">800</span>)
+
+chart.zoomAndCenterAnimated(
+    scaleX = <span class="n">4f</span>,
+    scaleY = <span class="n">1f</span>,
+    xValue = <span class="n">120f</span>,
+    yValue = <span class="n">50f</span>,
+    axis = left,
+    duration = <span class="n">800</span>,
+)</code></pre>
+<div class='table-wrap'><table><thead><tr><th>Function</th><th>Effect</th></tr></thead><tbody><tr><td><code>moveViewToAnimated</code></td><td>Scrolls so <code>xValue</code> sits at the left edge and <code>yValue</code> is vertically centered</td></tr><tr><td><code>centerViewToAnimated</code></td><td>Scrolls so the given position is at the center of the content area</td></tr><tr><td><code>zoomAndCenterAnimated</code></td><td>Zooms to the given factors while moving that position into the center</td></tr></tbody></table></div>
+<p>Durations are milliseconds and of type <code>Long</code> here. A scale factor of 1 means fully zoomed out on that axis. The non animated <code>moveViewToX</code>, <code>moveViewTo</code>, <code>centerViewTo</code>, <code>zoom</code> and <code>fitScreen</code> are described in <a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a>.</p>
+<h2 id="animations-in-compose">Animations in Compose<a class="anchor" href="#animations-in-compose" aria-label="Link to this section">#</a></h2>
+<p><code>ChartState</code> forwards the three entry animations, so you start them from a <code>LaunchedEffect</code> instead of after setting the data:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> state = rememberChartState()
+
+<span class="t">LaunchedEffect</span>(lineData) { state.animateX(<span class="n">600</span>) }
+
+<span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    state = state,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+)</code></pre>
+<p><code>state.animateX</code>, <code>state.animateY</code> and <code>state.animateXY</code> take the same durations and easing curves and do nothing before the chart view exists. The viewport functions <code>state.zoomIn</code>, <code>state.fitScreen</code> and <code>state.moveViewToX</code> are not animated; reach for <code>setup</code> or <code>update</code> and call the chart&#x27;s own animated functions when you need those.</p>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/viewport/"><span>Previous</span>Modifying the viewport</a><a class="next" href="/mpandroidchart/docs/markers/"><span>Next</span>Markers</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>

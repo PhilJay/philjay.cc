@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="PhilJay">
+  <defs>
+    <linearGradient id="bg" gradientUnits="userSpaceOnUse" x1="8" y1="4" x2="56" y2="60">
+      <stop offset="0" stop-color="#2FB4B6"/><stop offset="1" stop-color="#1F8F91"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <text x="32" y="45" text-anchor="middle" font-family="Manrope, ui-sans-serif, system-ui, -apple-system, sans-serif"
+        font-size="36" font-weight="800" fill="#06181A">PJ</text>
+</svg>

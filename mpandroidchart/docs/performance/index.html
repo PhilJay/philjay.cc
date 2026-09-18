@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Performance with large data · MPAndroidChart</title>
+  <meta name="description" content="What a chart actually spends its time on when it draws, which settings buy the most of it back, and how to measure instead of guess.">
+  <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/performance/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:title" content="Performance with large data · MPAndroidChart">
+  <meta property="og:description" content="What a chart actually spends its time on when it draws, which settings buy the most of it back, and how to measure instead of guess.">
+  <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/performance/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/mpandroidchart/docs.css?v=2">
+  <script src="/consent.js" defer></script>
+</head>
+<body class="docs">
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/mpandroidchart/"><img src="/mpandroidchart/assets/favicon.png?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="/mpandroidchart/#charts">Charts</a>
+      <a href="/mpandroidchart/docs/">Guides</a>
+      <a href="/mpandroidchart/#start">Get started</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap docs-layout">
+    <aside class="docs-nav">
+      <form class="docs-search" role="search" onsubmit="return false">
+        <input type="search" id="docs-search" placeholder="Search the guides" aria-label="Search the guides" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </form>
+      <div class="search-results" id="search-results" hidden></div>
+      <div id="docs-nav-list">
+        <span class="docs-nav-title">Guides</span>
+        <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance" class="active"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
+      </div>
+    </aside>
+    <main class="docs-main">
+      <p class="chapter-mark">In practice <span>Chapter 31 of 35</span></p>
+      <nav class="onthispage"><span>On this page</span><a href="#only-the-entries-in-view-are-drawn">Only the entries in view are drawn</a><a href="#value-labels-are-the-most-expensive-thing-on-screen">Value labels are the most expensive thing on screen</a><a href="#circles-and-why-a-large-radius-costs-more">Circles, and why a large radius costs more</a><a href="#curve-mode-and-the-offscreen-bitmap">Curve mode and the offscreen bitmap</a><a href="#hardware-acceleration">Hardware acceleration</a><a href="#clipping">Clipping</a><a href="#thin-the-data-before-you-draw-it">Thin the data before you draw it</a><a href="#do-not-allocate-while-drawing">Do not allocate while drawing</a><a href="#measure-do-not-guess">Measure, do not guess</a><a href="#the-settings-that-pay-off-most">The settings that pay off most</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <p>What a chart actually spends its time on when it draws, which settings buy the most of it back, and how to measure instead of guess.</p>
+<p>A chart with fifty thousand entries is not automatically slow. What decides the frame time is how much of that data is on screen and how much text and how many shapes the renderer has to put down for it. This chapter goes through those costs in the order they matter.</p>
+<p>Two other chapters touch the same ground briefly: <a href="/mpandroidchart/docs/dynamic-data/">Dynamic and realtime data</a> for a feed that never stops, and <a href="/mpandroidchart/docs/miscellaneous/">Miscellaneous</a> for a short checklist. This is the long version.</p>
+<h2 id="only-the-entries-in-view-are-drawn">Only the entries in view are drawn<a class="anchor" href="#only-the-entries-in-view-are-drawn" aria-label="Link to this section">#</a></h2>
+<p>The renderers of the axis charts share a helper called <code>XBounds</code>. Before a data set is drawn, the renderer hands it the chart and the set, and it works out which entries are visible from the same two properties you can read yourself:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> low = chart.lowestVisibleX
+<span class="k">val</span> high = chart.highestVisibleX</code></pre>
+<p>It looks up the entry at <code>low</code> rounding down and the entry at <code>high</code> rounding up, so the two entries just outside the screen are included and the line does not stop at the edge. It stores their indices as <code>min</code> and <code>max</code>, and the distance between them multiplied by the x animation phase as <code>range</code>. Every loop in <code>LineChartRenderer</code> then runs from <code>min</code> to <code>min + range</code> instead of over the whole set.</p>
+<p>So on a line chart the visible range decides the cost of a frame, not the total number of entries. Fifty thousand entries with two hundred of them on screen cost about what two hundred entries cost. Zooming out is the expensive direction, which is why capping it helps:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setVisibleXRangeMaximum(<span class="n">200f</span>)
+chart.moveViewToX(<span class="n">0f</span>)</code></pre>
+<p>Both are computed from the current x axis range, so they have to run after the data is set. In Compose that means the <code>update</code> lambda, not <code>setup</code>, because <code>setup</code> runs once before any data exists:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span>(
+    <span class="k">data</span> = lineData,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">260.</span>dp),
+    setup = {
+        maxVisibleCount = <span class="n">40</span>
+        isDrawGridBackgroundEnabled = <span class="k">false</span>
+    },
+    update = {
+        setVisibleXRangeMaximum(<span class="n">200f</span>)
+    },
+)</code></pre>
+<p><a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a> has the rest of the window settings, and <a href="/mpandroidchart/docs/compose/">Compose</a> explains the two lambdas.</p>
+<blockquote>Bars are the exception. <code>BarChartRenderer</code> feeds every entry of a data set into its <code>BarBuffer</code> and converts the whole buffer to pixels in one pass, then skips the bars outside the content rectangle while drawing. A bar chart therefore pays for its total entry count on every frame, and limiting the visible range helps it less than it helps a line.</blockquote>
+<h2 id="value-labels-are-the-most-expensive-thing-on-screen">Value labels are the most expensive thing on screen<a class="anchor" href="#value-labels-are-the-most-expensive-thing-on-screen" aria-label="Link to this section">#</a></h2>
+<p>Every drawn label runs your value formatter and then <code>Canvas.drawText</code>. That is far more work per entry than a line segment, so the library has a brake built in. Before any value is drawn, the renderer checks whether</p>
+<pre data-lang="Text"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>data.entryCount &lt; chart.maxVisibleCount * viewPortHandler.scaleX</code></pre>
+<p>and returns immediately when it does not hold. Three details are easy to get wrong:</p>
+<ul><li><code>entryCount</code> is the sum over every data set of the chart, not the number of entries in view.</li><li><code>maxVisibleCount</code> is 100 by default, so a chart holding 500 entries shows no labels at all until the user has zoomed past 5x.</li><li><code>scaleX</code> is the current horizontal zoom, 1 when fully zoomed out. <code>HorizontalBarChart</code> compares against <code>scaleY</code> instead, because its entries run down the screen.</li></ul>
+<p>Lower <code>maxVisibleCount</code> to make labels disappear sooner, raise it to keep them longer:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.maxVisibleCount = <span class="n">40</span></code></pre>
+<p>When you never want labels, say so on the data set rather than relying on the count. Both of these default to true:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.isDrawValuesEnabled = <span class="k">false</span>
+set.isDrawIconsEnabled = <span class="k">false</span></code></pre>
+<blockquote>Pie and radar charts return the entry count of their own data as <code>maxVisibleCount</code>, so the check always passes and labels are always drawn. On those charts the data set switches are the only way to turn them off.</blockquote>
+<h2 id="circles-and-why-a-large-radius-costs-more">Circles, and why a large radius costs more<a class="anchor" href="#circles-and-why-a-large-radius-costs-more" aria-label="Link to this section">#</a></h2>
+<p>A line data set draws a circle at every visible entry unless you say otherwise:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.isDrawCirclesEnabled = <span class="k">false</span></code></pre>
+<p>Circles are not drawn with <code>drawCircle</code> per point. <code>LineChartRenderer</code> keeps one cached bitmap per circle color of the data set and stamps that bitmap at each position. The cache is rebuilt only when the circle colors, the radius, the hole radius or the hole color change, so a set with one circle color holds exactly one bitmap and steady data costs nothing.</p>
+<p>The radius still matters, twice over. Each cached bitmap is <code>circleRadius * 2.1</code> pixels square, and each stamp blends that many pixels onto the canvas. Doubling <code>circleRadius</code> roughly quadruples both. The default is 4 dp, and values below 1 are refused with a message in logcat.</p>
+<p>Turning the hole off with <code>set.isDrawCircleHoleEnabled = false</code> saves a second draw inside each cached bitmap, but that happens once per cache fill, not per frame, so it changes almost nothing.</p>
+<h2 id="curve-mode-and-the-offscreen-bitmap">Curve mode and the offscreen bitmap<a class="anchor" href="#curve-mode-and-the-offscreen-bitmap" aria-label="Link to this section">#</a></h2>
+<p><code>LineDataSet.Mode.LINEAR</code> and <code>STEPPED</code> fill one reused float array with the visible segments and hand the whole thing to a single <code>Canvas.drawLines</code> call. <code>CUBIC_BEZIER</code> and <code>HORIZONTAL_BEZIER</code> build a <code>Path</code> with one <code>cubicTo</code> per segment, transform it and draw it, which is more work per entry and cannot be batched the same way.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.mode = <span class="t">LineDataSet</span>.<span class="t">Mode</span>.<span class="t">LINEAR</span></code></pre>
+<p>A linear line with more than one color loses the batching, because each segment is drawn in its own call so it can have its own color. Keep <code>color</code> as a single color when you want the cheap path.</p>
+<p>The two curve modes and any dashed line draw onto an offscreen bitmap the size of the chart, which the renderer composes onto the canvas at the end of the pass. A plain solid linear line goes straight onto the chart canvas instead. The bitmap is <code>ARGB_8888</code> and is recreated whenever the chart changes size; <code>bitmapConfig</code> on <code>LineChartRenderer</code> changes the format and releases the current bitmap so the next draw makes a new one.</p>
+<p>Dashing is the cheapest thing on this list to give up. <code>set.disableDashedLine()</code> removes the path effect and takes the line off the bitmap pass.</p>
+<h2 id="hardware-acceleration">Hardware acceleration<a class="anchor" href="#hardware-acceleration" aria-label="Link to this section">#</a></h2>
+<p>One property switches the view between a hardware and a software layer:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isHardwareAccelerationEnabled = <span class="k">true</span></code></pre>
+<p>That is all it does. It reads <code>layerType == LAYER_TYPE_HARDWARE</code> and writes <code>setLayerType(LAYER_TYPE_HARDWARE)</code> or <code>setLayerType(LAYER_TYPE_SOFTWARE)</code>, and nothing else in the library sets a layer. A fresh chart has no layer at all, so the property reads false even though the window is already hardware accelerated.</p>
+<p>The one case where it earns its keep is a chart whose content does not change while the chart itself moves: a hardware layer renders the view into a texture once and reuses it while you scroll, fade or translate it. A chart that invalidates on every frame, which is what a live feed or a running animation does, redraws into that texture anyway and only pays for it. Setting it to false is the escape hatch for the rare case where a large translucent data set draws wrong on the GPU. Measure both on a real device before you keep either.</p>
+<h2 id="clipping">Clipping<a class="anchor" href="#clipping" aria-label="Link to this section">#</a></h2>
+<p>Two switches control what gets cut off at the edge of the content area.</p>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Default</th><th>What it does</th></tr></thead><tbody><tr><td><code>isClipDataToContentEnabled</code></td><td><code>true</code></td><td>Clips the data, the grid lines and the highlights to the content rectangle</td></tr><tr><td><code>isClipValuesToContentEnabled</code></td><td><code>false</code></td><td>Clips the value labels as well</td></tr></tbody></table></div>
+<p>Clipping data is on because it is what you want almost always. Turn it off when a thick line or a large shape near the edge is being cut in half:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isClipDataToContentEnabled = <span class="k">false</span></code></pre>
+<p>Clipping values costs one extra canvas save, clip and restore per frame, which is nothing next to drawing the labels themselves. Turn it on for looks rather than for speed, because with the default the label on the first or last entry can bleed over the axis.</p>
+<h2 id="thin-the-data-before-you-draw-it">Thin the data before you draw it<a class="anchor" href="#thin-the-data-before-you-draw-it" aria-label="Link to this section">#</a></h2>
+<p>When a series has more points than the screen has pixels, most of them cannot be seen. <code>Approximator</code> reduces a polyline with the Douglas-Peucker algorithm: a point closer than a tolerance to the straight line between its neighbours is dropped, and the first and last point are always kept.</p>
+<p>The function takes a flat <code>FloatArray</code> of <code>x0, y0, x1, y1, ...</code> and a tolerance, and returns a new <code>FloatArray</code> in the same layout:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> points = <span class="t">FloatArray</span>(entries.size * <span class="n">2</span>)
+<span class="k">for</span> (i <span class="k">in</span> entries.indices) {
+    points[i * <span class="n">2</span>] = entries[i].x
+    points[i * <span class="n">2</span> + <span class="n">1</span>] = entries[i].y
+}
+
+<span class="k">val</span> reduced = <span class="t">Approximator</span>().reduceWithDouglasPeucker(points, <span class="n">2f</span>)
+
+<span class="k">val</span> thinned = <span class="t">ArrayList</span>&lt;<span class="t">Entry</span>&lt;<span class="t">Any</span>?&gt;&gt;(reduced.size / <span class="n">2</span>)
+<span class="k">for</span> (i <span class="k">in</span> reduced.indices step <span class="n">2</span>) {
+    thinned.add(<span class="t">Entry</span>(reduced[i], reduced[i + <span class="n">1</span>]))
+}
+
+chart.<span class="k">data</span> = <span class="t">LineData</span>(<span class="t">LineDataSet</span>(thinned, <span class="s">&quot;Thinned&quot;</span>))</code></pre>
+<p>The tolerance is in the same unit as the points you pass in, so feed it value space coordinates and think in values, or pixels and think in pixels. Fewer than two points throws <code>ArrayIndexOutOfBoundsException</code>.</p>
+<blockquote>Nothing in the library calls <code>Approximator</code> for you. It is a tool you reach for yourself, ideally once on a background thread while the data is being built, not on every frame.</blockquote>
+<h2 id="do-not-allocate-while-drawing">Do not allocate while drawing<a class="anchor" href="#do-not-allocate-while-drawing" aria-label="Link to this section">#</a></h2>
+<p>The renderers run inside <code>onDraw</code>, and the library goes out of its way not to allocate there. <code>BarBuffer</code> and its horizontal variant keep one float array per data set and refill it in place. <code>MPPointF</code>, <code>MPPointD</code> and <code>FSize</code> come from shared <code>ObjectPool</code> instances instead of being created per call. <a href="/mpandroidchart/docs/miscellaneous/">Miscellaneous</a> covers the pools and how to use one for your own type.</p>
+<p>Those arrays are sized from the total entry count, not the visible one, and they are grown once rather than reallocated per frame. A bar buffer holds four floats per bar, and the line renderer&#x27;s segment buffer grows to eight floats per entry, so fifty thousand points on a single colored line reserve about 1.6 MB for as long as the set is assigned. That is the real cost of a large total count on a line chart: memory, not frame time.</p>
+<p>None of that helps if your own code allocates on the way past. Two places are worth checking:</p>
+<ul><li><strong>Formatters.</strong> <code>getFormattedValue</code> is called for every drawn label on every frame. Build the <code>NumberFormat</code> or <code>SimpleDateFormat</code> once as a property of the formatter, never inside the function, and avoid string concatenation where a cached array of labels would do. <a href="/mpandroidchart/docs/formatters/">Formatters</a> shows the shape.</li><li><strong>Markers.</strong> <code>refreshContent</code> runs before every marker draw, so for a marker that follows a drag it runs per frame. Keep the views and the text buffers, change only their content. <a href="/mpandroidchart/docs/markers/">Markers</a> has the details.</li></ul>
+<p>Building the data itself is plain object work with no view involved, so do it on a background thread. Only assigning <code>chart.data</code> and calling <code>chart.notifyDataSetChanged()</code> have to happen on the main thread.</p>
+<h2 id="measure-do-not-guess">Measure, do not guess<a class="anchor" href="#measure-do-not-guess" aria-label="Link to this section">#</a></h2>
+<p>Every chart can write its internals to logcat under the tag <code>MPAndroidChart</code>:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isLogEnabled = <span class="k">true</span></code></pre>
+<p>On the axis charts the useful line is the one printed at the end of each draw:</p>
+<pre data-lang="Text"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>Drawtime: 6 ms, average: 7 ms, cycles: 42</code></pre>
+<p><code>drawtime</code> is the current frame, <code>average</code> is the running mean since the chart was created, and <code>cycles</code> counts the draws. <code>chart.resetTracking()</code> zeroes the total and the cycle count, which is what you call right before the interaction you actually want to time. The example app&#x27;s PerformanceLineChart does exactly that every time the seek bar changes the entry count.</p>
+<p>Two caveats. Logging itself costs time on every draw, so the numbers are a comparison between settings, not an absolute. And the draw time does not include <code>notifyDataSetChanged</code>, which is where axis recalculation and offset work happens. For anything beyond a rough comparison, record a trace with the Android Studio profiler and look at where the time actually goes.</p>
+<h2 id="the-settings-that-pay-off-most">The settings that pay off most<a class="anchor" href="#the-settings-that-pay-off-most" aria-label="Link to this section">#</a></h2>
+<div class='table-wrap'><table><thead><tr><th>Setting</th><th>What it buys</th></tr></thead><tbody><tr><td><code>set.isDrawValuesEnabled = false</code></td><td>Removes the text pass, usually the largest single cost</td></tr><tr><td><code>set.isDrawCirclesEnabled = false</code></td><td>Removes one bitmap stamp per visible point</td></tr><tr><td><code>set.mode = LineDataSet.Mode.LINEAR</code></td><td>One batched draw call instead of a path with a segment per entry</td></tr><tr><td><code>chart.setVisibleXRangeMaximum(n)</code></td><td>Caps how many entries can be in view at once, on line charts</td></tr><tr><td><code>chart.maxVisibleCount = n</code></td><td>Moves the zoom level at which labels start being drawn</td></tr><tr><td><code>set.disableDashedLine()</code></td><td>Takes the line off the offscreen bitmap pass</td></tr><tr><td>Leaving <code>isDrawFilledEnabled</code> off</td><td>A filled line rebuilds a path in chunks of 128 entries every frame</td></tr><tr><td>Cap the entry count</td><td>Keeps memory and the axis recalculation in <code>notifyDataSetChanged</code> bounded</td></tr></tbody></table></div>
+<p>None of these is worth applying blindly. Turn on <code>isLogEnabled</code>, note the average, change one thing, and compare.</p>
+<h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
+<ul><li><a href="/mpandroidchart/docs/dynamic-data/">Dynamic and realtime data</a> for adding and dropping entries while the chart is on screen.</li><li><a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a> for the zoom and scroll limits that decide the visible range.</li><li><a href="/mpandroidchart/docs/custom-renderers/">Custom renderers</a> if you want to change what a draw pass does.</li><li><a href="/mpandroidchart/docs/miscellaneous/">Miscellaneous</a> for the object pools and the logging switch.</li></ul>
+      <div class="pager"><a class="prev" href="/mpandroidchart/docs/proguard/"><span>Previous</span>R8 and ProGuard</a><a class="next" href="/mpandroidchart/docs/accessibility/"><span>Next</span>Accessibility</a></div>
+    </main>
+  </div>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/">All projects</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/imprint.html">Imprint</a>
+      <a href="#" data-cookie-settings>Cookie settings</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('docs-search');
+  var results = document.getElementById('search-results');
+  var navList = document.getElementById('docs-nav-list');
+  var records = null;
+  var active = -1;
+
+  function load() {
+    if (records) return Promise.resolve(records);
+    return fetch('/mpandroidchart/docs/search.json')
+      .then(function (response) { return response.json(); })
+      .then(function (data) { records = data; return records; })
+      .catch(function () { records = []; return records; });
+  }
+
+  function score(record, words) {
+    var title = record.c.toLowerCase();
+    var heading = record.h.toLowerCase();
+    var text = record.x.toLowerCase();
+    var total = 0;
+    for (var i = 0; i < words.length; i++) {
+      var word = words[i];
+      if (title.indexOf(word) !== -1) total += 4;
+      else if (heading.indexOf(word) !== -1) total += 3;
+      else if (text.indexOf(word) !== -1) total += 1;
+      else return 0;
+    }
+    return total;
+  }
+
+  function show(query) {
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var found = [];
+    for (var i = 0; i < records.length; i++) {
+      var value = score(records[i], words);
+      if (value > 0) found.push({ record: records[i], score: value });
+    }
+    found.sort(function (a, b) { return b.score - a.score; });
+    found = found.slice(0, 12);
+
+    if (!found.length) {
+      results.innerHTML = '<p class="no-results">Nothing found for "' + query.replace(/</g, '&lt;') + '"</p>';
+    } else {
+      results.innerHTML = found.map(function (hit) {
+        var record = hit.record;
+        var href = '/mpandroidchart/docs/' + record.s + '/' + (record.a ? '#' + record.a : '');
+        var heading = record.h || record.c;
+        var context = record.h ? record.c : 'Chapter introduction';
+        return '<a href="' + href + '"><strong>' + heading + '</strong><span>' + context + '</span></a>';
+      }).join('');
+    }
+    active = -1;
+    results.hidden = false;
+    navList.hidden = true;
+  }
+
+  function clear() {
+    results.hidden = true;
+    results.innerHTML = '';
+    navList.hidden = false;
+    active = -1;
+  }
+
+  input.addEventListener('input', function () {
+    var query = input.value.trim();
+    if (query.length < 2) { clear(); return; }
+    load().then(function () { if (input.value.trim().length >= 2) show(query); });
+  });
+
+  input.addEventListener('keydown', function (event) {
+    var links = results.querySelectorAll('a');
+    if (event.key === 'Escape') { input.value = ''; clear(); input.blur(); return; }
+    if (!links.length) return;
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      active += event.key === 'ArrowDown' ? 1 : -1;
+      if (active < 0) active = links.length - 1;
+      if (active >= links.length) active = 0;
+      for (var i = 0; i < links.length; i++) links[i].classList.toggle('active', i === active);
+      links[active].scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      links[active >= 0 ? active : 0].click();
+    }
+  });
+
+  var initial = new URLSearchParams(window.location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    load().then(function () { show(initial.trim()); });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/' && document.activeElement !== input) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.copy');
+    if (!button) return;
+    var code = button.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.innerText).then(function () {
+      button.classList.add('done');
+      button.textContent = 'Copied';
+      setTimeout(function () { button.classList.remove('done'); button.textContent = 'Copy'; }, 1400);
+    });
+  });
+})();
+</script>
+</body>
+</html>
