@@ -106,7 +106,7 @@ chart.xAxis.apply {
 }</code></pre>
 <p><code>labelCount</code> is clamped to 25, so for longer series ask for fewer labels and let the formatter return an empty string for the values you want to skip.</p>
 <h2 id="padding-at-the-edges">Padding at the edges<a class="anchor" href="#padding-at-the-edges" aria-label="Link to this section">#</a></h2>
-<p>A line chart draws its first point exactly on the left edge and its last point on the right edge. A bar chart instead leaves half a slot at each side, because <code>BarChart</code>, <code>ScatterChart</code> and <code>CandleStickChart</code> set <code>spaceMin</code> and <code>spaceMax</code> to <code>0.5</code> on the x axis. For a line chart you pick the look you want by fixing the range. The example app&#x27;s design section shows both.</p>
+<p>A line chart draws its first point exactly on the left edge and its last point on the right edge. A bar chart instead leaves half a slot at each side, because <code>BarChart</code>, <code>ScatterChart</code> and <code>CandleStickChart</code> set <code>spaceMin</code> and <code>spaceMax</code> to <code>0.5</code> on the x axis. For a line chart you pick the look you want by fixing the range. The example app shows both in its chart showcase.</p>
 <p>Half a slot at each side, the way bars sit:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.xAxis.apply {
     axisMinimum = -<span class="n">0.5f</span>

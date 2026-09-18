@@ -164,7 +164,7 @@ set.highlightCircleRadius = 6f            // dp, default 5
 set.circleHoleColor = cardBackground
 ```
 
-The ring is drawn in the line color with a soft halo behind it in `highlightColor` and a center in `circleHoleColor`. This is what the Nightfall design charts in the example app use together with a dashed vertical line.
+The ring is drawn in the line color with a soft halo behind it in `highlightColor` and a center in `circleHoleColor`. This is what the showcase charts in the example app use together with a dashed vertical line.
 
 Bar, pie and radar sets style the selection differently:
 

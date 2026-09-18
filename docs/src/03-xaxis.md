@@ -121,7 +121,7 @@ chart.xAxis.apply {
 
 ## Padding at the edges
 
-A line chart draws its first point exactly on the left edge and its last point on the right edge. A bar chart instead leaves half a slot at each side, because `BarChart`, `ScatterChart` and `CandleStickChart` set `spaceMin` and `spaceMax` to `0.5` on the x axis. For a line chart you pick the look you want by fixing the range. The example app's design section shows both.
+A line chart draws its first point exactly on the left edge and its last point on the right edge. A bar chart instead leaves half a slot at each side, because `BarChart`, `ScatterChart` and `CandleStickChart` set `spaceMin` and `spaceMax` to `0.5` on the x axis. For a line chart you pick the look you want by fixing the range. The example app shows both in its chart showcase.
 
 Half a slot at each side, the way bars sit:
 

@@ -155,4 +155,4 @@ chart.animateX(600)                          // reveal the data from left to rig
 - [General styling](/mpandroidchart/docs/general-styling/) for the settings shared by all charts.
 - [Theming a chart](/mpandroidchart/docs/theming/) for the look behind the screenshots on this site.
 - [Interaction with the chart](/mpandroidchart/docs/interaction/) for dragging, zooming and taps.
-- The example app in the repository shows all of it running, starting with the design section.
+- The example app in the repository shows all of it running, starting with every chart type in one style.
