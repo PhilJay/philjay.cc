@@ -16,6 +16,9 @@ SRC = os.path.join(ROOT, "docs", "src")
 OUT = os.path.join(ROOT, "mpandroidchart", "docs")
 TEMPLATE = os.path.join(ROOT, "docs", "_template.html")
 
+sys.path.insert(0, ROOT)
+import _inline_css  # noqa: E402
+
 KOTLIN_KEYWORDS = {
     "val", "var", "fun", "class", "object", "interface", "override", "private", "internal", "protected",
     "return", "if", "else", "when", "for", "while", "in", "is", "as", "true", "false", "null", "this",
@@ -306,7 +309,7 @@ def main() -> int:
                 .replace("{{chapter}}", f'{html.escape(section_of[chapter["slug"]])} <span>Chapter {index + 1} of {len(chapters)}</span>'))
         folder = os.path.join(OUT, chapter["slug"])
         os.makedirs(folder, exist_ok=True)
-        open(os.path.join(folder, "index.html"), "w").write(page)
+        open(os.path.join(folder, "index.html"), "w").write(_inline_css.fill(page))
 
     def card(slug: str) -> str:
         c = chapters[position[slug]]
@@ -329,7 +332,7 @@ def main() -> int:
                 .replace("{{canonical}}", "https://philjay.cc/mpandroidchart/docs/")
                 .replace("{{root}}", "../../")
                 .replace("{{chapter}}", f'Documentation <span>{len(chapters)} chapters in {len(sections)} parts</span>'))
-    open(os.path.join(OUT, "index.html"), "w").write(overview)
+    open(os.path.join(OUT, "index.html"), "w").write(_inline_css.fill(overview))
 
     records = []
     for chapter in chapters:

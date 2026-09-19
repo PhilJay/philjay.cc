@@ -16,10 +16,382 @@
   <meta property="og:image:height" content="630">
   <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style data-src="styles.css">
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url(/assets/fonts/manrope-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url(/assets/fonts/manrope-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --accent: #2fb4b6;
+  --accent-hover: #1f8f91;
+  --stage: radial-gradient(120% 70% at 50% 0%, #163d45 0%, #0c1b20 45%, #0a1013 100%);
+  --ground: #0a1013;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text: #fff;
+  --text-soft: rgba(255, 255, 255, 0.72);
+  --text-dim: rgba(255, 255, 255, 0.55);
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  --gutter: 64px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Manrope, -apple-system, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+  background: var(--ground);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+h1, h2, h3, p { margin: 0; }
+
+.stage {
+  background: var(--stage);
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 18px;
+}
+.brand:hover { color: var(--text); }
+.brand img { width: 34px; height: 34px; border-radius: 8px; }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+.nav-links a { color: rgba(255, 255, 255, 0.75); }
+.nav-links a:hover { color: var(--text); }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding-block: 56px 32px;
+  text-align: center;
+}
+.hero img.mark { width: 96px; height: 96px; border-radius: 22px; box-shadow: var(--shadow); }
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  max-width: 900px;
+}
+.lead {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  max-width: 680px;
+}
+
+.cta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+.cta-note { font-size: 14px; color: var(--text-dim); width: 100%; }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+.button:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.5); }
+.button.primary { background: var(--accent); border-color: var(--accent); color: #06181a; }
+.button.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #06181a; }
+.button svg { width: 20px; height: 20px; }
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: #000;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.store-badge:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.5); }
+.store-badge div { display: flex; flex-direction: column; line-height: 1.05; text-align: left; }
+.store-badge small { font-size: 10px; opacity: 0.8; }
+.store-badge strong { font-size: 17px; font-weight: 700; }
+.store-badge svg { width: 22px; height: 22px; }
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-block: 32px 64px;
+}
+.section.centered { align-items: center; text-align: center; }
+.section h2 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.section-intro {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  max-width: 720px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.card h3 { font-size: 20px; font-weight: 700; }
+.card p { font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.7); }
+.card .links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: auto; padding-top: 10px; font-size: 14px; font-weight: 700; }
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  padding: 36px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.project.flip .project-media { order: -1; }
+.project-text { display: flex; flex-direction: column; gap: 14px; }
+.project-text .head { display: flex; align-items: center; gap: 14px; }
+.project-text .head img { width: 56px; height: 56px; border-radius: 14px; }
+.project-text h2 { font-size: 30px; }
+.project-text .kind { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+.project-text p { font-size: 16px; line-height: 1.55; color: var(--text-soft); }
+.project-text .cta { justify-content: flex-start; }
+.project-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.project-media .phones { display: flex; gap: 18px; justify-content: center; }
+.project-media .phones img { width: 46%; border-radius: 26px; border: 7px solid #1c2a30; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.gallery figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.section-head > div:first-child { display: flex; flex-direction: column; gap: 14px; }
+.toggle { display: inline-flex; padding: 4px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); }
+.toggle button {
+  font: inherit; font-size: 13px; font-weight: 700; color: var(--text-soft);
+  background: transparent; border: 0; border-radius: 7px; padding: 8px 16px; cursor: pointer;
+}
+.toggle button.active { background: var(--accent); color: #06181a; }
+.project-media .stack { display: flex; flex-direction: column; gap: 14px; }
+.project-media .stack img { border-radius: 14px; }
+.card.link { color: var(--text); }
+.card.link:hover { border-color: rgba(255, 255, 255, 0.3); color: var(--text); }
+.card.link .more { color: var(--accent); font-weight: 700; font-size: 14px; margin-top: auto; padding-top: 8px; }
+.project-media.phone img { border-radius: 22px; border: 6px solid #1c2a30; max-width: 380px; margin: 0 auto; }
+.gallery figcaption { font-size: 14px; color: var(--text-dim); text-align: center; }
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.feature {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.feature strong { display: block; font-weight: 700; margin-bottom: 4px; }
+
+pre {
+  margin: 0;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: #07110f;
+  border: 1px solid var(--card-border);
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.55;
+}
+code { font-family: "SF Mono", Menlo, Consolas, monospace; color: #dfe9ea; }
+pre .k { color: #7fd4d6; }
+pre .s { color: #f5c07a; }
+pre .c { color: rgba(255, 255, 255, 0.45); }
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.stats { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--text-dim); }
+.stats strong { color: var(--text); font-size: 18px; margin-right: 6px; }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-block: 28px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.footer nav { display: flex; gap: 20px; }
+.footer a { color: rgba(255, 255, 255, 0.75); }
+
+.legal { max-width: 760px; padding-block: 40px 80px; display: flex; flex-direction: column; gap: 18px; }
+.legal h1 { font-size: 34px; font-weight: 800; }
+.legal h2 { font-size: 20px; font-weight: 700; margin-top: 12px; }
+.legal p { line-height: 1.6; color: var(--text-soft); }
+
+@media (max-width: 960px) {
+  :root { --gutter: 24px; }
+  .cards, .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-head { align-items: flex-start; }
+  .project, .split { grid-template-columns: minmax(0, 1fr); }
+  .project.flip .project-media { order: 0; }
+  .nav-links { gap: 18px; }
+}
+
+@media (max-width: 560px) {
+  .cards, .cards.two, .features, .gallery { grid-template-columns: minmax(0, 1fr); }
+  .nav-links { display: none; }
+  .lead { font-size: 17px; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* cookie consent */
+
+.consent {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: min(760px, calc(100vw - 32px));
+  padding: 18px 22px;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: rgba(17, 28, 51, 0.96);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+.consent p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+.consent a { color: var(--accent); }
+.consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.consent .button { height: 40px; padding: 0 18px; font-size: 14px; cursor: pointer; }
+
+@media (max-width: 640px) {
+  .consent { flex-direction: column; align-items: stretch; gap: 14px; bottom: 12px; }
+  .consent-actions { justify-content: flex-end; }
+}
+</style>
   <script src="/consent.js" defer></script>
 </head>
 <body>
@@ -52,7 +424,7 @@
       <article class="project" id="mpandroidchart">
         <div class="project-text">
           <div class="head">
-            <img src="assets/mpandroidchart.png?v=3" alt="" width="56" height="56">
+            <img src="assets/mpandroidchart.webp?v=3" alt="" width="56" height="56">
             <div>
               <p class="kind">Open source · Android</p>
               <h2>MPAndroidChart</h2>
@@ -60,15 +432,15 @@
           </div>
           <p>The chart library for Android. Line, bar, pie, scatter, candlestick, bubble, radar and combined charts with zooming, dragging, highlighting, markers and animations. Written in Kotlin, with a Jetpack Compose module, and used in tens of thousands of apps.</p>
           <div class="cta">
-            <a class="button primary" href="/mpandroidchart/">Learn more</a>
+            <a class="button primary" href="/mpandroidchart/">Learn more<span class="visually-hidden"> about MPAndroidChart</span></a>
             <a class="button" href="/mpandroidchart/docs/">Guides</a>
             <a class="button" href="https://github.com/PhilJay/MPAndroidChart"><svg aria-hidden="true"><use href="#github"/></svg>GitHub</a>
           </div>
         </div>
         <div class="project-media">
           <div class="phones">
-            <img src="mpandroidchart/assets/phone-dark.png?v=2" alt="Every chart type in the example app, dark" loading="lazy">
-            <img src="mpandroidchart/assets/phone-light.png?v=2" alt="Every chart type in the example app, light" loading="lazy">
+            <img src="mpandroidchart/assets/phone-dark-270.webp?v=2" srcset="mpandroidchart/assets/phone-dark-270.webp?v=2 270w, mpandroidchart/assets/phone-dark.webp?v=2 540w" sizes="(min-width: 1200px) 221px, (min-width: 961px) calc(23vw - 55px), calc(46vw - 55px)" alt="Every chart type in the example app, dark" width="540" height="1126">
+            <img src="mpandroidchart/assets/phone-light-270.webp?v=2" srcset="mpandroidchart/assets/phone-light-270.webp?v=2 270w, mpandroidchart/assets/phone-light.webp?v=2 540w" sizes="(min-width: 1200px) 221px, (min-width: 961px) calc(23vw - 55px), calc(46vw - 55px)" alt="Every chart type in the example app, light" width="540" height="1126">
           </div>
         </div>
       </article>
@@ -77,7 +449,7 @@
       <article class="project flip" id="sightline">
         <div class="project-text">
           <div class="head">
-            <img src="assets/sightline.png?v=2" alt="" width="56" height="56">
+            <img src="assets/sightline.webp?v=2" alt="" width="56" height="56">
             <div>
               <p class="kind">App · macOS</p>
               <h2>Sightline</h2>
@@ -89,13 +461,13 @@
               <svg aria-hidden="true"><use href="#apple"/></svg>
               <div><small>Download on the</small><strong>Mac App Store</strong></div>
             </a>
-            <a class="button" href="https://philjay.github.io/sightline-site/">Learn more</a>
+            <a class="button" href="https://philjay.github.io/sightline-site/">Learn more<span class="visually-hidden"> about Sightline</span></a>
           </div>
         </div>
         <div class="project-media">
           <div class="stack">
-            <img src="assets/sightline-agent.jpg?v=2" alt="An AI agent asking Sightline for a screenshot and receiving it" loading="lazy">
-            <img src="assets/sightline-screen.jpg?v=2" alt="Sightline annotating a screenshot on macOS" loading="lazy">
+            <img src="assets/sightline-agent-480.webp?v=2" srcset="assets/sightline-agent-480.webp?v=2 480w, assets/sightline-agent-640.webp?v=2 640w, assets/sightline-agent.webp?v=2 960w" sizes="(min-width: 1200px) 480px, (min-width: 961px) calc(50vw - 120px), calc(100vw - 120px)" alt="An AI agent asking Sightline for a screenshot and receiving it" width="960" height="540" loading="lazy">
+            <img src="assets/sightline-screen-480.webp?v=2" srcset="assets/sightline-screen-480.webp?v=2 480w, assets/sightline-screen-640.webp?v=2 640w, assets/sightline-screen.webp?v=2 960w" sizes="(min-width: 1200px) 480px, (min-width: 961px) calc(50vw - 120px), calc(100vw - 120px)" alt="Sightline annotating a screenshot on macOS" width="960" height="540" loading="lazy">
           </div>
         </div>
       </article>
@@ -104,7 +476,7 @@
       <article class="project" id="burnd">
         <div class="project-text">
           <div class="head">
-            <img src="assets/burnd.png?v=1" alt="" width="56" height="56">
+            <img src="assets/burnd.webp?v=1" alt="" width="56" height="56">
             <div>
               <p class="kind">App · iPhone</p>
               <h2>Burnd</h2>
@@ -116,13 +488,13 @@
               <svg aria-hidden="true"><use href="#apple"/></svg>
               <div><small>Download on the</small><strong>App Store</strong></div>
             </a>
-            <a class="button" href="https://philjay.github.io/hiit-site/">Learn more</a>
+            <a class="button" href="https://philjay.github.io/hiit-site/">Learn more<span class="visually-hidden"> about Burnd</span></a>
           </div>
         </div>
         <div class="project-media">
           <div class="phones">
-            <img src="assets/burnd-timer.jpg?v=1" alt="Burnd counting down a work interval" loading="lazy">
-            <img src="assets/burnd-stats.jpg?v=1" alt="Burnd statistics with a weekly streak and workouts per week" loading="lazy">
+            <img src="assets/burnd-timer-270.webp?v=1" srcset="assets/burnd-timer-270.webp?v=1 270w, assets/burnd-timer.webp?v=1 540w" sizes="(min-width: 1200px) 221px, (min-width: 961px) calc(23vw - 55px), calc(46vw - 55px)" alt="Burnd counting down a work interval" width="540" height="1173" loading="lazy">
+            <img src="assets/burnd-stats-270.webp?v=1" srcset="assets/burnd-stats-270.webp?v=1 270w, assets/burnd-stats.webp?v=1 540w" sizes="(min-width: 1200px) 221px, (min-width: 961px) calc(23vw - 55px), calc(46vw - 55px)" alt="Burnd statistics with a weekly streak and workouts per week" width="540" height="1173" loading="lazy">
           </div>
         </div>
       </article>
@@ -131,7 +503,7 @@
       <article class="project" id="expenseadmin">
         <div class="project-text">
           <div class="head">
-            <img src="assets/expenseadmin.png?v=2" alt="" width="56" height="56">
+            <img src="assets/expenseadmin.webp?v=2" alt="" width="56" height="56">
             <div>
               <p class="kind">App · iPhone</p>
               <h2>Expense Admin</h2>
@@ -143,13 +515,13 @@
               <svg aria-hidden="true"><use href="#apple"/></svg>
               <div><small>Download on the</small><strong>App Store</strong></div>
             </a>
-            <a class="button" href="https://philjay.github.io/expenseadmin-site/">Learn more</a>
+            <a class="button" href="https://philjay.github.io/expenseadmin-site/">Learn more<span class="visually-hidden"> about Expense Admin</span></a>
           </div>
         </div>
         <div class="project-media">
           <div class="phones">
-            <img src="assets/expenseadmin-screen.jpg?v=2" alt="Expense Admin monthly overview" loading="lazy">
-            <img src="assets/expenseadmin-statistics.jpg?v=2" alt="Expense Admin statistics with a category donut and per category bars" loading="lazy">
+            <img src="assets/expenseadmin-screen-270.webp?v=2" srcset="assets/expenseadmin-screen-270.webp?v=2 270w, assets/expenseadmin-screen.webp?v=2 540w" sizes="(min-width: 1200px) 221px, (min-width: 961px) calc(23vw - 55px), calc(46vw - 55px)" alt="Expense Admin monthly overview" width="540" height="1173" loading="lazy">
+            <img src="assets/expenseadmin-statistics-270.webp?v=2" srcset="assets/expenseadmin-statistics-270.webp?v=2 270w, assets/expenseadmin-statistics.webp?v=2 540w" sizes="(min-width: 1200px) 221px, (min-width: 961px) calc(23vw - 55px), calc(46vw - 55px)" alt="Expense Admin statistics with a category donut and per category bars" width="540" height="1173" loading="lazy">
           </div>
         </div>
       </article>
