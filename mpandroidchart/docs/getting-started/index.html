@@ -800,9 +800,10 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
       <p>Everything you need to put a first chart on screen: the dependency, the view, and the three classes that hold your data.</p>
 <h2 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h2>
 <p>The library targets Android 6.0 and newer.</p>
-<div class='table-wrap'><table><tbody><tr><td><code>minSdk</code></td><td>23</td></tr><tr><td><code>compileSdk</code></td><td>37</td></tr><tr><td>Java</td><td>17</td></tr><tr><td>Language</td><td>Kotlin, with Java callers supported</td></tr></tbody></table></div>
+<div class='table-wrap'><table><tbody><tr><td><code>minSdk</code></td><td>23</td></tr><tr><td><code>compileSdk</code></td><td>35, or 37 for the Compose module</td></tr><tr><td>Java</td><td>17</td></tr><tr><td>Kotlin</td><td>2.0 or newer, and none at all for Java callers</td></tr><tr><td>Language</td><td>Kotlin, with Java callers supported</td></tr></tbody></table></div>
 <p>Coming from version 3.x? Every getter and setter pair is a property now, and entries carry a typed payload. <a href="/mpandroidchart/docs/migration/">Migrating from 3.x</a> walks through every change with before and after code.</p>
 <h2 id="add-the-dependency">Add the dependency<a class="anchor" href="#add-the-dependency" aria-label="Link to this section">#</a></h2>
+<p>4.0 is a beta. Its coordinates differ from the 3.x ones, so a project still on <code>com.github.PhilJay:MPAndroidChart:v3.1.0</code> is untouched by it. Pin the version rather than tracking the newest one.</p>
 <p>The library is published through JitPack. Add the repository in <code>settings.gradle.kts</code>:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dependencyResolutionManagement {
     repositories {
@@ -813,10 +814,10 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
 }</code></pre>
 <p>Then add the dependency in your module&#x27;s <code>build.gradle.kts</code>:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dependencies {
-    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0&quot;</span>)
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0-beta01&quot;</span>)
 
     <span class="c">// only if you use Jetpack Compose</span>
-    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0&quot;</span>)
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01&quot;</span>)
 }</code></pre>
 <h2 id="create-the-chart">Create the chart<a class="anchor" href="#create-the-chart" aria-label="Link to this section">#</a></h2>
 <p>In Compose, use the composable of the same name from the <code>MPChartCompose</code> module:</p>

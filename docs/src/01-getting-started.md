@@ -9,13 +9,16 @@ The library targets Android 6.0 and newer.
 | | |
 | --- | --- |
 | `minSdk` | 23 |
-| `compileSdk` | 37 |
+| `compileSdk` | 35, or 37 for the Compose module |
 | Java | 17 |
+| Kotlin | 2.0 or newer, and none at all for Java callers |
 | Language | Kotlin, with Java callers supported |
 
 Coming from version 3.x? Every getter and setter pair is a property now, and entries carry a typed payload. [Migrating from 3.x](/mpandroidchart/docs/migration/) walks through every change with before and after code.
 
 ## Add the dependency
+
+4.0 is a beta. Its coordinates differ from the 3.x ones, so a project still on `com.github.PhilJay:MPAndroidChart:v3.1.0` is untouched by it. Pin the version rather than tracking the newest one.
 
 The library is published through JitPack. Add the repository in `settings.gradle.kts`:
 
@@ -33,10 +36,10 @@ Then add the dependency in your module's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0-beta01")
 
     // only if you use Jetpack Compose
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01")
 }
 ```
 

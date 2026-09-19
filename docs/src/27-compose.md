@@ -8,7 +8,7 @@ The Compose module is published next to the library and depends on it, so one li
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01")
 }
 ```
 
@@ -287,4 +287,4 @@ The `ComposeChartActivity` in the example app runs this pattern with a line, a p
 - [Interaction with the chart](/mpandroidchart/docs/interaction/) for the gestures the state observes.
 - [Animations](/mpandroidchart/docs/animations/) for the easing curves.
 - [Charts in lists and scrolling screens](/mpandroidchart/docs/lists-and-scrolling/) for a chart inside a `LazyColumn`.
-- [MPChartCompose API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0/javadoc/)
+- [MPChartCompose API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0-beta01/javadoc/)

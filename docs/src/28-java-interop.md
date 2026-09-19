@@ -235,4 +235,4 @@ Changing the data later follows the Kotlin rule unchanged: replace the whole dat
 - [Getting started](/mpandroidchart/docs/getting-started/) for the Kotlin version of the same chart.
 - [Formatters](/mpandroidchart/docs/formatters/) for what each formatter interface receives.
 - [Migrating from 3.x](/mpandroidchart/docs/migration/) if your Java code was written against version 3.
-- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/) for the generated signatures of everything else.
+- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0-beta01/javadoc/) for the generated signatures of everything else.

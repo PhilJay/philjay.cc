@@ -207,4 +207,4 @@ Finally, `chart.isHardwareAccelerationEnabled` switches the view between a hardw
 - [Formatters](/mpandroidchart/docs/formatters/) for turning values into labels.
 - [Performance with large data](/mpandroidchart/docs/performance/) for the settings that decide how fast a chart draws.
 - [Troubleshooting](/mpandroidchart/docs/troubleshooting/) when something on screen is not what you expected.
-- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/) for everything else.
+- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0-beta01/javadoc/) for everything else.

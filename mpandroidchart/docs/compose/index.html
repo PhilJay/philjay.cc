@@ -801,7 +801,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
 <h2 id="add-the-dependency">Add the dependency<a class="anchor" href="#add-the-dependency" aria-label="Link to this section">#</a></h2>
 <p>The Compose module is published next to the library and depends on it, so one line is enough:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>dependencies {
-    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0&quot;</span>)
+    implementation(<span class="s">&quot;com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01&quot;</span>)
 }</code></pre>
 <p>It brings <code>MPChartLib</code>, the Compose BOM and <code>compose-ui</code> with it as <code>api</code> dependencies. The module needs <code>minSdk 23</code> and Compose enabled in your build file.</p>
 <h2 id="your-first-chart">Your first chart<a class="anchor" href="#your-first-chart" aria-label="Link to this section">#</a></h2>
@@ -969,7 +969,7 @@ state.notifyDataChanged()</code></pre>
 <p>&quot;Add point&quot; changes the data set in place, so the same <code>LineData</code> instance stays on the chart. <code>pointCount</code> changes, which makes <code>update</code> a new lambda, and the <code>notifyDataSetChanged()</code> in there picks the new entry up. &quot;New data&quot; bumps the seed, which builds a fresh <code>LineData</code>, and the composable assigns it because it is a different instance.</p>
 <p>The <code>ComposeChartActivity</code> in the example app runs this pattern with a line, a pie and a bar chart on one screen.</p>
 <h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
-<ul><li><a href="/mpandroidchart/docs/markers/">Markers</a> for the view based <code>MarkerView</code> and the <code>IMarker</code> interface.</li><li><a href="/mpandroidchart/docs/interaction/">Interaction with the chart</a> for the gestures the state observes.</li><li><a href="/mpandroidchart/docs/animations/">Animations</a> for the easing curves.</li><li><a href="/mpandroidchart/docs/lists-and-scrolling/">Charts in lists and scrolling screens</a> for a chart inside a <code>LazyColumn</code>.</li><li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0/javadoc/">MPChartCompose API reference</a></li></ul>
+<ul><li><a href="/mpandroidchart/docs/markers/">Markers</a> for the view based <code>MarkerView</code> and the <code>IMarker</code> interface.</li><li><a href="/mpandroidchart/docs/interaction/">Interaction with the chart</a> for the gestures the state observes.</li><li><a href="/mpandroidchart/docs/animations/">Animations</a> for the easing curves.</li><li><a href="/mpandroidchart/docs/lists-and-scrolling/">Charts in lists and scrolling screens</a> for a chart inside a <code>LazyColumn</code>.</li><li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0-beta01/javadoc/">MPChartCompose API reference</a></li></ul>
       <div class="pager"><a class="prev" href="/mpandroidchart/docs/custom-renderers/"><span>Previous</span>Custom renderers</a><a class="next" href="/mpandroidchart/docs/java-interop/"><span>Next</span>Calling the library from Java</a></div>
     </main>
   </div>
