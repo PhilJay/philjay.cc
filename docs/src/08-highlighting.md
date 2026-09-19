@@ -146,12 +146,20 @@ Line, scatter, candle and radar sets draw crosshair lines:
 | `highlightLineWidth` | Line width in dp | `0.5` |
 | `isVerticalHighlightIndicatorEnabled` | Draw the vertical line | `true` |
 | `isHorizontalHighlightIndicatorEnabled` | Draw the horizontal line | `true` |
+| `verticalHighlightIndicatorSpan` | How far the vertical line reaches | `HighlightLineSpan.FULL` |
+| `horizontalHighlightIndicatorSpan` | How far the horizontal line reaches | `HighlightLineSpan.FULL` |
 
 ```kotlin
 set.highlightColor = Color.WHITE
 set.highlightLineWidth = 1f
 set.isHorizontalHighlightIndicatorEnabled = false
 set.enableDashedHighlightLine(8f, 8f, 0f)   // dash length, gap, phase, in px
+```
+
+A span of `FULL` draws the line from one edge of the chart to the other. `TO_ENTRY` stops it at the entry, coming from the bottom for the vertical line and from the left for the horizontal one, and `FROM_ENTRY` draws the other half.
+
+```kotlin
+set.verticalHighlightIndicatorSpan = HighlightLineSpan.TO_ENTRY
 ```
 
 `setDrawHighlightIndicators(false)` turns both lines off in one call, `disableDashedHighlightLine()` makes them solid again, and `isDashedHighlightLineEnabled` tells you which they are.

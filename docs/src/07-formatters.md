@@ -127,6 +127,8 @@ barData.setValueFormatter(StackedValueFormatter(false, " €", 0))
 
 With `false` the total is drawn once, at the topmost stack value of each bar, and the other stack values come back empty. With `true` every stack value gets its own label.
 
+A formatter of your own that needs to know where in the stack a value sits can override `getStackedFormattedValue(value, stackIndex, entry, dataSetIndex, viewPortHandler)`, which the bar renderers call instead of `getFormattedValue`. Its default forwards to `getFormattedValue`, so a plain lambda formatter keeps working.
+
 ## Writing your own
 
 ### A currency

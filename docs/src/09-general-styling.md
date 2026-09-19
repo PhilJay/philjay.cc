@@ -85,6 +85,8 @@ chart.extraBottomOffset = 12f           // or one side at a time
 | `minOffset` on line, bar, scatter, candle, bubble and combined charts | Smallest space in dp on every side | `15` |
 | `minOffset` on pie and radar charts | Smallest space in dp on every side | `0` |
 
+A radar chart adds its own space on top of that, because its axis labels are drawn outside the web: as much as a label is wide to the left and right, and as much as half that plus a label's height above and below. A legend gets twice its own text size as a gap.
+
 If you need exact control, `setViewPortOffsets(left, top, right, bottom)` replaces the calculation with fixed pixel values and `resetViewPortOffsets()` gives it back. See [Modifying the viewport](/mpandroidchart/docs/viewport/).
 
 > Offsets are recalculated when the data changes, when the view is resized and when the chart zooms. Setting them at any point is enough, they do not need to be reapplied.

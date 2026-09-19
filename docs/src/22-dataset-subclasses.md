@@ -20,6 +20,8 @@ Everything in [The DataSet class](/mpandroidchart/docs/dataset/) works on all of
 | --- | --- | --- |
 | `isVerticalHighlightIndicatorEnabled` | draw the vertical line | `true` |
 | `isHorizontalHighlightIndicatorEnabled` | draw the horizontal line | `true` |
+| `verticalHighlightIndicatorSpan` | how far the vertical line reaches: `FULL`, `TO_ENTRY` or `FROM_ENTRY` | `FULL` |
+| `horizontalHighlightIndicatorSpan` | the same for the horizontal line | `FULL` |
 | `highlightLineWidth` | width of both lines in dp | `0.5f` |
 | `dashPathEffectHighlight` | dash pattern, read only | `null`, solid |
 

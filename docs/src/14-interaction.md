@@ -84,6 +84,8 @@ chart.isRotationEnabled = true
 chart.rotationAngle = 0f     // where the first slice starts
 ```
 
+A rotation starts only when the finger goes down on the chart itself: inside its radius, and outside the hole of a pie chart. A drag that starts in the hole or in a corner of the view leaves the chart where it is.
+
 Angles are degrees, 0 at 3 o'clock, increasing clockwise. `rotationAngle` normalizes what you assign into 0 until 360; `rawRotationAngle` keeps the value you passed. The default is 270, which puts the first slice at the top.
 
 To turn the chart from code, see `spin()` in [Animations](/mpandroidchart/docs/animations/).

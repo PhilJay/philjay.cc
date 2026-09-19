@@ -33,7 +33,7 @@ chart.axisRight.isEnabled = false
 
 ## How many labels
 
-`labelCount` is a wish, not a promise. The renderer picks a round interval near `range / labelCount`, so you usually get a count close to what you asked for, with readable values.
+`labelCount` is a wish, not a promise. The renderer picks a round interval near `range / labelCount`, so you usually get a count close to what you asked for, with readable values. On the x axis it also keeps the interval at least one label wide, so long labels thin themselves out instead of overlapping.
 
 | Property | Meaning | Default |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ chart.axisRight.isEnabled = false
 | `axisMinLabels` | Lower bound applied to `labelCount`. | `2` |
 | `axisMaxLabels` | Upper bound applied to `labelCount`. | `25` |
 
-Forcing the count gives you an exact number of labels at the price of uneven values, which is what you want when you fixed the range yourself:
+Forcing the count gives you an exact number of labels at the price of uneven values, which is what you want when you fixed the range yourself. A granularity still wins: if the forced interval would fall below it, the axis keeps the granularity and draws fewer labels.
 
 ```kotlin
 chart.axisLeft.axisMinimum = 30f

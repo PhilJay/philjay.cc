@@ -209,6 +209,8 @@ chart.data = BarData(set).apply { barWidth = 0.55f }
 
 The values are drawn bottom to top in list order, and the set needs one color per stack value. `stackLabels` names the legend entries, one per stack value, and the set label follows them as an entry without a form.
 
+`barCornerRadius` rounds the bar as a whole, which for a stack means only the end farthest from zero. `isStackSectionsRounded = true` rounds every section of the stack instead.
+
 Setting the stack values computes a few things on the entry: `y` becomes their sum, `positiveSum` and `negativeSum` hold the two halves, and `ranges` holds the start and end on the y axis of each value. Negative values stack downwards from zero, positive values upwards, so a stack can cross the axis. `isStacked` tells you whether an entry has a stack at all, and `getSumBelow(index)` sums the stack values after that index, the ones stacked above it.
 
 A tap selects one value of the stack and reports its position in `Highlight.stackIndex`. To select the whole bar instead:
