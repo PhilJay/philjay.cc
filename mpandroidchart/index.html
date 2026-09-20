@@ -273,7 +273,8 @@ h1, h2, h3, p { margin: 0; }
 .card.link .more { color: var(--accent); font-weight: 700; font-size: 14px; margin-top: auto; padding-top: 8px; }
 .project-media.phone img { border-radius: 22px; border: 6px solid #1c2a30; max-width: 380px; margin: 0 auto; }
 .gallery figcaption { font-size: 14px; color: var(--text-dim); text-align: center; }
-.teaser { margin: 30px 0 0; }
+.teaser { margin: 0; }
+.teaser-section { padding-top: 0; }
 .teaser video {
   display: block;
   width: 100%;
@@ -445,6 +446,17 @@ pre .c { color: rgba(255, 255, 255, 0.45); }
       </div>
     </section>
 
+    <section class="wrap section teaser-section">
+      <figure class="teaser">
+        <video src="/mpandroidchart/media/teaser.mp4"
+               poster="/mpandroidchart/media/teaser-poster.jpg"
+               controls muted playsinline preload="none"
+               width="1920" height="1080"
+               aria-label="Overview of MPAndroidChart 4.0 in twenty two seconds"></video>
+        <figcaption>Twenty two seconds through the chart types, the styling, thirty thousand points and the code it takes.</figcaption>
+      </figure>
+    </section>
+
     <section id="charts" class="wrap section">
       <div class="section-head">
         <div>
@@ -467,14 +479,6 @@ pre .c { color: rgba(255, 255, 255, 0.45); }
         <figure><img src="assets/combined-506.webp?v=2" srcset="assets/combined-506.webp?v=2 506w, assets/combined.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="combined" alt="Combined chart with bars and a line" width="1012" height="798" loading="lazy"><figcaption>Combined</figcaption></figure>
         <figure><img src="assets/bubble-506.webp?v=2" srcset="assets/bubble-506.webp?v=2 506w, assets/bubble.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="bubble" alt="Bubble chart" width="1012" height="798" loading="lazy"><figcaption>Bubble</figcaption></figure>
       </div>
-      <figure class="teaser">
-        <video src="/mpandroidchart/media/teaser.mp4"
-               poster="/mpandroidchart/media/teaser-poster.jpg"
-               controls muted playsinline preload="none"
-               width="1920" height="1080"
-               aria-label="Overview of MPAndroidChart 4.0 in twenty two seconds"></video>
-        <figcaption>Twenty two seconds through the chart types, the styling, thirty thousand points and the code it takes.</figcaption>
-      </figure>
       <p class="cta-note">Scatter plots, full width lines, cubic and stepped lines, half pies, negative stacks, realtime data and more are in the <a href="https://github.com/PhilJay/MPAndroidChart/tree/master/MPChartExample">example app</a>.</p>
     </section>
 
