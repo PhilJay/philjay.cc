@@ -164,6 +164,10 @@ def render(markdown: str):
                 block.append(lines[i])
                 i += 1
             i += 1
+            if language == "figure":
+                out.append(chr(10).join(block))
+                continue
+
             label = LANGUAGE_LABELS.get(language, language.title())
             copy = '<button class="copy" type="button" aria-label="Copy code">Copy</button>'
             out.append(f'<pre data-lang="{html.escape(label)}">{copy}'

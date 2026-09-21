@@ -36,6 +36,47 @@ Measured on an Android emulator, API 36, arm64, on an Apple Silicon Mac, using t
 | 100,000 | 18.4 ms | 25.8 ms |
 | 500,000 | 133.4 ms | not measured |
 
+```figure
+<svg viewBox="0 0 760 330" width="100%" role="img" aria-label="Draw time by entries on screen, in milliseconds" style="max-width:760px;height:auto;display:block;margin:0 auto 6px">
+<title>Draw time by entries on screen, in milliseconds</title>
+<rect x="54" y="14" width="11" height="11" rx="3" fill="#00a9ab"/>
+<text x="71" y="24" fill="rgba(255,255,255,0.78)" font-size="13">Line</text>
+<rect x="105.6" y="14" width="11" height="11" rx="3" fill="#8b7cf6"/>
+<text x="122.6" y="24" fill="rgba(255,255,255,0.78)" font-size="13">Bar</text>
+<line x1="54" y1="278.0" x2="746" y2="278.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="282.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">0</text>
+<line x1="54" y1="203.3" x2="746" y2="203.3" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="207.3" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">10</text>
+<line x1="54" y1="128.7" x2="746" y2="128.7" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="132.7" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">20</text>
+<line x1="54" y1="54.0" x2="746" y2="54.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="58.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">30</text>
+<path d="M93.5 278.0 V278.0 A2.986666666666667 2.986666666666667 0 0 1 96.48666666666666 275.0133333333333 H136.51333333333332 A2.986666666666667 2.986666666666667 0 0 1 139.5 278.0 V278.0 Z" fill="#00a9ab"><title>1,000 · Line: 0.4 ms</title></path>
+<text x="116.5" y="268.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">0.4</text>
+<path d="M141.5 278.0 V278.0 A3.7333333333333334 3.7333333333333334 0 0 1 145.23333333333332 274.26666666666665 H183.76666666666668 A3.7333333333333334 3.7333333333333334 0 0 1 187.5 278.0 V278.0 Z" fill="#8b7cf6"><title>1,000 · Bar: 0.5 ms</title></path>
+<text x="164.5" y="267.3" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">0.5</text>
+<text x="140.5" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">1,000</text>
+<path d="M266.5 278.0 V273.04 A4 4 0 0 1 270.5 269.04 H308.5 A4 4 0 0 1 312.5 273.04 V278.0 Z" fill="#00a9ab"><title>10,000 · Line: 1.2 ms</title></path>
+<text x="289.5" y="262.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">1.2</text>
+<path d="M314.5 278.0 V270.05333333333334 A4 4 0 0 1 318.5 266.05333333333334 H356.5 A4 4 0 0 1 360.5 270.05333333333334 V278.0 Z" fill="#8b7cf6"><title>10,000 · Bar: 1.6 ms</title></path>
+<text x="337.5" y="259.1" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">1.6</text>
+<text x="313.5" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">10,000</text>
+<path d="M439.5 278.0 V215.54666666666668 A4 4 0 0 1 443.5 211.54666666666668 H481.5 A4 4 0 0 1 485.5 215.54666666666668 V278.0 Z" fill="#00a9ab"><title>50,000 · Line: 8.9 ms</title></path>
+<text x="462.5" y="204.5" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">8.9</text>
+<path d="M487.5 278.0 V198.37333333333333 A4 4 0 0 1 491.5 194.37333333333333 H529.5 A4 4 0 0 1 533.5 198.37333333333333 V278.0 Z" fill="#8b7cf6"><title>50,000 · Bar: 11.2 ms</title></path>
+<text x="510.5" y="187.4" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">11.2</text>
+<text x="486.5" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">50,000</text>
+<path d="M612.5 278.0 V144.61333333333334 A4 4 0 0 1 616.5 140.61333333333334 H654.5 A4 4 0 0 1 658.5 144.61333333333334 V278.0 Z" fill="#00a9ab"><title>100,000 · Line: 18.4 ms</title></path>
+<text x="635.5" y="133.6" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">18.4</text>
+<path d="M660.5 278.0 V89.36000000000001 A4 4 0 0 1 664.5 85.36000000000001 H702.5 A4 4 0 0 1 706.5 89.36000000000001 V278.0 Z" fill="#8b7cf6"><title>100,000 · Bar: 25.8 ms</title></path>
+<text x="683.5" y="78.4" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">25.8</text>
+<text x="659.5" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">100,000</text>
+<line x1="54" y1="278" x2="746" y2="278" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+</svg>
+```
+
+The chart leaves out 500,000 so the rest stays readable; the table has it.
+
 Decimation is the interesting one, at 100,000 entries with each pair toggled back to back:
 
 | 100,000 entries | Off | On |
@@ -43,6 +84,44 @@ Decimation is the interesting one, at 100,000 entries with each pair toggled bac
 | Plain line, one color | 13.4 ms | 24.8 ms |
 | Bars | 16.0 ms | 23.4 ms |
 | Line with a color per segment | 266.5 ms | 23.3 ms |
+
+```figure
+<svg viewBox="0 0 760 330" width="100%" role="img" aria-label="Draw time at 100,000 entries with decimation off and on, in milliseconds" style="max-width:760px;height:auto;display:block;margin:0 auto 6px">
+<title>Draw time at 100,000 entries with decimation off and on, in milliseconds</title>
+<rect x="54" y="14" width="11" height="11" rx="3" fill="#8b7cf6"/>
+<text x="71" y="24" fill="rgba(255,255,255,0.78)" font-size="13">Decimation off</text>
+<rect x="179.60000000000002" y="14" width="11" height="11" rx="3" fill="#00a9ab"/>
+<text x="196.60000000000002" y="24" fill="rgba(255,255,255,0.78)" font-size="13">Decimation on</text>
+<line x1="54" y1="278.0" x2="746" y2="278.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="282.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">0</text>
+<line x1="54" y1="222.0" x2="746" y2="222.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="226.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">70</text>
+<line x1="54" y1="166.0" x2="746" y2="166.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="170.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">140</text>
+<line x1="54" y1="110.0" x2="746" y2="110.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="114.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">210</text>
+<line x1="54" y1="54.0" x2="746" y2="54.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="44" y="58.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">280</text>
+<path d="M122.33333333333331 278.0 V271.28 A4 4 0 0 1 126.33333333333331 267.28 H164.33333333333331 A4 4 0 0 1 168.33333333333331 271.28 V278.0 Z" fill="#8b7cf6"><title>Plain line,|one colour · Decimation off: 13.4 ms</title></path>
+<text x="145.3" y="260.3" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">13.4</text>
+<path d="M170.33333333333331 278.0 V262.15999999999997 A4 4 0 0 1 174.33333333333331 258.15999999999997 H212.33333333333331 A4 4 0 0 1 216.33333333333331 262.15999999999997 V278.0 Z" fill="#00a9ab"><title>Plain line,|one colour · Decimation on: 24.8 ms</title></path>
+<text x="193.3" y="251.2" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">24.8</text>
+<text x="169.3" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">Plain line,</text>
+<text x="169.3" y="316.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">one colour</text>
+<path d="M352.99999999999994 278.0 V269.2 A4 4 0 0 1 356.99999999999994 265.2 H394.99999999999994 A4 4 0 0 1 398.99999999999994 269.2 V278.0 Z" fill="#8b7cf6"><title>Bars · Decimation off: 16.0 ms</title></path>
+<text x="376.0" y="258.2" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">16.0</text>
+<path d="M400.99999999999994 278.0 V263.28 A4 4 0 0 1 404.99999999999994 259.28 H442.99999999999994 A4 4 0 0 1 446.99999999999994 263.28 V278.0 Z" fill="#00a9ab"><title>Bars · Decimation on: 23.4 ms</title></path>
+<text x="424.0" y="252.3" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">23.4</text>
+<text x="400.0" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">Bars</text>
+<path d="M583.6666666666666 278.0 V68.80000000000001 A4 4 0 0 1 587.6666666666666 64.80000000000001 H625.6666666666666 A4 4 0 0 1 629.6666666666666 68.80000000000001 V278.0 Z" fill="#8b7cf6"><title>Line, a colour|per segment · Decimation off: 266.5 ms</title></path>
+<text x="606.7" y="57.8" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">266.5</text>
+<path d="M631.6666666666666 278.0 V263.36 A4 4 0 0 1 635.6666666666666 259.36 H673.6666666666666 A4 4 0 0 1 677.6666666666666 263.36 V278.0 Z" fill="#00a9ab"><title>Line, a colour|per segment · Decimation on: 23.3 ms</title></path>
+<text x="654.7" y="252.4" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="middle" font-variant-numeric="tabular-nums">23.3</text>
+<text x="630.7" y="300.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">Line, a colour</text>
+<text x="630.7" y="316.0" fill="rgba(255,255,255,0.5)" font-size="12.5" text-anchor="middle">per segment</text>
+<line x1="54" y1="278" x2="746" y2="278" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+</svg>
+```
 
 All three read about 23 ms with decimation on, because that is the reduction pass itself over 100,000 entries. What differs is the other column: a plain line is one batched call the GPU rasterises cheaply, a bar chart is one call per bar, and a color per segment is one call per segment. Dropping points only pays when the per entry draw call is expensive.
 
