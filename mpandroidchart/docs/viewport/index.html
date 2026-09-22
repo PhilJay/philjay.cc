@@ -807,6 +807,21 @@ chart.setVisibleXRangeMinimum(<span class="n">5f</span>)   <span class="c">// ne
 chart.setVisibleXRange(<span class="n">5f</span>, <span class="n">20f</span>)     <span class="c">// both at once</span>
 chart.setVisibleYRangeMaximum(<span class="n">100f</span>, <span class="t">YAxis</span>.<span class="t">AxisDependency</span>.<span class="t">LEFT</span>)</code></pre>
 <div class='table-wrap'><table><thead><tr><th>Call</th><th>Meaning</th></tr></thead><tbody><tr><td><code>setVisibleXRangeMaximum(max)</code></td><td>largest span of x values on screen, so the user cannot zoom out further</td></tr><tr><td><code>setVisibleXRangeMinimum(min)</code></td><td>smallest span of x values on screen, so the user cannot zoom in further</td></tr><tr><td><code>setVisibleXRange(min, max)</code></td><td>both x limits in one call</td></tr><tr><td><code>setVisibleYRangeMaximum(max, axis)</code></td><td>largest span of y values on screen, for one y axis</td></tr><tr><td><code>setVisibleYRangeMinimum(min, axis)</code></td><td>smallest span of y values on screen, for one y axis</td></tr><tr><td><code>setVisibleYRange(min, max, axis)</code></td><td>both y limits in one call</td></tr></tbody></table></div>
+<svg viewBox="0 0 760 244" width="100%" role="img" aria-label="A visible range over a longer series" style="max-width:760px;height:auto;display:block;margin:0 auto 6px">
+<title>A visible range over a longer series</title>
+<rect x="60.0" y="70.0" width="640.0" height="120.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M60.0 137.7 L93.7 125.2 L127.4 141.5 L161.1 118.5 L194.7 131.9 L228.4 108.9 L262.1 122.3 L295.8 135.8 L329.5 114.6 L363.2 128.1 L396.8 103.1 L430.5 120.4 L464.2 133.8 L497.9 110.8 L531.6 126.2 L565.3 139.6 L598.9 116.6 L632.6 130.0 L666.3 107.0 L700.0 124.2" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="252.0" y="64.0" width="192.0" height="132.0" rx="5" fill="rgba(0,169,171,0.07)" stroke="#00a9ab" stroke-width="1.5"/>
+<path d="M262.1 122.3 L295.8 135.8 L329.5 114.6 L363.2 128.1 L396.8 103.1 L430.5 120.4" fill="none" stroke="#00a9ab" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="60.0" y="34.0" fill="rgba(255,255,255,0.5)" font-size="11.5" text-anchor="start">The data you hold</text>
+<text x="348.0" y="52.0" fill="#00a9ab" font-size="11.5" text-anchor="middle">what is on screen</text>
+<line x1="252.0" y1="216.0" x2="444.0" y2="216.0" stroke="#00a9ab" stroke-width="1.2"/>
+<line x1="252.0" y1="212.0" x2="252.0" y2="220.0" stroke="#00a9ab" stroke-width="1.2"/>
+<line x1="444.0" y1="212.0" x2="444.0" y2="220.0" stroke="#00a9ab" stroke-width="1.2"/>
+<text x="348.0" y="236.0" fill="rgba(255,255,255,0.78)" font-size="12" text-anchor="middle">setVisibleXRangeMaximum(20)</text>
+<line x1="60.0" y1="216.0" x2="239.2" y2="216.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="456.8" y1="216.0" x2="700.0" y2="216.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+</svg>
 <p>Each of them divides the current axis range by the span you pass and stores the result as a scale limit. The limit is a number, not a rule: when the data grows afterwards, the axis range grows with it and the visible span no longer matches. Call the function again after changing the data.</p>
 <p>These six clamp the viewport but do not redraw by themselves, so follow them with a move call, which does, or with <code>invalidate()</code>.</p>
 <p><code>setScaleMinima(scaleX, scaleY)</code> sets the same two lower limits directly as factors, where 1 means fully zoomed out. Factors below 1 are raised to 1.</p>

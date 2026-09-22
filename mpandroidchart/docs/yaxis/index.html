@@ -819,6 +819,26 @@ chart.<span class="k">data</span> = <span class="t">LineData</span>(temperature,
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisRight.isEnabled = <span class="k">false</span></code></pre>
 <h2 id="where-the-labels-sit">Where the labels sit<a class="anchor" href="#where-the-labels-sit" aria-label="Link to this section">#</a></h2>
 <div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>labelPosition</code></td><td><code>OUTSIDE_CHART</code> next to the content area, <code>INSIDE_CHART</code> on top of it.</td><td><code>OUTSIDE_CHART</code></td></tr><tr><td><code>labelXOffset</code></td><td>Extra horizontal shift in dp applied to the labels.</td><td><code>0</code>, and <code>10</code> on a radar chart</td></tr><tr><td><code>xOffset</code></td><td>Distance in dp between the labels and the content edge.</td><td><code>5</code></td></tr></tbody></table></div>
+<svg viewBox="0 0 640 236" width="100%" role="img" aria-label="Axis labels outside and inside the content area" style="max-width:640px;height:auto;display:block;margin:0 auto 6px">
+<title>Axis labels outside and inside the content area</title>
+<rect x="40.0" y="46.0" width="250.0" height="130.0" rx="6" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="40.0" y="34.0" fill="rgba(255,255,255,0.32)" font-size="10.5" text-anchor="start">the chart view</text>
+<rect x="86.0" y="58.0" width="194.0" height="106.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M86.0 128.0 L113.7 109.3 L141.4 121.2 L169.1 92.3 L196.9 106.8 L224.6 80.5 L252.3 99.1 L280.0 114.4" fill="none" stroke="#00a9ab" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="78.0" y="77.9" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="end">85</text>
+<text x="78.0" y="115.0" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="end">50</text>
+<text x="78.0" y="152.1" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="end">15</text>
+<text x="165.0" y="202.0" fill="rgba(255,255,255,0.78)" font-size="12" text-anchor="middle">OUTSIDE_CHART</text>
+<rect x="350.0" y="46.0" width="250.0" height="130.0" rx="6" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="350.0" y="34.0" fill="rgba(255,255,255,0.32)" font-size="10.5" text-anchor="start">the chart view</text>
+<rect x="360.0" y="58.0" width="230.0" height="106.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M360.0 128.0 L392.9 109.3 L425.7 121.2 L458.6 92.3 L491.4 106.8 L524.3 80.5 L557.1 99.1 L590.0 114.4" fill="none" stroke="#00a9ab" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="366.0" y="77.9" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="start">85</text>
+<text x="366.0" y="115.0" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="start">50</text>
+<text x="366.0" y="152.1" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="start">15</text>
+<text x="475.0" y="202.0" fill="rgba(255,255,255,0.78)" font-size="12" text-anchor="middle">INSIDE_CHART</text>
+<text x="320.0" y="228.0" fill="rgba(255,255,255,0.5)" font-size="11.5" text-anchor="middle">Inside costs no offset, so the content area keeps the full width</text>
+</svg>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.labelPosition = <span class="t">YAxis</span>.<span class="t">YAxisLabelPosition</span>.<span class="t">INSIDE_CHART</span></code></pre>
 <p>Drawing the labels inside is worth knowing about because of <code>needsOffset</code>. That read only property is true only when the axis is enabled, draws labels, and draws them outside. While it is false the chart adds no space for the axis, and that side of the content area keeps only the chart&#x27;s <code>minOffset</code>, 15 dp by default.</p>
 <h2 id="how-much-width-the-axis-takes">How much width the axis takes<a class="anchor" href="#how-much-width-the-axis-takes" aria-label="Link to this section">#</a></h2>

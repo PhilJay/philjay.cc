@@ -158,6 +158,31 @@ set.enableDashedHighlightLine(8f, 8f, 0f)   // dash length, gap, phase, in px
 
 A span of `FULL` draws the line from one edge of the chart to the other. `TO_ENTRY` stops it at the entry, coming from the bottom for the vertical line and from the left for the horizontal one, and `FROM_ENTRY` draws the other half.
 
+```figure
+<svg viewBox="0 0 760 238" width="100%" role="img" aria-label="How far a highlight line reaches" style="max-width:760px;height:auto;display:block;margin:0 auto 6px">
+<title>How far a highlight line reaches</title>
+<rect x="19.0" y="44.0" width="210.0" height="130.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="150.2" y1="44.0" x2="150.2" y2="174.0" stroke="#ffbb73" stroke-width="1.5"/>
+<path d="M19.0 129.8 L45.2 106.9 L71.5 121.5 L97.8 86.1 L124.0 103.8 L150.2 71.6 L176.5 94.4 L202.8 113.2 L229.0 100.7" fill="none" stroke="#00a9ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="150.2" cy="71.6" r="4.5" fill="#0a1013" stroke="#ffbb73" stroke-width="2"/>
+<text x="124.0" y="202.0" fill="rgba(255,255,255,0.78)" font-size="12" text-anchor="middle">FULL</text>
+<text x="124.0" y="220.0" fill="rgba(255,255,255,0.32)" font-size="11" text-anchor="middle">edge to edge, the default</text>
+<rect x="275.0" y="44.0" width="210.0" height="130.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="406.2" y1="174.0" x2="406.2" y2="71.6" stroke="#ffbb73" stroke-width="1.5"/>
+<path d="M275.0 129.8 L301.2 106.9 L327.5 121.5 L353.8 86.1 L380.0 103.8 L406.2 71.6 L432.5 94.4 L458.8 113.2 L485.0 100.7" fill="none" stroke="#00a9ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="406.2" cy="71.6" r="4.5" fill="#0a1013" stroke="#ffbb73" stroke-width="2"/>
+<text x="380.0" y="202.0" fill="rgba(255,255,255,0.78)" font-size="12" text-anchor="middle">TO_ENTRY</text>
+<text x="380.0" y="220.0" fill="rgba(255,255,255,0.32)" font-size="11" text-anchor="middle">up to the entry</text>
+<rect x="531.0" y="44.0" width="210.0" height="130.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="662.2" y1="44.0" x2="662.2" y2="71.6" stroke="#ffbb73" stroke-width="1.5"/>
+<path d="M531.0 129.8 L557.2 106.9 L583.5 121.5 L609.8 86.1 L636.0 103.8 L662.2 71.6 L688.5 94.4 L714.8 113.2 L741.0 100.7" fill="none" stroke="#00a9ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="662.2" cy="71.6" r="4.5" fill="#0a1013" stroke="#ffbb73" stroke-width="2"/>
+<text x="636.0" y="202.0" fill="rgba(255,255,255,0.78)" font-size="12" text-anchor="middle">FROM_ENTRY</text>
+<text x="636.0" y="220.0" fill="rgba(255,255,255,0.32)" font-size="11" text-anchor="middle">on from the entry</text>
+<text x="380.0" y="24.0" fill="rgba(255,255,255,0.5)" font-size="11.5" text-anchor="middle">verticalHighlightIndicatorSpan, and the same three for the horizontal line</text>
+</svg>
+```
+
 ```kotlin
 set.verticalHighlightIndicatorSpan = HighlightLineSpan.TO_ENTRY
 ```

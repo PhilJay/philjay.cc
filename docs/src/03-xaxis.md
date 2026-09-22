@@ -22,6 +22,46 @@ Everything on [the axis](/mpandroidchart/docs/axis/) applies here too: enabling 
 | `TOP_INSIDE` | Inside the content area, along its top edge. |
 | `BOTTOM_INSIDE` | Inside the content area, along its bottom edge. |
 
+```figure
+<svg viewBox="0 0 760 208" width="100%" role="img" aria-label="Where the x axis labels are drawn for each position" style="max-width:760px;height:auto;display:block;margin:0 auto 6px">
+<title>Where the x axis labels are drawn for each position</title>
+<rect x="2.0" y="52.0" width="124.0" height="96.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M2.0 115.4 L22.7 98.5 L43.3 109.2 L64.0 83.1 L84.7 96.2 L105.3 72.4 L126.0 89.2" fill="none" stroke="#00a9ab" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="33.0" y="44.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">5</text>
+<text x="64.0" y="44.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">10</text>
+<text x="95.0" y="44.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">15</text>
+<text x="64.0" y="186.0" fill="rgba(255,255,255,0.78)" font-size="11.5" text-anchor="middle">TOP</text>
+<rect x="160.0" y="52.0" width="124.0" height="96.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M160.0 115.4 L180.7 98.5 L201.3 109.2 L222.0 83.1 L242.7 96.2 L263.3 72.4 L284.0 89.2" fill="none" stroke="#00a9ab" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="191.0" y="163.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">5</text>
+<text x="222.0" y="163.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">10</text>
+<text x="253.0" y="163.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">15</text>
+<text x="222.0" y="186.0" fill="rgba(255,255,255,0.78)" font-size="11.5" text-anchor="middle">BOTTOM</text>
+<rect x="318.0" y="52.0" width="124.0" height="96.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M318.0 115.4 L338.7 98.5 L359.3 109.2 L380.0 83.1 L400.7 96.2 L421.3 72.4 L442.0 89.2" fill="none" stroke="#00a9ab" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="349.0" y="44.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">5</text>
+<text x="349.0" y="163.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">5</text>
+<text x="380.0" y="44.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">10</text>
+<text x="380.0" y="163.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">10</text>
+<text x="411.0" y="44.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">15</text>
+<text x="411.0" y="163.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">15</text>
+<text x="380.0" y="186.0" fill="rgba(255,255,255,0.78)" font-size="11.5" text-anchor="middle">BOTH_SIDED</text>
+<rect x="476.0" y="52.0" width="124.0" height="96.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M476.0 115.4 L496.7 98.5 L517.3 109.2 L538.0 83.1 L558.7 96.2 L579.3 72.4 L600.0 89.2" fill="none" stroke="#00a9ab" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="507.0" y="66.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">5</text>
+<text x="538.0" y="66.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">10</text>
+<text x="569.0" y="66.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">15</text>
+<text x="538.0" y="186.0" fill="rgba(255,255,255,0.78)" font-size="11.5" text-anchor="middle">TOP_INSIDE</text>
+<rect x="634.0" y="52.0" width="124.0" height="96.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M634.0 115.4 L654.7 98.5 L675.3 109.2 L696.0 83.1 L716.7 96.2 L737.3 72.4 L758.0 89.2" fill="none" stroke="#00a9ab" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="665.0" y="142.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">5</text>
+<text x="696.0" y="142.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">10</text>
+<text x="727.0" y="142.0" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle">15</text>
+<text x="696.0" y="186.0" fill="rgba(255,255,255,0.78)" font-size="11.5" text-anchor="middle">BOTTOM_INSIDE</text>
+<text x="64.0" y="24.0" fill="#00a9ab" font-size="11" text-anchor="middle">the default</text>
+</svg>
+```
+
 ```kotlin
 chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
 ```

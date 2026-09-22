@@ -800,6 +800,21 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
       <p>The popup drawn at a highlighted value: the composable marker of the Compose module, MarkerView from a layout, MarkerImage from a drawable, and the IMarker interface behind them all.</p>
 <h2 id="show-a-marker">Show a marker<a class="anchor" href="#show-a-marker" aria-label="Link to this section">#</a></h2>
 <p>A marker is anything that implements <code>IMarker</code>. Assign one to the chart and it is drawn at every highlighted value:</p>
+<svg viewBox="0 0 660 272" width="100%" role="img" aria-label="A marker drawn over the highlighted entry" style="max-width:660px;height:auto;display:block;margin:0 auto 6px">
+<title>A marker drawn over the highlighted entry</title>
+<rect x="60.0" y="78.0" width="540.0" height="150.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="60.0" y1="127.5" x2="600.0" y2="127.5" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="60.0" y1="177.0" x2="600.0" y2="177.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="403.6" y1="78.0" x2="403.6" y2="228.0" stroke="#ffbb73" stroke-width="1.5" stroke-dasharray="6 5"/>
+<path d="M60.0 177.0 L109.1 150.6 L158.2 167.4 L207.3 126.6 L256.4 147.0 L305.5 109.8 L354.5 136.2 L403.6 157.8 L452.7 143.4 L501.8 119.4 L550.9 133.8 L600.0 165.0" fill="none" stroke="#00a9ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="403.6" cy="157.8" r="9" fill="rgba(255,187,115,0.22)"/>
+<circle cx="403.6" cy="157.8" r="5" fill="#0a1013" stroke="#00a9ab" stroke-width="2.5"/>
+<path d="M403.6 146.8 l-7 -8 h14 Z" fill="rgba(255,255,255,0.10)"/>
+<rect x="342.6" y="93.8" width="122.0" height="46.0" rx="8" fill="#141d21" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+<text x="403.6" y="113.8" fill="rgba(255,255,255,0.5)" font-size="11" text-anchor="middle">12 March</text>
+<text x="403.6" y="130.8" fill="rgba(255,255,255,0.78)" font-size="13.5" text-anchor="middle" font-weight="700">128 sold</text>
+<text x="60.0" y="34.0" fill="rgba(255,255,255,0.5)" font-size="11.5" text-anchor="start">A marker is a view you draw over the entry that was tapped</text>
+</svg>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.marker = <span class="t">MyMarkerView</span>(context, <span class="t">R</span>.layout.custom_marker_view)</code></pre>
 <p>That is the whole setup. The chart stores the marker in <code>chart.marker</code>, keeps a weak reference back to itself inside <code>MarkerView</code> and <code>MarkerImage</code>, and draws the marker whenever a value is selected. Set <code>chart.marker = null</code> to remove it.</p>
 <p><code>chart.isDrawMarkersEnabled</code> switches drawing off without losing the marker. It defaults to <code>true</code>, so a marker shows as soon as it is assigned.</p>

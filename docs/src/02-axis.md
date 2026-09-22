@@ -19,6 +19,41 @@ An axis can draw four things, each of which can be turned off on its own.
 - The **grid lines**, one running across the content area from each label.
 - The **limit lines** you add yourself, for a target or a threshold.
 
+```figure
+<svg viewBox="0 0 760 330" width="100%" role="img" aria-label="The four things an axis draws" style="max-width:760px;height:auto;display:block;margin:0 auto 6px">
+<title>The four things an axis draws</title>
+<line x1="170.0" y1="103.5" x2="600.0" y2="103.5" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="170.0" y1="149.0" x2="600.0" y2="149.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="170.0" y1="194.5" x2="600.0" y2="194.5" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<line x1="256.0" y1="58.0" x2="256.0" y2="240.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="256.0" y="260.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">10</text>
+<line x1="342.0" y1="58.0" x2="342.0" y2="240.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="342.0" y="260.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">20</text>
+<line x1="428.0" y1="58.0" x2="428.0" y2="240.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="428.0" y="260.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">30</text>
+<line x1="514.0" y1="58.0" x2="514.0" y2="240.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<text x="514.0" y="260.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">40</text>
+<text x="158.0" y="244.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">0</text>
+<text x="158.0" y="198.5" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">20</text>
+<text x="158.0" y="153.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">40</text>
+<text x="158.0" y="107.5" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">60</text>
+<text x="158.0" y="62.0" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="end">80</text>
+<path d="M170.0 178.1 L209.1 146.1 L248.2 166.5 L287.3 117.0 L326.4 141.7 L365.5 96.6 L404.5 128.6 L443.6 154.8 L482.7 137.4 L521.8 108.2 L560.9 125.7 L600.0 163.6" fill="none" stroke="#00a9ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="170.0" y1="98.0" x2="600.0" y2="98.0" stroke="#8b7cf6" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="180.0" y="90.0" fill="#8b7cf6" font-size="11.5" text-anchor="start">Target</text>
+<line x1="170.0" y1="58.0" x2="170.0" y2="240.0" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+<line x1="170.0" y1="240.0" x2="600.0" y2="240.0" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+<line x1="602.0" y1="98.0" x2="614.0" y2="98.0" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+<text x="620.0" y="102.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="start">Limit line</text>
+<line x1="602.0" y1="149.0" x2="614.0" y2="149.0" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+<text x="620.0" y="153.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="start">Grid lines</text>
+<line x1="602.0" y1="240.0" x2="614.0" y2="240.0" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+<text x="620.0" y="244.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="start">Axis line</text>
+<text x="170.0" y="286.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="start">Labels</text>
+<text x="158.0" y="44.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="end">Labels</text>
+</svg>
+```
+
 | Property | Meaning | Default |
 | --- | --- | --- |
 | `isEnabled` | Draws the axis at all. False hides every part of it, whatever the other settings say. | `true` |

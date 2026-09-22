@@ -20,6 +20,20 @@ It is a single line of plain text. There is no wrapping and no formatting, so ke
 
 By default the text sits in the bottom right corner of the content area, pushed in from its right edge by `xOffset` and up from its bottom edge by `yOffset`, both in dp and both 5 by default.
 
+```figure
+<svg viewBox="0 0 620 216" width="100%" role="img" aria-label="Where the description is drawn" style="max-width:620px;height:auto;display:block;margin:0 auto 6px">
+<title>Where the description is drawn</title>
+<rect x="48.0" y="52.0" width="420.0" height="120.0" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+<path d="M48.0 131.2 L108.0 110.1 L168.0 123.5 L228.0 90.9 L288.0 107.2 L348.0 77.4 L408.0 98.6 L468.0 115.8" fill="none" stroke="#00a9ab" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="452.0" y="158.0" fill="rgba(255,255,255,0.78)" font-size="12.5" text-anchor="end">Revenue 2026</text>
+<rect x="336.0" y="138.0" width="126.0" height="28.0" rx="4" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="462.0" y1="152.0" x2="484.0" y2="152.0" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
+<text x="490.0" y="156.0" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="start">xOffset in</text>
+<text x="490.0" y="169.0" fill="rgba(255,255,255,0.5)" font-size="10.5" text-anchor="start">yOffset up</text>
+<text x="48.0" y="32.0" fill="rgba(255,255,255,0.5)" font-size="11.5" text-anchor="start">The description sits in the bottom right corner unless you place it</text>
+</svg>
+```
+
 ```kotlin
 chart.description.xOffset = 12f
 chart.description.yOffset = 12f
