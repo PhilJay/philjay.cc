@@ -8,11 +8,11 @@ The Compose module is published next to the library and depends on it, so one li
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
 }
 ```
 
-It brings `MPChartLib`, the Compose BOM and `compose-ui` with it as `api` dependencies. The module needs `minSdk 23` and Compose enabled in your build file.
+It brings `MPChartLib`, the Compose BOM and `compose-ui` with it as `api` dependencies. The module needs `minSdk 23`, `compileSdk 37`, Kotlin 2.0 or newer and Compose enabled in your build file.
 
 ## Your first chart
 
@@ -40,11 +40,12 @@ The nine composables are `LineChart`, `BarChart`, `HorizontalBarChart`, `PieChar
 
 | Parameter | Meaning |
 | --- | --- |
-| `data` | The chart data, nullable. Passing null clears the chart and shows its no data text. |
+| `data` | The chart data, nullable. Passing null clears the chart and shows its empty state; `update = { isLoading = loading }` turns that into a loading state. |
 | `modifier` | Applied to the chart, usually to give it a size. |
 | `state` | A [ChartState](#chart-state) that reports selection and viewport back and lets you drive the chart. Defaults to a fresh `rememberChartState()`. |
 | `contentDescription` | Text read by screen readers. Null adds no semantics. |
 | `marker` | A composable drawn at the highlighted entry. Null for no marker. |
+| `animateChanges` | Whether a new `data` instance moves in from the values shown before, over 300 ms, instead of replacing them at once. False by default. |
 | `setup` | Runs once, on the view, right after it is created and before any data is set. |
 | `update` | Runs on the view before every redraw that Compose triggers. |
 
@@ -57,7 +58,7 @@ lineSet.addEntry(Entry(x, y))
 state.notifyDataChanged()
 ```
 
-Wrapping the data in `remember` keyed on what it is built from is the simplest way to get a new instance exactly when you want one.
+Wrapping the data in `remember` keyed on what it is built from is the simplest way to get a new instance exactly when you want one. With `animateChanges = true` each new instance animates in from the values on screen, see [Animations](/mpandroidchart/docs/animations/#animations-in-compose).
 
 ### setup runs once, update runs again
 
@@ -123,12 +124,13 @@ And these functions drive the chart:
 
 | Function | What it does |
 | --- | --- |
-| `highlight(x, dataSetIndex = 0)` | Highlights the entry closest to `x` in that data set, as if the user had tapped it. Clears the selection when the index is out of range or nothing is near `x`. |
+| `highlight(x, dataSetIndex = 0, dataIndex = -1)` | Highlights the entry closest to `x` in that data set, as if the user had tapped it. Clears the selection when the index is out of range or nothing is near `x`. On a combined chart, `dataIndex` names the data object that holds the set. |
 | `clearHighlight()` | Removes the highlight and sets both selection properties to null. |
 | `notifyDataChanged()` | Recomputes axes, legend and offsets, redraws, then refreshes the viewport properties. Call it after changing data in place. |
 | `animateX(durationMillis, easing)` | Animates the drawing along the x axis. |
 | `animateY(durationMillis, easing)` | Animates the drawing along the y axis. |
 | `animateXY(durationMillisX, durationMillisY, easingX, easingY)` | Animates both axes at once. `easingY` defaults to `easingX`. |
+| `animateDataChange(newData, durationMillis, easing, onEnd)` | Sets new data and moves every entry from the value it replaces, then updates the selection. |
 | `fitScreen()` | Resets zoom and scroll so all data is visible. |
 | `zoomIn()` | Zooms in by a factor of 1.4 around the center of the content area. |
 | `zoomOut()` | Zooms out by a factor of 0.7 around the center. |
@@ -145,9 +147,9 @@ LaunchedEffect(lineData) { state.animateX(600) }
 
 ### It survives configuration changes
 
-`rememberChartState` uses `rememberSaveable`, so zoom, scroll position, rotation and the highlighted entry come back after a rotation or process death. The saved values are applied once the restored state is attached to a chart that has its data and its size.
+`rememberChartState` uses `rememberSaveable`, so zoom, the x and y scroll position, rotation and the highlighted entry come back after a rotation or process death. The saved values are applied once the restored state is attached to a chart that has its data and its size.
 
-> One state belongs to one chart. Attaching the same `ChartState` to a second chart throws `IllegalStateException`. Call `rememberChartState()` once per chart.
+> One state belongs to one chart. Passing the same `ChartState` to a second chart moves it there, and the first chart is no longer observed. Call `rememberChartState()` once per chart.
 
 Listeners you set on the chart view yourself keep working. The state adds its own listeners alongside them rather than replacing them.
 
@@ -175,7 +177,7 @@ The content is composed in an invisible `ComposeView` that lives as a child of t
 
 Content for a newly highlighted entry composes on the next frame, so the marker appears one frame after the highlight. Changing the composable you pass recomposes the marker without recreating it.
 
-If you want a composable marker on a chart view outside Compose, create a `ComposeMarker(chart, content)` and assign it to `chart.marker`. Call `detach()` when the chart should drop it; that removes the view and unsets the marker. `setOffset(x, y)` shifts the content by that many pixels from its default position. The chart composables create and release one for you.
+If you want a composable marker on a chart view outside Compose, create a `ComposeMarker(chart, content)` and assign it to `chart.marker`. Call `detach()` when the chart should drop it; that removes the view and unsets the marker. `setOffset(x, y)` shifts the content by that many dp from its default position. The chart composables create and release one for you.
 
 ## Compose colors, fonts and painters
 
@@ -287,4 +289,4 @@ The `ComposeChartActivity` in the example app runs this pattern with a line, a p
 - [Interaction with the chart](/mpandroidchart/docs/interaction/) for the gestures the state observes.
 - [Animations](/mpandroidchart/docs/animations/) for the easing curves.
 - [Charts in lists and scrolling screens](/mpandroidchart/docs/lists-and-scrolling/) for a chart inside a `LazyColumn`.
-- [MPChartCompose API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0-beta01/javadoc/)
+- [MPChartCompose API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.0/javadoc/)

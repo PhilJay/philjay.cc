@@ -92,6 +92,26 @@ chart.notifyDataSetChanged()
 
 > Version 3.x needed `notifyDataSetChanged()` on the data set, `notifyDataChanged()` on the data object, `notifyDataSetChanged()` on the chart and then `invalidate()`. The chart call now does all four steps.
 
+## Keep a reference to the set you change
+
+`getDataSetByIndex` hands back the interface, `ILineDataSet<*>`, so reaching the concrete set through it means a cast such as `getDataSetByIndex(0) as LineDataSet<Any?>`. The compiler cannot check the payload type of that cast, and it fails at runtime once the set at that index is a different one. Keep the set you created instead:
+
+```kotlin
+private var salesSet: LineDataSet<Any?>? = null
+
+fun show(entries: List<Entry<Any?>>) {
+    val set = salesSet
+    if (set != null) {
+        set.entries = entries.toMutableList()
+        chart.notifyDataSetChanged()
+    } else {
+        salesSet = LineDataSet(entries, "Sales").also { chart.data = LineData(it) }
+    }
+}
+```
+
+When the whole series changes at once, building a new data object is just as good and needs no reference at all: `chart.data = LineData(newSet)`. To move the old values smoothly to the new ones instead, use `chart.animateDataChange(LineData(newSet), 500)`, described in [Animations](/mpandroidchart/docs/animations/#animate-a-data-change).
+
 ## Keep a scrolling window
 
 A live chart normally shows the last n values and scrolls as new ones arrive. Two calls do that.
@@ -137,7 +157,7 @@ Call `addEntry` on the UI thread. A background producer should hand its readings
 
 | Call | Effect |
 | --- | --- |
-| `chart.clear()` | drops the data object, clears the highlight and shows the no data text |
+| `chart.clear()` | drops the data object, clears the highlight and shows the empty state |
 | `chart.clearValues()` | removes every data set but keeps the data object |
 | `data.clearValues()` | the same, without the redraw |
 | `set.clear()` | empties one data set |
@@ -149,7 +169,7 @@ Call `addEntry` on the UI thread. A background producer should hand its readings
 The renderer already draws only the entries inside the visible x range, so a large data set costs mostly memory, not draw time. [Performance with large data](/mpandroidchart/docs/performance/) goes through all of it; the short list of what costs draw time:
 
 - **Circles.** `isDrawCirclesEnabled = false` on a line data set removes one draw call per point.
-- **Value labels.** `isDrawValuesEnabled = false`. Labels are skipped automatically once the entry count reaches `chart.maxVisibleCount` (default 100) times the current zoom, but turning them off saves the check.
+- **Value labels.** `isDrawValuesEnabled = false`. A data set skips its labels on its own while more than `chart.maxVisibleCount` (default 100) of its entries are in view, but turning them off saves the check.
 - **Curves.** `LineDataSet.Mode.LINEAR` is cheaper than `CUBIC_BEZIER`.
 - **Line width.** Thin lines draw faster; the value is clamped to 0 to 10 dp.
 - **Dashed lines.** A dashed line goes onto the offscreen bitmap and is composed onto the chart, which costs an extra pass per frame.

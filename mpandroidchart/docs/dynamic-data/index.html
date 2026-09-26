@@ -796,7 +796,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Motion and viewport <span>Chapter 15 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#add-an-entry">Add an entry</a><a href="#remove-data">Remove data</a><a href="#what-to-call-afterwards">What to call afterwards</a><a href="#keep-a-scrolling-window">Keep a scrolling window</a><a href="#the-realtime-pattern">The realtime pattern</a><a href="#clear-the-chart">Clear the chart</a><a href="#large-or-fast-data">Large or fast data</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <nav class="onthispage"><span>On this page</span><a href="#add-an-entry">Add an entry</a><a href="#remove-data">Remove data</a><a href="#what-to-call-afterwards">What to call afterwards</a><a href="#keep-a-reference-to-the-set-you-change">Keep a reference to the set you change</a><a href="#keep-a-scrolling-window">Keep a scrolling window</a><a href="#the-realtime-pattern">The realtime pattern</a><a href="#clear-the-chart">Clear the chart</a><a href="#large-or-fast-data">Large or fast data</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>How to add and remove entries and data sets while a chart is on screen, what to call afterwards, and how to keep a fast feed drawing smoothly.</p>
 <p>Nothing about a chart is fixed once you have set its data. You can push entries into a data set, append or drop whole data sets, and clear everything. One call tells the chart about it.</p>
 <h2 id="add-an-entry">Add an entry<a class="anchor" href="#add-an-entry" aria-label="Link to this section">#</a></h2>
@@ -838,6 +838,20 @@ chart.notifyDataSetChanged()</code></pre>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries = newEntries
 chart.notifyDataSetChanged()</code></pre>
 <blockquote>Version 3.x needed <code>notifyDataSetChanged()</code> on the data set, <code>notifyDataChanged()</code> on the data object, <code>notifyDataSetChanged()</code> on the chart and then <code>invalidate()</code>. The chart call now does all four steps.</blockquote>
+<h2 id="keep-a-reference-to-the-set-you-change">Keep a reference to the set you change<a class="anchor" href="#keep-a-reference-to-the-set-you-change" aria-label="Link to this section">#</a></h2>
+<p><code>getDataSetByIndex</code> hands back the interface, <code>ILineDataSet&lt;*&gt;</code>, so reaching the concrete set through it means a cast such as <code>getDataSetByIndex(0) as LineDataSet&lt;Any?&gt;</code>. The compiler cannot check the payload type of that cast, and it fails at runtime once the set at that index is a different one. Keep the set you created instead:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">private</span> <span class="k">var</span> salesSet: <span class="t">LineDataSet</span>&lt;<span class="t">Any</span>?&gt;? = <span class="k">null</span>
+
+<span class="k">fun</span> show(entries: <span class="t">List</span>&lt;<span class="t">Entry</span>&lt;<span class="t">Any</span>?&gt;&gt;) {
+    <span class="k">val</span> set = salesSet
+    <span class="k">if</span> (set != <span class="k">null</span>) {
+        set.entries = entries.toMutableList()
+        chart.notifyDataSetChanged()
+    } <span class="k">else</span> {
+        salesSet = <span class="t">LineDataSet</span>(entries, <span class="s">&quot;Sales&quot;</span>).also { chart.<span class="k">data</span> = <span class="t">LineData</span>(it) }
+    }
+}</code></pre>
+<p>When the whole series changes at once, building a new data object is just as good and needs no reference at all: <code>chart.data = LineData(newSet)</code>. To move the old values smoothly to the new ones instead, use <code>chart.animateDataChange(LineData(newSet), 500)</code>, described in <a href="/mpandroidchart/docs/animations/#animate-a-data-change">Animations</a>.</p>
 <h2 id="keep-a-scrolling-window">Keep a scrolling window<a class="anchor" href="#keep-a-scrolling-window" aria-label="Link to this section">#</a></h2>
 <p>A live chart normally shows the last n values and scrolls as new ones arrive. Two calls do that.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.setVisibleXRangeMaximum(<span class="n">120f</span>)             <span class="c">// at most 120 x units on screen</span>
@@ -863,11 +877,11 @@ chart.axisLeft.axisMaximum = <span class="n">100f</span>
 chart.axisRight.isEnabled = <span class="k">false</span></code></pre>
 <p>Call <code>addEntry</code> on the UI thread. A background producer should hand its readings over with <code>runOnUiThread</code> or a coroutine on the main dispatcher; the chart is a <code>View</code> and does not synchronise its data.</p>
 <h2 id="clear-the-chart">Clear the chart<a class="anchor" href="#clear-the-chart" aria-label="Link to this section">#</a></h2>
-<div class='table-wrap'><table><thead><tr><th>Call</th><th>Effect</th></tr></thead><tbody><tr><td><code>chart.clear()</code></td><td>drops the data object, clears the highlight and shows the no data text</td></tr><tr><td><code>chart.clearValues()</code></td><td>removes every data set but keeps the data object</td></tr><tr><td><code>data.clearValues()</code></td><td>the same, without the redraw</td></tr><tr><td><code>set.clear()</code></td><td>empties one data set</td></tr></tbody></table></div>
+<div class='table-wrap'><table><thead><tr><th>Call</th><th>Effect</th></tr></thead><tbody><tr><td><code>chart.clear()</code></td><td>drops the data object, clears the highlight and shows the empty state</td></tr><tr><td><code>chart.clearValues()</code></td><td>removes every data set but keeps the data object</td></tr><tr><td><code>data.clearValues()</code></td><td>the same, without the redraw</td></tr><tr><td><code>set.clear()</code></td><td>empties one data set</td></tr></tbody></table></div>
 <p><code>chart.clear()</code> is the one to use when a screen is reused for a different source. <code>chart.clearValues()</code> keeps a live chart alive with an empty data object, ready for the next entry.</p>
 <h2 id="large-or-fast-data">Large or fast data<a class="anchor" href="#large-or-fast-data" aria-label="Link to this section">#</a></h2>
 <p>The renderer already draws only the entries inside the visible x range, so a large data set costs mostly memory, not draw time. <a href="/mpandroidchart/docs/performance/">Performance with large data</a> goes through all of it; the short list of what costs draw time:</p>
-<ul><li><strong>Circles.</strong> <code>isDrawCirclesEnabled = false</code> on a line data set removes one draw call per point.</li><li><strong>Value labels.</strong> <code>isDrawValuesEnabled = false</code>. Labels are skipped automatically once the entry count reaches <code>chart.maxVisibleCount</code> (default 100) times the current zoom, but turning them off saves the check.</li><li><strong>Curves.</strong> <code>LineDataSet.Mode.LINEAR</code> is cheaper than <code>CUBIC_BEZIER</code>.</li><li><strong>Line width.</strong> Thin lines draw faster; the value is clamped to 0 to 10 dp.</li><li><strong>Dashed lines.</strong> A dashed line goes onto the offscreen bitmap and is composed onto the chart, which costs an extra pass per frame.</li></ul>
+<ul><li><strong>Circles.</strong> <code>isDrawCirclesEnabled = false</code> on a line data set removes one draw call per point.</li><li><strong>Value labels.</strong> <code>isDrawValuesEnabled = false</code>. A data set skips its labels on its own while more than <code>chart.maxVisibleCount</code> (default 100) of its entries are in view, but turning them off saves the check.</li><li><strong>Curves.</strong> <code>LineDataSet.Mode.LINEAR</code> is cheaper than <code>CUBIC_BEZIER</code>.</li><li><strong>Line width.</strong> Thin lines draw faster; the value is clamped to 0 to 10 dp.</li><li><strong>Dashed lines.</strong> A dashed line goes onto the offscreen bitmap and is composed onto the chart, which costs an extra pass per frame.</li></ul>
 <p>For a feed that never stops, cap the entry count instead of letting it grow:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">if</span> (set.entryCount &gt; <span class="n">500</span>) set.removeFirst()</code></pre>
 <p>If every frame matters, do not let the chart recompute the axes. <code>isAutoScaleMinMaxEnabled = false</code> is the default, and fixed <code>axisMinimum</code> and <code>axisMaximum</code> values on the y axis keep <code>notifyDataSetChanged</code> from reflowing the labels and the offsets.</p>

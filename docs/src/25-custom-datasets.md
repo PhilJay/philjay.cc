@@ -137,6 +137,8 @@ class SalesDataSet(private val sales: List<Sale>, label: String) :
 
 A read-only set can throw from the mutations, or ignore them, as long as nothing in your code calls them. The chart itself never does.
 
+`hasNonFiniteY` on `IDataSet` tells a line renderer whether it has to look for NaN or infinite values before drawing. It defaults to true, which is always safe. Override it with false only when every y your set hands out is a finite number; a long line then skips that check on every frame.
+
 > The entries you hand out are expected in ascending x order, and the lookups are expected to be cheap. The chart calls `getEntryForIndex` for every visible entry on every frame, so do not allocate more than you have to and do not scan the whole list there.
 
 ## Plugging it in

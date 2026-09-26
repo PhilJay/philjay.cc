@@ -1124,12 +1124,13 @@ chart.<span class="k">data</span> = <span class="t">PieData</span>(set)</code></
 <text x="496.2" y="146.0" fill="rgba(255,255,255,0.5)" font-size="11.5" text-anchor="start">Other</text>
 <text x="400.0" y="88.0" fill="rgba(255,255,255,0.32)" font-size="11" text-anchor="start">one set only, and a slice per entry</text>
 </svg>
-<p>The legend gets one entry per slice, taken from the entry labels, and the set label is appended after them as an entry without a form. Give the set a blank label to keep it out. <code>PieData.yValueSum</code> gives you the total of all slices, which is what a percent formatter divides by.</p>
+<p>The legend gets one entry per slice, taken from the entry labels, and the set label is appended after them as an entry without a form. Give the set a blank label to keep it out. <code>PieData.yValueSum</code> gives you the total of all slices.</p>
+<p>A slice is drawn as its share of the sum of the absolute values, so a negative value still gets a slice of its size, and with <code>chart.isUsePercentValuesEnabled</code> its label shows that share with a minus sign. A pie whose values are all 0 draws no slices rather than failing.</p>
 <h2 id="scatter-chart">Scatter chart<a class="anchor" href="#scatter-chart" aria-label="Link to this section">#</a></h2>
 <p><code>ScatterChart</code> takes plain <code>Entry</code> objects in a <code>ScatterDataSet</code>. What makes a set distinct is its shape.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">ScatterDataSet</span>(points.sortedBy { it.x }, <span class="s">&quot;Samples&quot;</span>).apply {
     setScatterShape(<span class="t">ScatterChart</span>.<span class="t">ScatterShape</span>.<span class="t">CIRCLE</span>)
-    scatterShapeSize = <span class="n">18f</span>
+    scatterShapeSize = <span class="n">9f</span>
     color = <span class="t">Color</span>.rgb(<span class="n">90</span>, <span class="n">140</span>, <span class="n">255</span>)
 }
 
@@ -1191,7 +1192,7 @@ chart.<span class="k">data</span> = <span class="t">ScatterData</span>(setA, set
 <text x="682.0" y="32.0" fill="rgba(255,255,255,0.32)" font-size="11" text-anchor="end">the shape is what tells the sets apart</text>
 </svg>
 <p><code>setScatterShape</code> swaps in the built-in renderer for one of <code>SQUARE</code>, <code>CIRCLE</code>, <code>TRIANGLE</code>, <code>CROSS</code>, <code>X</code>, <code>CHEVRON_UP</code> and <code>CHEVRON_DOWN</code>. The default is <code>SQUARE</code>.</p>
-<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>scatterShapeSize</code></td><td>Size of the shape in dp</td><td><code>15</code></td></tr><tr><td><code>scatterShapeHoleRadius</code></td><td>Radius of the hole in the middle, in dp</td><td><code>0</code></td></tr><tr><td><code>scatterShapeHoleColor</code></td><td>Color of that hole; <code>ColorTemplate.COLOR_NONE</code> draws none</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>shapeRenderer</code></td><td>The renderer itself, for a shape of your own</td><td><code>SquareShapeRenderer</code></td></tr></tbody></table></div>
+<div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>scatterShapeSize</code></td><td>Size of the shape in dp</td><td><code>7.5</code></td></tr><tr><td><code>scatterShapeHoleRadius</code></td><td>Radius of the hole in the middle, in dp</td><td><code>0</code></td></tr><tr><td><code>scatterShapeHoleColor</code></td><td>Color of that hole; <code>ColorTemplate.COLOR_NONE</code> draws none</td><td><code>COLOR_NONE</code></td></tr><tr><td><code>shapeRenderer</code></td><td>The renderer itself, for a shape of your own</td><td><code>SquareShapeRenderer</code></td></tr></tbody></table></div>
 <p>Assign <code>shapeRenderer</code> directly with your own <code>IShapeRenderer</code> when none of the seven fit.</p>
 <h2 id="candlestick-chart">Candlestick chart<a class="anchor" href="#candlestick-chart" aria-label="Link to this section">#</a></h2>
 <p><code>CandleStickChart</code> takes <code>CandleEntry</code> objects with the four values of a period, in the order high, low, open, close.</p>
@@ -1363,7 +1364,7 @@ chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(labe
 <p>Assigning a new data object does everything at once. If instead you change entries in place, tell the chart afterwards:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.entries = newEntries
 chart.notifyDataSetChanged()</code></pre>
-<p>That one call asks the data object to recompute its ranges, recalculates the axes, the legend and the offsets, and redraws. See <a href="/mpandroidchart/docs/dynamic-data/">dynamic data</a> for adding and removing values while the chart is on screen, and <a href="/mpandroidchart/docs/chartdata/">the ChartData class</a> for what the data object caches and when.</p>
+<p>That one call asks the data object to recompute its ranges, recalculates the axes, the legend and the offsets, and redraws. Keep a reference to the set you created for this rather than casting what <code>getDataSetByIndex</code> returns, and use <code>chart.animateDataChange(newData, 500)</code> when the values should move to their new place instead of jumping. See <a href="/mpandroidchart/docs/dynamic-data/">dynamic data</a> for adding and removing values while the chart is on screen, and <a href="/mpandroidchart/docs/chartdata/">the ChartData class</a> for what the data object caches and when.</p>
 <h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
 <ul><li><a href="/mpandroidchart/docs/chartdata-subclasses/">ChartData subclasses</a> for what each data class adds.</li><li><a href="/mpandroidchart/docs/dataset/">The DataSet class</a> for the styling shared by every series.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for turning values into the text on the axes and above the entries.</li><li><a href="/mpandroidchart/docs/colors/">Colors</a> for the color lists used above.</li></ul>
       <div class="pager"><a class="prev" href="/mpandroidchart/docs/yaxis/"><span>Previous</span>The y axis</a><a class="next" href="/mpandroidchart/docs/colors/"><span>Next</span>Setting colors</a></div>

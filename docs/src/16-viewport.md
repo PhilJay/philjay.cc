@@ -44,6 +44,8 @@ chart.setVisibleYRangeMaximum(100f, YAxis.AxisDependency.LEFT)
 </svg>
 ```
 
+`setVisibleXRange(5f, 20f)` lets the user zoom anywhere between a 5 and a 20 unit window. A span that is not above 0 is ignored, and so are values that are not finite in the move, center and zoom calls, so a bad number leaves the viewport as it was.
+
 Each of them divides the current axis range by the span you pass and stores the result as a scale limit. The limit is a number, not a rule: when the data grows afterwards, the axis range grows with it and the visible span no longer matches. Call the function again after changing the data.
 
 These six clamp the viewport but do not redraw by themselves, so follow them with a move call, which does, or with `invalidate()`.

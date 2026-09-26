@@ -815,17 +815,18 @@ boolean labels = set.isDrawValuesEnabled();</code></pre>
 <p>A read-only <code>val</code> gives you the getter only. <code>chart.getLowestVisibleX()</code> works, there is no setter, and the same holds for <code>getEntryCount()</code> on a data set.</p>
 <h2 id="default-arguments">Default arguments<a class="anchor" href="#default-arguments" aria-label="Link to this section">#</a></h2>
 <p>A Kotlin function with default values compiles to <strong>one</strong> Java method carrying every parameter. The defaults live in a synthetic <code>$default</code> method that Java should not call. So a call that is short in Kotlin can be long in Java:</p>
-<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="c">// Kotlin: chart.animateX(600)</span>
-chart.animateX(<span class="n">600</span>, <span class="t">Easing</span>.<span class="t">INSTANCE</span>.getLinear());
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="c">// Kotlin: chart.highlightValue(3f, 0)</span>
+chart.highlightValue(<span class="n">3f</span>, <span class="n">0</span>, -<span class="n">1</span>, -<span class="n">1</span>, <span class="k">true</span>);
 
-<span class="c">// Kotlin: chart.highlightValue(3f, 0)</span>
-chart.highlightValue(<span class="n">3f</span>, <span class="n">0</span>, -<span class="n">1</span>, -<span class="n">1</span>, <span class="k">true</span>);</code></pre>
-<p><code>-1</code> and <code>true</code> above are the defaults the Kotlin declaration uses, so passing them reproduces the short call exactly.</p>
-<p><code>@JvmOverloads</code> is the annotation that generates the shorter overloads as well, and in this library it is used for one purpose only: the constructors of the chart views. <code>Chart</code>, <code>BarLineChartBase</code>, <code>PieRadarChartBase</code>, <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>PieChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>RadarChart</code> and <code>CombinedChart</code> all carry it, which is what makes all three forms available:</p>
+<span class="c">// Kotlin: chart.animateDataChange(newData, 500)</span>
+chart.animateDataChange(newData, <span class="n">500</span>, <span class="t">Easing</span>.<span class="t">INSTANCE</span>.getLinear(), () -&gt; <span class="t">Unit</span>.<span class="t">INSTANCE</span>);</code></pre>
+<p><code>-1</code> and <code>true</code> above are the defaults the Kotlin declaration uses, so passing them reproduces the short call exactly. A parameter of a Kotlin function type, such as the <code>onEnd</code> of the animations, takes a Java lambda that returns <code>Unit.INSTANCE</code>.</p>
+<p><code>@JvmOverloads</code> is the annotation that generates the shorter overloads as well. In this library it is on the constructors of the chart views and on the entry animations. <code>Chart</code>, <code>BarLineChartBase</code>, <code>PieRadarChartBase</code>, <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>PieChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>RadarChart</code> and <code>CombinedChart</code> carry it on their constructors, which is what makes all three forms available:</p>
 <pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="t">LineChart</span> chart = new <span class="t">LineChart</span>(context);
 <span class="t">LineChart</span> fromXml = new <span class="t">LineChart</span>(context, attrs);
 <span class="t">LineChart</span> styled = new <span class="t">LineChart</span>(context, attrs, defStyle);</code></pre>
-<p>That also means inflating a chart from a layout file works from Java exactly as it does from Kotlin. No other function in the library has <code>@JvmOverloads</code>, so assume you have to pass every parameter everywhere else.</p>
+<p>That also means inflating a chart from a layout file works from Java exactly as it does from Kotlin.</p>
+<p><code>animateX</code>, <code>animateY</code>, <code>animateXY</code> and <code>spin</code> have it too, so <code>chart.animateX(600)</code> and <code>chart.animateX(600, Easing.INSTANCE.getEaseOutCubic())</code> both compile from Java, and the form with an <code>onEnd</code> lambda as well. No other function in the library has <code>@JvmOverloads</code>, so assume you have to pass every parameter everywhere else, including <code>animateValue</code> and <code>animateDataChange</code>.</p>
 <h2 id="functional-interfaces">Functional interfaces<a class="anchor" href="#functional-interfaces" aria-label="Link to this section">#</a></h2>
 <p>The formatter and shape interfaces are declared as <code>fun interface</code>, which is a plain Java interface with a single abstract method. Under Java 8 and above a lambda works:</p>
 <pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.getXAxis().setValueFormatter((value, axis) -&gt; <span class="s">&quot;Q&quot;</span> + (int) value);
@@ -938,7 +939,7 @@ parameter points</code></pre>
 }</code></pre>
 <p>Changing the data later follows the Kotlin rule unchanged: replace the whole data object, or change the entries in place and call <code>chart.notifyDataSetChanged()</code>, which recalculates and redraws in one step.</p>
 <h2 id="where-to-go-next">Where to go next<a class="anchor" href="#where-to-go-next" aria-label="Link to this section">#</a></h2>
-<ul><li><a href="/mpandroidchart/docs/getting-started/">Getting started</a> for the Kotlin version of the same chart.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for what each formatter interface receives.</li><li><a href="/mpandroidchart/docs/migration/">Migrating from 3.x</a> if your Java code was written against version 3.</li><li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0-beta01/javadoc/">API reference</a> for the generated signatures of everything else.</li></ul>
+<ul><li><a href="/mpandroidchart/docs/getting-started/">Getting started</a> for the Kotlin version of the same chart.</li><li><a href="/mpandroidchart/docs/formatters/">Formatters</a> for what each formatter interface receives.</li><li><a href="/mpandroidchart/docs/migration/">Migrating from 3.x</a> if your Java code was written against version 3.</li><li><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/">API reference</a> for the generated signatures of everything else.</li></ul>
       <div class="pager"><a class="prev" href="/mpandroidchart/docs/compose/"><span>Previous</span>Jetpack Compose</a><a class="next" href="/mpandroidchart/docs/lists-and-scrolling/"><span>Next</span>Charts in lists and scrolling screens</a></div>
     </main>
   </div>

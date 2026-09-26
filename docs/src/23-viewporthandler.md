@@ -131,4 +131,4 @@ chart.getPosition(entry, YAxis.AxisDependency.LEFT)
 
 - [Modifying the viewport](/mpandroidchart/docs/viewport/) for the safe, value based layer on top of this.
 - [Custom data sets](/mpandroidchart/docs/custom-datasets/) if you are here because you are writing a renderer.
-- The [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0-beta01/javadoc/) for every overload.
+- The [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/) for every overload.

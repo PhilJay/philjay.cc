@@ -128,7 +128,7 @@ Decimation drops entries that would land in the same pixel column, keeping the f
 </svg>
 ```
 
-Turn it on with `chart.isDecimationEnabled = true` when a lot of entries are on screen at once and each costs a draw call of its own: a bar chart, a line with a color per segment, a line with circles. At 100,000 bars it is the difference between 310 ms and 115 ms. Leave it off for a plain single color line, where it costs about half as much again as it saves.
+Turn it on with `chart.isDecimationEnabled = true` when a lot of entries are on screen at once and each costs a draw call of its own: a bar chart, a scatter or bubble chart, a line with a color per segment. At 100,000 bars it is the difference between 310 ms and 115 ms. Leave it off for a plain single color line, where it costs about half as much again as it saves.
 
 ## Against 3.1.0
 
@@ -273,17 +273,12 @@ Two things about measuring this produced convincing nonsense before they were ca
 
 ## Value labels are the most expensive thing on screen
 
-Every drawn label runs your value formatter and then `Canvas.drawText`, far more work per entry than a line segment, so the library has a brake built in. Values are drawn only while
+Every drawn label runs your value formatter and then `Canvas.drawText`, far more work per entry than a line segment, so the library has a brake built in. On the charts with axes, a data set draws its labels only while at most `chart.maxVisibleCount` of its entries are inside the visible x range.
 
-```text
-data.entryCount < chart.maxVisibleCount * viewPortHandler.scaleX
-```
+Two details are easy to get wrong:
 
-Three details are easy to get wrong:
-
-- `entryCount` is the sum over every data set of the chart, not the number of entries in view.
-- `maxVisibleCount` is 100 by default, so a chart holding 500 entries shows no labels at all until the user has zoomed past 5x.
-- `scaleX` is the current horizontal zoom, 1 when fully zoomed out. `HorizontalBarChart` compares against `scaleY` instead.
+- The count is per data set and only covers the entries in view. A chart with several sets, or one that holds 5,000 entries but shows 80 of them, still draws its labels.
+- `maxVisibleCount` is 100 by default, so a set with 500 entries on screen shows no labels until the user zooms in far enough to bring the count down to 100.
 
 When you never want labels, say so on the data set rather than relying on the count. Both of these default to true:
 
@@ -302,7 +297,7 @@ A line data set draws a circle at every visible entry unless you say otherwise:
 set.isDrawCirclesEnabled = false
 ```
 
-Circles are stamped from one cached bitmap per circle color, rebuilt only when the colors or the radii change, so steady data costs nothing extra. The radius matters twice over: each bitmap is `circleRadius * 2.1` pixels square, and each stamp blends that many pixels onto the canvas, so doubling it roughly quadruples both. The default is 4 dp, and values below 1 are refused.
+Circles are stamped from one cached bitmap per circle color, rebuilt only when the colors or the radii change, so steady data costs nothing extra. A line also draws at most one circle per circle width along the x axis: once the points are closer together than a circle is wide, the circles in between would be covered anyway and are skipped. That happens whether decimation is on or not, so a dense line with circles costs about what its width allows, not what its entry count asks for. The radius matters twice over: each bitmap is `circleRadius * 2.1` pixels square, and each stamp blends that many pixels onto the canvas, so doubling it roughly quadruples both. The default is 4 dp, and values below 1 are refused.
 
 ## Curve mode and the offscreen bitmap
 
@@ -341,15 +336,17 @@ Turn the first off when a thick line or a large shape near the edge is being cut
 
 ## Thin the data before you draw it
 
-When a series has more points than the screen has pixels, most of them cannot be seen. Every chart with an x axis can leave those out while it draws, and does so by default:
+When a series has more points than the screen has pixels, most of them cannot be seen. Every chart with an x axis can leave those out while it draws. It is off by default:
 
 ```kotlin
-chart.isDecimationEnabled = false
+chart.isDecimationEnabled = true
 ```
 
-While it is on, the renderers keep the first, the lowest, the highest and the last entry of each pixel column and skip the rest, so peaks and troughs survive and the shape stays the same. On a line chart it also leaves out the circles another circle would have covered. Your data is untouched; this happens on the way to the canvas.
+While it is on, the renderers keep the first, the lowest, the highest and the last entry of each pixel column and skip the rest, so peaks and troughs survive and the shape stays the same. A bubble chart also keeps the largest bubble of each column. Your data is untouched; this happens on the way to the canvas.
 
-Whether it is worth its own cost depends entirely on what one entry costs to draw, and the numbers above say it plainly. At 50,000 entries a line with a color per segment goes from 147.3 ms to 62.2 ms and a bar chart from 156.6 ms to 60.8 ms, because in both a single entry is a draw call of its own. A plain line goes the other way, from 39.8 ms to 62.4 ms, because there the reduction pass costs more than the one batched call it saves. Turn it on for bars and for a line with more than one color; leave it off, as it comes, for a plain line.
+Whether it is worth its own cost depends entirely on what one entry costs to draw, and the numbers above say it plainly. At 50,000 entries a line with a color per segment goes from 147.3 ms to 62.2 ms and a bar chart from 156.6 ms to 60.8 ms, because in both a single entry is a draw call of its own. A plain line goes the other way, from 39.8 ms to 62.4 ms, because there the reduction pass costs more than the one batched call it saves. Turn it on for large bar, scatter and bubble charts and for a line with more than one color; leave it off, as it comes, for a plain line.
+
+Two cases are handled without the switch. Line circles that another circle would cover are always skipped, as described above. A candlestick chart thins itself once more than two candles share a pixel column on average, keeping the first, lowest, highest and last candle of each column, because every candle costs several draw calls and a crowded one cannot be read anyway.
 
 `Approximator` is the other way to thin a series, once while you build the data rather than on every draw. It takes a flat `FloatArray` of `x0, y0, x1, y1, ...` and a tolerance, reduces it with the Douglas-Peucker algorithm, and returns the same layout:
 
@@ -401,8 +398,8 @@ Roughly in order of what they buy, with the measured figures where there are any
 | `chart.setVisibleXRangeMaximum(n)` | The biggest lever there is. Cost follows the points on screen, not the points you hold: 10,000 on screen draws in 9.1 ms where 100,000 takes 76.4 ms. A million point set scrolls perfectly well at a sensible zoom. |
 | A single `color` on a line set | 39.8 ms against 147.3 ms at 50,000 entries. One color is one batched draw call; a color per segment is a call per segment. |
 | `set.isDrawValuesEnabled = false` | Removes the text pass. `chart.maxVisibleCount` decides the zoom at which labels start appearing, so raising it costs you the same way. |
-| `set.isDrawCirclesEnabled = false` | Removes one bitmap stamp per visible point. |
-| `chart.isDecimationEnabled = true` | Off as it comes. At 50,000 entries it takes bars from 156.6 ms to 60.8 ms and a line with a color per segment from 147.3 ms to 62.2 ms. It costs a plain line 39.8 ms against 62.4, so leave it off there. |
+| `set.isDrawCirclesEnabled = false` | Removes the circle pass. Covered circles are already skipped, so this matters most while the points are spread out. |
+| `chart.isDecimationEnabled = true` | Off as it comes. At 50,000 entries it takes bars from 156.6 ms to 60.8 ms and a line with a color per segment from 147.3 ms to 62.2 ms. It helps scatter and bubble charts for the same reason. It costs a plain line 39.8 ms against 62.4, so leave it off there. |
 | `set.mode = LineDataSet.Mode.LINEAR` | One batched call instead of a path with a segment per entry. |
 | `set.disableDashedLine()` | Takes the line off the offscreen bitmap pass. |
 | Leaving `isDrawFilledEnabled` off | A filled line rebuilds a path in chunks of 128 entries every frame. |

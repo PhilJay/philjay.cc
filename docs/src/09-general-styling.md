@@ -51,18 +51,36 @@ chart.borderWidth = 1f
 | `borderColor` | Border color | black |
 | `borderWidth` | Border width in dp | `1` |
 
-## The no data text
+## The empty state
 
-While `chart.data` is null, the chart draws a single line of text in the middle of the view instead. An empty string draws nothing at all.
+While the chart has no data, or data without entries, it draws an empty state instead: a faint outline of its chart type (bars, a line, a ring, a web or dots) above the text "No data yet", in a slate grey that reads on light and dark backgrounds. Every part of it can be changed:
 
 ```kotlin
 chart.noDataText = "Nothing to show yet"
 chart.noDataTextColor = Color.GRAY
+chart.noDataTextSize = 14f                     // dp
 chart.noDataTextTypeface = typeface
 chart.noDataTextAlignment = Paint.Align.CENTER
+chart.noDataIconColor = Color.argb(80, 128, 128, 128)
+chart.noDataIcon = ContextCompat.getDrawable(context, R.drawable.empty) // replaces the outline
+chart.isNoDataIconEnabled = false              // text only
 ```
 
-The alignment decides where the text sits horizontally: `LEFT` pins it to the left edge of the view, `RIGHT` to the right edge, `CENTER` to the middle. The default text is "No chart data available.", drawn centered in an amber tone.
+The alignment decides where the icon and text sit horizontally: `LEFT` at the left edge of the view, `RIGHT` at the right edge, `CENTER` in the middle. An empty `noDataText` draws only the icon.
+
+### Loading
+
+Set `chart.isLoading = true` while your data is on its way. The empty state then shows `loadingText` ("Loading…" by default) and its icon gently pulses. Data that arrives is drawn as usual, so you can set the flag back to false whenever it suits you.
+
+```kotlin
+chart.isLoading = true
+viewModel.sales.observe(owner) { sales ->
+    chart.data = sales.toBarData()
+    chart.isLoading = false
+}
+```
+
+To draw an empty state of your own, subclass the chart and override `drawEmptyState(canvas)`, or `drawNoDataIcon(canvas, bounds, paint)` to change only the outline.
 
 `chart.clear()` drops the data and brings this text back. `chart.clearValues()` keeps the data object but removes all its data sets, and `chart.isEmpty` tells you whether anything is left to draw.
 
@@ -119,7 +137,7 @@ chart.gridBackgroundPaint.shader = LinearGradient(
 
 ## Value labels
 
-Value labels are drawn per data set with `set.isDrawValuesEnabled`. On the charts with an x axis, one chart level property limits them: labels are only drawn while the total entry count is below `maxVisibleCount` times the current horizontal zoom, so zooming in brings them back. The default is 100.
+Value labels are drawn per data set with `set.isDrawValuesEnabled`. On the charts with an x axis, one chart level property limits them: a data set draws its labels only while at most `maxVisibleCount` of its entries are in view, so zooming in brings them back. The default is 100.
 
 ```kotlin
 chart.maxVisibleCount = 60
@@ -152,7 +170,7 @@ A hardware layer helps a chart that animates or scrolls over a busy background. 
 
 ## Saving the chart as an image
 
-`toBitmap()` draws the chart into a new `ARGB_8888` bitmap the size of the view, over the view background or over white when there is none.
+`toBitmap()` draws the chart into a new `ARGB_8888` bitmap the size of the view, over the view background or over white when there is none. Before the first layout the view has no size, and you get a 1 by 1 bitmap.
 
 ```kotlin
 val bitmap = chart.toBitmap()

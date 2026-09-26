@@ -18,7 +18,7 @@ Coming from version 3.x? Every getter and setter pair is a property now, and ent
 
 ## Add the dependency
 
-4.0 is a beta. Its coordinates differ from the 3.x ones, so a project still on `com.github.PhilJay:MPAndroidChart:v3.1.0` is untouched by it. Pin the version rather than tracking the newest one.
+4.0 is a rewrite in Kotlin. Its coordinates differ from the 3.x ones, so a project still on the 3.x coordinates `com.github.PhilJay:MPAndroidChart` is untouched by it. Pin the version rather than tracking the newest one.
 
 The library is published through JitPack. Add the repository in `settings.gradle.kts`:
 
@@ -36,10 +36,10 @@ Then add the dependency in your module's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0-beta01")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0")
 
     // only if you use Jetpack Compose
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
 }
 ```
 
@@ -134,6 +134,12 @@ Changing entries in place needs one call afterwards, which recalculates and redr
 ```kotlin
 set.entries = newEntries.toMutableList()
 chart.notifyDataSetChanged()
+```
+
+To move the entries from their old values to the new ones instead of jumping, hand the new data object to `animateDataChange`:
+
+```kotlin
+chart.animateDataChange(LineData(newSet), 500)
 ```
 
 > In version 3.x you had to call `notifyDataSetChanged()` on the data set, on the data object and on the chart, then `invalidate()`. One call on the chart now does all of it.

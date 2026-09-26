@@ -54,7 +54,7 @@ chart.dragOffsetX = 20f   // dp of overscroll left and right
 chart.dragOffsetY = 20f   // dp of overscroll top and bottom
 ```
 
-Both default to 0. They also matter for highlighting per drag: the chart only moves the selection instead of panning when it is fully zoomed out *and* has no drag offset.
+Both default to 0. They also matter for highlighting per drag: the chart only moves the selection instead of panning when it is fully zoomed out *and* has no drag offset, or when dragging is off. The selection then follows a drag along the x axis once it has passed the system touch slop, and a swipe across the axis is left to a scrolling parent.
 
 Zooming and scrolling from code, including limits on how far the user may zoom, is covered in [Modifying the viewport](/mpandroidchart/docs/viewport/).
 

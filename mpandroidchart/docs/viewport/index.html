@@ -822,6 +822,7 @@ chart.setVisibleYRangeMaximum(<span class="n">100f</span>, <span class="t">YAxis
 <line x1="60.0" y1="216.0" x2="239.2" y2="216.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
 <line x1="456.8" y1="216.0" x2="700.0" y2="216.0" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
 </svg>
+<p><code>setVisibleXRange(5f, 20f)</code> lets the user zoom anywhere between a 5 and a 20 unit window. A span that is not above 0 is ignored, and so are values that are not finite in the move, center and zoom calls, so a bad number leaves the viewport as it was.</p>
 <p>Each of them divides the current axis range by the span you pass and stores the result as a scale limit. The limit is a number, not a rule: when the data grows afterwards, the axis range grows with it and the visible span no longer matches. Call the function again after changing the data.</p>
 <p>These six clamp the viewport but do not redraw by themselves, so follow them with a move call, which does, or with <code>invalidate()</code>.</p>
 <p><code>setScaleMinima(scaleX, scaleY)</code> sets the same two lower limits directly as factors, where 1 means fully zoomed out. Factors below 1 are raised to 1.</p>

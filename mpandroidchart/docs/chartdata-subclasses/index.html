@@ -837,11 +837,11 @@ chart.xAxis.valueFormatter = <span class="t">IndexAxisValueFormatter</span>(labe
 <p>The odd one out: a pie holds exactly one data set, whose entries are the slices.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> <span class="k">data</span> = <span class="t">PieData</span>(set)
 <span class="k">data</span>.dataSet = anotherSet     <span class="c">// replaces the set and recomputes the ranges</span></code></pre>
-<p><code>yValueSum</code> is the total of all slice values, the whole pie. A percent formatter divides by it.</p>
+<p><code>yValueSum</code> is the total of all slice values, the whole pie. The chart itself draws each slice as a share of the sum of the absolute values, which is the same number unless a value is negative.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> share = entry.y / <span class="k">data</span>.yValueSum</code></pre>
 <p>Because there is always exactly one set, the lookups are narrowed:</p>
 <ul><li><code>getDataSetByIndex(0)</code> returns the set, and any other index returns null.</li><li><code>getDataSetByLabel</code> returns the set if its label matches, and null if not.</li><li><code>getEntryForHighlight</code> reads <code>Highlight.x</code> as the slice index, like the radar chart does.</li></ul>
-<p>The <code>dataSet</code> getter, <code>getDataSetByLabel</code>, <code>getEntryForHighlight</code>, <code>yValueSum</code> and <code>getDataSetByIndex(0)</code> all throw <code>IndexOutOfBoundsException</code> while no set has been assigned. Only the empty constructor can leave it in that state, so assign <code>dataSet</code> right after using it.</p>
+<p><code>dataSet</code> is nullable and reads null while no set has been assigned, which only the empty constructor or assigning null can cause. The lookups then return null, <code>yValueSum</code> returns 0, and a pie chart given such data draws no slices and does not fail. Read the set with <code>pieData.dataSet?.sliceSpace</code>.</p>
 <p>The legend of a pie chart is built from the entry labels. A set label that is not blank is appended after them as an entry without a form, so give the set a blank label to keep it out of the legend.</p>
 <h2 id="combineddata">CombinedData<a class="anchor" href="#combineddata" aria-label="Link to this section">#</a></h2>
 <p>Holds up to one of each of the other five data objects and draws them together in a <code>CombinedChart</code>.</p>

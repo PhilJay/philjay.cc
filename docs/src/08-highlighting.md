@@ -18,7 +18,7 @@ Three properties decide what touch does.
 | `chart.isHighlightPerDragEnabled` | Dragging moves the selection while the chart cannot pan | `true` |
 | `chart.maxHighlightDistance` | Farthest distance in dp a touch may be from a value | `500` |
 
-`isHighlightPerDragEnabled` only takes effect while the chart is fully zoomed out and has no drag offset, because otherwise the drag pans the content. It exists on the charts with axes; `isHighlightPerTapEnabled` exists on every chart type.
+`isHighlightPerDragEnabled` only takes effect while the chart cannot pan, because otherwise the drag pans the content: dragging is off, or the chart is fully zoomed out and has no drag offset. The drag has to pass the system touch slop and run mostly along the x axis (up and down on a `HorizontalBarChart`) before the selection moves, so a swipe across a chart inside a list scrolls the list instead. It exists on the charts with axes; `isHighlightPerTapEnabled` exists on every chart type.
 
 A single data set can opt out entirely:
 
@@ -70,7 +70,7 @@ fun highlightValues(highs: List<Highlight>)
 
 `stackIndex` picks one value inside a stacked bar entry; -1 means the whole bar. `dataIndex` is only for `CombinedChart` and names the data object inside the combined data, for example 0 for its line data and 1 for its bar data. A `dataSetIndex` that is outside the data clears the highlight instead of selecting something.
 
-`highlightValues` sets several highlights at once. It takes the list as given, without checking that the entries exist, and never calls a listener.
+`highlightValues` sets several highlights at once. It takes the list as given, without checking that the entries exist, and never calls a listener. A highlight that points past the entries or past the values of a stack draws nothing; it does not throw.
 
 > Every `highlightValue` overload defaults `callListener` to `true`, so a selection made from code reaches your listener unless you pass `callListener = false`. `highlightValues` never calls a listener.
 
@@ -82,7 +82,7 @@ chart.highlightValue(null, callListener = false)  // clear without notifying
 chart.highlightValues(emptyList())                // clear, never calls a listener
 ```
 
-`chart.clear()` removes the data and the highlight together.
+`chart.clear()` removes the data and the highlight together. Assigning new data does not: the current highlight stays, so clear or set it yourself when the new data means something else, as a recycled list row does.
 
 ## Reading the current highlight
 

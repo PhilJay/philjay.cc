@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Animations · MPAndroidChart</title>
-  <meta name="description" content="Building the chart up over time with animateX, animateY and animateXY, the easing curves that shape them, spinning round charts, and animating the viewport.">
+  <meta name="description" content="Building the chart up with animateX, animateY and animateXY, knowing when an animation ends, moving values to new data with animateValue and animateDataChange, the easing curves, s">
   <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/animations/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="MPAndroidChart">
   <meta property="og:title" content="Animations · MPAndroidChart">
-  <meta property="og:description" content="Building the chart up over time with animateX, animateY and animateXY, the easing curves that shape them, spinning round charts, and animating the viewport.">
+  <meta property="og:description" content="Building the chart up with animateX, animateY and animateXY, knowing when an animation ends, moving values to new data with animateValue and animateDataChange, the easing curves, s">
   <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/animations/">
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
@@ -796,18 +796,52 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Motion and viewport <span>Chapter 17 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#animate-the-entries">Animate the entries</a><a href="#easing">Easing</a><a href="#how-the-phases-drive-the-drawing">How the phases drive the drawing</a><a href="#spin-a-pie-or-radar-chart">Spin a pie or radar chart</a><a href="#animate-the-viewport">Animate the viewport</a><a href="#animations-in-compose">Animations in Compose</a></nav>
-      <p>Building the chart up over time with animateX, animateY and animateXY, the easing curves that shape them, spinning round charts, and animating the viewport.</p>
+      <nav class="onthispage"><span>On this page</span><a href="#animate-the-entries">Animate the entries</a><a href="#know-when-an-animation-ends">Know when an animation ends</a><a href="#animate-one-value">Animate one value</a><a href="#animate-a-data-change">Animate a data change</a><a href="#easing">Easing</a><a href="#how-the-phases-drive-the-drawing">How the phases drive the drawing</a><a href="#spin-a-pie-or-radar-chart">Spin a pie or radar chart</a><a href="#animate-the-viewport">Animate the viewport</a><a href="#animations-in-compose">Animations in Compose</a><a href="#from-java">From Java</a></nav>
+      <p>Building the chart up with animateX, animateY and animateXY, knowing when an animation ends, moving values to new data with animateValue and animateDataChange, the easing curves, spinning round charts, and animating the viewport.</p>
 <h2 id="animate-the-entries">Animate the entries<a class="anchor" href="#animate-the-entries" aria-label="Link to this section">#</a></h2>
 <p>Three functions exist on every chart type. Each one returns immediately and redraws the chart on every frame, so no extra <code>invalidate()</code> is needed.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animateX(<span class="n">1500</span>)          <span class="c">// build up from left to right</span>
 chart.animateY(<span class="n">1500</span>)          <span class="c">// grow from the bottom up</span>
 chart.animateXY(<span class="n">1500</span>, <span class="n">1500</span>)   <span class="c">// both at once</span></code></pre>
-<div class='table-wrap'><table><thead><tr><th>Function</th><th>Effect</th></tr></thead><tbody><tr><td><code>animateX(durationMillis, easing)</code></td><td>Reveals the entries one after the other along the x axis</td></tr><tr><td><code>animateY(durationMillis, easing)</code></td><td>Scales the values up from zero</td></tr><tr><td><code>animateXY(durationMillisX, durationMillisY, easingX, easingY)</code></td><td>Runs both, each with its own duration and curve</td></tr></tbody></table></div>
-<p>Durations are milliseconds. Call the animation after the data is set, usually right after <code>chart.data = ...</code>. Calling it again restarts the animation from the beginning.</p>
+<div class='table-wrap'><table><thead><tr><th>Function</th><th>Effect</th></tr></thead><tbody><tr><td><code>animateX(durationMillis, easing, onEnd)</code></td><td>Reveals the entries one after the other along the x axis</td></tr><tr><td><code>animateY(durationMillis, easing, onEnd)</code></td><td>Scales the values up from zero</td></tr><tr><td><code>animateXY(durationMillisX, durationMillisY, easingX, easingY, onEnd)</code></td><td>Runs both, each with its own duration and curve</td></tr></tbody></table></div>
+<p>Durations are milliseconds, and a negative one counts as 0. Call the animation after the data is set, usually right after <code>chart.data = ...</code>.</p>
+<p>The x and y animations run side by side, but only one of each at a time. Starting <code>animateX</code> while an x animation runs cancels the running one and starts again from the beginning, so a button that is tapped twice does not leave two animations fighting over the chart. <code>animateXY</code> cancels both.</p>
 <p>On a pie or radar chart the same functions work: the x animation sweeps the slices into place and the y animation grows each slice or the web polygon.</p>
+<h2 id="know-when-an-animation-ends">Know when an animation ends<a class="anchor" href="#know-when-an-animation-ends" aria-label="Link to this section">#</a></h2>
+<p><code>animateX</code>, <code>animateY</code>, <code>animateXY</code>, <code>spin</code>, <code>animateValue</code> and <code>animateDataChange</code> take an optional <code>onEnd</code> lambda as their last parameter, so it fits after the call:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animateX(<span class="n">800</span>) {
+    chart.highlightValue(lastX, <span class="n">0</span>)
+}
+
+chart.animateY(<span class="n">600</span>, <span class="t">Easing</span>.<span class="t">EaseOutCubic</span>) { replayButton.isEnabled = <span class="k">true</span> }</code></pre>
+<p><code>onEnd</code> runs once, on the main thread, however the animation ends: when it finishes, when <code>stopAnimations()</code> ends it, when the chart leaves the window, and when a new animation of the same kind cancels it. For <code>animateXY</code> it runs after both the x and the y part have ended.</p>
+<p>Two members tell you about and control what is running:</p>
+<div class='table-wrap'><table><thead><tr><th>Member</th><th>What it does</th></tr></thead><tbody><tr><td><code>chart.isAnimating</code></td><td>True while any animation runs: x, y, a spin, a value or a data change</td></tr><tr><td><code>chart.stopAnimations()</code></td><td>Ends every one of these animations at once at its final state and runs each <code>onEnd</code></td></tr></tbody></table></div>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">override</span> <span class="k">fun</span> onPause() {
+    <span class="k">super</span>.onPause()
+    chart.stopAnimations()   <span class="c">// show the finished chart, not a half drawn one</span>
+}</code></pre>
+<p>A chart that is removed from the window, for example a row scrolling out of a list or a closed screen, ends its animations the same way. A running animation never keeps a removed chart alive.</p>
+<h2 id="animate-one-value">Animate one value<a class="anchor" href="#animate-one-value" aria-label="Link to this section">#</a></h2>
+<p><code>animateValue</code> moves the y value of a single entry to a new value. The axis ranges follow on every frame, so a bar that grows past the top pushes the axis up as it goes.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.onValueSelected { entry, _ -&gt;
+    chart.animateValue(entry, toY = entry.y + <span class="n">10f</span>, durationMillis = <span class="n">600</span>, easing = <span class="t">Easing</span>.<span class="t">EaseInOutCubic</span>)
+}</code></pre>
+<p>The entry itself ends with <code>y</code> set to the new value, so there is nothing to rebuild afterwards. It works for line, bar, scatter, bubble, pie and radar entries. Starting a second animation of the same entry continues from where the first one is, and assigning <code>chart.data</code> ends it with the entry at its target.</p>
+<p><code>animateValue</code> throws <code>IllegalArgumentException</code> for an entry that is not part of the chart data, for a stacked <code>BarEntry</code> and for a <code>CandleEntry</code>. Animate those with <code>animateDataChange</code>.</p>
+<h2 id="animate-a-data-change">Animate a data change<a class="anchor" href="#animate-a-data-change" aria-label="Link to this section">#</a></h2>
+<p><code>animateDataChange</code> sets new data and moves every entry from the value it replaces to its own value:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">fun</span> showTotals(totals: <span class="t">List</span>&lt;<span class="t">Float</span>&gt;) {
+    <span class="k">val</span> set = <span class="t">BarDataSet</span>(totals.mapIndexed { i, total -&gt; <span class="t">BarEntry</span>(i.toFloat(), total) }, <span class="s">&quot;Sales&quot;</span>)
+    chart.animateDataChange(<span class="t">BarData</span>(set), durationMillis = <span class="n">500</span>, easing = <span class="t">Easing</span>.<span class="t">EaseInOutCubic</span>)
+}</code></pre>
+<p>It is the animated form of <code>chart.data = newData</code>. Pass a new data object each time, not the current one changed in place.</p>
+<ul><li>Entries are paired by data set index and entry index, not by x value. The first entry of the first set moves from the old first entry of the first set, and so on.</li><li>Entries past the old end grow from 0. Entries past the new end are gone at once.</li><li>Only values move. An entry whose x changed jumps to its new x.</li><li>A stacked bar moves each stack value, a candle its open, high, low and close, a bubble its y and its size, and a pie slice its value.</li><li>The axis ranges follow on every frame, and a highlight stays on its x value.</li></ul>
+<p>Some changes cannot be animated, and then the new data is set at once, exactly like <code>chart.data = newData</code>, and <code>onEnd</code> runs right away: when the chart had no data yet, when you pass the data that is already on the chart, and when the shape differs, meaning another data class, another number of data sets, or another data set class at the same index.</p>
+<p>A new <code>animateDataChange</code> ends the running one first and starts from the values on screen at that moment, so rapid updates stay smooth. <code>animateValue</code> on an entry that a data change is still moving takes over just that entry. When the animation ends in any way, including <code>stopAnimations()</code> and assigning <code>chart.data</code>, the new entries hold exactly their own values.</p>
+<p>The example app has an &quot;Animated data changes&quot; screen with buttons that randomize, add and remove bars, and a tap that animates one bar. Its &quot;All animations&quot; screen runs every animation on a line, bar or donut chart, with any easing curve and duration, and shows <code>isAnimating</code>, <code>stopAnimations()</code> and every <code>onEnd</code> call live.</p>
 <h2 id="easing">Easing<a class="anchor" href="#easing" aria-label="Link to this section">#</a></h2>
-<p>Every animation function takes an easing curve as its last parameter. The default is <code>Easing.Linear</code>, except <code>animateXY</code>, whose <code>easingY</code> follows <code>easingX</code>.</p>
+<p>Every animation function on this page takes an optional easing curve. The default is <code>Easing.Linear</code>, except <code>animateXY</code>, whose <code>easingY</code> follows <code>easingX</code>.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animateY(<span class="n">1400</span>, <span class="t">Easing</span>.<span class="t">EaseOutBack</span>)
 chart.animateXY(<span class="n">1400</span>, <span class="n">1400</span>, <span class="t">Easing</span>.<span class="t">EaseInOutQuad</span>)
 chart.animateXY(<span class="n">1200</span>, <span class="n">800</span>, easingX = <span class="t">Easing</span>.<span class="t">EaseOutCubic</span>, easingY = <span class="t">Easing</span>.<span class="t">EaseInQuad</span>)</code></pre>
@@ -836,7 +870,7 @@ chart.invalidate()</code></pre>
     easing = <span class="t">Easing</span>.<span class="t">EaseInOutCubic</span>,
 )</code></pre>
 <p>Angles are degrees, 0 at 3 o&#x27;clock, increasing clockwise. The start angle is applied at once, so passing the current <code>rotationAngle</code> makes the spin continue from where the chart stands. An end angle outside 0 until 360 keeps spinning through full turns, which is how the example above turns exactly once.</p>
-<p><code>spin</code> is independent of <code>animateX</code> and <code>animateY</code>, so a pie chart can grow and turn at the same time.</p>
+<p><code>spin</code> is independent of <code>animateX</code> and <code>animateY</code>, so a pie chart can grow and turn at the same time. A second <code>spin</code> cancels the running one. Like the other animations it takes an <code>onEnd</code> lambda, and <code>stopAnimations()</code> ends it at <code>toAngle</code>.</p>
 <h2 id="animate-the-viewport">Animate the viewport<a class="anchor" href="#animate-the-viewport" aria-label="Link to this section">#</a></h2>
 <p>Scrolling and zooming have animated counterparts on the charts with axes. They run as viewport jobs, which means they wait until the chart has a size before they start, so it is safe to call them straight after setting the data.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> left = <span class="t">YAxis</span>.<span class="t">AxisDependency</span>.<span class="t">LEFT</span>
@@ -865,7 +899,34 @@ chart.zoomAndCenterAnimated(
     state = state,
     modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
 )</code></pre>
-<p><code>state.animateX</code>, <code>state.animateY</code> and <code>state.animateXY</code> take the same durations and easing curves and do nothing before the chart view exists. The viewport functions <code>state.zoomIn</code>, <code>state.fitScreen</code> and <code>state.moveViewToX</code> are not animated; reach for <code>setup</code> or <code>update</code> and call the chart&#x27;s own animated functions when you need those.</p>
+<p><code>state.animateX</code>, <code>state.animateY</code> and <code>state.animateXY</code> take the same durations and easing curves, without <code>onEnd</code>, and do nothing before the chart view exists.</p>
+<p>To animate from one data object to the next, set <code>animateChanges = true</code> on the chart composable. Every new <code>data</code> instance then moves in from the values shown before, over 300 ms, the way <code>animateDataChange</code> does it:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> <span class="k">data</span> = remember(totals) {
+    <span class="t">BarData</span>(<span class="t">BarDataSet</span>(totals.mapIndexed { i, total -&gt; <span class="t">BarEntry</span>(i.toFloat(), total) }, <span class="s">&quot;Sales&quot;</span>))
+}
+
+<span class="t">BarChart</span>(
+    <span class="k">data</span> = <span class="k">data</span>,
+    modifier = <span class="t">Modifier</span>.fillMaxWidth().height(<span class="n">220.</span>dp),
+    animateChanges = <span class="k">true</span>,
+)</code></pre>
+<p>It is off by default, and every chart composable has it, right after <code>marker</code>. The first data and data of another shape are set without animating. For another duration or curve, or an <code>onEnd</code>, call <code>state.animateDataChange(newData, durationMillis, easing, onEnd)</code> yourself, for example from a button, and hand the same instance to the composable, so the next recomposition finds it on the chart already and leaves it alone:</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">var</span> <span class="k">data</span> <span class="k">by</span> remember { mutableStateOf(initialData) }
+
+<span class="t">Button</span>(onClick = {
+    <span class="k">val</span> next = buildData()
+    <span class="k">data</span> = next
+    state.animateDataChange(next, <span class="n">800</span>, <span class="t">Easing</span>.<span class="t">EaseInOutCubic</span>)
+}) { <span class="t">Text</span>(<span class="s">&quot;Next&quot;</span>) }</code></pre>
+<p>It updates <code>selectedEntry</code> and <code>selectedHighlight</code> when it ends.</p>
+<p>The viewport functions <code>state.zoomIn</code>, <code>state.fitScreen</code> and <code>state.moveViewToX</code> are not animated; reach for <code>setup</code> or <code>update</code> and call the chart&#x27;s own animated functions when you need those.</p>
+<h2 id="from-java">From Java<a class="anchor" href="#from-java" aria-label="Link to this section">#</a></h2>
+<p><code>animateX</code>, <code>animateY</code>, <code>animateXY</code> and <code>spin</code> generate the shorter overloads for Java, so <code>chart.animateX(600)</code> compiles there as it is. <code>onEnd</code> is a Kotlin function type, so a Java lambda returns <code>Unit.INSTANCE</code>:</p>
+<pre data-lang="Java"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.animateX(<span class="n">600</span>, <span class="t">Easing</span>.<span class="t">INSTANCE</span>.getEaseOutCubic(), () -&gt; {
+    button.setEnabled(<span class="k">true</span>);
+    <span class="k">return</span> <span class="t">Unit</span>.<span class="t">INSTANCE</span>;
+});</code></pre>
+<p><code>animateValue</code> and <code>animateDataChange</code> take every parameter from Java. <a href="/mpandroidchart/docs/java-interop/">Calling the library from Java</a> has the general rules.</p>
       <div class="pager"><a class="prev" href="/mpandroidchart/docs/viewport/"><span>Previous</span>Modifying the viewport</a><a class="next" href="/mpandroidchart/docs/markers/"><span>Next</span>Markers</a></div>
     </main>
   </div>

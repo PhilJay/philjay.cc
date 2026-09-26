@@ -881,6 +881,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     <span class="c">// barBorderWidth, barBorderColor, barCornerRadius, highlightAlpha, highlightColor</span>
 }</code></pre>
 <p>A read-only set can throw from the mutations, or ignore them, as long as nothing in your code calls them. The chart itself never does.</p>
+<p><code>hasNonFiniteY</code> on <code>IDataSet</code> tells a line renderer whether it has to look for NaN or infinite values before drawing. It defaults to true, which is always safe. Override it with false only when every y your set hands out is a finite number; a long line then skips that check on every frame.</p>
 <blockquote>The entries you hand out are expected in ascending x order, and the lookups are expected to be cheap. The chart calls <code>getEntryForIndex</code> for every visible entry on every frame, so do not allocate more than you have to and do not scan the whole list there.</blockquote>
 <h2 id="plugging-it-in">Plugging it in<a class="anchor" href="#plugging-it-in" aria-label="Link to this section">#</a></h2>
 <p>Nothing special is needed. Put the set in the matching data object and assign it:</p>

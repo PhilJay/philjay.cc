@@ -2,6 +2,8 @@
 
 How to put a chart into a LazyColumn, a recycled row, a fragment or a scrolling screen without rebuilding data on every frame or fighting the parent for the gesture.
 
+Charts in a `RecyclerView`, a `ListView` and a `LazyColumn` are covered by the library's device tests: hundreds of mixed rows that are recycled while scrolling, rotated, and checked for leaks. The rules below are what those tests rely on.
+
 ## A chart in a LazyColumn
 
 The rule for a list is always the same: the data is built once, somewhere the list does not throw away, and the item only shows it.
@@ -43,7 +45,9 @@ fun ReportList(reports: List<Report>) {
 
 **Give the items a key.** `rememberChartState()` is a `rememberSaveable`, so a stable item key is what makes a saved selection or zoom come back on the row it belongs to instead of on its neighbour.
 
-**Switch the gestures off.** A row is there to be read, and a chart that pans competes with the list for the same vertical drag. See [A chart inside a scrolling parent](#a-chart-inside-a-scrolling-parent).
+**Think about the gestures.** A row is there to be read. A vertical swipe that starts on a chart that is not zoomed scrolls the list, so the defaults work, but a zoomed chart keeps the swipe for itself. See [A chart inside a scrolling parent](#a-chart-inside-a-scrolling-parent).
+
+**Markers do not hold up tests.** A Compose marker measures and settles like any other view, so a Compose UI test over a list of charts goes idle as usual.
 
 ## A chart in a recycled row
 
@@ -86,11 +90,11 @@ class ChartAdapter(private val items: List<BarData>) :
 }
 ```
 
-**Reset what the previous row left behind.** A recycled chart still carries the highlight, the zoom and the pan of the row it showed before. Assigning `data` does not touch any of them: it recalculates and redraws, nothing more. `highlightValues(emptyList())` clears the selection and `fitScreen()` undoes zoom and drag. If the rows have no gestures, the two lines cost nothing and protect you the day someone enables dragging.
+**Reset what the previous row left behind.** A recycled chart still carries the highlight, the zoom and the pan of the row it showed before. Assigning `data` does not touch any of them: it recalculates and redraws and keeps the current highlight, so the new row would show the old row's selection. Set or clear the highlight on every bind: `highlightValues(emptyList())` clears it, or `highlightValue(x, dataSetIndex, callListener = false)` restores the one you saved for this item. `fitScreen()` undoes zoom and drag. If the rows have no gestures, the lines cost nothing and protect you the day someone enables dragging. A kept highlight that points past the new entries is ignored rather than drawn or crashing, but it is still the wrong selection.
 
 **No `invalidate()` after assigning data.** The setter already redraws. An extra call only queues a second draw.
 
-**Usually do not animate on bind.** The example calls `animateY(700)` in `getView`, which is fine for a demo screen. In a real list, bind is not a "this row appeared" callback: a fling binds dozens of rows, each restarts an animation, and every running animation keeps invalidating its chart for the whole duration. If you want the entrance animation, run it once per item, for example from `onViewAttachedToWindow` guarded by the set of ids you have already animated.
+**Usually do not animate on bind.** The example calls `animateY(700)` in `getView`, which is fine for a demo screen. In a real list, bind is not a "this row appeared" callback: a fling binds dozens of rows, each restarts an animation, and every running animation keeps invalidating its chart while the row is on screen. If you want the entrance animation, run it once per item, for example from `onViewAttachedToWindow` guarded by the set of ids you have already animated. A row that scrolls out while it animates is safe: the chart ends its animations at their final state when it leaves the window, so it is released and comes back fully drawn.
 
 **One listener per row.** `onChartValueSelectedListener` holds a single listener, so assigning a new one in bind replaces the old one and the row cannot end up reporting the previous item's position.
 
@@ -136,9 +140,12 @@ The `contentType` keeps the slots of the three chart types apart, so Compose doe
 
 `ScrollViewActivity` puts a 450 dp bar chart between two spacers inside a `ScrollView`. Both the chart and the scroller want the vertical drag, and only one of them can have it.
 
-The chart claims the gesture late. `BarLineChartTouchListener` calls `chart.disableScroll()` once a second finger goes down or once a drag is actually under way, and `chart.enableScroll()` when the touch ends. Until the drag is recognised the parent may already have taken the gesture, which is why a slow vertical swipe that starts on a chart often scrolls the page instead.
+What the chart does with a swipe depends on its zoom:
 
-There are two honest answers.
+- **Not zoomed.** With no zoom and no `dragOffsetX` or `dragOffsetY` there is nothing to pan, so a drag can only move the highlight, and that starts only once the finger has moved past the system touch slop and mostly along the x axis (up and down on a `HorizontalBarChart`). A vertical swipe is left to the parent, so the list scrolls and the selection stays where it was.
+- **Zoomed in.** A drag pans the chart. `BarLineChartTouchListener` calls `chart.disableScroll()` once the drag is under way, or once a second finger goes down, and `chart.enableScroll()` when the touch ends, so the list holds still until the finger lifts.
+
+That split works for most screens. When it does not, there are two answers.
 
 **Take the gestures away.** In a row or a long form the chart is a picture, so let the parent scroll:
 
@@ -148,7 +155,7 @@ chart.isScaleEnabled = false
 chart.isDoubleTapToZoomEnabled = false
 ```
 
-`isHighlightPerTapEnabled` stays on, so a tap still selects a value. This is the reliable option, and the only one worth using for a chart inside a `LazyColumn`.
+`isHighlightPerTapEnabled` stays on, so a tap still selects a value. This is the simplest option for a chart inside a `LazyColumn`: a chart that cannot zoom never takes a swipe from the list.
 
 **Or claim the gesture as soon as a finger lands.** `onChartGestureStart` fires on the touch down, before any gesture is recognised, which is early enough to lock the parent out:
 
@@ -173,7 +180,7 @@ chart.onChartGestureListener = object : OnChartGestureListener {
 
 The fragments in the example app share a `SimpleFragment` base that only generates data, and each page builds its chart in `onCreateView` from those generators. `PieChartFrag` styles the chart from its binding; `BarChartFrag` creates the `BarChart` in code and adds it to the layout. Both work.
 
-In `onDestroyView`, null your binding and any chart reference you kept. The chart dies with the view hierarchy, and nothing in the library needs an explicit teardown. A Compose chart cleans up on its own: the wrapper detaches the state and releases the marker when the composable leaves.
+In `onDestroyView`, null your binding and any chart reference you kept. The chart dies with the view hierarchy, and nothing in the library needs an explicit teardown: a running animation ends when the chart leaves the window, and viewport jobs drop the chart once they have run. A Compose chart cleans up on its own: the wrapper detaches the state and releases the marker when the composable leaves.
 
 `chart.isUnbindEnabled` is not a teardown hook, whatever the name suggests. It defaults to false, and while it is true `onDetachedFromWindow` clears the callback of the chart's background drawable and removes the chart's child views, walking down the tree. It does not release the data, the renderers or the paints. It fires on every detach, including a row scrolling out of a list or a pager page being detached, and the marker of a Compose chart lives in a child view of the chart, so a chart that gets reattached comes back without it. Leave it off unless you are chasing a measured leak on an old device.
 
@@ -181,6 +188,6 @@ On a pager, watch the offscreen pages. `SimpleChartDemo` sets `offscreenPageLimi
 
 ## Performance in a list
 
-Twenty charts on screen means twenty views measuring, laying out and drawing. The cheap wins are: turn off what you do not need per row with `description.isEnabled = false` and `legend.isEnabled = false`, set `isDrawValuesEnabled = false` on the data sets, and keep the entry count per row small. Value labels stop being drawn on their own once the entry count reaches `maxVisibleCount`, which defaults to 100 on the charts with axes.
+Twenty charts on screen means twenty views measuring, laying out and drawing. The cheap wins are: turn off what you do not need per row with `description.isEnabled = false` and `legend.isEnabled = false`, set `isDrawValuesEnabled = false` on the data sets, and keep the entry count per row small. Value labels stop being drawn on their own while more than `maxVisibleCount` entries of a data set are in view, which defaults to 100 on the charts with axes.
 
 Everything else, including `isHardwareAccelerationEnabled` and what to do with large data sets, is in [Performance](/mpandroidchart/docs/performance/).

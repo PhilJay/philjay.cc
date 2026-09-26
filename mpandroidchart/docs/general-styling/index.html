@@ -796,7 +796,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Styling <span>Chapter 9 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-background">The background</a><a href="#the-no-data-text">The no data text</a><a href="#space-around-the-content">Space around the content</a><a href="#the-paints">The paints</a><a href="#value-labels">Value labels</a><a href="#refreshing">Refreshing</a><a href="#hardware-acceleration">Hardware acceleration</a><a href="#saving-the-chart-as-an-image">Saving the chart as an image</a><a href="#logging">Logging</a><a href="#releasing-view-resources">Releasing view resources</a></nav>
+      <nav class="onthispage"><span>On this page</span><a href="#the-background">The background</a><a href="#the-empty-state">The empty state</a><a href="#space-around-the-content">Space around the content</a><a href="#the-paints">The paints</a><a href="#value-labels">Value labels</a><a href="#refreshing">Refreshing</a><a href="#hardware-acceleration">Hardware acceleration</a><a href="#saving-the-chart-as-an-image">Saving the chart as an image</a><a href="#logging">Logging</a><a href="#releasing-view-resources">Releasing view resources</a></nav>
       <p>The settings every chart type shares: the background, the text shown while there is no data, the space around the drawing area, the paints the chart draws with, and how to save it as an image.</p>
 <p>Everything here lives on the chart itself. Styling that belongs to one series is on the data set, see <a href="/mpandroidchart/docs/setting-data/">Setting data</a>, and styling that belongs to one chart type is in <a href="/mpandroidchart/docs/chart-styling/">Chart specific styling</a>.</p>
 <h2 id="the-background">The background<a class="anchor" href="#the-background" aria-label="Link to this section">#</a></h2>
@@ -823,13 +823,25 @@ chart.isDrawBordersEnabled = <span class="k">true</span>
 chart.borderColor = <span class="t">Color</span>.<span class="t">DKGRAY</span>
 chart.borderWidth = <span class="n">1f</span></code></pre>
 <div class='table-wrap'><table><thead><tr><th>Property</th><th>Meaning</th><th>Default</th></tr></thead><tbody><tr><td><code>isDrawGridBackgroundEnabled</code></td><td>Fill the content area</td><td><code>false</code></td></tr><tr><td><code>gridBackgroundColor</code></td><td>Fill color</td><td>light grey</td></tr><tr><td><code>isDrawBordersEnabled</code></td><td>Draw a line around the content area</td><td><code>false</code></td></tr><tr><td><code>borderColor</code></td><td>Border color</td><td>black</td></tr><tr><td><code>borderWidth</code></td><td>Border width in dp</td><td><code>1</code></td></tr></tbody></table></div>
-<h2 id="the-no-data-text">The no data text<a class="anchor" href="#the-no-data-text" aria-label="Link to this section">#</a></h2>
-<p>While <code>chart.data</code> is null, the chart draws a single line of text in the middle of the view instead. An empty string draws nothing at all.</p>
+<h2 id="the-empty-state">The empty state<a class="anchor" href="#the-empty-state" aria-label="Link to this section">#</a></h2>
+<p>While the chart has no data, or data without entries, it draws an empty state instead: a faint outline of its chart type (bars, a line, a ring, a web or dots) above the text &quot;No data yet&quot;, in a slate grey that reads on light and dark backgrounds. Every part of it can be changed:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.noDataText = <span class="s">&quot;Nothing to show yet&quot;</span>
 chart.noDataTextColor = <span class="t">Color</span>.<span class="t">GRAY</span>
+chart.noDataTextSize = <span class="n">14f</span>                     <span class="c">// dp</span>
 chart.noDataTextTypeface = typeface
-chart.noDataTextAlignment = <span class="t">Paint</span>.<span class="t">Align</span>.<span class="t">CENTER</span></code></pre>
-<p>The alignment decides where the text sits horizontally: <code>LEFT</code> pins it to the left edge of the view, <code>RIGHT</code> to the right edge, <code>CENTER</code> to the middle. The default text is &quot;No chart data available.&quot;, drawn centered in an amber tone.</p>
+chart.noDataTextAlignment = <span class="t">Paint</span>.<span class="t">Align</span>.<span class="t">CENTER</span>
+chart.noDataIconColor = <span class="t">Color</span>.argb(<span class="n">80</span>, <span class="n">128</span>, <span class="n">128</span>, <span class="n">128</span>)
+chart.noDataIcon = <span class="t">ContextCompat</span>.getDrawable(context, <span class="t">R</span>.drawable.empty) <span class="c">// replaces the outline</span>
+chart.isNoDataIconEnabled = <span class="k">false</span>              <span class="c">// text only</span></code></pre>
+<p>The alignment decides where the icon and text sit horizontally: <code>LEFT</code> at the left edge of the view, <code>RIGHT</code> at the right edge, <code>CENTER</code> in the middle. An empty <code>noDataText</code> draws only the icon.</p>
+<h3 id="loading">Loading<a class="anchor" href="#loading" aria-label="Link to this section">#</a></h3>
+<p>Set <code>chart.isLoading = true</code> while your data is on its way. The empty state then shows <code>loadingText</code> (&quot;Loading…&quot; by default) and its icon gently pulses. Data that arrives is drawn as usual, so you can set the flag back to false whenever it suits you.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isLoading = <span class="k">true</span>
+viewModel.sales.observe(owner) { sales -&gt;
+    chart.<span class="k">data</span> = sales.toBarData()
+    chart.isLoading = <span class="k">false</span>
+}</code></pre>
+<p>To draw an empty state of your own, subclass the chart and override <code>drawEmptyState(canvas)</code>, or <code>drawNoDataIcon(canvas, bounds, paint)</code> to change only the outline.</p>
 <p><code>chart.clear()</code> drops the data and brings this text back. <code>chart.clearValues()</code> keeps the data object but removes all its data sets, and <code>chart.isEmpty</code> tells you whether anything is left to draw.</p>
 <h2 id="space-around-the-content">Space around the content<a class="anchor" href="#space-around-the-content" aria-label="Link to this section">#</a></h2>
 <p>The chart computes the content area from the legend, the axis labels and the description. Two properties let you push it around without taking over the calculation.</p>
@@ -853,7 +865,7 @@ chart.gridBackgroundPaint.shader = <span class="t">LinearGradient</span>(
 )</code></pre>
 <blockquote><code>descriptionPaint</code> and <code>legendLabelPaint</code> have their typeface, text size and color overwritten from the <code>Description</code> and <code>Legend</code> components before every draw. Set those three on the component, and use the paint only for the rest.</blockquote>
 <h2 id="value-labels">Value labels<a class="anchor" href="#value-labels" aria-label="Link to this section">#</a></h2>
-<p>Value labels are drawn per data set with <code>set.isDrawValuesEnabled</code>. On the charts with an x axis, one chart level property limits them: labels are only drawn while the total entry count is below <code>maxVisibleCount</code> times the current horizontal zoom, so zooming in brings them back. The default is 100.</p>
+<p>Value labels are drawn per data set with <code>set.isDrawValuesEnabled</code>. On the charts with an x axis, one chart level property limits them: a data set draws its labels only while at most <code>maxVisibleCount</code> of its entries are in view, so zooming in brings them back. The default is 100.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.maxVisibleCount = <span class="n">60</span>
 chart.isClipValuesToContentEnabled = <span class="k">true</span></code></pre>
 <p><code>isClipValuesToContentEnabled</code> keeps labels inside the content area instead of letting them bleed over the axes. Its sibling <code>isClipDataToContentEnabled</code> does the same for the data itself and is on by default. Turn it off when thick lines or large shapes get cut at the edge of the content.</p>
@@ -868,7 +880,7 @@ chart.isHardwareAccelerationEnabled = <span class="k">false</span>   <span class
 <p>A hardware layer helps a chart that animates or scrolls over a busy background. A software layer is the fallback when a large data set with a lot of transparency draws wrong or slowly on the GPU.</p>
 <blockquote>The property reads back true only while a hardware layer is set. A fresh chart has no layer at all, so it reads false even though drawing is hardware accelerated, and setting it to false forces a software layer rather than removing the layer.</blockquote>
 <h2 id="saving-the-chart-as-an-image">Saving the chart as an image<a class="anchor" href="#saving-the-chart-as-an-image" aria-label="Link to this section">#</a></h2>
-<p><code>toBitmap()</code> draws the chart into a new <code>ARGB_8888</code> bitmap the size of the view, over the view background or over white when there is none.</p>
+<p><code>toBitmap()</code> draws the chart into a new <code>ARGB_8888</code> bitmap the size of the view, over the view background or over white when there is none. Before the first layout the view has no size, and you get a 1 by 1 bitmap.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bitmap = chart.toBitmap()</code></pre>
 <p><code>saveToGallery()</code> writes that bitmap into the device gallery through the <code>MediaStore</code> and returns whether it worked.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> saved = chart.saveToGallery(

@@ -457,7 +457,9 @@ chart.data = PieData(set)
 </svg>
 ```
 
-The legend gets one entry per slice, taken from the entry labels, and the set label is appended after them as an entry without a form. Give the set a blank label to keep it out. `PieData.yValueSum` gives you the total of all slices, which is what a percent formatter divides by.
+The legend gets one entry per slice, taken from the entry labels, and the set label is appended after them as an entry without a form. Give the set a blank label to keep it out. `PieData.yValueSum` gives you the total of all slices.
+
+A slice is drawn as its share of the sum of the absolute values, so a negative value still gets a slice of its size, and with `chart.isUsePercentValuesEnabled` its label shows that share with a minus sign. A pie whose values are all 0 draws no slices rather than failing.
 
 ## Scatter chart
 
@@ -466,7 +468,7 @@ The legend gets one entry per slice, taken from the entry labels, and the set la
 ```kotlin
 val set = ScatterDataSet(points.sortedBy { it.x }, "Samples").apply {
     setScatterShape(ScatterChart.ScatterShape.CIRCLE)
-    scatterShapeSize = 18f
+    scatterShapeSize = 9f
     color = Color.rgb(90, 140, 255)
 }
 
@@ -536,7 +538,7 @@ chart.data = ScatterData(setA, setB, setC)
 
 | Property | Meaning | Default |
 | --- | --- | --- |
-| `scatterShapeSize` | Size of the shape in dp | `15` |
+| `scatterShapeSize` | Size of the shape in dp | `7.5` |
 | `scatterShapeHoleRadius` | Radius of the hole in the middle, in dp | `0` |
 | `scatterShapeHoleColor` | Color of that hole; `ColorTemplate.COLOR_NONE` draws none | `COLOR_NONE` |
 | `shapeRenderer` | The renderer itself, for a shape of your own | `SquareShapeRenderer` |
@@ -761,7 +763,7 @@ set.entries = newEntries
 chart.notifyDataSetChanged()
 ```
 
-That one call asks the data object to recompute its ranges, recalculates the axes, the legend and the offsets, and redraws. See [dynamic data](/mpandroidchart/docs/dynamic-data/) for adding and removing values while the chart is on screen, and [the ChartData class](/mpandroidchart/docs/chartdata/) for what the data object caches and when.
+That one call asks the data object to recompute its ranges, recalculates the axes, the legend and the offsets, and redraws. Keep a reference to the set you created for this rather than casting what `getDataSetByIndex` returns, and use `chart.animateDataChange(newData, 500)` when the values should move to their new place instead of jumping. See [dynamic data](/mpandroidchart/docs/dynamic-data/) for adding and removing values while the chart is on screen, and [the ChartData class](/mpandroidchart/docs/chartdata/) for what the data object caches and when.
 
 ## Where to go next
 

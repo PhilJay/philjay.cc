@@ -24,20 +24,19 @@ Everything that draws extends `Renderer`, an abstract class whose whole body is 
 | `drawExtras(c)` | after the clip is lifted | line circles, the radar web, the pie hole |
 | `drawValues(c)` | last, after the axis labels | the value labels and entry icons |
 
-It also owns four paints. Three of them have a read only property in front, and because a `Paint` is mutable that is enough to restyle a built-in renderer without subclassing it:
+It also owns three paints. Each has a read only property in front, and because a `Paint` is mutable that is enough to restyle a built-in renderer without subclassing it:
 
 | Protected field | Public property | Default |
 | --- | --- | --- |
 | `renderPaint` | `paintRender` | anti-aliased, `Paint.Style.FILL` |
 | `highlightPaint` | `paintHighlight` | 2 px stroke, orange `rgb(255, 187, 115)` |
 | `valuePaint` | `paintValues` | `rgb(63, 63, 63)`, centered, 9 dp |
-| `drawPaint` | none | dither flag only, unused by the built-in renderers |
 
-Two helpers are worth knowing. `isDrawingValuesAllowed(chart)` is the rule behind `maxVisibleCount`: it returns true only while the entry count is below `chart.maxVisibleCount * viewPortHandler.scaleX`. `applyValueTextStyle(set)` copies the typeface and text size of a data set into `valuePaint`, once per data set before its labels are drawn. `drawValue`, whose signature is in the worked example below, is the single open function on `DataRenderer` and the cheapest override in the library.
+One helper is worth knowing. `applyValueTextStyle(set)` copies the typeface and text size of a data set into `valuePaint`, once per data set before its labels are drawn. `drawValue`, whose signature is in the worked example below, is the single open function on `DataRenderer` and the cheapest override in the library.
 
 ### Renderers with axes
 
-`BarLineScatterCandleBubbleRenderer` sits between `DataRenderer` and the renderers of the charts that have an x and a y axis. It adds `shouldDrawValues(set)`, `isInBoundsX(entry, set)` and the `xBounds` field, an instance of its inner `XBounds` class:
+`BarLineScatterCandleBubbleRenderer` sits between `DataRenderer` and the renderers of the charts that have an x and a y axis. It adds `shouldDrawValues(set)`, `shouldDrawValues(chart, set)`, `visibleEntryCount(chart, set)`, `isInBoundsX(entry, set)` and the `xBounds` field, an instance of its inner `XBounds` class. `shouldDrawValues(chart, set)` is the rule behind `maxVisibleCount`: it is true only while at most that many entries of the set are in the visible x range.
 
 | Member | Meaning |
 | --- | --- |
@@ -147,7 +146,7 @@ To change the bars themselves rather than their labels, override `drawDataSet(c,
 
 ## The draw order
 
-`Chart.onDraw` itself draws almost nothing: it paints `noDataText` when there is no data and calculates the offsets once. Everything else lives in the subclass. `BarLineChartBase.onDraw` runs this sequence on every frame:
+`Chart.onDraw` itself draws almost nothing: it draws the empty state (`drawEmptyState`) when there is nothing to show and calculates the offsets once. Everything else lives in the subclass. `BarLineChartBase.onDraw` runs this sequence on every frame:
 
 1. the grid background, then `autoScale()` when `isAutoScaleMinMaxEnabled`
 2. `computeAxis` on the left y, right y and x axis renderers, for the enabled axes
@@ -218,12 +217,12 @@ The smallest custom drawing hook in the library is not a renderer subclass at al
 ```kotlin
 val set = ScatterDataSet(entries, "Points")
 set.shapeRenderer = IShapeRenderer { c, dataSet, _, x, y, paint ->
-    val half = dataSet.scatterShapeSize / 2f
+    val half = Utils.convertDpToPixel(dataSet.scatterShapeSize) / 2f
     c.drawLine(x - half, y - half, x + half, y + half, paint)
 }
 ```
 
-The built-in implementations are `SquareShapeRenderer` (the default on `ScatterDataSet`), `CircleShapeRenderer`, `TriangleShapeRenderer`, `CrossShapeRenderer`, `XShapeRenderer`, `ChevronUpShapeRenderer` and `ChevronDownShapeRenderer`, and `set.setScatterShape(ScatterChart.ScatterShape.CIRCLE)` is a shortcut that installs one of them. Every one of them uses `scatterShapeSize` as pixels but `scatterShapeHoleRadius` as dp, so keep to that if you want your shape to match the others.
+The built-in implementations are `SquareShapeRenderer` (the default on `ScatterDataSet`), `CircleShapeRenderer`, `TriangleShapeRenderer`, `CrossShapeRenderer`, `XShapeRenderer`, `ChevronUpShapeRenderer` and `ChevronDownShapeRenderer`, and `set.setScatterShape(ScatterChart.ScatterShape.CIRCLE)` is a shortcut that installs one of them. `scatterShapeSize` and `scatterShapeHoleRadius` are both in dp, and every one of them converts with `Utils.convertDpToPixel` before drawing, so do the same if you want your shape to match the others.
 
 ## What a renderer must not do
 

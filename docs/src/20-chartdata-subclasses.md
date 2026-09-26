@@ -93,7 +93,7 @@ val data = PieData(set)
 data.dataSet = anotherSet     // replaces the set and recomputes the ranges
 ```
 
-`yValueSum` is the total of all slice values, the whole pie. A percent formatter divides by it.
+`yValueSum` is the total of all slice values, the whole pie. The chart itself draws each slice as a share of the sum of the absolute values, which is the same number unless a value is negative.
 
 ```kotlin
 val share = entry.y / data.yValueSum
@@ -105,7 +105,7 @@ Because there is always exactly one set, the lookups are narrowed:
 - `getDataSetByLabel` returns the set if its label matches, and null if not.
 - `getEntryForHighlight` reads `Highlight.x` as the slice index, like the radar chart does.
 
-The `dataSet` getter, `getDataSetByLabel`, `getEntryForHighlight`, `yValueSum` and `getDataSetByIndex(0)` all throw `IndexOutOfBoundsException` while no set has been assigned. Only the empty constructor can leave it in that state, so assign `dataSet` right after using it.
+`dataSet` is nullable and reads null while no set has been assigned, which only the empty constructor or assigning null can cause. The lookups then return null, `yValueSum` returns 0, and a pie chart given such data draws no slices and does not fail. Read the set with `pieData.dataSet?.sliceSpace`.
 
 The legend of a pie chart is built from the entry labels. A set label that is not blank is appended after them as an entry without a form, so give the set a blank label to keep it out of the legend.
 

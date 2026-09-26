@@ -815,7 +815,7 @@ chart.isDoubleTapToZoomEnabled = <span class="k">false</span></code></pre>
 <p>Two extra properties let the content be dragged a little past its bounds, which feels softer at the edges:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.dragOffsetX = <span class="n">20f</span>   <span class="c">// dp of overscroll left and right</span>
 chart.dragOffsetY = <span class="n">20f</span>   <span class="c">// dp of overscroll top and bottom</span></code></pre>
-<p>Both default to 0. They also matter for highlighting per drag: the chart only moves the selection instead of panning when it is fully zoomed out <em>and</em> has no drag offset.</p>
+<p>Both default to 0. They also matter for highlighting per drag: the chart only moves the selection instead of panning when it is fully zoomed out <em>and</em> has no drag offset, or when dragging is off. The selection then follows a drag along the x axis once it has passed the system touch slop, and a swipe across the axis is left to a scrolling parent.</p>
 <p>Zooming and scrolling from code, including limits on how far the user may zoom, is covered in <a href="/mpandroidchart/docs/viewport/">Modifying the viewport</a>.</p>
 <h2 id="fling-and-deceleration">Fling and deceleration<a class="anchor" href="#fling-and-deceleration" aria-label="Link to this section">#</a></h2>
 <p>Lifting the finger after a fast drag keeps the chart scrolling and slows it down.</p>

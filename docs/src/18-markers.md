@@ -60,7 +60,7 @@ private fun Pill(text: String) {
 }
 ```
 
-The lambda receives the highlighted entry and its `Highlight` and is recomposed when the selection changes. Behind it sits `ComposeMarker`, which keeps an invisible `ComposeView` as a child of the chart so the content takes part in composition, and the chart draws that view at the highlighted position. It centers the content above the entry with a 12 dp gap, so no offset is needed for the usual pill; `setOffset(x, y)` shifts it from there.
+The lambda receives the highlighted entry and its `Highlight` and is recomposed when the selection changes. Behind it sits `ComposeMarker`, which keeps an invisible `ComposeView` as a child of the chart so the content takes part in composition, and the chart draws that view at the highlighted position. It centers the content above the entry with a 12 dp gap, so no offset is needed for the usual pill; `setOffset(x, y)` shifts it from there, in dp.
 
 Because the content composes on the next frame, a newly selected entry shows its marker one frame later. If you create a `ComposeMarker` yourself instead of using the `marker` parameter, call `detach()` when the chart should drop it.
 

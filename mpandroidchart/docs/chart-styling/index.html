@@ -850,7 +850,7 @@ chart.centerTextSize = <span class="n">12f</span>
 chart.centerTextTypeface = typeface
 chart.centerTextRadiusPercent = <span class="n">100f</span>
 chart.setCenterTextOffset(<span class="n">0f</span>, -<span class="n">20f</span>)</code></pre>
-<p><code>centerText</code> is a <code>CharSequence</code>, so a <code>SpannableString</code> lets you style parts of it. It wraps inside a box whose width is <code>centerTextRadiusPercent</code> of the hole diameter, so lowering it makes the text wrap earlier and stay clear of the slices. The offset shifts the text away from the center in dp, positive to the right and downwards, which is what a half pie needs.</p>
+<p><code>centerText</code> is a <code>CharSequence</code>, so a <code>SpannableString</code> lets you style parts of it. It wraps inside a box whose width is <code>centerTextRadiusPercent</code> of the hole diameter, so lowering it makes the text wrap earlier and stay clear of the slices. <code>centerTextSize</code> is in dp. The offset shifts the text away from the center in dp, positive to the right and downwards, which is what a half pie needs.</p>
 <h3 id="slice-labels-and-shape">Slice labels and shape<a class="anchor" href="#slice-labels-and-shape" aria-label="Link to this section">#</a></h3>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawEntryLabelsEnabled = <span class="k">true</span>
 chart.entryLabelColor = <span class="t">Color</span>.<span class="t">WHITE</span>
@@ -859,7 +859,7 @@ chart.entryLabelTypeface = typeface
 
 chart.isUsePercentValuesEnabled = <span class="k">true</span>
 chart.isDrawRoundedSlicesEnabled = <span class="k">true</span></code></pre>
-<p>The entry label is the <code>label</code> of each <code>PieEntry</code>. <code>isUsePercentValuesEnabled</code> hands the value formatter a share of the total instead of the raw value, so the labels read as percentages.</p>
+<p>The entry label is the <code>label</code> of each <code>PieEntry</code>. <code>isUsePercentValuesEnabled</code> hands the value formatter a share of the total instead of the raw value, so the labels read as percentages. The total is the sum of the absolute values, so a negative value gets a slice of its size and a negative percentage.</p>
 <p>Rounded slices need the hole drawn and <code>isDrawSlicesUnderHoleEnabled</code> off. While they are on, a highlighted slice is not redrawn at all, so it gets neither the outward shift nor the highlight color.</p>
 <h3 id="angles-and-rotation">Angles and rotation<a class="anchor" href="#angles-and-rotation" aria-label="Link to this section">#</a></h3>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.maxAngle = <span class="n">180f</span>
@@ -896,7 +896,7 @@ chart.xAxis.valueFormatter = <span class="t">IAxisValueFormatter</span> { v, _ -
     scatterShapeHoleRadius = <span class="n">3f</span>
     scatterShapeHoleColor = <span class="t">Color</span>.<span class="t">WHITE</span>
 }</code></pre>
-<p><code>ScatterShape</code> covers <code>SQUARE</code>, <code>CIRCLE</code>, <code>TRIANGLE</code>, <code>CROSS</code>, <code>X</code>, <code>CHEVRON_UP</code> and <code>CHEVRON_DOWN</code>. Squares and circles draw fastest, triangles slowest. For anything else, assign your own <code>set.shapeRenderer</code>, see <a href="/mpandroidchart/docs/custom-datasets/">Custom data sets</a>.</p>
+<p>Both sizes are in dp. <code>ScatterShape</code> covers <code>SQUARE</code>, <code>CIRCLE</code>, <code>TRIANGLE</code>, <code>CROSS</code>, <code>X</code>, <code>CHEVRON_UP</code> and <code>CHEVRON_DOWN</code>. Squares and circles draw fastest, triangles slowest. For anything else, assign your own <code>set.shapeRenderer</code>, see <a href="/mpandroidchart/docs/custom-datasets/">Custom data sets</a>.</p>
 <h2 id="candlestickchart">CandleStickChart<a class="anchor" href="#candlestickchart" aria-label="Link to this section">#</a></h2>
 <p>The chart adds nothing beyond the shared x and y chart settings. Candles are styled entirely on <code>CandleDataSet</code>: the body colors for rising and falling candles, the shadow color and width, whether the body is filled and how wide the bar space is.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> set = <span class="t">CandleDataSet</span>(entries, <span class="s">&quot;Price&quot;</span>).apply {

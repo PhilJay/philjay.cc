@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>R8 and ProGuard · MPAndroidChart</title>
-  <meta name="description" content="What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.">
+  <meta name="description" content="What a minified release build needs for the chart library, which is nothing, and the few cases in your own code that may still want a rule.">
   <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/proguard/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="MPAndroidChart">
   <meta property="og:title" content="R8 and ProGuard · MPAndroidChart">
-  <meta property="og:description" content="What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.">
+  <meta property="og:description" content="What a minified release build needs for the chart library, which is nothing, and the few cases in your own code that may still want a rule.">
   <meta property="og:url" content="https://philjay.cc/mpandroidchart/docs/proguard/">
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
@@ -796,8 +796,8 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Integration <span>Chapter 30 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-short-answer">The short answer</a><a href="#drop-the-old-rule">Drop the old rule</a><a href="#what-the-library-keeps-for-itself">What the library keeps for itself</a><a href="#your-own-code">Your own code</a><a href="#readable-crash-reports">Readable crash reports</a><a href="#checking-what-r8-did">Checking what R8 did</a></nav>
-      <p>What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.</p>
+      <nav class="onthispage"><span>On this page</span><a href="#the-short-answer">The short answer</a><a href="#drop-the-old-rule">Drop the old rule</a><a href="#what-keeps-the-chart-views">What keeps the chart views</a><a href="#your-own-code">Your own code</a><a href="#readable-crash-reports">Readable crash reports</a><a href="#checking-what-r8-did">Checking what R8 did</a></nav>
+      <p>What a minified release build needs for the chart library, which is nothing, and the few cases in your own code that may still want a rule.</p>
 <h2 id="the-short-answer">The short answer<a class="anchor" href="#the-short-answer" aria-label="Link to this section">#</a></h2>
 <p>You do not need any keep rules for MPAndroidChart. Turn on minification the usual way and build:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>android {
@@ -812,7 +812,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
         }
     }
 }</code></pre>
-<p>The library keeps what it needs through <code>@Keep</code> annotations in its own source, and R8 honours those with the default configuration file. The Compose module needs nothing extra either; the Compose artifacts ship their own rules.</p>
+<p>The library does no reflection: nothing in it looks up a class, a field or a method by name, so R8 is free to shrink, rename and optimize all of it. The Compose module needs nothing extra either; the Compose artifacts ship their own rules.</p>
 <blockquote>The library does not ship consumer rules. <code>MPChartLib</code> sets no <code>consumerProguardFiles</code>, so nothing is merged into your configuration behind your back. What you write is what applies.</blockquote>
 <h2 id="drop-the-old-rule">Drop the old rule<a class="anchor" href="#drop-the-old-rule" aria-label="Link to this section">#</a></h2>
 <p>Older documentation told you to whitelist the whole package:</p>
@@ -821,23 +821,17 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
 <p>The rule existed because of animation. Version 3 drove the entry animations with <code>ObjectAnimator.ofFloat(this, &quot;phaseX&quot;, ...)</code>, which looks the setter up by name at runtime. Once R8 renamed <code>setPhaseX</code>, the lookup failed and animations silently did nothing.</p>
 <p>Version 4 does not do that any more. Every animation in the library now drives a <code>ValueAnimator</code> and assigns the value in an update listener, so no name is ever looked up:</p>
 <ul><li><code>ChartAnimator</code>, behind <code>animateX</code>, <code>animateY</code> and <code>animateXY</code>, runs a <code>ValueAnimator</code> from 0 to 1 and sets <code>phaseX</code> or <code>phaseY</code> in a lambda.</li><li><code>AnimatedViewPortJob</code>, behind the animated zoom and move calls, drives its <code>phase</code> the same way.</li><li><code>PieRadarChartBase.spin()</code> animates <code>rotationAngle</code> the same way.</li></ul>
-<p>Renaming those members is now harmless, so no keep rule protects them.</p>
-<h2 id="what-the-library-keeps-for-itself">What the library keeps for itself<a class="anchor" href="#what-the-library-keeps-for-itself" aria-label="Link to this section">#</a></h2>
-<p>Two kinds of <code>@Keep</code> are left in the source, and both are about class names rather than member names.</p>
-<div class='table-wrap'><table><thead><tr><th>Kept</th><th>Reason</th></tr></thead><tbody><tr><td>The nine chart views: <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>PieChart</code>, <code>RadarChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code>, <code>CombinedChart</code></td><td>A chart written into a layout file is created by its fully qualified name at inflation time, so the name has to survive.</td></tr><tr><td><code>ChartAnimator</code> and <code>AnimatedViewPortJob</code></td><td>Kept as a safety net around the animation classes.</td></tr></tbody></table></div>
-<p>Beyond that, the default configuration already covers the pieces of Android that charts touch: view constructors that take a <code>Context</code> and an <code>AttributeSet</code>, classes named in layout resources, and the <code>CREATOR</code> field of <code>Parcelable</code> classes, which <code>Entry</code> implements.</p>
+<p>Renaming those members is now harmless, so nothing needs to keep them.</p>
+<h2 id="what-keeps-the-chart-views">What keeps the chart views<a class="anchor" href="#what-keeps-the-chart-views" aria-label="Link to this section">#</a></h2>
+<p>The library has no <code>@Keep</code> annotations and no dependency on <code>androidx.annotation</code>. The one thing that is looked up by name is a chart written into a layout file, which the layout inflater creates from its fully qualified class name. The build takes care of that: for every view class named in a layout, AAPT2 writes a keep rule for its name and constructors, and R8 applies it. A chart you only create in code is kept because your code references it.</p>
+<p>Beyond that, the default configuration already covers the pieces of Android that charts touch: view constructors that take a <code>Context</code> and an <code>AttributeSet</code>, and the <code>CREATOR</code> field of <code>Parcelable</code> classes, which <code>Entry</code> implements.</p>
 <h2 id="your-own-code">Your own code<a class="anchor" href="#your-own-code" aria-label="Link to this section">#</a></h2>
 <p>Most of what you write needs nothing.</p>
 <p><strong>Value formatters and fill formatters.</strong> <code>IValueFormatter</code>, <code>IAxisValueFormatter</code> and <code>IFillFormatter</code> are Kotlin functional interfaces. You implement one and assign it from your own code, so R8 sees the reference and keeps the class. It may rename it, which does not matter. Nothing to add.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>xAxis.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt; months[value.toInt()] }</code></pre>
 <p><strong>Markers.</strong> A <code>MarkerView</code> subclass is the same story as long as you create it in code. Its layout resource is kept because you name it through <code>R.layout</code>, and the views it looks up with <code>findViewById</code> keep their ids.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.marker = <span class="t">MyMarkerView</span>(context, <span class="t">R</span>.layout.marker_view)</code></pre>
-<p>If a marker or a chart subclass of yours appears <strong>only</strong> in a layout XML file and never in code, annotate the class so R8 keeps its name:</p>
-<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>@<span class="t">Keep</span>
-<span class="k">class</span> <span class="t">BrandedLineChart</span>(
-    context: <span class="t">Context</span>,
-    attrs: <span class="t">AttributeSet</span>? = <span class="k">null</span>,
-) : <span class="t">LineChart</span>(context, attrs)</code></pre>
+<p>A chart subclass of yours that appears only in a layout XML file needs nothing either, for the same reason as the library&#x27;s own charts: AAPT2 writes the keep rule for every view class named in a layout.</p>
 <p><strong>Entry payloads.</strong> An <code>Entry(x, y, data = order)</code> payload is your class, and the library only ever hands it back to you. It needs a keep rule only if something else reflects on it: a JSON library reading its field names, or <code>writeToParcel</code> on an entry, which requires the payload to be <code>Parcelable</code> and therefore to keep its <code>CREATOR</code>. Those rules belong to that library, not to this one.</p>
 <p><strong>Resource shrinking.</strong> <code>isShrinkResources = true</code> removes drawables that nothing references. Entry icons and marker layouts you load through <code>R.drawable</code> or <code>R.layout</code> are references, so they stay. Ones you resolve by name at runtime do not, and need <code>tools:keep</code> in a resources file.</p>
 <h2 id="readable-crash-reports">Readable crash reports<a class="anchor" href="#readable-crash-reports" aria-label="Link to this section">#</a></h2>

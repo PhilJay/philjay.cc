@@ -35,16 +35,16 @@ A read-only `val` gives you the getter only. `chart.getLowestVisibleX()` works, 
 A Kotlin function with default values compiles to **one** Java method carrying every parameter. The defaults live in a synthetic `$default` method that Java should not call. So a call that is short in Kotlin can be long in Java:
 
 ```java
-// Kotlin: chart.animateX(600)
-chart.animateX(600, Easing.INSTANCE.getLinear());
-
 // Kotlin: chart.highlightValue(3f, 0)
 chart.highlightValue(3f, 0, -1, -1, true);
+
+// Kotlin: chart.animateDataChange(newData, 500)
+chart.animateDataChange(newData, 500, Easing.INSTANCE.getLinear(), () -> Unit.INSTANCE);
 ```
 
-`-1` and `true` above are the defaults the Kotlin declaration uses, so passing them reproduces the short call exactly.
+`-1` and `true` above are the defaults the Kotlin declaration uses, so passing them reproduces the short call exactly. A parameter of a Kotlin function type, such as the `onEnd` of the animations, takes a Java lambda that returns `Unit.INSTANCE`.
 
-`@JvmOverloads` is the annotation that generates the shorter overloads as well, and in this library it is used for one purpose only: the constructors of the chart views. `Chart`, `BarLineChartBase`, `PieRadarChartBase`, `LineChart`, `BarChart`, `HorizontalBarChart`, `PieChart`, `ScatterChart`, `CandleStickChart`, `BubbleChart`, `RadarChart` and `CombinedChart` all carry it, which is what makes all three forms available:
+`@JvmOverloads` is the annotation that generates the shorter overloads as well. In this library it is on the constructors of the chart views and on the entry animations. `Chart`, `BarLineChartBase`, `PieRadarChartBase`, `LineChart`, `BarChart`, `HorizontalBarChart`, `PieChart`, `ScatterChart`, `CandleStickChart`, `BubbleChart`, `RadarChart` and `CombinedChart` carry it on their constructors, which is what makes all three forms available:
 
 ```java
 LineChart chart = new LineChart(context);
@@ -52,7 +52,9 @@ LineChart fromXml = new LineChart(context, attrs);
 LineChart styled = new LineChart(context, attrs, defStyle);
 ```
 
-That also means inflating a chart from a layout file works from Java exactly as it does from Kotlin. No other function in the library has `@JvmOverloads`, so assume you have to pass every parameter everywhere else.
+That also means inflating a chart from a layout file works from Java exactly as it does from Kotlin.
+
+`animateX`, `animateY`, `animateXY` and `spin` have it too, so `chart.animateX(600)` and `chart.animateX(600, Easing.INSTANCE.getEaseOutCubic())` both compile from Java, and the form with an `onEnd` lambda as well. No other function in the library has `@JvmOverloads`, so assume you have to pass every parameter everywhere else, including `animateValue` and `animateDataChange`.
 
 ## Functional interfaces
 
@@ -235,4 +237,4 @@ Changing the data later follows the Kotlin rule unchanged: replace the whole dat
 - [Getting started](/mpandroidchart/docs/getting-started/) for the Kotlin version of the same chart.
 - [Formatters](/mpandroidchart/docs/formatters/) for what each formatter interface receives.
 - [Migrating from 3.x](/mpandroidchart/docs/migration/) if your Java code was written against version 3.
-- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0-beta01/javadoc/) for the generated signatures of everything else.
+- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/) for the generated signatures of everything else.

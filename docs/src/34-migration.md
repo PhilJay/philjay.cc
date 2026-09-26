@@ -15,17 +15,18 @@ The work is in the call sites. Getters and setters became properties, arrays bec
 | | |
 | --- | --- |
 | `minSdk` | 23 |
-| `compileSdk` | 37 |
+| `compileSdk` | 35, or 37 with `MPChartCompose` |
 | Java | 17 |
+| Kotlin | 2.0 or newer |
 
 The artifact is split in two, so the old `com.github.PhilJay:MPAndroidChart:v3.1.0` becomes one or two new coordinates:
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0-beta01")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0")
 
     // only if you use Jetpack Compose
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0-beta01")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
 }
 ```
 
@@ -169,6 +170,8 @@ chart.axisLeft.valueFormatter = IAxisValueFormatter { value, _ ->
 chart.data?.setValueFormatter { value, _, _, _ -> value.toInt().toString() }
 ```
 
+The `ValueFormatter` base class that 3.1.0 added is gone. Implement `IAxisValueFormatter { value, axis -> }` for an axis and `IValueFormatter { value, entry, dataSetIndex, viewPortHandler -> }` for a data set instead.
+
 `IFillFormatter` works the same way. `OnChartValueSelectedListener` has two methods, so it is a normal interface, but the chart offers a lambda shortcut that replaces it:
 
 ```kotlin
@@ -208,6 +211,15 @@ The last two live on `PieChart`, `gridBackgroundPaint` on every chart that exten
 - `setMarkerView` is `marker`, and the marker picks up the chart when you assign it, so the old `marker.chartView = chart` line can go.
 - `saveToPath` is gone. `saveToGallery` writes through the MediaStore and needs no storage permission on Android 10 and newer. `toBitmap()` gives you the pixels if you want to write them yourself.
 - `DataSet.getValues()` and `setValues()` are the `entries` property.
+- `highLightColor` and `highLightAlpha` are `highlightColor` and `highlightAlpha`.
+- `getChartBitmap()` is `toBitmap()`.
+- `setOnTouchListener(ChartTouchListener)` is the `chartTouchListener` property. `setOnTouchListener` itself is the plain `View` function again.
+- `isUsingSliceColorAsValueLineColor` on a pie data set is `isUseValueColorForLineEnabled`.
+- `setDrawVerticalHighlightIndicator(false)` is `isVerticalHighlightIndicatorEnabled = false`, and the horizontal one follows the same pattern.
+- `GradientColor` of 3.1.0 is gone. Use `barDataSet.fills = listOf(Fill(startColor, endColor))` or `barDataSet.setGradientColor(startColor, endColor)`.
+- `PieChart.setCenterTextSizePixels` is gone. `centerTextSize` takes dp.
+- `PieData.dataSet` is nullable, so read it as `pieData.dataSet?.sliceSpace`.
+- `LargeValueFormatter.setSuffix(array)` is `suffix = listOf("", "k", "m", "b", "t")`.
 - Members deprecated in 3.x were removed outright: `setAxisMinValue` and `setAxisMaxValue` (use `axisMinimum` and `axisMaximum`), `YAxis.setStartAtZero(true)` (use `axisMinimum = 0f`), `LineDataSet.setCircleSize` (use `circleRadius`), `setDrawMarkerViews` (use `isDrawMarkersEnabled`) and `PieChart.setDrawSliceText` (use `isDrawEntryLabelsEnabled`).
 
 Highlighting one value of a stack needs a named argument, because the third positional parameter is `dataIndex`, the index of a data object inside a combined chart:
@@ -220,6 +232,18 @@ bars.highlightValue(x = 3f, dataSetIndex = 0, stackIndex = 1)
 ## Sizes in dp stay in dp
 
 3.x converted dp to pixels inside the setter, so `getLineWidth()` returned something other than what you had set and the number depended on the device. 4.0 stores dp and converts when drawing, so `lineWidth = 2.5f` reads back as `2.5f`. This matters wherever you read a size back, scale it, or save and restore it.
+
+A few sizes that 3.x took in pixels are dp now as well: `scatterShapeSize` and `scatterShapeHoleRadius` on a scatter data set, with a default shape size of 7.5 dp. Halve a 3.x pixel value to keep its look on an xhdpi screen, or divide by the density in general.
+
+## Behaviour that changed
+
+Some things draw or react differently without any change to your code:
+
+- Value labels are decided per data set from the entries in view, not from the entry count of the whole chart. A chart with several data sets that used to hide every label will draw them; set `chart.maxVisibleCount` lower if that is too dense.
+- The x axis keeps its labels at least one label width apart, so a chart with long labels draws fewer of them than `labelCount` asks for. Shorten the labels, rotate them with `xAxis.labelRotationAngle`, or override `minimumInterval` in your own `XAxisRenderer` to get the old density back.
+- A pie or radar chart rotates only when the drag starts on the drawn chart, not in the hole or in a corner.
+- `StackedValueFormatter` decides the top of a stack by position. A formatter of your own that needs the position can override `getStackedFormattedValue`; `getFormattedValue` still works and still sees only the value.
+- A new `animateX`, `animateY` or `animateXY` cancels the running animation of the same kind instead of running next to it.
 
 ## Compose
 
@@ -238,7 +262,7 @@ The [Compose chapter](/mpandroidchart/docs/compose/) covers state, selection, ma
 
 ## Checklist
 
-1. Raise `minSdk` to 23, `compileSdk` to 37 and the Java target to 17, then swap the dependency for `MPChartLib` and, if you need it, `MPChartCompose`.
+1. Raise `minSdk` to 23, `compileSdk` to 35 (37 with `MPChartCompose`), the Java target to 17 and Kotlin to 2.0 or newer, then swap the dependency for `MPChartLib` and, if you need it, `MPChartCompose`.
 2. Let the compiler find the getters and setters. Most become properties with the same stem, booleans become `isXxxEnabled`.
 3. Turn arrays into lists: colors, stack labels, formatter values, draw orders.
 4. Give entries a payload type where you used to cast `getData()`, and replace `BarEntry` float arrays with lists.
@@ -246,4 +270,5 @@ The [Compose chapter](/mpandroidchart/docs/compose/) covers state, selection, ma
 6. Turn formatter and listener anonymous classes into lambdas.
 7. Replace `setPaint(...)` with the named paint property.
 8. Fix the renames: `zoomX`, `legend.entries`, `labelCount` with `isForceLabelsEnabled`, `marker`, `entries` on the data set.
-9. Check every place you read a dp size back, now that it is no longer converted to pixels.
+9. Check every place you read a dp size back, now that it is no longer converted to pixels, and halve scatter shape sizes.
+10. Replace `ValueFormatter` subclasses with `IAxisValueFormatter` or `IValueFormatter` lambdas, and `GradientColor` with `Fill`.

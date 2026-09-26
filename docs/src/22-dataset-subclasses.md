@@ -147,13 +147,13 @@ For fills, see [Setting colors](/mpandroidchart/docs/colors/). `setGradientColor
 val set = ScatterDataSet(entries, "DS 2")
 set.setScatterShape(ScatterChart.ScatterShape.CIRCLE)
 set.scatterShapeSize = 8f
-set.scatterShapeHoleRadius = 3f
+set.scatterShapeHoleRadius = 2f
 set.scatterShapeHoleColor = ColorTemplate.COLORFUL_COLORS[3]
 ```
 
 | Property | Meaning | Default |
 | --- | --- | --- |
-| `scatterShapeSize` | size of each shape; the built-in shape renderers read it as pixels | `15f` |
+| `scatterShapeSize` | size of each shape in dp | `7.5f` |
 | `shapeRenderer` | the object that draws the shape | `SquareShapeRenderer()` |
 | `scatterShapeHoleRadius` | radius of the hole in dp, 0 for none | `0f` |
 | `scatterShapeHoleColor` | hole color, `COLOR_NONE` leaves it transparent | `COLOR_NONE` |

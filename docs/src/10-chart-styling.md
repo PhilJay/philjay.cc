@@ -108,7 +108,7 @@ chart.centerTextRadiusPercent = 100f
 chart.setCenterTextOffset(0f, -20f)
 ```
 
-`centerText` is a `CharSequence`, so a `SpannableString` lets you style parts of it. It wraps inside a box whose width is `centerTextRadiusPercent` of the hole diameter, so lowering it makes the text wrap earlier and stay clear of the slices. The offset shifts the text away from the center in dp, positive to the right and downwards, which is what a half pie needs.
+`centerText` is a `CharSequence`, so a `SpannableString` lets you style parts of it. It wraps inside a box whose width is `centerTextRadiusPercent` of the hole diameter, so lowering it makes the text wrap earlier and stay clear of the slices. `centerTextSize` is in dp. The offset shifts the text away from the center in dp, positive to the right and downwards, which is what a half pie needs.
 
 ### Slice labels and shape
 
@@ -122,7 +122,7 @@ chart.isUsePercentValuesEnabled = true
 chart.isDrawRoundedSlicesEnabled = true
 ```
 
-The entry label is the `label` of each `PieEntry`. `isUsePercentValuesEnabled` hands the value formatter a share of the total instead of the raw value, so the labels read as percentages.
+The entry label is the `label` of each `PieEntry`. `isUsePercentValuesEnabled` hands the value formatter a share of the total instead of the raw value, so the labels read as percentages. The total is the sum of the absolute values, so a negative value gets a slice of its size and a negative percentage.
 
 Rounded slices need the hole drawn and `isDrawSlicesUnderHoleEnabled` off. While they are on, a highlighted slice is not redrawn at all, so it gets neither the outward shift nor the highlight color.
 
@@ -196,7 +196,7 @@ val set = ScatterDataSet(entries, "Batch A").apply {
 }
 ```
 
-`ScatterShape` covers `SQUARE`, `CIRCLE`, `TRIANGLE`, `CROSS`, `X`, `CHEVRON_UP` and `CHEVRON_DOWN`. Squares and circles draw fastest, triangles slowest. For anything else, assign your own `set.shapeRenderer`, see [Custom data sets](/mpandroidchart/docs/custom-datasets/).
+Both sizes are in dp. `ScatterShape` covers `SQUARE`, `CIRCLE`, `TRIANGLE`, `CROSS`, `X`, `CHEVRON_UP` and `CHEVRON_DOWN`. Squares and circles draw fastest, triangles slowest. For anything else, assign your own `set.shapeRenderer`, see [Custom data sets](/mpandroidchart/docs/custom-datasets/).
 
 ## CandleStickChart
 

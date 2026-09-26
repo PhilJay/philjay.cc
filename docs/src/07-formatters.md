@@ -104,7 +104,7 @@ chart.axisLeft.valueFormatter = LargeValueFormatter()
 | 7800000 | `7.8m` |
 | 1000000000 | `1b` |
 
-`appendix` adds a unit after the number and `suffix` replaces the five strings. A scaled value of 100 or more is printed without decimals, below that with one, so 5821 reads `5.8k` and 101800 reads `102k`. It is built for numbers of 1 and above: anything under 0.05 comes out as `0`.
+`appendix` adds a unit after the number and `suffix` replaces the five strings with a list of your own, such as `suffix = listOf("", "K", "M", "B", "T")`. A scaled value of 100 or more is printed without decimals, below that with one, so 5821 reads `5.8k` and 101800 reads `102k`. It is built for numbers of 1 and above: anything under 0.05 comes out as `0`.
 
 ### PercentFormatter
 

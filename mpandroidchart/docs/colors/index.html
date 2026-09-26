@@ -815,7 +815,7 @@ set.colors = listOf(<span class="t">Color</span>.<span class="t">BLUE</span>, <s
 <p>The alpha variants ignore whatever alpha the color already carries and replace it with the value you pass, from 0 for invisible to 255 for opaque.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColor(<span class="t">ColorTemplate</span>.<span class="t">COLORFUL_COLORS</span>[<span class="n">0</span>], <span class="n">130</span>)   <span class="c">// half transparent</span>
 set.setColors(<span class="t">ColorTemplate</span>.<span class="t">MATERIAL_COLORS</span>, <span class="n">200</span>)</code></pre>
-<blockquote><code>resetColors()</code> leaves the set without any color. <code>color</code> and <code>getColor(index)</code> then throw <code>IllegalStateException</code>, and the chart fails as soon as it draws the set. Add at least one color back first.</blockquote>
+<blockquote><code>resetColors()</code> leaves the set without any color. <code>color</code> and <code>getColor(index)</code> then return black, so the set draws in black until you add a color back. An empty <code>valueTextColors</code> list falls back to black the same way, and a bar set with an empty <code>fills</code> list draws no fill.</blockquote>
 <h2 id="colors-from-resources">Colors from resources<a class="anchor" href="#colors-from-resources" aria-label="Link to this section">#</a></h2>
 <p>Color resource ids are not colors, they have to be resolved first. Two ways:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>set.setColors(listOf(<span class="t">R</span>.color.red1, <span class="t">R</span>.color.red2, <span class="t">R</span>.color.red3), context)

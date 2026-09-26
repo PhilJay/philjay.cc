@@ -840,7 +840,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
         )
     }
 }</code></pre>
-<p>The lambda receives the highlighted entry and its <code>Highlight</code> and is recomposed when the selection changes. Behind it sits <code>ComposeMarker</code>, which keeps an invisible <code>ComposeView</code> as a child of the chart so the content takes part in composition, and the chart draws that view at the highlighted position. It centers the content above the entry with a 12 dp gap, so no offset is needed for the usual pill; <code>setOffset(x, y)</code> shifts it from there.</p>
+<p>The lambda receives the highlighted entry and its <code>Highlight</code> and is recomposed when the selection changes. Behind it sits <code>ComposeMarker</code>, which keeps an invisible <code>ComposeView</code> as a child of the chart so the content takes part in composition, and the chart draws that view at the highlighted position. It centers the content above the entry with a 12 dp gap, so no offset is needed for the usual pill; <code>setOffset(x, y)</code> shifts it from there, in dp.</p>
 <p>Because the content composes on the next frame, a newly selected entry shows its marker one frame later. If you create a <code>ComposeMarker</code> yourself instead of using the <code>marker</code> parameter, call <code>detach()</code> when the chart should drop it.</p>
 <h2 id="a-markerview-from-a-layout">A MarkerView from a layout<a class="anchor" href="#a-markerview-from-a-layout" aria-label="Link to this section">#</a></h2>
 <p><code>MarkerView</code> inflates a layout resource and draws it on the chart surface. The layout is an ordinary Android layout, sized with <code>wrap_content</code>:</p>

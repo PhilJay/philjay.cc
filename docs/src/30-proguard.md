@@ -1,6 +1,6 @@
 # R8 and ProGuard
 
-What a minified release build needs for the chart library, which is almost nothing, and the few rules your own formatters and markers may still want.
+What a minified release build needs for the chart library, which is nothing, and the few cases in your own code that may still want a rule.
 
 ## The short answer
 
@@ -21,7 +21,7 @@ android {
 }
 ```
 
-The library keeps what it needs through `@Keep` annotations in its own source, and R8 honours those with the default configuration file. The Compose module needs nothing extra either; the Compose artifacts ship their own rules.
+The library does no reflection: nothing in it looks up a class, a field or a method by name, so R8 is free to shrink, rename and optimize all of it. The Compose module needs nothing extra either; the Compose artifacts ship their own rules.
 
 > The library does not ship consumer rules. `MPChartLib` sets no `consumerProguardFiles`, so nothing is merged into your configuration behind your back. What you write is what applies.
 
@@ -43,18 +43,13 @@ Version 4 does not do that any more. Every animation in the library now drives a
 - `AnimatedViewPortJob`, behind the animated zoom and move calls, drives its `phase` the same way.
 - `PieRadarChartBase.spin()` animates `rotationAngle` the same way.
 
-Renaming those members is now harmless, so no keep rule protects them.
+Renaming those members is now harmless, so nothing needs to keep them.
 
-## What the library keeps for itself
+## What keeps the chart views
 
-Two kinds of `@Keep` are left in the source, and both are about class names rather than member names.
+The library has no `@Keep` annotations and no dependency on `androidx.annotation`. The one thing that is looked up by name is a chart written into a layout file, which the layout inflater creates from its fully qualified class name. The build takes care of that: for every view class named in a layout, AAPT2 writes a keep rule for its name and constructors, and R8 applies it. A chart you only create in code is kept because your code references it.
 
-| Kept | Reason |
-| --- | --- |
-| The nine chart views: `LineChart`, `BarChart`, `HorizontalBarChart`, `PieChart`, `RadarChart`, `ScatterChart`, `CandleStickChart`, `BubbleChart`, `CombinedChart` | A chart written into a layout file is created by its fully qualified name at inflation time, so the name has to survive. |
-| `ChartAnimator` and `AnimatedViewPortJob` | Kept as a safety net around the animation classes. |
-
-Beyond that, the default configuration already covers the pieces of Android that charts touch: view constructors that take a `Context` and an `AttributeSet`, classes named in layout resources, and the `CREATOR` field of `Parcelable` classes, which `Entry` implements.
+Beyond that, the default configuration already covers the pieces of Android that charts touch: view constructors that take a `Context` and an `AttributeSet`, and the `CREATOR` field of `Parcelable` classes, which `Entry` implements.
 
 ## Your own code
 
@@ -72,15 +67,7 @@ xAxis.valueFormatter = IAxisValueFormatter { value, _ -> months[value.toInt()] }
 chart.marker = MyMarkerView(context, R.layout.marker_view)
 ```
 
-If a marker or a chart subclass of yours appears **only** in a layout XML file and never in code, annotate the class so R8 keeps its name:
-
-```kotlin
-@Keep
-class BrandedLineChart(
-    context: Context,
-    attrs: AttributeSet? = null,
-) : LineChart(context, attrs)
-```
+A chart subclass of yours that appears only in a layout XML file needs nothing either, for the same reason as the library's own charts: AAPT2 writes the keep rule for every view class named in a layout.
 
 **Entry payloads.** An `Entry(x, y, data = order)` payload is your class, and the library only ever hands it back to you. It needs a keep rule only if something else reflects on it: a JSON library reading its field names, or `writeToParcel` on an entry, which requires the payload to be `Parcelable` and therefore to keep its `CREATOR`. Those rules belong to that library, not to this one.
 

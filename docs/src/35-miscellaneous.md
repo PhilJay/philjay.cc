@@ -40,7 +40,7 @@ Utils.formatNumber(1234.5f, 1, separateThousands = true)  // "1.234,5"
 
 ## Saving a chart as an image
 
-`toBitmap()` draws the chart into a new bitmap of the view size, over the view background or white when there is none. It always holds the latest drawing state.
+`toBitmap()` draws the chart into a new bitmap of the view size, over the view background or white when there is none. It always holds the latest drawing state. Before the chart has a size it returns a 1 by 1 bitmap, and `saveToGallery` returns false.
 
 ```kotlin
 val bitmap = chart.toBitmap()
@@ -76,7 +76,7 @@ A handful of members on `Chart` that are easy to overlook.
 
 | Member | Meaning |
 | --- | --- |
-| `clear()` | Sets the data to null, clears the highlight and redraws, which shows the no data text. |
+| `clear()` | Sets the data to null, clears the highlight and redraws, which shows the empty state. |
 | `clearValues()` | Removes all data sets but keeps the data object, then redraws. |
 | `isEmpty` | True when there is no data or the data holds no entries. |
 | `data` | The data object you assigned. |
@@ -153,10 +153,10 @@ There are few of them, and each one points at a specific mistake.
 | `IllegalStateException` | `BarData.groupBars` | The data holds fewer than two bar data sets, so there is nothing to group. |
 | `ParcelFormatException` | `Entry.writeToParcel` | The entry carries a payload that does not implement `Parcelable`. |
 | `IllegalArgumentException` | `ObjectPool.recycle` | The instance is already stored in this pool or in another one. |
-| `IllegalStateException` | `BaseDataSet.color` and `getColor` | The set has no colors, usually after `resetColors()`. |
+| `IllegalArgumentException` | `Chart.animateValue` | The entry is not part of the chart data, or it is a stacked `BarEntry` or a `CandleEntry`. Animate those with `animateDataChange`. |
 | `NumberFormatException`, `IndexOutOfBoundsException` | `FileUtils.loadEntriesFromFile` and `loadEntriesFromAssets` | A line is malformed. Read errors are only logged, parse errors are not. |
 
-In Compose, `ChartState.attach` throws `IllegalStateException` when you pass one state to a second chart. Call `rememberChartState()` once per chart.
+Bad input is not on the list. NaN and infinite values, empty color lists, highlights that point past the data and pie data without a set are all handled without an exception.
 
 ## Logging
 
@@ -207,4 +207,4 @@ Finally, `chart.isHardwareAccelerationEnabled` switches the view between a hardw
 - [Formatters](/mpandroidchart/docs/formatters/) for turning values into labels.
 - [Performance with large data](/mpandroidchart/docs/performance/) for the settings that decide how fast a chart draws.
 - [Troubleshooting](/mpandroidchart/docs/troubleshooting/) when something on screen is not what you expected.
-- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0-beta01/javadoc/) for everything else.
+- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/) for everything else.

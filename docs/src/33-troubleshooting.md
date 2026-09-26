@@ -4,15 +4,13 @@ Concrete symptoms you may hit with a chart, what causes each one in the library,
 
 ## Nothing is drawn
 
-### The chart shows "No chart data available."
+### The chart shows "No data yet"
 
-That text only appears while `chart.data` is null. `Chart.onDraw` draws `noDataText` at the center of the view and returns before anything else. So the chart never received data, or something called `chart.clear()`, which sets the data to null, drops the highlight and redraws. `noDataText`, `noDataTextColor`, `noDataTextTypeface` and `noDataTextAlignment` style that message, and an empty string draws nothing.
+That is the empty state. It appears while `chart.data` is null or holds no entries (`chart.isEmpty`), and `Chart.onDraw` draws it instead of anything else. So the chart never received data, the data sets you gave it are empty, or something called `chart.clear()`. [The empty state](/mpandroidchart/docs/general-styling/#the-empty-state) shows how to change its text, icon and colors, and how `isLoading` turns it into a loading state.
 
-### The chart is blank but the no data text is gone
+### The chart is blank
 
-You assigned a data object that holds no entries, or sets that are empty. "Data is set" and "data has entries" are two different things, and only the first switches the message off. `chart.isEmpty` covers both.
-
-An empty set is worse than no data. `DataSet.calcMinMax` leaves `yMin` at `Float.MAX_VALUE` and `yMax` at `-Float.MAX_VALUE` when there are no entries, so the axis range computed from it is infinite, `AxisRenderer.computeAxisValues` bails out with zero label entries, and you get a view with no labels, no grid and no data. Call `chart.clear()` instead and let the no data text do its job.
+An empty `noDataText` together with `isNoDataIconEnabled = false` draws nothing at all while there is no data. Otherwise a blank chart has data whose values are all outside the visible range; check the axis minimum and maximum and the viewport.
 
 ### The chart is a thin strip
 
@@ -56,7 +54,11 @@ set.addEntryOrdered(Entry(x, y))
 
 ### Value labels disappear as the data grows
 
-`DataRenderer.isDrawingValuesAllowed` draws labels only while `data.entryCount` is below `chart.maxVisibleCount` times the current x zoom. The default `maxVisibleCount` is 100, so labels stop at 100 entries and come back as you zoom in. Raise it if you really want them.
+On the charts with axes a data set draws its labels only while at most `chart.maxVisibleCount` of its entries are in the visible x range. The default is 100, so the labels of a set go away once more than 100 of its entries are on screen and come back as you zoom in. Raise it if you really want them.
+
+### NaN or infinite values
+
+A `Float.NaN` or infinite y value does not hang the chart or blank it. Infinite values are left out of the axis ranges, like NaN, and a line draws a gap where such a value sits instead of dropping the whole line. An entry with a NaN x is never found by a lookup. If a series has gaps you did not expect, look for values like these in your data.
 
 ## Changes to the data do not show
 
@@ -190,7 +192,11 @@ Unsorted entries break this, because the closest-entry step is the same binary s
 
 ### A drag pans instead of moving the highlight
 
-`isHighlightPerDragEnabled` is true by default, but the touch listener only takes that branch when the chart cannot pan at all: `chart.isFullyZoomedOut` must be true and `hasNoDragOffset` must be true. Calling `setVisibleXRangeMaximum` sets a minimum x scale above 1, and `isFullyZoomedOutX` is false whenever the minimum scale is above 1. So a chart with a limited visible range always pans and never highlights by drag.
+`isHighlightPerDragEnabled` is true by default, but the touch listener only takes that branch when the chart cannot pan: dragging is off, or `chart.isFullyZoomedOut` and `hasNoDragOffset` are both true. Calling `setVisibleXRangeMaximum` sets a minimum x scale above 1, and `isFullyZoomedOutX` is false whenever the minimum scale is above 1. So a chart with a limited visible range pans and never highlights by drag, unless you set `isDragEnabled = false`.
+
+### A drag does not move the highlight at all
+
+A highlight drag starts only once the finger has moved past the system touch slop, and only for a gesture that runs mostly along the x axis, up and down on a `HorizontalBarChart`. A swipe across that axis is left to a scrolling parent, so a list scrolls instead of changing the selection.
 
 ### A stacked bar selects the wrong part
 
@@ -214,17 +220,18 @@ A `MarkerView` has an offset of (0, 0), which puts its top left corner on the va
 
 A Compose marker appears one frame after the highlight. `ComposeMarker.draw` skips the frame while the content for a newly highlighted entry has not composed yet; the `SideEffect` in its `ComposeView` then invalidates the chart and the next frame draws it. More in [markers](/mpandroidchart/docs/markers/).
 
+A highlight that points past the entries, for example one kept from data that had more entries, draws no indicator and no marker. Setting new data keeps the current highlight, so clear or set it when the data changes meaning.
+
 ## The release build differs from the debug build
 
-Start by ruling R8 out: build the release variant once with `isMinifyEnabled = false`. If the problem stays, it is not minification. The library needs no keep rules of its own. Version 4 drives every animation through a `ValueAnimator` and an update listener, so no member is ever looked up by name, and the chart views carry `@Keep` so a chart named in a layout file survives. The causes that are left are in your code: a marker or chart subclass that appears only in XML, a drawable resolved by name that resource shrinking removed, or another library reflecting on your entry payload. [R8 and ProGuard](/mpandroidchart/docs/proguard/) works through each of them.
+Start by ruling R8 out: build the release variant once with `isMinifyEnabled = false`. If the problem stays, it is not minification. The library needs no keep rules of its own. It does no reflection: every animation runs through a `ValueAnimator` and an update listener, and a chart named in a layout file is kept by the rules AAPT2 writes for every view in a layout. The causes that are left are in your code: a drawable resolved by name that resource shrinking removed, or another library reflecting on your entry payload. [R8 and ProGuard](/mpandroidchart/docs/proguard/) works through each of them.
 
 ## Exceptions the library throws
 
 They are few, and each points at one mistake:
 
 - `IllegalStateException` from `groupBars`: no data on the chart yet, or fewer than two bar data sets to group.
-- `IllegalStateException` from `ChartState.attach`: one `ChartState` given to a second chart. Call `rememberChartState()` once per chart.
-- `IllegalStateException` from `color` or `getColor`: the set's `colors` list is empty.
+- `IllegalArgumentException` from `animateValue`: the entry is not in the chart data, or it is a stacked bar or a candle. Use `animateDataChange` for those.
 - `IllegalArgumentException` from `ObjectPool.recycle`: the same pooled instance recycled twice.
 - `ParcelFormatException` from `Entry.writeToParcel`: the entry payload is not `Parcelable`.
 

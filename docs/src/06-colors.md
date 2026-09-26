@@ -49,7 +49,7 @@ set.setColor(ColorTemplate.COLORFUL_COLORS[0], 130)   // half transparent
 set.setColors(ColorTemplate.MATERIAL_COLORS, 200)
 ```
 
-> `resetColors()` leaves the set without any color. `color` and `getColor(index)` then throw `IllegalStateException`, and the chart fails as soon as it draws the set. Add at least one color back first.
+> `resetColors()` leaves the set without any color. `color` and `getColor(index)` then return black, so the set draws in black until you add a color back. An empty `valueTextColors` list falls back to black the same way, and a bar set with an empty `fills` list draws no fill.
 
 ## Colors from resources
 
