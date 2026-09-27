@@ -170,13 +170,19 @@ A hardware layer helps a chart that animates or scrolls over a busy background. 
 
 ## Saving the chart as an image
 
-`toBitmap()` draws the chart into a new `ARGB_8888` bitmap the size of the view, over the view background or over white when there is none. Before the first layout the view has no size, and you get a 1 by 1 bitmap.
+`toBitmap()` draws the chart into a new `ARGB_8888` bitmap the size of the view, over the view background or over white when there is none.
 
 ```kotlin
 val bitmap = chart.toBitmap()
 ```
 
-`saveToGallery()` writes that bitmap into the device gallery through the `MediaStore` and returns whether it worked.
+Since 4.0.1 you can pass a size in pixels. A chart on screen is laid out at that size for the drawing and put back afterwards. A chart that was never laid out, for example one built only in code for an export, can be drawn this way too. Without a size, such a chart gives a 1 by 1 bitmap.
+
+```kotlin
+val bitmap = chart.toBitmap(1200, 800)
+```
+
+`saveToGallery()` writes a bitmap of the view size into the device gallery through the `MediaStore` and returns whether it worked.
 
 ```kotlin
 val saved = chart.saveToGallery(

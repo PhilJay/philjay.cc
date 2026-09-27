@@ -96,6 +96,12 @@ chart.transparentCircleAlpha = 110
 
 Both radii are percentages of the pie radius, not pixels. The translucent ring sits around the hole and is only drawn while its radius is larger than the hole radius, so `transparentCircleRadius = 0f` removes it. `isDrawSlicesUnderHoleEnabled` lets the slices continue underneath the hole instead of stopping at its edge.
 
+The ring is one closed circle by default, so it also covers the space between slices. Since 4.0.1, `isTransparentCircleClippedToSlices` draws it only over the slices and leaves that space open.
+
+```kotlin
+chart.isTransparentCircleClippedToSlices = true
+```
+
 ### The center text
 
 ```kotlin
@@ -124,7 +130,15 @@ chart.isDrawRoundedSlicesEnabled = true
 
 The entry label is the `label` of each `PieEntry`. `isUsePercentValuesEnabled` hands the value formatter a share of the total instead of the raw value, so the labels read as percentages. The total is the sum of the absolute values, so a negative value gets a slice of its size and a negative percentage.
 
+Since 4.0.1 a label or value that contains a line break (`\n`) is drawn as several lines, centered on the same spot. The legend shows the line break as a space.
+
 Rounded slices need the hole drawn and `isDrawSlicesUnderHoleEnabled` off. While they are on, a highlighted slice is not redrawn at all, so it gets neither the outward shift nor the highlight color.
+
+Each rounded slice bulges out at its end and is hollowed at its start. Since 4.0.1, `isRoundedSlicesReversed` turns that around. It is off by default.
+
+```kotlin
+chart.isRoundedSlicesReversed = true
+```
 
 ### Angles and rotation
 

@@ -40,13 +40,19 @@ Utils.formatNumber(1234.5f, 1, separateThousands = true)  // "1.234,5"
 
 ## Saving a chart as an image
 
-`toBitmap()` draws the chart into a new bitmap of the view size, over the view background or white when there is none. It always holds the latest drawing state. Before the chart has a size it returns a 1 by 1 bitmap, and `saveToGallery` returns false.
+`toBitmap()` draws the chart into a new bitmap of the view size, over the view background or white when there is none. It always holds the latest drawing state. Before the chart has a size, `toBitmap()` without a size returns a 1 by 1 bitmap, and `saveToGallery` returns false.
 
 ```kotlin
 val bitmap = chart.toBitmap()
 ```
 
-`saveToGallery` writes that bitmap to the device gallery through the `MediaStore` and returns whether it worked:
+Since 4.0.1 `toBitmap(width, height)` draws at any size in pixels, also a chart that was never laid out, such as one built only in code for an export. A chart on screen is laid out at that size for the drawing and put back afterwards.
+
+```kotlin
+val large = chart.toBitmap(1200, 800)
+```
+
+`saveToGallery` writes a bitmap of the view size to the device gallery through the `MediaStore` and returns whether it worked:
 
 ```kotlin
 val saved = chart.saveToGallery(
@@ -207,4 +213,4 @@ Finally, `chart.isHardwareAccelerationEnabled` switches the view between a hardw
 - [Formatters](/mpandroidchart/docs/formatters/) for turning values into labels.
 - [Performance with large data](/mpandroidchart/docs/performance/) for the settings that decide how fast a chart draws.
 - [Troubleshooting](/mpandroidchart/docs/troubleshooting/) when something on screen is not what you expected.
-- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.0/javadoc/) for everything else.
+- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.1/javadoc/) for everything else.

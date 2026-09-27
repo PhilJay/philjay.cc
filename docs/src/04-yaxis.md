@@ -91,6 +91,16 @@ A minimum width is the fix for a chart that jumps sideways while its data change
 
 In a `HorizontalBarChart` the y axes run horizontally, the left one along the top edge and the right one along the bottom. The chart reserves height for them there, the label height plus `yOffset` on both sides, so `minWidth` and `maxWidth` have no effect in that layout.
 
+## Rotating labels
+
+Since 4.0.1 the y axis labels can be rotated, like the x axis labels.
+
+```kotlin
+chart.axisLeft.labelRotationAngle = -30f
+```
+
+The angle is in degrees and positive values turn clockwise. The default is `0`. The chart reserves the width of the rotated labels, within `minWidth` and `maxWidth`. Horizontal bar and radar charts do not use this setting.
+
 ## Padding above and below the data
 
 `spaceTop` and `spaceBottom` are percentages of the data range, not values. Both default to 10, which is the small gap you see above the highest point of a fresh chart.

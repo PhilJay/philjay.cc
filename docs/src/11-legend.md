@@ -15,7 +15,7 @@ The legend is recomputed from the data every time the chart data changes, so you
 - A data set with one color gives one entry carrying the data set label.
 - A data set with several colors gives one entry per color, capped at the number of entries. Only the last of them carries the label, the earlier ones have no label and are stacked next to it as a row of forms.
 - A stacked `BarDataSet` gives one entry per stack color, labelled from `set.stackLabels`, followed by a label only entry for the data set itself.
-- A `PieDataSet` gives one entry per slice, labelled from each `PieEntry`, followed by a label only entry for the data set when it has a label.
+- A `PieDataSet` gives one entry per slice, labelled from each `PieEntry`, followed by a label only entry for the data set when it has a label. A line break in a slice label shows as a space.
 - A `CandleDataSet` with a decreasing color gives two entries, one in the decreasing and one in the increasing color, sharing the data set label.
 
 An entry with no label draws only its form and sits next to the following entry, separated by `stackSpace`. That is how a multi color data set ends up as several forms in front of one label.

@@ -966,6 +966,7 @@ listener.dragTriggerDist = <span class="n">12f</span></code></pre>
 <p>They are few, and each points at one mistake:</p>
 <ul><li><code>IllegalStateException</code> from <code>groupBars</code>: no data on the chart yet, or fewer than two bar data sets to group.</li><li><code>IllegalArgumentException</code> from <code>animateValue</code>: the entry is not in the chart data, or it is a stacked bar or a candle. Use <code>animateDataChange</code> for those.</li><li><code>IllegalArgumentException</code> from <code>ObjectPool.recycle</code>: the same pooled instance recycled twice.</li><li><code>ParcelFormatException</code> from <code>Entry.writeToParcel</code>: the entry payload is not <code>Parcelable</code>.</li></ul>
 <p><a href="/mpandroidchart/docs/miscellaneous/">Miscellaneous</a> has the full table with the throwing class for each.</p>
+<p>Before 4.0.1, building a chart on a thread without a <code>Looper</code>, for example with an asynchronous layout inflater, crashed. Since 4.0.1 that works, because the touch handling is set up on the first touch.</p>
 <h2 id="getting-a-useful-report-out-of-the-library">Getting a useful report out of the library<a class="anchor" href="#getting-a-useful-report-out-of-the-library" aria-label="Link to this section">#</a></h2>
 <p>Every chart can narrate what it does under the logcat tag <code>MPAndroidChart</code>:</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isLogEnabled = <span class="k">true</span></code></pre>

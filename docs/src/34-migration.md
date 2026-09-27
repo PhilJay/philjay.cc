@@ -23,10 +23,10 @@ The artifact is split in two, so the old `com.github.PhilJay:MPAndroidChart:v3.1
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.1")
 
     // only if you use Jetpack Compose
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.1")
 }
 ```
 

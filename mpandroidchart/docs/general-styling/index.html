@@ -931,9 +931,11 @@ chart.isHardwareAccelerationEnabled = <span class="k">false</span>   <span class
 <p>A hardware layer helps a chart that animates or scrolls over a busy background. A software layer is the fallback when a large data set with a lot of transparency draws wrong or slowly on the GPU.</p>
 <blockquote>The property reads back true only while a hardware layer is set. A fresh chart has no layer at all, so it reads false even though drawing is hardware accelerated, and setting it to false forces a software layer rather than removing the layer.</blockquote>
 <h2 id="saving-the-chart-as-an-image">Saving the chart as an image<a class="anchor" href="#saving-the-chart-as-an-image" aria-label="Link to this section">#</a></h2>
-<p><code>toBitmap()</code> draws the chart into a new <code>ARGB_8888</code> bitmap the size of the view, over the view background or over white when there is none. Before the first layout the view has no size, and you get a 1 by 1 bitmap.</p>
+<p><code>toBitmap()</code> draws the chart into a new <code>ARGB_8888</code> bitmap the size of the view, over the view background or over white when there is none.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bitmap = chart.toBitmap()</code></pre>
-<p><code>saveToGallery()</code> writes that bitmap into the device gallery through the <code>MediaStore</code> and returns whether it worked.</p>
+<p>Since 4.0.1 you can pass a size in pixels. A chart on screen is laid out at that size for the drawing and put back afterwards. A chart that was never laid out, for example one built only in code for an export, can be drawn this way too. Without a size, such a chart gives a 1 by 1 bitmap.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> bitmap = chart.toBitmap(<span class="n">1200</span>, <span class="n">800</span>)</code></pre>
+<p><code>saveToGallery()</code> writes a bitmap of the view size into the device gallery through the <code>MediaStore</code> and returns whether it worked.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> saved = chart.saveToGallery(
     fileName = <span class="s">&quot;sales_${System.currentTimeMillis()}&quot;</span>,
     subFolderPath = <span class="s">&quot;MPAndroidChart&quot;</span>,

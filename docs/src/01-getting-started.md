@@ -36,10 +36,10 @@ Then add the dependency in your module's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.1")
 
     // only if you use Jetpack Compose
-    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.0")
+    implementation("com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.1")
 }
 ```
 

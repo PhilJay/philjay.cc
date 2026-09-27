@@ -893,6 +893,8 @@ chart.transparentCircleRadius = <span class="n">61f</span>
 chart.transparentCircleColor = <span class="t">Color</span>.<span class="t">WHITE</span>
 chart.transparentCircleAlpha = <span class="n">110</span></code></pre>
 <p>Both radii are percentages of the pie radius, not pixels. The translucent ring sits around the hole and is only drawn while its radius is larger than the hole radius, so <code>transparentCircleRadius = 0f</code> removes it. <code>isDrawSlicesUnderHoleEnabled</code> lets the slices continue underneath the hole instead of stopping at its edge.</p>
+<p>The ring is one closed circle by default, so it also covers the space between slices. Since 4.0.1, <code>isTransparentCircleClippedToSlices</code> draws it only over the slices and leaves that space open.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isTransparentCircleClippedToSlices = <span class="k">true</span></code></pre>
 <h3 id="the-center-text">The center text<a class="anchor" href="#the-center-text" aria-label="Link to this section">#</a></h3>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isDrawCenterTextEnabled = <span class="k">true</span>
 chart.centerText = <span class="s">&quot;Total\n1,204&quot;</span>
@@ -911,7 +913,10 @@ chart.entryLabelTypeface = typeface
 chart.isUsePercentValuesEnabled = <span class="k">true</span>
 chart.isDrawRoundedSlicesEnabled = <span class="k">true</span></code></pre>
 <p>The entry label is the <code>label</code> of each <code>PieEntry</code>. <code>isUsePercentValuesEnabled</code> hands the value formatter a share of the total instead of the raw value, so the labels read as percentages. The total is the sum of the absolute values, so a negative value gets a slice of its size and a negative percentage.</p>
+<p>Since 4.0.1 a label or value that contains a line break (<code>\n</code>) is drawn as several lines, centered on the same spot. The legend shows the line break as a space.</p>
 <p>Rounded slices need the hole drawn and <code>isDrawSlicesUnderHoleEnabled</code> off. While they are on, a highlighted slice is not redrawn at all, so it gets neither the outward shift nor the highlight color.</p>
+<p>Each rounded slice bulges out at its end and is hollowed at its start. Since 4.0.1, <code>isRoundedSlicesReversed</code> turns that around. It is off by default.</p>
+<pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.isRoundedSlicesReversed = <span class="k">true</span></code></pre>
 <h3 id="angles-and-rotation">Angles and rotation<a class="anchor" href="#angles-and-rotation" aria-label="Link to this section">#</a></h3>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.maxAngle = <span class="n">180f</span>
 chart.rotationAngle = <span class="n">180f</span>

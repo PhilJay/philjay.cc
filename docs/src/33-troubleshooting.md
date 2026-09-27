@@ -237,6 +237,8 @@ They are few, and each points at one mistake:
 
 [Miscellaneous](/mpandroidchart/docs/miscellaneous/) has the full table with the throwing class for each.
 
+Before 4.0.1, building a chart on a thread without a `Looper`, for example with an asynchronous layout inflater, crashed. Since 4.0.1 that works, because the touch handling is set up on the first touch.
+
 ## Getting a useful report out of the library
 
 Every chart can narrate what it does under the logcat tag `MPAndroidChart`:
