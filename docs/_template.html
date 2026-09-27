@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add('js')</script>
   <title>{{title}} · MPAndroidChart</title>
   <meta name="description" content="{{description}}">
   <link rel="canonical" href="{{canonical}}">
@@ -40,6 +41,9 @@
         <kbd>/</kbd>
       </form>
       <div class="search-results" id="search-results" hidden></div>
+      <button class="docs-nav-toggle" type="button" aria-expanded="false" aria-controls="docs-nav-list">
+        <span class="docs-nav-toggle-label">{{navlabel}}</span><span class="docs-nav-toggle-icon" aria-hidden="true"></span>
+      </button>
       <div id="docs-nav-list">
         <span class="docs-nav-title">Guides</span>
         {{nav}}
@@ -70,6 +74,12 @@
   var input = document.getElementById('docs-search');
   var results = document.getElementById('search-results');
   var navList = document.getElementById('docs-nav-list');
+  var nav = document.querySelector('.docs-nav');
+  var toggle = document.querySelector('.docs-nav-toggle');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
   var records = null;
   var active = -1;
 

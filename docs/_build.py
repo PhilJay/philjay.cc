@@ -310,6 +310,7 @@ def main() -> int:
                 .replace("{{pager}}", f'<div class="pager">{"".join(links)}</div>')
                 .replace("{{canonical}}", f'https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/')
                 .replace("{{root}}", "../../../")
+                .replace("{{navlabel}}", f'<span class="docs-nav-toggle-count">Chapter {index + 1} of {len(chapters)}</span>{html.escape(chapter["title"])}')
                 .replace("{{chapter}}", f'{html.escape(section_of[chapter["slug"]])} <span>Chapter {index + 1} of {len(chapters)}</span>'))
         folder = os.path.join(OUT, chapter["slug"])
         os.makedirs(folder, exist_ok=True)
@@ -335,6 +336,7 @@ def main() -> int:
                 .replace("{{pager}}", "")
                 .replace("{{canonical}}", "https://philjay.cc/mpandroidchart/docs/")
                 .replace("{{root}}", "../../")
+                .replace("{{navlabel}}", f'<span class="docs-nav-toggle-count">Guides</span>All {len(chapters)} chapters')
                 .replace("{{chapter}}", f'Documentation <span>{len(chapters)} chapters in {len(sections)} parts</span>'))
     open(os.path.join(OUT, "index.html"), "w").write(_inline_css.fill(overview))
 

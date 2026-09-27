@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add('js')</script>
   <title>Dynamic and realtime data · MPAndroidChart</title>
   <meta name="description" content="How to add and remove entries and data sets while a chart is on screen, what to call afterwards, and how to keep a fast feed drawing smoothly.">
   <link rel="canonical" href="https://philjay.cc/mpandroidchart/docs/dynamic-data/">
@@ -767,6 +768,53 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
   .docs-main pre .copy { opacity: 1; }
   .docs-main h2 .anchor, .docs-main h3 .anchor { opacity: 0.5; }
 }
+
+/* chapter list toggle on narrow screens */
+
+.docs-nav-toggle { display: none; }
+
+@media (max-width: 980px) {
+  .docs-nav { padding-right: 0; padding-bottom: 16px; }
+  .docs-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+  }
+  .docs-nav-toggle-label { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .docs-nav-toggle-count {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .docs-nav-toggle-icon {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--text-soft);
+    border-bottom: 2px solid var(--text-soft);
+    transform: translateY(-3px) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+  .docs-nav.open .docs-nav-toggle-icon { transform: translateY(3px) rotate(225deg); }
+  .js .docs-nav:not(.open) #docs-nav-list { display: none; }
+  .js .docs-nav.open #docs-nav-list { margin-top: 20px; }
+  .js .chapter-mark span { display: none; }
+}
 </style>
   <script src="/consent.js" defer></script>
 </head>
@@ -789,6 +837,9 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
         <kbd>/</kbd>
       </form>
       <div class="search-results" id="search-results" hidden></div>
+      <button class="docs-nav-toggle" type="button" aria-expanded="false" aria-controls="docs-nav-list">
+        <span class="docs-nav-toggle-label"><span class="docs-nav-toggle-count">Chapter 15 of 35</span>Dynamic and realtime data</span><span class="docs-nav-toggle-icon" aria-hidden="true"></span>
+      </button>
       <div id="docs-nav-list">
         <span class="docs-nav-title">Guides</span>
         <div class="nav-section"><span class="nav-section-title">Basics</span><ol><li><a href="/mpandroidchart/docs/getting-started/" data-slug="getting-started"><span class="num">1</span>Getting started</a></li></ol></div><div class="nav-section"><span class="nav-section-title">The axes</span><ol><li><a href="/mpandroidchart/docs/axis/" data-slug="axis"><span class="num">2</span>The axis</a></li><li><a href="/mpandroidchart/docs/xaxis/" data-slug="xaxis"><span class="num">3</span>The x axis</a></li><li><a href="/mpandroidchart/docs/yaxis/" data-slug="yaxis"><span class="num">4</span>The y axis</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Data</span><ol><li><a href="/mpandroidchart/docs/setting-data/" data-slug="setting-data"><span class="num">5</span>Setting data</a></li><li><a href="/mpandroidchart/docs/colors/" data-slug="colors"><span class="num">6</span>Setting colors</a></li><li><a href="/mpandroidchart/docs/formatters/" data-slug="formatters"><span class="num">7</span>Formatting values</a></li><li><a href="/mpandroidchart/docs/highlighting/" data-slug="highlighting"><span class="num">8</span>Highlighting values</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Styling</span><ol><li><a href="/mpandroidchart/docs/general-styling/" data-slug="general-styling"><span class="num">9</span>General styling</a></li><li><a href="/mpandroidchart/docs/chart-styling/" data-slug="chart-styling"><span class="num">10</span>Chart specific styling</a></li><li><a href="/mpandroidchart/docs/legend/" data-slug="legend"><span class="num">11</span>The legend</a></li><li><a href="/mpandroidchart/docs/description/" data-slug="description"><span class="num">12</span>The description</a></li><li><a href="/mpandroidchart/docs/theming/" data-slug="theming"><span class="num">13</span>Theming a chart</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Motion and viewport</span><ol><li><a href="/mpandroidchart/docs/interaction/" data-slug="interaction"><span class="num">14</span>Interaction with the chart</a></li><li><a href="/mpandroidchart/docs/dynamic-data/" data-slug="dynamic-data" class="active"><span class="num">15</span>Dynamic and realtime data</a></li><li><a href="/mpandroidchart/docs/viewport/" data-slug="viewport"><span class="num">16</span>Modifying the viewport</a></li><li><a href="/mpandroidchart/docs/animations/" data-slug="animations"><span class="num">17</span>Animations</a></li><li><a href="/mpandroidchart/docs/markers/" data-slug="markers"><span class="num">18</span>Markers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Classes in depth</span><ol><li><a href="/mpandroidchart/docs/chartdata/" data-slug="chartdata"><span class="num">19</span>The ChartData class</a></li><li><a href="/mpandroidchart/docs/chartdata-subclasses/" data-slug="chartdata-subclasses"><span class="num">20</span>ChartData subclasses</a></li><li><a href="/mpandroidchart/docs/dataset/" data-slug="dataset"><span class="num">21</span>The DataSet class</a></li><li><a href="/mpandroidchart/docs/dataset-subclasses/" data-slug="dataset-subclasses"><span class="num">22</span>DataSet subclasses</a></li><li><a href="/mpandroidchart/docs/viewporthandler/" data-slug="viewporthandler"><span class="num">23</span>The ViewPortHandler</a></li><li><a href="/mpandroidchart/docs/fillformatter/" data-slug="fillformatter"><span class="num">24</span>The fill formatter</a></li><li><a href="/mpandroidchart/docs/custom-datasets/" data-slug="custom-datasets"><span class="num">25</span>Custom data sets</a></li><li><a href="/mpandroidchart/docs/custom-renderers/" data-slug="custom-renderers"><span class="num">26</span>Custom renderers</a></li></ol></div><div class="nav-section"><span class="nav-section-title">Integration</span><ol><li><a href="/mpandroidchart/docs/compose/" data-slug="compose"><span class="num">27</span>Jetpack Compose</a></li><li><a href="/mpandroidchart/docs/java-interop/" data-slug="java-interop"><span class="num">28</span>Calling the library from Java</a></li><li><a href="/mpandroidchart/docs/lists-and-scrolling/" data-slug="lists-and-scrolling"><span class="num">29</span>Charts in lists and scrolling screens</a></li><li><a href="/mpandroidchart/docs/proguard/" data-slug="proguard"><span class="num">30</span>R8 and ProGuard</a></li></ol></div><div class="nav-section"><span class="nav-section-title">In practice</span><ol><li><a href="/mpandroidchart/docs/performance/" data-slug="performance"><span class="num">31</span>Performance with large data</a></li><li><a href="/mpandroidchart/docs/accessibility/" data-slug="accessibility"><span class="num">32</span>Accessibility</a></li><li><a href="/mpandroidchart/docs/troubleshooting/" data-slug="troubleshooting"><span class="num">33</span>Troubleshooting</a></li><li><a href="/mpandroidchart/docs/migration/" data-slug="migration"><span class="num">34</span>Migrating from 3.x</a></li><li><a href="/mpandroidchart/docs/miscellaneous/" data-slug="miscellaneous"><span class="num">35</span>Miscellaneous</a></li></ol></div>
@@ -908,6 +959,12 @@ chart.axisRight.isEnabled = <span class="k">false</span></code></pre>
   var input = document.getElementById('docs-search');
   var results = document.getElementById('search-results');
   var navList = document.getElementById('docs-nav-list');
+  var nav = document.querySelector('.docs-nav');
+  var toggle = document.querySelector('.docs-nav-toggle');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
   var records = null;
   var active = -1;
 
