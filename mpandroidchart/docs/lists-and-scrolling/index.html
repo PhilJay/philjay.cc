@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Integration <span>Chapter 29 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#a-chart-in-a-lazycolumn">A chart in a LazyColumn</a><a href="#a-chart-in-a-recycled-row">A chart in a recycled row</a><a href="#several-chart-types-in-one-list">Several chart types in one list</a><a href="#a-chart-inside-a-scrolling-parent">A chart inside a scrolling parent</a><a href="#fragments-and-pager-pages">Fragments and pager pages</a><a href="#performance-in-a-list">Performance in a list</a></nav>
+      <h1>Charts in lists and scrolling screens</h1><nav class="onthispage"><span>On this page</span><a href="#a-chart-in-a-lazycolumn">A chart in a LazyColumn</a><a href="#a-chart-in-a-recycled-row">A chart in a recycled row</a><a href="#several-chart-types-in-one-list">Several chart types in one list</a><a href="#a-chart-inside-a-scrolling-parent">A chart inside a scrolling parent</a><a href="#fragments-and-pager-pages">Fragments and pager pages</a><a href="#performance-in-a-list">Performance in a list</a></nav>
       <p>How to put a chart into a LazyColumn, a recycled row, a fragment or a scrolling screen without rebuilding data on every frame or fighting the parent for the gesture.</p>
 <p>Charts in a <code>RecyclerView</code>, a <code>ListView</code> and a <code>LazyColumn</code> are covered by the library&#x27;s device tests: hundreds of mixed rows that are recycled while scrolling, rotated, and checked for leaks. The rules below are what those tests rely on.</p>
 <h2 id="a-chart-in-a-lazycolumn">A chart in a LazyColumn<a class="anchor" href="#a-chart-in-a-lazycolumn" aria-label="Link to this section">#</a></h2>

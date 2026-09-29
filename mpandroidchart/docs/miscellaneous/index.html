@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">In practice <span>Chapter 35 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#utils-and-unit-conversion">Utils and unit conversion</a><a href="#formatting-numbers">Formatting numbers</a><a href="#saving-a-chart-as-an-image">Saving a chart as an image</a><a href="#what-the-chart-tells-you">What the chart tells you</a><a href="#pooled-points-and-sizes">Pooled points and sizes</a><a href="#sorting-entries">Sorting entries</a><a href="#exceptions-the-library-throws">Exceptions the library throws</a><a href="#logging">Logging</a><a href="#large-data-sets">Large data sets</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>Miscellaneous</h1><nav class="onthispage"><span>On this page</span><a href="#utils-and-unit-conversion">Utils and unit conversion</a><a href="#formatting-numbers">Formatting numbers</a><a href="#saving-a-chart-as-an-image">Saving a chart as an image</a><a href="#what-the-chart-tells-you">What the chart tells you</a><a href="#pooled-points-and-sizes">Pooled points and sizes</a><a href="#sorting-entries">Sorting entries</a><a href="#exceptions-the-library-throws">Exceptions the library throws</a><a href="#logging">Logging</a><a href="#large-data-sets">Large data sets</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>The useful corners of the library that do not belong to any one chart type: unit conversion, number formatting, saving an image, the pooled geometry classes, sorting, logging and what to do with a very large data set.</p>
 <h2 id="utils-and-unit-conversion">Utils and unit conversion<a class="anchor" href="#utils-and-unit-conversion" aria-label="Link to this section">#</a></h2>
 <p><code>Utils</code> is an object of static helpers shared by every chart. The dp conversions read the display density, which it has to learn from a <code>Context</code> first:</p>

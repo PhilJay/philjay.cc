@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Integration <span>Chapter 30 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-short-answer">The short answer</a><a href="#drop-the-old-rule">Drop the old rule</a><a href="#what-keeps-the-chart-views">What keeps the chart views</a><a href="#your-own-code">Your own code</a><a href="#readable-crash-reports">Readable crash reports</a><a href="#checking-what-r8-did">Checking what R8 did</a></nav>
+      <h1>R8 and ProGuard</h1><nav class="onthispage"><span>On this page</span><a href="#the-short-answer">The short answer</a><a href="#drop-the-old-rule">Drop the old rule</a><a href="#what-keeps-the-chart-views">What keeps the chart views</a><a href="#your-own-code">Your own code</a><a href="#readable-crash-reports">Readable crash reports</a><a href="#checking-what-r8-did">Checking what R8 did</a></nav>
       <p>What a minified release build needs for the chart library, which is nothing, and the few cases in your own code that may still want a rule.</p>
 <h2 id="the-short-answer">The short answer<a class="anchor" href="#the-short-answer" aria-label="Link to this section">#</a></h2>
 <p>You do not need any keep rules for MPAndroidChart. Turn on minification the usual way and build:</p>

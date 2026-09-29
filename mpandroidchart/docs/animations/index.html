@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Motion and viewport <span>Chapter 17 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#animate-the-entries">Animate the entries</a><a href="#know-when-an-animation-ends">Know when an animation ends</a><a href="#animate-one-value">Animate one value</a><a href="#animate-a-data-change">Animate a data change</a><a href="#easing">Easing</a><a href="#how-the-phases-drive-the-drawing">How the phases drive the drawing</a><a href="#spin-a-pie-or-radar-chart">Spin a pie or radar chart</a><a href="#animate-the-viewport">Animate the viewport</a><a href="#animations-in-compose">Animations in Compose</a><a href="#from-java">From Java</a></nav>
+      <h1>Animations</h1><nav class="onthispage"><span>On this page</span><a href="#animate-the-entries">Animate the entries</a><a href="#know-when-an-animation-ends">Know when an animation ends</a><a href="#animate-one-value">Animate one value</a><a href="#animate-a-data-change">Animate a data change</a><a href="#easing">Easing</a><a href="#how-the-phases-drive-the-drawing">How the phases drive the drawing</a><a href="#spin-a-pie-or-radar-chart">Spin a pie or radar chart</a><a href="#animate-the-viewport">Animate the viewport</a><a href="#animations-in-compose">Animations in Compose</a><a href="#from-java">From Java</a></nav>
       <p>Building the chart up with animateX, animateY and animateXY, knowing when an animation ends, moving values to new data with animateValue and animateDataChange, the easing curves, spinning round charts, and animating the viewport.</p>
 <h2 id="animate-the-entries">Animate the entries<a class="anchor" href="#animate-the-entries" aria-label="Link to this section">#</a></h2>
 <p>Three functions exist on every chart type. Each one returns immediately and redraws the chart on every frame, so no extra <code>invalidate()</code> is needed.</p>

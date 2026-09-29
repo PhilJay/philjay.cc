@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 26 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-hierarchy">The hierarchy</a><a href="#which-renderer-each-chart-creates">Which renderer each chart creates</a><a href="#replacing-one">Replacing one</a><a href="#a-worked-example">A worked example</a><a href="#the-draw-order">The draw order</a><a href="#what-every-renderer-reads">What every renderer reads</a><a href="#the-data-provider-interfaces">The data provider interfaces</a><a href="#the-combined-chart-renderer">The combined chart renderer</a><a href="#buffers">Buffers</a><a href="#scatter-shape-renderers">Scatter shape renderers</a><a href="#what-a-renderer-must-not-do">What a renderer must not do</a></nav>
+      <h1>Custom renderers</h1><nav class="onthispage"><span>On this page</span><a href="#the-hierarchy">The hierarchy</a><a href="#which-renderer-each-chart-creates">Which renderer each chart creates</a><a href="#replacing-one">Replacing one</a><a href="#a-worked-example">A worked example</a><a href="#the-draw-order">The draw order</a><a href="#what-every-renderer-reads">What every renderer reads</a><a href="#the-data-provider-interfaces">The data provider interfaces</a><a href="#the-combined-chart-renderer">The combined chart renderer</a><a href="#buffers">Buffers</a><a href="#scatter-shape-renderers">Scatter shape renderers</a><a href="#what-a-renderer-must-not-do">What a renderer must not do</a></nav>
       <p>The classes that paint a chart onto its canvas, how a chart wires them up, and how to replace one with your own.</p>
 <p>A renderer is a plain object that takes an <code>android.graphics.Canvas</code> and draws on it. It holds no data. It reads the chart through an interface, asks a <code>Transformer</code> for pixel positions, checks the <code>ViewPortHandler</code> for what is on screen, and paints. A custom data set changes the numbers a renderer is handed. A custom renderer changes what ends up on the screen.</p>
 <h2 id="the-hierarchy">The hierarchy<a class="anchor" href="#the-hierarchy" aria-label="Link to this section">#</a></h2>

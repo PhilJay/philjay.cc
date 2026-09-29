@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">The axes <span>Chapter 3 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#position">Position</a><a href="#rotating-labels">Rotating labels</a><a href="#avoiding-first-and-last-clipping">Avoiding first and last clipping</a><a href="#centering-labels">Centering labels</a><a href="#the-measured-label-size">The measured label size</a><a href="#labels-from-a-list-of-names">Labels from a list of names</a><a href="#dates-and-times">Dates and times</a><a href="#one-label-per-entry">One label per entry</a><a href="#padding-at-the-edges">Padding at the edges</a><a href="#other-chart-types">Other chart types</a><a href="#next">Next</a></nav>
+      <h1>The x axis</h1><nav class="onthispage"><span>On this page</span><a href="#position">Position</a><a href="#rotating-labels">Rotating labels</a><a href="#avoiding-first-and-last-clipping">Avoiding first and last clipping</a><a href="#centering-labels">Centering labels</a><a href="#the-measured-label-size">The measured label size</a><a href="#labels-from-a-list-of-names">Labels from a list of names</a><a href="#dates-and-times">Dates and times</a><a href="#one-label-per-entry">One label per entry</a><a href="#padding-at-the-edges">Padding at the edges</a><a href="#other-chart-types">Other chart types</a><a href="#next">Next</a></nav>
       <p>Where the horizontal axis sits, how its labels are drawn, and the recipes for names, dates and edge padding.</p>
 <p><code>XAxis</code> is the horizontal axis of the line, bar, scatter, candle, bubble and combined charts, and the ring of labels around a radar chart. Its values are the x values of your entries, not their positions in the list.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> xAxis = chart.xAxis</code></pre>

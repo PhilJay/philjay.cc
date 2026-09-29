@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 19 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#what-it-holds">What it holds</a><a href="#the-cached-ranges">The cached ranges</a><a href="#notifydatachanged-and-notifydatasetchanged">notifyDataChanged and notifyDataSetChanged</a><a href="#adding-and-removing-data-sets">Adding and removing data sets</a><a href="#adding-and-removing-entries">Adding and removing entries</a><a href="#finding-things">Finding things</a><a href="#styling-every-set-at-once">Styling every set at once</a><a href="#ishighlightenabled">isHighlightEnabled</a><a href="#errors-on-a-bad-index">Errors on a bad index</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>The ChartData class</h1><nav class="onthispage"><span>On this page</span><a href="#what-it-holds">What it holds</a><a href="#the-cached-ranges">The cached ranges</a><a href="#notifydatachanged-and-notifydatasetchanged">notifyDataChanged and notifyDataSetChanged</a><a href="#adding-and-removing-data-sets">Adding and removing data sets</a><a href="#adding-and-removing-entries">Adding and removing entries</a><a href="#finding-things">Finding things</a><a href="#styling-every-set-at-once">Styling every set at once</a><a href="#ishighlightenabled">isHighlightEnabled</a><a href="#errors-on-a-bad-index">Errors on a bad index</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>The base class behind LineData, BarData and the rest: the list of data sets, the cached ranges over them, and the lookups and broadcast styling every data object shares.</p>
 <h2 id="what-it-holds">What it holds<a class="anchor" href="#what-it-holds" aria-label="Link to this section">#</a></h2>
 <p><code>ChartData</code> is a list of data sets plus four numbers describing the extent of everything in them. A chart reads those numbers to size its axes, so they have to be right before anything is drawn.</p>

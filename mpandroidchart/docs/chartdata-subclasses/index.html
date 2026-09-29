@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 20 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#what-they-have-in-common">What they have in common</a><a href="#linedata">LineData</a><a href="#bardata">BarData</a><a href="#scatterdata">ScatterData</a><a href="#candledata">CandleData</a><a href="#bubbledata">BubbleData</a><a href="#radardata">RadarData</a><a href="#piedata">PieData</a><a href="#combineddata">CombinedData</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>ChartData subclasses</h1><nav class="onthispage"><span>On this page</span><a href="#what-they-have-in-common">What they have in common</a><a href="#linedata">LineData</a><a href="#bardata">BarData</a><a href="#scatterdata">ScatterData</a><a href="#candledata">CandleData</a><a href="#bubbledata">BubbleData</a><a href="#radardata">RadarData</a><a href="#piedata">PieData</a><a href="#combineddata">CombinedData</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>What each data class adds on top of ChartData, from the bar width to the five slots of a combined chart.</p>
 <h2 id="what-they-have-in-common">What they have in common<a class="anchor" href="#what-they-have-in-common" aria-label="Link to this section">#</a></h2>
 <p>Every chart type has its own data class. Most of them add nothing but the set type they accept, which is what makes the compiler stop you from putting a <code>LineDataSet</code> into a bar chart. Four of them add real behaviour, and two behave differently enough from the base class to be worth reading before you use them.</p>

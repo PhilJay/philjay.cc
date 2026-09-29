@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">In practice <span>Chapter 34 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#what-stays-the-same">What stays the same</a><a href="#build-requirements-and-dependency">Build requirements and dependency</a><a href="#getters-and-setters-are-properties">Getters and setters are properties</a><a href="#entries-carry-a-payload">Entries carry a payload</a><a href="#arrays-became-lists">Arrays became lists</a><a href="#one-call-refreshes-the-chart">One call refreshes the chart</a><a href="#formatters-and-listeners-are-fun-interfaces">Formatters and listeners are fun interfaces</a><a href="#the-paint-constants-are-gone">The paint constants are gone</a><a href="#renamed-and-removed-members">Renamed and removed members</a><a href="#sizes-in-dp-stay-in-dp">Sizes in dp stay in dp</a><a href="#behaviour-that-changed">Behaviour that changed</a><a href="#compose">Compose</a><a href="#checklist">Checklist</a></nav>
+      <h1>Migrating from 3.x</h1><nav class="onthispage"><span>On this page</span><a href="#what-stays-the-same">What stays the same</a><a href="#build-requirements-and-dependency">Build requirements and dependency</a><a href="#getters-and-setters-are-properties">Getters and setters are properties</a><a href="#entries-carry-a-payload">Entries carry a payload</a><a href="#arrays-became-lists">Arrays became lists</a><a href="#one-call-refreshes-the-chart">One call refreshes the chart</a><a href="#formatters-and-listeners-are-fun-interfaces">Formatters and listeners are fun interfaces</a><a href="#the-paint-constants-are-gone">The paint constants are gone</a><a href="#renamed-and-removed-members">Renamed and removed members</a><a href="#sizes-in-dp-stay-in-dp">Sizes in dp stay in dp</a><a href="#behaviour-that-changed">Behaviour that changed</a><a href="#compose">Compose</a><a href="#checklist">Checklist</a></nav>
       <p>What to change in an app written against MPAndroidChart 3.x when you move it to the Kotlin rewrite.</p>
 <h2 id="what-stays-the-same">What stays the same<a class="anchor" href="#what-stays-the-same" aria-label="Link to this section">#</a></h2>
 <p>Version 4.0 is a rewrite of the same library, not a new one. Every class, package and interface kept its name, so <code>com.github.mikephil.charting.charts.LineChart</code>, <code>LineDataSet</code>, <code>XAxis</code>, <code>Legend</code>, <code>MarkerView</code> and <code>ViewPortHandler</code> are still where they were, and your imports and XML layouts survive untouched.</p>

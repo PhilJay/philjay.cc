@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">In practice <span>Chapter 32 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#what-a-chart-exposes-today">What a chart exposes today</a><a href="#write-a-description-worth-hearing">Write a description worth hearing</a><a href="#set-it-from-compose">Set it from Compose</a><a href="#set-it-from-a-view">Set it from a view</a><a href="#give-the-numbers-another-way">Give the numbers another way</a><a href="#color">Color</a><a href="#text-size">Text size</a><a href="#touch-and-selection">Touch and selection</a><a href="#checklist">Checklist</a></nav>
+      <h1>Accessibility</h1><nav class="onthispage"><span>On this page</span><a href="#what-a-chart-exposes-today">What a chart exposes today</a><a href="#write-a-description-worth-hearing">Write a description worth hearing</a><a href="#set-it-from-compose">Set it from Compose</a><a href="#set-it-from-a-view">Set it from a view</a><a href="#give-the-numbers-another-way">Give the numbers another way</a><a href="#color">Color</a><a href="#text-size">Text size</a><a href="#touch-and-selection">Touch and selection</a><a href="#checklist">Checklist</a></nav>
       <p>What a screen reader can and cannot get from a chart, and the things you can do about it.</p>
 <h2 id="what-a-chart-exposes-today">What a chart exposes today<a class="anchor" href="#what-a-chart-exposes-today" aria-label="Link to this section">#</a></h2>
 <p>A chart is a single <code>ViewGroup</code> that paints everything onto a canvas. The axis labels, the value labels, the legend and the description are drawn text, not child views. A marker is drawn the same way: a <code>MarkerView</code> is inflated but never added to the chart, and a Compose marker lives in an invisible child view that the chart draws itself.</p>

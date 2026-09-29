@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 23 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-chart-size-and-the-content-rectangle">The chart size and the content rectangle</a><a href="#the-touch-matrix">The touch matrix</a><a href="#scale-and-translation-limits">Scale and translation limits</a><a href="#bounds-checks">Bounds checks</a><a href="#turning-values-into-pixels">Turning values into pixels</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>The ViewPortHandler</h1><nav class="onthispage"><span>On this page</span><a href="#the-chart-size-and-the-content-rectangle">The chart size and the content rectangle</a><a href="#the-touch-matrix">The touch matrix</a><a href="#scale-and-translation-limits">Scale and translation limits</a><a href="#bounds-checks">Bounds checks</a><a href="#turning-values-into-pixels">Turning values into pixels</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>The object behind every chart that knows the chart size, the rectangle the data is drawn in, and the zoom and drag state, with the limits that keep all three sane.</p>
 <p>Every chart owns one <code>ViewPortHandler</code>. The chart functions described in <a href="/mpandroidchart/docs/viewport/">modifying the viewport</a> are a safe layer on top of it: they work in values, take care of the limits and redraw afterwards. The handler itself works in pixels and matrices, and is what you read when you need to know exactly where something is on screen.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> handler = chart.viewPortHandler</code></pre>

@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">The axes <span>Chapter 2 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#what-an-axis-is-made-of">What an axis is made of</a><a href="#how-many-labels">How many labels</a><a href="#granularity">Granularity</a><a href="#the-value-range">The value range</a><a href="#text">Text</a><a href="#grid-lines-and-the-axis-line">Grid lines and the axis line</a><a href="#limit-lines">Limit lines</a><a href="#formatting-the-labels">Formatting the labels</a><a href="#values-the-axis-computes">Values the axis computes</a><a href="#next">Next</a></nav>
+      <h1>The axis</h1><nav class="onthispage"><span>On this page</span><a href="#what-an-axis-is-made-of">What an axis is made of</a><a href="#how-many-labels">How many labels</a><a href="#granularity">Granularity</a><a href="#the-value-range">The value range</a><a href="#text">Text</a><a href="#grid-lines-and-the-axis-line">Grid lines and the axis line</a><a href="#limit-lines">Limit lines</a><a href="#formatting-the-labels">Formatting the labels</a><a href="#values-the-axis-computes">Values the axis computes</a><a href="#next">Next</a></nav>
       <p>The settings that both axes share: which parts are drawn, how many labels there are, how the value range is chosen, and the lines you can put on top.</p>
 <p><code>AxisBase</code> is the base class of <code>XAxis</code> and <code>YAxis</code>. Everything on this page works on either one.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code><span class="k">val</span> xAxis = chart.xAxis

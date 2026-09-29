@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Data <span>Chapter 8 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#what-a-highlight-is">What a highlight is</a><a href="#highlighting-by-touch">Highlighting by touch</a><a href="#highlighting-from-code">Highlighting from code</a><a href="#clearing-a-highlight">Clearing a highlight</a><a href="#reading-the-current-highlight">Reading the current highlight</a><a href="#the-highlight-class">The Highlight class</a><a href="#styling-the-indicator">Styling the indicator</a><a href="#whole-bars-and-stacked-values">Whole bars and stacked values</a><a href="#replacing-the-highlighter">Replacing the highlighter</a></nav>
+      <h1>Highlighting values</h1><nav class="onthispage"><span>On this page</span><a href="#what-a-highlight-is">What a highlight is</a><a href="#highlighting-by-touch">Highlighting by touch</a><a href="#highlighting-from-code">Highlighting from code</a><a href="#clearing-a-highlight">Clearing a highlight</a><a href="#reading-the-current-highlight">Reading the current highlight</a><a href="#the-highlight-class">The Highlight class</a><a href="#styling-the-indicator">Styling the indicator</a><a href="#whole-bars-and-stacked-values">Whole bars and stacked values</a><a href="#replacing-the-highlighter">Replacing the highlighter</a></nav>
       <p>How a value gets selected, how to select one from code, what the resulting Highlight object holds, and how to style the indicator that marks it.</p>
 <h2 id="what-a-highlight-is">What a highlight is<a class="anchor" href="#what-a-highlight-is" aria-label="Link to this section">#</a></h2>
 <p>A highlight is one selected value. It is not stored on the entry: the chart keeps a list of <code>Highlight</code> objects that say which data set and which x value are selected. From that list the chart draws the highlight indicator, draws the <a href="/mpandroidchart/docs/markers/">marker</a>, and calls the value selected listener.</p>

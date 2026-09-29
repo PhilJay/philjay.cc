@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Data <span>Chapter 7 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-two-interfaces">The two interfaces</a><a href="#where-to-set-them">Where to set them</a><a href="#what-happens-when-you-set-nothing">What happens when you set nothing</a><a href="#the-built-in-formatters">The built in formatters</a><a href="#writing-your-own">Writing your own</a><a href="#one-more-formatter">One more formatter</a><a href="#next">Next</a></nav>
+      <h1>Formatting values</h1><nav class="onthispage"><span>On this page</span><a href="#the-two-interfaces">The two interfaces</a><a href="#where-to-set-them">Where to set them</a><a href="#what-happens-when-you-set-nothing">What happens when you set nothing</a><a href="#the-built-in-formatters">The built in formatters</a><a href="#writing-your-own">Writing your own</a><a href="#one-more-formatter">One more formatter</a><a href="#next">Next</a></nav>
       <p>How to control the text of the values drawn next to the entries and of the labels on the axes.</p>
 <p>Two small interfaces do all of it. Both are <code>fun interface</code>s with non-null parameters, so a lambda is usually the whole implementation.</p>
 <pre data-lang="Kotlin"><button class="copy" type="button" aria-label="Copy code">Copy</button><code>chart.axisLeft.valueFormatter = <span class="t">IAxisValueFormatter</span> { value, _ -&gt; <span class="s">&quot;${value.toInt()} €&quot;</span> }

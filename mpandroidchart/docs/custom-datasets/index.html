@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 25 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-interface-hierarchy">The interface hierarchy</a><a href="#what-the-renderers-read">What the renderers read</a><a href="#subclassing-a-concrete-set">Subclassing a concrete set</a><a href="#building-on-dataset">Building on DataSet</a><a href="#building-on-basedataset">Building on BaseDataSet</a><a href="#plugging-it-in">Plugging it in</a></nav>
+      <h1>Custom data sets</h1><nav class="onthispage"><span>On this page</span><a href="#the-interface-hierarchy">The interface hierarchy</a><a href="#what-the-renderers-read">What the renderers read</a><a href="#subclassing-a-concrete-set">Subclassing a concrete set</a><a href="#building-on-dataset">Building on DataSet</a><a href="#building-on-basedataset">Building on BaseDataSet</a><a href="#plugging-it-in">Plugging it in</a></nav>
       <p>How to write your own data set class, what the renderers actually read from it, and how far you can go before you have to touch a renderer.</p>
 <p>Renderers and highlighters never see <code>LineDataSet</code> or <code>BarDataSet</code>. They only ever read an interface. That is the whole trick: give a chart something that answers those interface calls and it draws it, whatever the class behind it is.</p>
 <h2 id="the-interface-hierarchy">The interface hierarchy<a class="anchor" href="#the-interface-hierarchy" aria-label="Link to this section">#</a></h2>

@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 21 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#where-it-sits">Where it sits</a><a href="#naming-visibility-and-axis">Naming, visibility and axis</a><a href="#value-labels">Value labels</a><a href="#icons">Icons</a><a href="#the-legend-form">The legend form</a><a href="#highlighting">Highlighting</a><a href="#reading-entries">Reading entries</a><a href="#rounding-when-there-is-no-exact-match">Rounding when there is no exact match</a><a href="#adding-and-removing-entries">Adding and removing entries</a><a href="#the-cached-ranges">The cached ranges</a><a href="#copying-a-set">Copying a set</a></nav>
+      <h1>The DataSet class</h1><nav class="onthispage"><span>On this page</span><a href="#where-it-sits">Where it sits</a><a href="#naming-visibility-and-axis">Naming, visibility and axis</a><a href="#value-labels">Value labels</a><a href="#icons">Icons</a><a href="#the-legend-form">The legend form</a><a href="#highlighting">Highlighting</a><a href="#reading-entries">Reading entries</a><a href="#rounding-when-there-is-no-exact-match">Rounding when there is no exact match</a><a href="#adding-and-removing-entries">Adding and removing entries</a><a href="#the-cached-ranges">The cached ranges</a><a href="#copying-a-set">Copying a set</a></nav>
       <p>The styling and behaviour every data set shares, from the legend label to the entry lookups and the cached value ranges.</p>
 <p>A data set is one series: the entries that belong together plus the settings for drawing them. <code>LineDataSet</code>, <code>BarDataSet</code>, <code>PieDataSet</code> and the rest all inherit what this chapter describes, so anything here works on any of them.</p>
 <h2 id="where-it-sits">Where it sits<a class="anchor" href="#where-it-sits" aria-label="Link to this section">#</a></h2>

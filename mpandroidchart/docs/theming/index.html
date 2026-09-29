@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Styling <span>Chapter 13 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#the-shape-of-a-theme">The shape of a theme</a><a href="#the-palette">The palette</a><a href="#the-base-every-chart-shares">The base every chart shares</a><a href="#styling-the-axes">Styling the axes</a><a href="#touches-per-chart-type">Touches per chart type</a><a href="#a-themed-marker">A themed marker</a><a href="#dark-mode-and-material-3">Dark mode and Material 3</a><a href="#fonts">Fonts</a><a href="#make-it-your-own">Make it your own</a></nav>
+      <h1>Theming a chart</h1><nav class="onthispage"><span>On this page</span><a href="#the-shape-of-a-theme">The shape of a theme</a><a href="#the-palette">The palette</a><a href="#the-base-every-chart-shares">The base every chart shares</a><a href="#styling-the-axes">Styling the axes</a><a href="#touches-per-chart-type">Touches per chart type</a><a href="#a-themed-marker">A themed marker</a><a href="#dark-mode-and-material-3">Dark mode and Material 3</a><a href="#fonts">Fonts</a><a href="#make-it-your-own">Make it your own</a></nav>
       <p>How to keep one look for every chart in your app in a palette object and a few extension functions, and how to switch it between dark and light.</p>
 <p>Styling one chart is covered in <a href="/mpandroidchart/docs/general-styling/">General styling</a>, <a href="/mpandroidchart/docs/chart-styling/">Chart specific styling</a>, <a href="/mpandroidchart/docs/legend/">The legend</a> and <a href="/mpandroidchart/docs/description/">The description</a>. This chapter is about doing it once instead of on every screen.</p>
 <p>The library has no idea of a theme. There is no theme class, no style attribute and nothing to register: a theme is ordinary code in your app that sets the properties those chapters describe. What follows is a pattern, not an API. The example app ships one theme called Nightfall in <code>com.xxmassdeveloper.mpchartexample.design</code>, every chart screenshot on this site is drawn by it, and the code below is that theme. Swap the colors, the fonts and the shapes for your own and the pattern carries any look you like.</p>

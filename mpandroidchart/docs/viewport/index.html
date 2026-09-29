@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Motion and viewport <span>Chapter 16 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#restrict-what-is-visible">Restrict what is visible</a><a href="#move-the-view">Move the view</a><a href="#zoom">Zoom</a><a href="#offsets-around-the-content-area">Offsets around the content area</a><a href="#immediate-calls-and-viewport-jobs">Immediate calls and viewport jobs</a><a href="#read-the-current-viewport">Read the current viewport</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>Modifying the viewport</h1><nav class="onthispage"><span>On this page</span><a href="#restrict-what-is-visible">Restrict what is visible</a><a href="#move-the-view">Move the view</a><a href="#zoom">Zoom</a><a href="#offsets-around-the-content-area">Offsets around the content area</a><a href="#immediate-calls-and-viewport-jobs">Immediate calls and viewport jobs</a><a href="#read-the-current-viewport">Read the current viewport</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>Everything that decides which part of the data is on screen: zoom, scroll, the limits on both, the offsets around the content area, and how to read the current state back.</p>
 <p>The viewport is the window your data is seen through. It has a zoom factor per axis and a position, and the chart keeps both inside limits you can set. All of this lives on <code>BarLineChartBase</code>, so it is available on <code>LineChart</code>, <code>BarChart</code>, <code>HorizontalBarChart</code>, <code>ScatterChart</code>, <code>CandleStickChart</code>, <code>BubbleChart</code> and <code>CombinedChart</code>. Pie and radar charts have no viewport.</p>
 <blockquote>The visible range calls divide the current axis range, and the move, center and value based zoom calls convert values to pixels, so set <code>chart.data</code> before them. On a chart without data they do nothing useful.</blockquote>

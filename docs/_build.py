@@ -305,7 +305,7 @@ def main() -> int:
                 .replace("{{title}}", html.escape(chapter["title"]))
                 .replace("{{description}}", html.escape(chapter["summary"])[:180])
                 .replace("{{nav}}", nav.replace(f'data-slug="{chapter["slug"]}"', f'data-slug="{chapter["slug"]}" class="active"'))
-                .replace("{{toc}}", toc)
+                .replace("{{toc}}", f'<h1>{html.escape(chapter["title"])}</h1>{toc}')
                 .replace("{{content}}", content)
                 .replace("{{pager}}", f'<div class="pager">{"".join(links)}</div>')
                 .replace("{{canonical}}", f'https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/')

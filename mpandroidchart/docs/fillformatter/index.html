@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Classes in depth <span>Chapter 24 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#turn-the-fill-on">Turn the fill on</a><a href="#what-the-default-does">What the default does</a><a href="#write-your-own">Write your own</a><a href="#fill-between-two-lines">Fill between two lines</a><a href="#line-charts-only">Line charts only</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>The fill formatter</h1><nav class="onthispage"><span>On this page</span><a href="#turn-the-fill-on">Turn the fill on</a><a href="#what-the-default-does">What the default does</a><a href="#write-your-own">Write your own</a><a href="#fill-between-two-lines">Fill between two lines</a><a href="#line-charts-only">Line charts only</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>How a line data set decides where its filled area ends, what the default does, and how to fill to zero, to an axis edge or to a value of your own.</p>
 <p>A filled line chart shades the area between the line and something below or above it. <code>IFillFormatter</code> is what names that something: it returns one y value, in value space, and the fill runs from the line down or up to it.</p>
 <h2 id="turn-the-fill-on">Turn the fill on<a class="anchor" href="#turn-the-fill-on" aria-label="Link to this section">#</a></h2>

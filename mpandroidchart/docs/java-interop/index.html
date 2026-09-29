@@ -15,6 +15,8 @@
   <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, the chart library for Android, written in Kotlin">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
   <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -847,7 +849,7 @@ pre .c { color: rgba(255, 255, 255, 0.4); font-style: italic; }
     </aside>
     <main class="docs-main">
       <p class="chapter-mark">Integration <span>Chapter 28 of 35</span></p>
-      <nav class="onthispage"><span>On this page</span><a href="#properties-become-getters-and-setters">Properties become getters and setters</a><a href="#default-arguments">Default arguments</a><a href="#functional-interfaces">Functional interfaces</a><a href="#lists-instead-of-varargs-and-arrays">Lists instead of varargs and arrays</a><a href="#generics">Generics</a><a href="#objects-companions-and-top-level-declarations">Objects, companions and top level declarations</a><a href="#nullability">Nullability</a><a href="#a-complete-example">A complete example</a><a href="#where-to-go-next">Where to go next</a></nav>
+      <h1>Calling the library from Java</h1><nav class="onthispage"><span>On this page</span><a href="#properties-become-getters-and-setters">Properties become getters and setters</a><a href="#default-arguments">Default arguments</a><a href="#functional-interfaces">Functional interfaces</a><a href="#lists-instead-of-varargs-and-arrays">Lists instead of varargs and arrays</a><a href="#generics">Generics</a><a href="#objects-companions-and-top-level-declarations">Objects, companions and top level declarations</a><a href="#nullability">Nullability</a><a href="#a-complete-example">A complete example</a><a href="#where-to-go-next">Where to go next</a></nav>
       <p>What the Kotlin API looks like from a Java caller: property accessors, default arguments, lambdas, generics and the few places where Java needs a longer spelling.</p>
 <p>The library is written in Kotlin and compiles to ordinary JVM bytecode, so a Java project can use it without any bridge. Every chart class is still a <code>View</code> you can inflate from a layout, and every feature is reachable. What changes is the spelling, and this chapter goes through every case.</p>
 <p>One thing to ignore along the way: a Kotlin <code>internal</code> declaration becomes a public method with a mangled name, so <code>Chart.notifyGesture$MPChartLib</code> shows up in autocompletion. The dollar sign marks it as not yours to call.</p>
