@@ -6,6 +6,23 @@
   var STORAGE_KEY = 'philjay-analytics-consent';
   var MEASUREMENT_ID = 'G-9EDNTGFEM7';
   var banner = null;
+  var TEXT = document.documentElement.lang.indexOf('de') === 0 ? {
+    label: 'Cookie-Hinweis',
+    message: 'Diese Seite würde Besuche gerne mit Google Analytics zählen, das Cookies in deinem Browser speichert. ' +
+      'Es läuft nur, wenn du zustimmst, und bis dahin wird nichts gemessen. ',
+    link: 'Was erfasst wird',
+    privacy: '/de/datenschutz.html',
+    decline: 'Ablehnen',
+    allow: 'Erlauben'
+  } : {
+    label: 'Cookie notice',
+    message: 'This site would like to count visits with Google Analytics, which stores cookies in your browser. ' +
+      'It runs only if you allow it, and nothing is measured until you do. ',
+    link: 'What is collected',
+    privacy: '/privacy.html',
+    decline: 'Decline',
+    allow: 'Allow'
+  };
 
   function stored() {
     try {
@@ -72,14 +89,12 @@
     banner = document.createElement('div');
     banner.className = 'consent';
     banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-label', 'Cookie notice');
+    banner.setAttribute('aria-label', TEXT.label);
     banner.innerHTML =
-      '<p>This site would like to count visits with Google Analytics, which stores cookies in your browser. ' +
-      'It runs only if you allow it, and nothing is measured until you do. ' +
-      '<a href="/privacy.html">What is collected</a>.</p>' +
+      '<p>' + TEXT.message + '<a href="' + TEXT.privacy + '">' + TEXT.link + '</a>.</p>' +
       '<div class="consent-actions">' +
-      '<button type="button" class="button" data-choice="denied">Decline</button>' +
-      '<button type="button" class="button primary" data-choice="granted">Allow</button>' +
+      '<button type="button" class="button" data-choice="denied">' + TEXT.decline + '</button>' +
+      '<button type="button" class="button primary" data-choice="granted">' + TEXT.allow + '</button>' +
       '</div>';
     banner.addEventListener('click', function (event) {
       var button = event.target.closest('button[data-choice]');

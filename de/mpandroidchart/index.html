@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MPAndroidChart: Diagramme für Android und Jetpack Compose</title>
+  <meta name="description" content="MPAndroidChart ist die Open-Source-Chart-Bibliothek für Android. Linien-, Balken-, Kreis-, Streu-, Candlestick-, Blasen-, Radar- und kombinierte Diagramme, geschrieben in Kotlin, mit einem Jetpack-Compose-Modul.">
+  <meta name="author" content="Philipp Jahoda">
+  <meta name="theme-color" content="#0c1b20">
+  <link rel="canonical" href="https://philjay.cc/de/mpandroidchart/">
+  <link rel="alternate" hreflang="en" href="https://philjay.cc/mpandroidchart/">
+  <link rel="alternate" hreflang="de" href="https://philjay.cc/de/mpandroidchart/">
+  <link rel="alternate" hreflang="x-default" href="https://philjay.cc/mpandroidchart/">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="https://philjay.cc/llms.txt">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MPAndroidChart">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="MPAndroidChart: Diagramme für Android und Jetpack Compose">
+  <meta property="og:description" content="MPAndroidChart ist die Open-Source-Chart-Bibliothek für Android. Linien-, Balken-, Kreis-, Streu-, Candlestick-, Blasen-, Radar- und kombinierte Diagramme, geschrieben in Kotlin, mit einem Jetpack-Compose-Modul.">
+  <meta property="og:url" content="https://philjay.cc/de/mpandroidchart/">
+  <meta property="og:image" content="https://philjay.cc/mpandroidchart/assets/og-mpandroidchart-de.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MPAndroidChart, die Chart-Bibliothek für Android, geschrieben in Kotlin, mit einem Linien-, einem Balken- und einem Donut-Diagramm">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "@id": "https://philjay.cc/mpandroidchart/#library",
+  "name": "MPAndroidChart",
+  "description": "Die Open-Source-Chart-Bibliothek für Android. Linien-, Balken-, Kreis-, Streu-, Candlestick-, Blasen-, Radar- und kombinierte Diagramme, geschrieben in Kotlin, mit einem Jetpack-Compose-Modul.",
+  "url": "https://philjay.cc/de/mpandroidchart/",
+  "codeRepository": "https://github.com/PhilJay/MPAndroidChart",
+  "programmingLanguage": "Kotlin",
+  "runtimePlatform": "Android",
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "softwareVersion": "4.0.1",
+  "keywords": "Android Diagramme, Kotlin Chart-Bibliothek, Jetpack Compose Charts, Liniendiagramm, Balkendiagramm, Kreisdiagramm, Candlestick-Chart",
+  "inLanguage": "de",
+  "documentation": "https://philjay.cc/mpandroidchart/docs/",
+  "image": "https://philjay.cc/mpandroidchart/assets/og-mpandroidchart-de.jpg",
+  "author": {
+    "@type": "Person",
+    "@id": "https://philjay.cc/#person",
+    "name": "Philipp Jahoda",
+    "url": "https://philjay.cc/de/",
+    "sameAs": ["https://github.com/PhilJay"]
+  }
+}
+  </script>
+  <link rel="icon" type="image/png" href="/mpandroidchart/assets/favicon.png?v=3">
+  <link rel="apple-touch-icon" href="/mpandroidchart/assets/apple-touch-icon.png?v=3">
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style data-src="styles.css">
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url(/assets/fonts/manrope-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url(/assets/fonts/manrope-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --accent: #2fb4b6;
+  --accent-hover: #1f8f91;
+  --stage: radial-gradient(120% 70% at 50% 0%, #163d45 0%, #0c1b20 45%, #0a1013 100%);
+  --ground: #0a1013;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text: #fff;
+  --text-soft: rgba(255, 255, 255, 0.72);
+  --text-dim: rgba(255, 255, 255, 0.55);
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  --gutter: 64px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Manrope, -apple-system, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+  background: var(--ground);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+
+h1, h2, h3, p { margin: 0; }
+
+.stage {
+  background: var(--stage);
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 18px;
+}
+.brand:hover { color: var(--text); }
+.brand img { width: 34px; height: 34px; border-radius: 8px; }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+.nav-links a { color: rgba(255, 255, 255, 0.75); }
+.nav-links a:hover { color: var(--text); }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding-block: 56px 32px;
+  text-align: center;
+}
+.hero img.mark { width: 96px; height: 96px; border-radius: 22px; box-shadow: var(--shadow); }
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  max-width: 900px;
+}
+.lead {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  max-width: 680px;
+}
+
+.cta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+.cta-note { font-size: 14px; color: var(--text-dim); width: 100%; }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+.button:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.5); }
+.button.primary { background: var(--accent); border-color: var(--accent); color: #06181a; }
+.button.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #06181a; }
+.button svg { width: 20px; height: 20px; }
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: #000;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.store-badge:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.5); }
+.store-badge div { display: flex; flex-direction: column; line-height: 1.05; text-align: left; }
+.store-badge small { font-size: 10px; opacity: 0.8; }
+.store-badge strong { font-size: 17px; font-weight: 700; }
+.store-badge svg { width: 22px; height: 22px; }
+
+.app-store-badge {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+.app-store-badge:hover { opacity: 0.82; }
+.app-store-badge img { height: 44px; width: auto; display: block; }
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-block: 32px 64px;
+}
+.section.centered { align-items: center; text-align: center; }
+.section h2 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.section-intro {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  max-width: 720px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.card h3 { font-size: 20px; font-weight: 700; }
+.card p { font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.7); }
+.card .links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: auto; padding-top: 10px; font-size: 14px; font-weight: 700; }
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  padding: 36px;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+.project.flip .project-media { order: -1; }
+.project-text { display: flex; flex-direction: column; gap: 14px; }
+.project-text .head { display: flex; align-items: center; gap: 14px; }
+.project-text .head img { width: 56px; height: 56px; border-radius: 14px; }
+.project-text h2 { font-size: 30px; }
+.project-text .kind { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+.project-text p { font-size: 16px; line-height: 1.55; color: var(--text-soft); }
+.project-text .cta { justify-content: flex-start; }
+.project-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.project-media .phones { display: flex; gap: 18px; justify-content: center; }
+.project-media .phones img { width: 46%; border-radius: 26px; border: 7px solid #1c2a30; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.gallery figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.section-head > div:first-child { display: flex; flex-direction: column; gap: 14px; }
+.toggle { display: inline-flex; padding: 4px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--card-border); }
+.toggle button {
+  font: inherit; font-size: 13px; font-weight: 700; color: var(--text-soft);
+  background: transparent; border: 0; border-radius: 7px; padding: 8px 16px; cursor: pointer;
+}
+.toggle button.active { background: var(--accent); color: #06181a; }
+.project-media .stack { display: flex; flex-direction: column; gap: 14px; }
+.project-media .stack img { border-radius: 14px; }
+.card.link { color: var(--text); }
+.card.link:hover { border-color: rgba(255, 255, 255, 0.3); color: var(--text); }
+.card.link .more { color: var(--accent); font-weight: 700; font-size: 14px; margin-top: auto; padding-top: 8px; }
+.project-media.phone img { border-radius: 22px; border: 6px solid #1c2a30; max-width: 380px; margin: 0 auto; }
+.gallery figcaption { font-size: 14px; color: var(--text-dim); text-align: center; }
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.feature {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.feature strong { display: block; font-weight: 700; margin-bottom: 4px; }
+
+pre {
+  margin: 0;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: #07110f;
+  border: 1px solid var(--card-border);
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.55;
+}
+code { font-family: "SF Mono", Menlo, Consolas, monospace; color: #dfe9ea; }
+pre .k { color: #7fd4d6; }
+pre .s { color: #f5c07a; }
+pre .c { color: rgba(255, 255, 255, 0.45); }
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.stats { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--text-dim); }
+.stats strong { color: var(--text); font-size: 18px; margin-right: 6px; }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-block: 28px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.footer nav { display: flex; gap: 20px; }
+.footer a { color: rgba(255, 255, 255, 0.75); }
+
+.legal { max-width: 760px; padding-block: 40px 80px; display: flex; flex-direction: column; gap: 18px; }
+.legal h1 { font-size: 34px; font-weight: 800; }
+.legal h2 { font-size: 20px; font-weight: 700; margin-top: 12px; }
+.legal p { line-height: 1.6; color: var(--text-soft); }
+
+@media (max-width: 960px) {
+  :root { --gutter: 24px; }
+  .cards, .features, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .section-head { align-items: flex-start; }
+  .project, .split { grid-template-columns: minmax(0, 1fr); }
+  .project.flip .project-media { order: 0; }
+  .nav-links { gap: 18px; }
+}
+
+@media (max-width: 560px) {
+  .cards, .cards.two, .features, .gallery { grid-template-columns: minmax(0, 1fr); }
+  .nav-links { display: none; }
+  .lead { font-size: 17px; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* cookie consent */
+
+.consent {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: min(760px, calc(100vw - 32px));
+  padding: 18px 22px;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: rgba(17, 28, 51, 0.96);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+.consent p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+.consent a { color: var(--accent); }
+.consent-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.consent .button { height: 40px; padding: 0 18px; font-size: 14px; cursor: pointer; }
+
+@media (max-width: 640px) {
+  .consent { flex-direction: column; align-items: stretch; gap: 14px; bottom: 12px; }
+  .consent-actions { justify-content: flex-end; }
+}
+</style>
+  <style>
+.teaser { margin: 0; }
+.teaser-section { padding-top: 0; }
+.teaser video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  background: #0b1120;
+}
+.teaser figcaption { font-size: 14px; color: var(--text-dim); text-align: center; margin-top: 12px; }
+  </style>
+  <script src="/consent.js" defer></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="play" viewBox="0 0 24 24"><path fill="#fff" d="M4 3.5v17l9.5-8.5L4 3.5zm11 7.2 3.3-1.9c.9-.5.9-1.4 0-1.9L6.4 1.3 15 10.7zm0 2.6L6.4 22.7l11.9-5.6c.9-.5.9-1.4 0-1.9L15 13.3z"/></symbol>
+  <symbol id="github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v16H6.5A2.5 2.5 0 0 0 4 20.5v-16zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></symbol>
+</svg>
+
+<div class="stage">
+  <header class="wrap nav">
+    <a class="brand" href="/de/"><img src="/assets/mpandroidchart.webp?v=3" alt="" width="34" height="34">MPAndroidChart</a>
+    <nav class="nav-links">
+      <a href="#charts">Diagramme</a>
+      <a href="#compose">Compose</a>
+      <a href="/mpandroidchart/docs/" hreflang="en">Anleitungen<span class="visually-hidden"> (Englisch)</span></a>
+      <a href="#start">Loslegen</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/mpandroidchart/" hreflang="en" lang="en">English</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <p class="eyebrow">Open Source · Android · Kotlin</p>
+      <h1>Jedes Diagramm, das deine Android-App braucht.</h1>
+      <p class="lead">Linien-, Balken-, Kreis-, Streu-, Candlestick-, Blasen-, Radar- und kombinierte Diagramme mit Zoomen, Ziehen, Hervorheben, Markern und Animationen. Eine Kotlin-API mit Properties, ein Jetpack-Compose-Modul und eine einzige Zeile für die Abhängigkeit.</p>
+      <div class="cta">
+        <a class="button primary" href="#start">Loslegen</a>
+        <a class="button" href="/mpandroidchart/docs/" hreflang="en"><svg aria-hidden="true"><use href="#book"/></svg>Anleitungen<span class="visually-hidden"> (Englisch)</span></a>
+        <a class="button" href="https://github.com/PhilJay/MPAndroidChart"><svg aria-hidden="true"><use href="#github"/></svg>GitHub</a>
+        <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.xxmassdeveloper.mpchartexample">
+          <svg aria-hidden="true"><use href="#play"/></svg>
+          <div><small>Beispiel-App bei</small><strong>Google Play</strong></div>
+        </a>
+      </div>
+      <div class="stats">
+        <span><strong>Apache 2.0</strong>Lizenz</span>
+        <span><strong>Seit 2014</strong>gepflegt</span>
+      </div>
+    </section>
+
+    <section class="wrap section teaser-section">
+      <figure class="teaser">
+        <video src="/mpandroidchart/media/teaser.mp4"
+               poster="/mpandroidchart/media/teaser-poster.jpg"
+               controls muted playsinline preload="none"
+               width="1920" height="1080"
+               aria-label="Überblick über MPAndroidChart 4.0 in zweiundzwanzig Sekunden"></video>
+        <figcaption>Zweiundzwanzig Sekunden durch die Diagrammtypen, das Styling, dreißigtausend Punkte und den Code, den es dafür braucht. Das Video ist auf Englisch.</figcaption>
+      </figure>
+    </section>
+
+    <section id="charts" class="wrap section">
+      <div class="section-head">
+        <div>
+          <h2>Neun Diagrammtypen, eine Arbeitsweise</h2>
+          <p class="section-intro">Entries enthalten die Werte, ein Data Set enthält eine Reihe und ihr Styling, das Data-Objekt enthält alle Reihen eines Diagramms. Einmal beim Liniendiagramm gelernt, kennst du es für alle. Jede Karte unten ist ein Screenshot der Beispiel-App, gezeichnet von der Bibliothek.</p>
+        </div>
+        <div class="toggle" role="group" aria-label="Farbvariante">
+          <button type="button" class="active" data-variant="">Dunkel</button>
+          <button type="button" data-variant="-light">Hell</button>
+        </div>
+      </div>
+      <div class="gallery" id="gallery">
+        <figure><img src="/mpandroidchart/assets/line-506.webp?v=2" srcset="/mpandroidchart/assets/line-506.webp?v=2 506w, /mpandroidchart/assets/line.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="line" alt="Liniendiagramm mit Verlaufsfüllung und hervorgehobenem Punkt" width="1012" height="798" loading="lazy"><figcaption>Linie</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/bar-506.webp?v=2" srcset="/mpandroidchart/assets/bar-506.webp?v=2 506w, /mpandroidchart/assets/bar.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="bar" alt="Balkendiagramm mit abgerundeten Verlaufsbalken" width="1012" height="798" loading="lazy"><figcaption>Balken</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/horizontal-506.webp?v=2" srcset="/mpandroidchart/assets/horizontal-506.webp?v=2 506w, /mpandroidchart/assets/horizontal.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="horizontal" alt="Horizontales Balkendiagramm mit pillenförmigen Balken" width="1012" height="798" loading="lazy"><figcaption>Horizontale Balken</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/pie-506.webp?v=2" srcset="/mpandroidchart/assets/pie-506.webp?v=2 506w, /mpandroidchart/assets/pie.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="pie" alt="Donut-Diagramm mit Text in der Mitte und Legende" width="1012" height="798" loading="lazy"><figcaption>Kreis</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/stacked-506.webp?v=2" srcset="/mpandroidchart/assets/stacked-506.webp?v=2 506w, /mpandroidchart/assets/stacked.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="stacked" alt="Gestapeltes Balkendiagramm" width="1012" height="798" loading="lazy"><figcaption>Gestapelte Balken</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/candle-506.webp?v=2" srcset="/mpandroidchart/assets/candle-506.webp?v=2 506w, /mpandroidchart/assets/candle.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="candle" alt="Candlestick-Diagramm" width="1012" height="798" loading="lazy"><figcaption>Candlestick</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/radar-506.webp?v=2" srcset="/mpandroidchart/assets/radar-506.webp?v=2 506w, /mpandroidchart/assets/radar.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="radar" alt="Radardiagramm mit zwei gefüllten Data Sets" width="1012" height="798" loading="lazy"><figcaption>Radar</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/combined-506.webp?v=2" srcset="/mpandroidchart/assets/combined-506.webp?v=2 506w, /mpandroidchart/assets/combined.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="combined" alt="Kombiniertes Diagramm mit Balken und einer Linie" width="1012" height="798" loading="lazy"><figcaption>Kombiniert</figcaption></figure>
+        <figure><img src="/mpandroidchart/assets/bubble-506.webp?v=2" srcset="/mpandroidchart/assets/bubble-506.webp?v=2 506w, /mpandroidchart/assets/bubble.webp?v=2 1012w" sizes="(min-width: 1200px) 345px, (min-width: 961px) calc(33.3vw - 55px), (min-width: 561px) calc(50vw - 33px), calc(100vw - 48px)" data-name="bubble" alt="Blasendiagramm" width="1012" height="798" loading="lazy"><figcaption>Blasen</figcaption></figure>
+      </div>
+      <p class="cta-note">Streudiagramme, Linien über die volle Breite, kubische und gestufte Linien, Halbkreise, negative Stapel, Echtzeitdaten und mehr findest du in der <a href="https://github.com/PhilJay/MPAndroidChart/tree/master/MPChartExample">Beispiel-App</a>.</p>
+    </section>
+
+    <section class="wrap section">
+      <h2>Gebaut für echte Apps</h2>
+      <div class="features">
+        <div class="feature"><strong>Touch, der sich nativ anfühlt</strong>Ziehen, mit zwei Fingern zoomen, doppelt tippen, mit Schwung wischen, zum Hervorheben tippen, Kreis- und Radardiagramme drehen.</div>
+        <div class="feature"><strong>Alles gestaltbar</strong>Achsen, Raster, Legende, Grenzlinien, Wertformatierer, Farben, Strichmuster, Füllungen und Verläufe, alles als Properties.</div>
+        <div class="feature"><strong>Marker und Hervorhebungen</strong>Zeig eine View oder ein Composable am ausgewählten Eintrag, mit Listenern für Auswahl und Gesten.</div>
+        <div class="feature"><strong>Animationen</strong>Animiere entlang x, y oder beiden, lass Werte weich zu neuen Daten wandern oder animiere Zoom und Scrollen.</div>
+        <div class="feature"><strong>Schnell bei großen Daten</strong>Dreißigtausend Punkte in einem Liniendiagramm laufen flüssig, dank gepuffertem Zeichnen und weil nur der sichtbare Ausschnitt gezeichnet wird.</div>
+        <div class="feature"><strong>Typisierte Payloads</strong>Häng eigene Objekte an Einträge und bekomm sie aus Auswahl und Suche typisiert zurück.</div>
+        <div class="feature"><strong>Dokumentierte API</strong>Jede Klasse, Funktion und Property ist dokumentiert, mit Einheiten, Standardwerten und Nebenwirkungen.</div>
+        <div class="feature"><strong>Speichern und teilen</strong>Zeichne jedes Diagramm in eine Bitmap oder direkt in die Galerie.</div>
+      </div>
+    </section>
+
+    <section id="compose" class="wrap section">
+      <h2>Jetpack Compose, voll unterstützt</h2>
+      <div class="split">
+        <div>
+          <p class="section-intro" style="margin-bottom:18px">Jeder Diagrammtyp hat ein Composable mit demselben Namen. Übergib die Daten als State, konfiguriere einmal in <code>setup</code> und lies Auswahl und Viewport über <code>rememberChartState</code> zurück. Marker sind Composables, Previews funktionieren und der State übersteht Konfigurationsänderungen.</p>
+<pre><code><span class="k">val</span> state = rememberChartState()
+LaunchedEffect(lineData) { state.animateX(<span class="s">500</span>) }
+
+LineChart(
+    data = lineData,
+    modifier = Modifier.fillMaxWidth().height(<span class="s">300.dp</span>),
+    state = state,
+    marker = { entry, _ -> Text(<span class="s">"${entry.y}"</span>) },
+    setup = { axisRight.isEnabled = <span class="k">false</span> },
+)
+Text(<span class="s">"Selected: ${state.selectedEntry?.y}"</span>)</code></pre>
+        </div>
+        <div class="project-media phone">
+          <img src="/mpandroidchart/assets/compose.webp?v=2" alt="Ein Linien-, ein Kreis- und ein Balkendiagramm, gesteuert durch Compose-State" width="540" height="1126" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="wrap section">
+      <h2>Dokumentation</h2>
+      <div class="cards">
+        <a class="card link" href="https://github.com/PhilJay/MPAndroidChart#readme"><h3>Schnellstart</h3><p>Installieren, ein Diagramm in ein Layout oder Composable setzen, Daten übergeben. Das README zeigt den ganzen Weg in wenigen Minuten.</p><span class="more">README lesen</span></a>
+        <a class="card link" href="/mpandroidchart/docs/" hreflang="en"><h3>Anleitungen</h3><p>Fünfunddreißig Kapitel: Achsen, Legenden, Formatierer, Hervorheben, Marker, Animationen, Viewport, Theming, Renderer, Compose und Fehlersuche.</p><span class="more">Anleitungen lesen (Englisch)</span></a>
+        <a class="card link" href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.1/javadoc/"><h3>API-Referenz</h3><p>Jede Klasse, Funktion und Property mit Einheiten, Standardwerten, Nebenwirkungen und Exceptions, aus dem Quellcode erzeugt.</p><span class="more">API ansehen (Englisch)</span></a>
+        <a class="card link" href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.1/javadoc/"><h3>Compose-API</h3><p>Die Composables, der Chart-State und die Interop-Helfer des Compose-Moduls.</p><span class="more">Compose-API ansehen (Englisch)</span></a>
+        <a class="card link" href="/mpandroidchart/docs/migration/" hreflang="en"><h3>Umstieg von 3.x</h3><p>Jede Änderung gegenüber den Java-Versionen, von Properties bis zu typisierten Einträgen, mit Code vorher und nachher.</p><span class="more">Migrationsanleitung lesen (Englisch)</span></a>
+        <a class="card link" href="https://github.com/PhilJay/MPAndroidChart/tree/master/MPChartExample"><h3>Beispiel-App</h3><p>Einundvierzig Screens mit Quellcode, darunter die Diagramm-Übersicht oben, zwei Compose-Screens und ein Spielplatz für Animationen.</p><span class="more">Quellcode ansehen</span></a>
+      </div>
+    </section>
+
+    <section id="start" class="wrap section">
+      <h2>Loslegen</h2>
+      <p class="section-intro">Füg das JitPack-Repository und eine Abhängigkeit hinzu, setz ein Diagramm in ein Layout oder Composable und übergib ihm Daten.</p>
+      <div class="cards two">
+        <div class="card">
+          <h3>1. Abhängigkeit hinzufügen</h3>
+<pre><code><span class="c">// settings.gradle.kts</span>
+dependencyResolutionManagement {
+    repositories {
+        maven(<span class="s">"https://jitpack.io"</span>)
+    }
+}
+
+<span class="c">// build.gradle.kts</span>
+dependencies {
+    implementation(<span class="s">"com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.1"</span>)
+    implementation(<span class="s">"com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.1"</span>)
+}</code></pre>
+        </div>
+        <div class="card">
+          <h3>2. Diagramm anzeigen</h3>
+<pre><code><span class="k">val</span> entries = listOf(Entry(<span class="s">0f</span>, <span class="s">4f</span>), Entry(<span class="s">1f</span>, <span class="s">8f</span>), Entry(<span class="s">2f</span>, <span class="s">6f</span>))
+<span class="k">val</span> set = LineDataSet(entries, <span class="s">"Sales"</span>).apply {
+    color = Color.BLUE
+    lineWidth = <span class="s">2f</span>
+    mode = LineDataSet.Mode.CUBIC_BEZIER
+}
+chart.data = LineData(set)
+chart.animateX(<span class="s">500</span>)</code></pre>
+        </div>
+      </div>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="button primary" href="https://github.com/PhilJay/MPAndroidChart#readme">README lesen</a>
+        <a class="button" href="/mpandroidchart/docs/" hreflang="en">Alle Anleitungen<span class="visually-hidden"> (Englisch)</span></a>
+      </div>
+      <p class="cta-note">Benötigt minSdk 23. Apache License 2.0. Fragen gehören auf <a href="https://stackoverflow.com/questions/tagged/mpandroidchart">Stack Overflow</a>, Fehler in die <a href="https://github.com/PhilJay/MPAndroidChart/issues">GitHub Issues</a>.</p>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <span>© 2026 Philipp Jahoda</span>
+    <nav>
+      <a href="/de/">Alle Projekte</a>
+      <a href="https://github.com/PhilJay/MPAndroidChart">GitHub</a>
+      <a href="/de/datenschutz.html">Datenschutz</a>
+      <a href="/de/impressum.html">Impressum</a>
+      <a href="#" data-cookie-settings>Cookie-Einstellungen</a>
+      <a href="/mpandroidchart/" hreflang="en" lang="en">English</a>
+    </nav>
+  </footer>
+</div>
+<script>
+  document.querySelectorAll('.toggle button').forEach(function (button) {
+    button.addEventListener('click', function () {
+      document.querySelectorAll('.toggle button').forEach(function (b) { b.classList.remove('active'); });
+      button.classList.add('active');
+      document.querySelectorAll('#gallery img').forEach(function (img) {
+        var name = img.dataset.name + button.dataset.variant;
+        img.src = '/mpandroidchart/assets/' + name + '-506.webp?v=2';
+        img.srcset = '/mpandroidchart/assets/' + name + '-506.webp?v=2 506w, /mpandroidchart/assets/' + name + '.webp?v=2 1012w';
+      });
+    });
+  });
+</script>
+</body>
+</html>

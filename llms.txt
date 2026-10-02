@@ -1,0 +1,28 @@
+# philjay.cc
+
+> The website of Philipp Jahoda (PhilJay), an app developer from Linz, Austria. It presents MPAndroidChart, the open source chart library for Android, and his apps Sightline (macOS), Burnd (iPhone), Crazy Elephant (iPhone and iPad) and Expense Admin (iPhone). Every page is available in English, the home page and the MPAndroidChart page also in German under /de/.
+
+## MPAndroidChart
+
+MPAndroidChart is the chart library for Android: line, bar, pie, scatter, candlestick, bubble, radar and combined charts with zooming, dragging, highlighting, markers and animations. Written in Kotlin, with a Jetpack Compose module, Apache 2.0 licensed, current version 4.0.1, minSdk 23. Installed from JitPack with `com.github.PhilJay.MPAndroidChart:MPChartLib:v4.0.1` and `com.github.PhilJay.MPAndroidChart:MPChartCompose:v4.0.1`.
+
+- [MPAndroidChart overview](https://philjay.cc/mpandroidchart/): chart types, features, Compose support and setup
+- [Guides as Markdown](https://philjay.cc/mpandroidchart/docs/index.md): the 35 guide chapters with a one line summary each, every chapter linked as Markdown
+- [All guides in one file](https://philjay.cc/mpandroidchart/docs/llms-full.txt): the complete documentation as plain Markdown
+- [Migrating from 3.x](https://philjay.cc/mpandroidchart/docs/migration/index.md): every change from the Java versions with before and after code
+- [Source code](https://github.com/PhilJay/MPAndroidChart): repository, issues and the example app
+- [API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartLib/v4.0.1/javadoc/): every class, function and property
+- [Compose API reference](https://jitpack.io/com/github/PhilJay/MPAndroidChart/MPChartCompose/v4.0.1/javadoc/): composables, chart state and interop helpers
+
+## Apps
+
+- [Sightline](https://philjay.github.io/sightline-site/): screenshot and screen recording tool for macOS with one editor for both, scrolling capture, background removal, pins and a capture history. Its built in MCP server lets AI agents such as Claude Code, Claude Desktop and Codex capture windows, read their text and annotate them. [Mac App Store](https://apps.apple.com/app/sightline/id6812521593)
+- [Burnd](https://philjay.github.io/hiit-site/): interval timer for iPhone with work, rest, sets and rounds, templates and a weekly streak. [App Store](https://apps.apple.com/app/id1515030728)
+- [Crazy Elephant](https://philjay.github.io/crazyelephant-site/): trick shot game for iPhone and iPad with 80 hand-made levels and a level editor. Free, no ads, no account. [App Store](https://apps.apple.com/app/id621333141)
+- [Expense Admin](https://philjay.github.io/expenseadmin-site/): expense tracker for iPhone with monthly overviews, budgets, statistics per category and iCloud sync. [App Store](https://apps.apple.com/app/id951309216)
+
+## Optional
+
+- [Home page](https://philjay.cc/): all projects on one page, German version at https://philjay.cc/de/
+- [GitHub profile](https://github.com/PhilJay): smaller libraries such as JWT, a Kotlin JSON Web Token implementation for Apple push notifications and Sign in with Apple
+- [Imprint](https://philjay.cc/imprint.html) and [privacy notice](https://philjay.cc/privacy.html)

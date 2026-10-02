@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://philjay.cc/</loc><lastmod>2026-09-29</lastmod></url>
-  <url><loc>https://philjay.cc/mpandroidchart/</loc><lastmod>2026-09-29</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://philjay.cc/</loc><lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://philjay.cc/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://philjay.cc/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://philjay.cc/"/>
+  </url>
+  <url><loc>https://philjay.cc/de/</loc><lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://philjay.cc/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://philjay.cc/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://philjay.cc/"/>
+  </url>
+  <url><loc>https://philjay.cc/mpandroidchart/</loc><lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://philjay.cc/mpandroidchart/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://philjay.cc/de/mpandroidchart/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://philjay.cc/mpandroidchart/"/>
+  </url>
+  <url><loc>https://philjay.cc/de/mpandroidchart/</loc><lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://philjay.cc/mpandroidchart/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://philjay.cc/de/mpandroidchart/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://philjay.cc/mpandroidchart/"/>
+  </url>
   <url><loc>https://philjay.cc/mpandroidchart/docs/</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://philjay.cc/mpandroidchart/docs/getting-started/</loc><lastmod>2026-09-28</lastmod></url>
   <url><loc>https://philjay.cc/mpandroidchart/docs/axis/</loc><lastmod>2026-09-23</lastmod></url>

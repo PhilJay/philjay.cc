@@ -9,6 +9,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -240,6 +241,44 @@ def render(markdown: str):
     return "\n".join(out), headings
 
 
+def last_change(path: str) -> str:
+    """The date of the last commit that touched the file, empty outside a git checkout."""
+    try:
+        return subprocess.run(["git", "log", "-1", "--format=%cs", "--", path], cwd=ROOT,
+                              capture_output=True, text=True).stdout.strip()
+    except OSError:
+        return ""
+
+
+def structured_data(title: str, description: str, url: str, modified: str, crumbs: list) -> str:
+    """JSON-LD for a guide page: the article and the breadcrumb trail to it."""
+    article = {
+        "@type": "TechArticle",
+        "headline": title,
+        "description": description,
+        "url": url,
+        "inLanguage": "en",
+        "author": {"@type": "Person", "@id": "https://philjay.cc/#person", "name": "Philipp Jahoda", "url": "https://philjay.cc/"},
+        "about": {"@type": "SoftwareSourceCode", "@id": "https://philjay.cc/mpandroidchart/#library", "name": "MPAndroidChart"},
+        "isPartOf": {"@type": "WebSite", "name": "MPAndroidChart", "url": "https://philjay.cc/mpandroidchart/"},
+        "image": "https://philjay.cc/mpandroidchart/assets/og-mpandroidchart-en.jpg",
+    }
+    if modified:
+        article["dateModified"] = modified
+    breadcrumbs = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": name, "item": link}
+                            for i, (name, link) in enumerate(crumbs)],
+    }
+    data = {"@context": "https://schema.org", "@graph": [article, breadcrumbs]}
+    return json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+
+
+def as_markdown(title: str, body: str) -> str:
+    """The chapter source with site links made absolute, so it reads on its own."""
+    return f"# {title}\n" + body.replace("](/", "](https://philjay.cc/")
+
+
 def main() -> int:
     sources = sorted(f for f in os.listdir(SRC) if f.endswith(".md"))
     if not sources:
@@ -256,7 +295,8 @@ def main() -> int:
             if line.strip() and not line.startswith(("#", "`", ">", "-", "|")):
                 summary = re.sub(r"[\[\]`*]|\([^)]*\)", "", line).strip()
                 break
-        chapters.append({"slug": name[3:-3], "title": title, "body": body, "summary": summary})
+        chapters.append({"slug": name[3:-3], "title": title, "body": body, "summary": summary,
+                         "modified": last_change(os.path.join(SRC, name))})
 
     template = open(TEMPLATE).read()
     position = {c["slug"]: i for i, c in enumerate(chapters)}
@@ -309,12 +349,19 @@ def main() -> int:
                 .replace("{{content}}", content)
                 .replace("{{pager}}", f'<div class="pager">{"".join(links)}</div>')
                 .replace("{{canonical}}", f'https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/')
+                .replace("{{markdown}}", f'https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/index.md')
+                .replace("{{jsonld}}", structured_data(
+                    chapter["title"], chapter["summary"], f'https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/',
+                    chapter["modified"],
+                    [("MPAndroidChart", "https://philjay.cc/mpandroidchart/"), ("Guides", "https://philjay.cc/mpandroidchart/docs/"),
+                     (chapter["title"], f'https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/')]))
                 .replace("{{root}}", "../../../")
                 .replace("{{navlabel}}", f'<span class="docs-nav-toggle-count">Chapter {index + 1} of {len(chapters)}</span>{html.escape(chapter["title"])}')
                 .replace("{{chapter}}", f'{html.escape(section_of[chapter["slug"]])} <span>Chapter {index + 1} of {len(chapters)}</span>'))
         folder = os.path.join(OUT, chapter["slug"])
         os.makedirs(folder, exist_ok=True)
         open(os.path.join(folder, "index.html"), "w").write(_inline_css.fill(page))
+        open(os.path.join(folder, "index.md"), "w").write(as_markdown(chapter["title"], chapter["body"]))
 
     def card(slug: str) -> str:
         c = chapters[position[slug]]
@@ -327,18 +374,40 @@ def main() -> int:
         f'<div class="cards docs-cards">{"".join(card(slug) for slug in slugs)}</div>'
         for title, slugs in sections
     )
+    overview_description = "Every chapter of the MPAndroidChart documentation, from getting started to custom data sets."
     overview = (template
                 .replace("{{title}}", "Guides")
-                .replace("{{description}}", "Every chapter of the MPAndroidChart documentation, from getting started to custom data sets.")
+                .replace("{{description}}", overview_description)
                 .replace("{{nav}}", nav)
                 .replace("{{toc}}", "")
                 .replace("{{content}}", f'<h1>Guides</h1><p class="lead-in">Every part of the library in {len(chapters)} chapters, with Kotlin examples checked against the current source. Start at the top or jump to what you need.</p>{cards}')
                 .replace("{{pager}}", "")
                 .replace("{{canonical}}", "https://philjay.cc/mpandroidchart/docs/")
+                .replace("{{markdown}}", "https://philjay.cc/mpandroidchart/docs/index.md")
+                .replace("{{jsonld}}", structured_data(
+                    "MPAndroidChart guides", overview_description, "https://philjay.cc/mpandroidchart/docs/",
+                    max(c["modified"] for c in chapters),
+                    [("MPAndroidChart", "https://philjay.cc/mpandroidchart/"), ("Guides", "https://philjay.cc/mpandroidchart/docs/")]))
                 .replace("{{root}}", "../../")
                 .replace("{{navlabel}}", f'<span class="docs-nav-toggle-count">Guides</span>All {len(chapters)} chapters')
                 .replace("{{chapter}}", f'Documentation <span>{len(chapters)} chapters in {len(sections)} parts</span>'))
     open(os.path.join(OUT, "index.html"), "w").write(_inline_css.fill(overview))
+
+    contents = "".join(
+        f"\n## {title}\n\n" + "".join(
+            f'- [{chapters[position[slug]]["title"]}](https://philjay.cc/mpandroidchart/docs/{slug}/index.md): '
+            f'{chapters[position[slug]]["summary"]}\n' for slug in slugs)
+        for title, slugs in sections)
+    open(os.path.join(OUT, "index.md"), "w").write(
+        f"# MPAndroidChart guides\n\n{overview_description} Each chapter is also available as HTML without the "
+        f"index.md suffix. All chapters in one file: https://philjay.cc/mpandroidchart/docs/llms-full.txt\n{contents}")
+    with open(os.path.join(OUT, "llms-full.txt"), "w") as full:
+        full.write("# MPAndroidChart guides\n\n"
+                   "The complete documentation of MPAndroidChart, the chart library for Android, written in Kotlin, "
+                   "with a Jetpack Compose module. Source: https://github.com/PhilJay/MPAndroidChart\n")
+        for chapter in chapters:
+            full.write(f'\n---\n\nURL: https://philjay.cc/mpandroidchart/docs/{chapter["slug"]}/\n\n')
+            full.write(as_markdown(chapter["title"], chapter["body"]).strip() + "\n")
 
     records = []
     for chapter in chapters:
