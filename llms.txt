@@ -16,7 +16,7 @@ MPAndroidChart is the chart library for Android: line, bar, pie, scatter, candle
 
 ## Apps
 
-- [Sightline](https://sightlinemac.com/): screenshot and screen recording tool for macOS with one editor for both, scrolling capture, background removal, pins and a capture history. Its built in MCP server lets AI agents such as Claude Code, Claude Desktop and Codex capture windows, read their text and annotate them. [Mac App Store](https://apps.apple.com/app/sightline/id6812521593)
+- [Sightline](https://sightlinemac.com/): the screenshot and recording app for Mac, with a powerful editor for images and video (cuts, speed, sound, zooms, marks with timing, blur that follows, Beautify), scrolling capture, background removal, pins and a capture history. Its built in MCP server and command line tool (sightline-cli) let AI agents such as Claude Code, Claude Desktop and Codex capture, read, annotate and edit screenshots and recordings. [Mac App Store](https://apps.apple.com/app/sightline/id6812521593)
 - [Burnd](https://philjay.github.io/hiit-site/): interval timer for iPhone with work, rest, sets and rounds, templates and a weekly streak. [App Store](https://apps.apple.com/app/id1515030728)
 - [Crazy Elephant](https://philjay.github.io/crazyelephant-site/): trick shot game for iPhone and iPad with 80 hand-made levels and a level editor. Free, no ads, no account. [App Store](https://apps.apple.com/app/id621333141)
 - [Expense Admin](https://philjay.github.io/expenseadmin-site/): expense tracker for iPhone with monthly overviews, budgets, statistics per category and iCloud sync. [App Store](https://apps.apple.com/app/id951309216)
